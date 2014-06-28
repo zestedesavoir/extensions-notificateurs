@@ -1,0 +1,29 @@
+{
+    "name": "ZdS Notificateur",
+    "version": "1.0.0",
+    "manifest_version": 2,
+    "description": "Extensions pour Google Chrome pour connaitre le nombre de notifications ou MP de ZesteDeSavoir sans avoir besoin d'ouvrir le site",
+    "offline_enabled": false,
+    "icons": {
+        "16": "icons/icone_16.png",
+        "48": "icons/icone_48.png"
+        },
+    "permissions": [
+        "http://*.zestedesavoir.com/*",
+        "http://www.gravatar.com/*",
+        "tabs",
+        "alarms",
+        "notifications",
+        "storage"
+    ],
+    "options_page":"options/options.html",
+    "browser_action": {
+        "default_icon": "icons/icone_38.png",
+        "default_title": "ZdS Notificateur",
+        "default_popup": "popup/popup.html"
+    },
+    "background": {
+        "scripts": ["jquery.js","background.js"],
+        "persistent": false
+    }
+}

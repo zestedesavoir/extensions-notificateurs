@@ -1,0 +1,14 @@
+{
+    "sounds": {
+        "standard": {
+            "name": "Pack Standard",
+            "folder": "standard",
+            "sounds": {
+                "notif_new": "Ting.wav",
+                "mp_new": "Ting.wav",
+                "notif_mp_new": "Ting.wav"
+            }
+        }
+    },
+    "default_soundpack": "standard"
+}
