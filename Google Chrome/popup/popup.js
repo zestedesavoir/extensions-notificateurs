@@ -90,7 +90,7 @@ var backgroundLoaded = function(bgWindow) {
         //ligne "Afficher toute les notifications"
         if(notificator.getOptions("showAllNotifButton")) {
             $("<div>", { class: "element other allNotifs" }).append(
-                $("<a>", { href: urlZdS + "/forum/notifications" }).text("Toutes les notifications")
+                $("<a>", { href: urlZdS + "/forums/notifications" }).text("Toutes les notifications")
             ).appendTo(content);
         }
         
