@@ -6,7 +6,8 @@
     "offline_enabled": false,
     "icons": {
         "16": "icons/icone_16.png",
-        "48": "icons/icone_48.png"
+        "48": "icons/icone_48.png",
+        "128": "icons/icone_128.png"
         },
     "permissions": [
         "http://*.zestedesavoir.com/*",
