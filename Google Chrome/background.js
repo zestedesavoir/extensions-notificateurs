@@ -37,12 +37,12 @@ Notificateur.prototype = {
         openInNewTab: true,
         showAllNotifButton: true,
         showDesktopNotif: true,
-        useDetailedNotifs: false,
         notifPriority: 0,
         mpPriority: 0,
         playSon: false,
         ZdSLink: false,
         autoclosePopup: true,
+        useDetailedNotifs: false,
         archiveAllLink: false
     },
 
@@ -54,12 +54,12 @@ Notificateur.prototype = {
         openInNewTab: Boolean,
         showAllNotifButton: Boolean,
         showDesktopNotif: Boolean,
-        useDetailedNotifs: Boolean,
         notifPriority: Number,
         mpPriority: Number,
         playSon: Boolean,
         ZdSLink: Boolean,
         autoclosePopup: Boolean,
+        useDetailedNotifs: Boolean,
         archiveAllLink: Boolean
     },
 

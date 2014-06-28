@@ -16,14 +16,14 @@ var NotificatorOptions = {
             openInNewTab: document.getElementById("newTab"),
             showAllNotifButton: document.getElementById("allNotifs"),
             showDesktopNotif: document.getElementById("notifNative"),
-            useDetailedNotifs: document.getElementById("detailedNotifs"),
             notifPriority: document.getElementById("priorityNotif"),
             mpPriority: document.getElementById("priorityMP"),
             playSon: document.getElementById("playSon"),
             tweet: document.getElementById("tweet"),
             ZdSLink: document.getElementById("ZdSLink"),
             autoclosePopup: document.getElementById("autoclosePopup"),
-            archiveAllLink: document.getElementById("archiveAllLink")
+            //useDetailedNotifs: document.getElementById("detailedNotifs"),
+            //archiveAllLink: document.getElementById("archiveAllLink")
         };
         
         document.getElementById("enregistrer").addEventListener("click", this.save.bind(this));
@@ -71,7 +71,6 @@ var NotificatorOptions = {
      */
     save: function() {
         this.notificator.setOptions(this.getValues(), function() {
-            //console.log("Options Saved");
             window.close();
         });
     },
@@ -81,7 +80,6 @@ var NotificatorOptions = {
      */
     load: function() {
         this.options = this.notificator.getOptions();
-        
         for(var key in this.elems) {
             if(this.options[key] !== undefined) {
                 if(this.elems[key].type == "checkbox") {
@@ -165,14 +163,11 @@ var NotificatorOptions = {
     /**
      * Callback when page loaded
      */
-    loadCallback: function(data) {
-        // var xmlDoc = new DOMParser().parseFromString(data, "text/xml"), 
-        //     $data = $(xmlDoc);
-            
+    loadCallback: function(data) {            
         var leDiv = $("div#connecteComme");
         //on est pas connecté !
         if(!this.notificator.logged) {
-            leDiv.find("a").attr("href","http://zestedesavoir.com/login");
+            leDiv.find("a").attr("href","http://zestedesavoir.com/membres/connexion/");
             leDiv.find("strong").text("Non connecté !");          
         } else {
             var link = $("a#my-account", $(data));
@@ -189,6 +184,11 @@ var NotificatorOptions = {
 document.addEventListener('DOMContentLoaded', function () {
     chrome.runtime.getBackgroundPage(function(bgWindow) {
         var notificator = bgWindow.theNotificator;
-        NotificatorOptions.init.call(NotificatorOptions, notificator);
+        if(notificator) {
+            NotificatorOptions.init.call(NotificatorOptions, notificator);
+        } else {
+            console.log("Can't fetch the background :(");
+        }
+        
     });
 });
