@@ -12,7 +12,7 @@ ZdS_Notificateur
 C'est une extension pour Google Chrome, qui vous averti des nouvelles notifications sur [Zeste de Savoir](http://zestedesavoir.com).
 Elle récupère à interval régulier (réglable) vos dernières notifications, et vous les affichent directement.
 
-L'extension est disponible sur le [Chrome WebStore](Coming soon)
+L'extension est disponible sur le [Chrome WebStore](https://chrome.google.com/webstore/detail/zds-notificateur/jibjnbbmokappnjpdodmpdmpklfhokkn)
 
 ## A quoi ça ressemble ?
 
