@@ -5,7 +5,7 @@ ZdS_Notificateur
  2. [A quoi ça ressemble ?](#a-quoi-%C3%A7a-ressemble-)
  3. [J'peux vous aider ?](#jpeux-vous-aider-)
  4. [C'est qui qu'a fait ça ?](#cest-qui-qua-fait-%C3%A7a-)
- 5. [Licence]()
+ 5. [Licence](license)
 
 ## Keskecé ?
 
@@ -16,21 +16,22 @@ L'extension est disponible sur le [Chrome WebStore](Coming soon)
 
 ## A quoi ça ressemble ?
 
-
-
 *L'icone dans la barre d'addresse, et une popup avec la liste des notifications*
 
----
+![](Images/notificateur.png)
 
+![](Images/popup.png)
 
 
 *Une notification de bureau*
 
----
-
+![](Images/notifbureau.png)
 
 
 *La page des options*
+
+![](Images/options.png)
+
 
 ## J'peux vous aider ?
 
@@ -42,6 +43,8 @@ Pour tester l'extension depuis les sources, téléchargez les sources [ici](http
 
 Eskimon, est à l'origine de l'idée et Sandhose, horifié par le code, mais séduit par l'idée, l'a rejoint par après.
 (Pour sa défense, Eskimon déclare avoir fait cette extension pour justement apprendre le javascript. Il remercie Sandhose de sa patience :D )
+
+Piwit est ensuite venu apporter sa touche graphique pour proposer les différentes illustrations inspirés des graphismes originaux de Zeste De Savoir.
 
 ## License
 
@@ -65,3 +68,7 @@ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+------
+
+![](Images/Promo.png)
