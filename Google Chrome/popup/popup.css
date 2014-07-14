@@ -11,22 +11,22 @@ body {
     line-height: 1.7em;
 }
 
-div#content {
+#content {
     width: 350px;
     border-bottom: 3px solid #F8AD32;
 }
 
-div.element {
+.element {
     height: 60px;
     background-color: #19526c;
     vertical-align: middle;
 }
 
-div#content div.element:nth-child(2n+1) {
+#content .element:nth-child(2n+1) {
     background-color: #084561;
 }
 
-div.allNotifs {
+.allNotifs {
     text-align: center;
     height: 30px;
     line-height: 30px;
@@ -40,31 +40,32 @@ a {
     transition-duration: .15s;
 }
 
-div.element a img.posteur {
+.notification .user-avatar {
     float: left;
     height: 30px;
     width: 30px;
 }
 
-div.element a span.posteur {
+.notification .user-name {
     display: block;
     float: left;
     margin: 4px 0 0 7px;
     color: #95D7F5;
     width: 50%;
+    height: auto;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-div.element a span.date {
+.notification .date {
     color: #5196b6;
     float: right;
     padding: 4px 10px 0 0;
     transition-property: color;
 }
 
-div.element a span.titre {
+.notification .title {
     display: block;
     overflow: hidden;
     height: 25px;
@@ -74,7 +75,7 @@ div.element a span.titre {
     width: calc(100% - 14px);
 }
 
-div.noNotifs {
+.noNotifs {
     text-align: center;
 }
 
