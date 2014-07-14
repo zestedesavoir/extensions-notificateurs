@@ -3,9 +3,6 @@ var notificator;
 var urlZdS = "http://zestedesavoir.com";
 
 var linkListener = function(notificator, event) {
-	console.dir(this);
-	// return;
-
 	var url = this.href;
 	if(url === "#")
 		return;
@@ -150,14 +147,14 @@ var backgroundLoaded = function(bgWindow) {
 		}
 		
 		//ligne "Ouvrir le ZdS"
-		if(notificator.getOptions("ZdSLink")) {
-			var goto_zds_link = document.createElement("a");
-			goto_zds_link.classList.add("element", "other", "allNotifs", "goToZdS");
-			goto_zds_link.href = urlZdS;
-			goto_zds_link.textContent = "Aller sur ZdS";
+		// if(notificator.getOptions("ZdSLink")) {
+		// 	var goto_zds_link = document.createElement("a");
+		// 	goto_zds_link.classList.add("element", "other", "allNotifs", "goToZdS");
+		// 	goto_zds_link.href = urlZdS;
+		// 	goto_zds_link.textContent = "Aller sur ZdS";
 
-			content.appendChild(goto_zds_link);
-		}
+		// 	content.appendChild(goto_zds_link);
+		// }
 		
 		var liens = document.getElementsByTagName("a");
 		for (var i = 0; i < liens.length; i++) {
@@ -183,7 +180,6 @@ var backgroundLoaded = function(bgWindow) {
 	}
 	else {
 		logo.addEventListener("click", linkListener.bind(logo, notificator), false);
-
 
 		var not_logged_in_elem = document.createElement("div");
 		not_logged_in_elem.className = "not-connected";
