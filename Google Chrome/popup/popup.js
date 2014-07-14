@@ -112,6 +112,10 @@ var backgroundLoaded = function(bgWindow) {
 	var header_links = document.getElementById("header").getElementsByTagName("a");
 
 	for (var i=0, nb=header_links.length; i<nb; i++) {
+		if (header_links[i].id === "logo") {
+			header_links[i].href = urlZdS;
+		}
+		
 		header_links[i].addEventListener("click", linkListener.bind(header_links[i], notificator), false);
 	}
 
