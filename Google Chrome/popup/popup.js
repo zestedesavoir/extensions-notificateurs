@@ -77,6 +77,8 @@ var createNotif = function(notif) {
 	notif_pseudo.classList.add("user-name");
 	notif_pseudo.textContent = notif.answerer.username;
 
+	notif_link.appendChild(notif_pseudo);
+
 
 	var notif_date = document.createElement("time");
 	notif_date.classList.add("date");
@@ -107,6 +109,12 @@ var backgroundLoaded = function(bgWindow) {
 
 	console.dir(notifs);
 
+	var header_links = document.getElementById("header").getElementsByTagName("a");
+
+	for (var i=0, nb=header_links.length; i<nb; i++) {
+		header_links[i].addEventListener("click", linkListener.bind(header_links[i], notificator), false);
+	}
+
 	var content = document.getElementById("content");
 
 	if(notificator.logged || notificator.useFakeData) {
@@ -120,7 +128,7 @@ var backgroundLoaded = function(bgWindow) {
 			no_notifs_elem.classList.add("element", "other", "noNotifs");
 
 			var no_notifs_text = document.createElement("span");
-			no_notifs_text.textContent = "Aucune nouvelle notifications";
+			no_notifs_text.textContent = "Aucune nouvelle notification";
 
 			no_notifs_elem.appendChild(no_notifs_text);
 			content.appendChild(no_notifs_elem);
@@ -136,28 +144,22 @@ var backgroundLoaded = function(bgWindow) {
 		
 		//ligne "Afficher toute les notifications"
 		if(notificator.getOptions("showAllNotifButton")) {
-			var all_notifs_elem = document.createElement("div");
-			all_notifs_elem.classList.add("element", "other", "allNotifs");
-
 			var all_notifs_link = document.createElement("a");
+			all_notifs_link.classList.add("element", "other", "allNotifs");
 			all_notifs_link.href = urlZdS + "/forums/notifications";
 			all_notifs_link.textContent = "Toutes les notifications";
 
-			all_notifs_elem.appendChild(all_notifs_link);
-			content.appendChild(all_notifs_elem);
+			content.appendChild(all_notifs_link);
 		}
 		
 		//ligne "Ouvrir le ZdS"
 		if(notificator.getOptions("ZdSLink")) {
-			var goto_zds_elem = document.createElement("div");
-			goto_zds_elem.classList.add("element", "other", "allNotifs", "goToZdS");
-
 			var goto_zds_link = document.createElement("a");
+			goto_zds_link.classList.add("element", "other", "allNotifs", "goToZdS");
 			goto_zds_link.href = urlZdS;
 			goto_zds_link.textContent = "Aller sur ZdS";
-			
-			goto_zds_elem.appendChild(goto_zds_link);
-			content.appendChild(goto_zds_elem);
+
+			content.appendChild(goto_zds_link);
 		}
 		
 		var liens = document.getElementsByTagName("a");
