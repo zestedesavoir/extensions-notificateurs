@@ -109,8 +109,7 @@ a {
 
 .allNotifs{
 	display: block;
-	font-size: .8em;
-	padding: 1.25em;
+	padding: 1em;
 	text-align: center;
 	background-color: #084561;
 	color: #fff;
