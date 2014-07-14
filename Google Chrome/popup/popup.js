@@ -135,7 +135,6 @@ var backgroundLoaded = function(bgWindow) {
 			content.appendChild(notifList);
 		}
 		
-		
 		//ligne "Afficher toute les notifications"
 		if(notificator.getOptions("showAllNotifButton")) {
 			var all_notifs_link = document.createElement("a");
@@ -145,16 +144,6 @@ var backgroundLoaded = function(bgWindow) {
 
 			content.appendChild(all_notifs_link);
 		}
-		
-		//ligne "Ouvrir le ZdS"
-		// if(notificator.getOptions("ZdSLink")) {
-		// 	var goto_zds_link = document.createElement("a");
-		// 	goto_zds_link.classList.add("element", "other", "allNotifs", "goToZdS");
-		// 	goto_zds_link.href = urlZdS;
-		// 	goto_zds_link.textContent = "Aller sur ZdS";
-
-		// 	content.appendChild(goto_zds_link);
-		// }
 		
 		var liens = document.getElementsByTagName("a");
 		for (var i = 0; i < liens.length; i++) {
