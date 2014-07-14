@@ -109,15 +109,8 @@ var backgroundLoaded = function(bgWindow) {
 
 	console.dir(notifs);
 
-	var header_links = document.getElementById("header").getElementsByTagName("a");
-
-	for (var i=0, nb=header_links.length; i<nb; i++) {
-		if (header_links[i].id === "logo") {
-			header_links[i].href = urlZdS;
-		}
-		
-		header_links[i].addEventListener("click", linkListener.bind(header_links[i], notificator), false);
-	}
+	var logo = document.getElementById("logo");
+	logo.href = urlZdS;
 
 	var content = document.getElementById("content");
 
@@ -189,6 +182,9 @@ var backgroundLoaded = function(bgWindow) {
 		});
 	}
 	else {
+		logo.addEventListener("click", linkListener.bind(logo, notificator), false);
+
+
 		var not_logged_in_elem = document.createElement("div");
 		not_logged_in_elem.className = "not-connected";
 		not_logged_in_elem.textContent = "Vous n'êtes pas connecté !";
