@@ -25,7 +25,8 @@ a {
 	border-bottom: 3px solid #f8ad32;
 }
 #header>h1{
-	font-size: 1.25em;
+	/*font-size: 1.25em;*/
+	font-size: 1em;
 	font-weight: normal;
 	text-transform: small-caps;
 	padding: 0;
@@ -50,10 +51,6 @@ a {
 	min-width: 25em;
 }
 
-#content .notification:nth-child(2n+1) {
-	/*background-color: #084561;*/
-}
-
 .notification {
 	display: block;
 	padding: .5em;
@@ -64,8 +61,11 @@ a {
 	display: block;
 	clear: both;
 }
-.notification:hover{
+.notification:nth-child(2n){
 	background-color: #f0f0f0;
+}
+.notification:hover{
+	background-color: #fff;
 }
 .notification:focus{
 	outline: none;
@@ -73,30 +73,35 @@ a {
 }
 .notification .user-avatar {
 	float: left;
-	height: 2em;
-	width: 2em;
+	height: 4em;
+	width: 4em;
 }
-.notification>.user-name {
+.notification .user-name {
 	display: block;
 	float: left;
-	margin: .15em .5em;
+	max-width: 50%;
 	color: #777;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
-.notification>.date {
+.notification .details {
+	position: relative;
+	padding-left: 4.5em;
+}
+.notification .date {
+	display: block;
+	float:	 right;
+	max-width: 50%;
 	color: #ee8709;
-	float: right;
-	padding: .25em 0 0;
 	transition-property: color;
 }
-.notification>.title {
+.notification .title {
 	display: block;
-	clear: both;
 	font-size: 1.2em;
 	font-weight: bold;
-	padding: .4em 0 0;
+	padding: .5em 0 0;
+	width: 100%;
 	color: #0e7aa8;
 	overflow: hidden;
 	text-overflow: ellipsis;

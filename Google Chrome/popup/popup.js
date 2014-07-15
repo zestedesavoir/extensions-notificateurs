@@ -52,8 +52,7 @@ var createNotif = function(notif) {
 	
 	notif_link.href = urlZdS + notif.link;
 
-	notif_link.classList.add("notification");
-	notif_link.classList.add(notif.type);
+	notif_link.className = "notification " + notif.type;
 
 	notif_link.id = "notif-" + notif.id;
 	notif_link.dataset.notificationId = notif.id;
@@ -62,33 +61,44 @@ var createNotif = function(notif) {
 	if(!notif.answerer.avatar.match(/^(http:\/\/|https:\/\/|\/\/)(.*)/i)) {
 		notif.answerer.avatar = urlZdS + notif.answerer.avatar;
 	}
+
+	var notif_answerer = document.createElement("div");
+	notif_answerer.className = "user";
+
 	var notif_avatar = document.createElement("img");
 	notif_avatar.src = notif.answerer.avatar;
-	notif_avatar.classList.add("user-avatar");
+	notif_avatar.className = "user-avatar";
 	notif_avatar.alt = "Avatar de " + notif.answerer.username;
 
-	notif_link.appendChild(notif_avatar);
+	notif_answerer.appendChild(notif_avatar);
 
+	notif_link.appendChild(notif_answerer);
+
+
+
+	var notif_details = document.createElement("div");
+	notif_details.className = "details";
 
 	var notif_pseudo = document.createElement("span");
-	notif_pseudo.classList.add("user-name");
+	notif_pseudo.className = "user-name";
 	notif_pseudo.textContent = notif.answerer.username;
 
-	notif_link.appendChild(notif_pseudo);
-
+	notif_details.appendChild(notif_pseudo);
 
 	var notif_date = document.createElement("time");
-	notif_date.classList.add("date");
+	notif_date.className = "date";
 	notif_date.textContent = notif.date;
 
-	notif_link.appendChild(notif_date);
+	notif_details.appendChild(notif_date);
 
 
 	var notif_title = document.createElement("span");
-	notif_title.classList.add("title");
+	notif_title.className = "title";
 	notif_title.textContent = notif.title;
 
-	notif_link.appendChild(notif_title);
+	notif_details.appendChild(notif_title);
+
+	notif_link.appendChild(notif_details);
 	
 	return notif_link;
 };
