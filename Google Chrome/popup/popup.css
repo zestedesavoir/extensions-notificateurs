@@ -37,6 +37,9 @@ a {
 	background: url(../icons/logo-zds.png) no-repeat center;
 	background-size: contain;
 }
+#logo:hover{
+	opacity: .7;
+}
 #logo>span{
 	font: 0/0 a;
 	text-shadow: none;
