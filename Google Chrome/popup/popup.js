@@ -58,9 +58,9 @@ var createNotif = function(notif) {
 	notif_link.dataset.notificationId = notif.id;
 
 
-	if(!notif.answerer.avatar.match(/^(http:\/\/|https:\/\/|\/\/)(.*)/i)) {
-		notif.answerer.avatar = urlZdS + notif.answerer.avatar;
-	}
+	// if(!notif.answerer.avatar.match(/^(http:\/\/|https:\/\/|\/\/)(.*)/i)) {
+	// 	notif.answerer.avatar = urlZdS + notif.answerer.avatar;
+	// }
 
 	var notif_answerer = document.createElement("div");
 	notif_answerer.className = "user";

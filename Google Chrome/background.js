@@ -90,10 +90,10 @@ Notificateur.prototype = {
 		this.loadOptions(function() {
 			//action lorsqu'on click sur le bouton (affichage liste ou chargement ZdS
 			if(!this.options.openListe) { //soit on ouvre le ZdS
-				chrome.browserAction.setPopup({popup:""});
+				chrome.browserAction.setPopup({ popup: "" });
 				chrome.browserAction.onClicked.addListener(this.listeners.toolbarClick.bind(this));
 			} else { //sinon on ouvre une popup avec le contenu des notifs
-				chrome.browserAction.setPopup({popup:"popup/popup.html"});
+				chrome.browserAction.setPopup({ popup: "popup/popup.html" });
 			}
 
 			chrome.alarms.create('refresh', {periodInMinutes: parseInt(this.options.updateInterval)});
@@ -184,8 +184,8 @@ Notificateur.prototype = {
 		 */
 		toolbarClick: function() {
 			chrome.tabs.create({
-					'url': this.url,
-					'active': true
+					url: this.url,
+					active: true
 				});
 		},
 
@@ -193,7 +193,7 @@ Notificateur.prototype = {
 		 * Alarm
 		 */
 		alarm: function(alarm) {
-			if (alarm.name == 'refresh') {
+			if (alarm.name == "refresh") {
 				this.check();
 			}
 		},
@@ -206,14 +206,14 @@ Notificateur.prototype = {
 			if(button == 0) { // Open last message
 				if(notif) {
 					switch(notif.type) {
-						case("forum"): //normal
+						case "forum": //normal
 							this.openZdS(notif.link);
 							this.archiveNotification(notif.id);
 							break;
-						case("mp"): //MP
+						case "mp": //MP
 							this.openZdS(notif.link);
 							break;
-						case("alerte"): //alerte
+						case "alerte": //alerte
 							this.openZdS(notif.link);
 							break;
 					}
@@ -242,14 +242,14 @@ Notificateur.prototype = {
 			var notif = this.getNotification(notifId);
 			if(notif) {
 				switch(notif.type) {
-					case("forum"): //normal
+					case "forum": //normal
 						this.openZdS(notif.link);
 						this.archiveNotification(notif.id);
 						break;
-					case("mp"): //MP
+					case "mp": //MP
 						this.openZdS(notif.link);
 						break;
-					case("alerte"): //alerte
+					case "alerte": //alerte
 						this.openZdS(notif.link, true);
 						break;
 				}
@@ -278,10 +278,11 @@ Notificateur.prototype = {
 		}
 
 		this.checkPending = true;
-		chrome.browserAction.setIcon({"path":"icons/icone_38_parsing.png"});
+		chrome.browserAction.setIcon({ "path": "icons/icone_38_parsing.png" });
 
 		var url = this.useFakeData ? chrome.runtime.getURL("fake-data.html") : this.url;
-		$.get(url, this.loadCallback.bind(this), "text").error(function() {
+
+		new AjaxRequest(url, this.loadCallback.bind(this), function() {
 			//si jamais la requete plante (pas d'internet, 404 ou autre 500...)
 			chrome.browserAction.setBadgeText({text: "err"});
 			chrome.browserAction.setIcon({"path":"icons/icone_38_logout.png"});
@@ -289,6 +290,8 @@ Notificateur.prototype = {
 			self.logged = false;
 			self.checkPending = false;
 		});
+
+		return;
 	},
 
 	/**
@@ -298,7 +301,7 @@ Notificateur.prototype = {
 	 */
 	getNotification: function(id) {
 		if(id) {
-			for(var i = 0; i < this.notifications.length; i++) {
+			for(var i=0, nb=this.notifications.length; i<nb; i++) {
 				if(this.notifications[i].id == id) {
 					return this.notifications[i];
 				}
@@ -314,61 +317,82 @@ Notificateur.prototype = {
 	 * Callback on page load
 	 * @param {String} data Page data
 	 */
-	loadCallback: function(data) {
-		var contenu = $("div.logbox", $(data));
+	loadCallback: function(event) {
+		console.log("loadCallback >>");
+
+		// On récupère un DOM que l'on peut manipuler
+		var doc = document.implementation.createHTMLDocument("xhr_result");
+		doc.documentElement.innerHTML = event.target.responseText.trim();
+
+		if (!doc.body) {
+			return false;
+		}
+
+		var contenu = doc.querySelector("div.logbox");
+
+		console.log(contenu);
 
 		var hasNewNotif = {
 			notification: false,
 			mp: false
 		};
-		console.log("loadCallback >>")
+
 		//on est pas connecté !
-		if(contenu.hasClass('unlogged') && !this.useFakeData) {
+		if(contenu.classList.contains("unlogged") && !this.useFakeData) {
 			if(this.logged) {
-				chrome.browserAction.setBadgeText({text: "log"});
-				chrome.browserAction.setIcon({"path":"icons/icone_38_logout.png"});
+				chrome.browserAction.setBadgeText({ text: "log" });
+				chrome.browserAction.setIcon({ "path": "icons/icone_38_logout.png" });
 				this.logged = false;
 			}
 			return;
 		} else {
 			if(!this.logged) {
-				chrome.browserAction.setIcon({"path":"icons/icone_38.png"});
-				chrome.browserAction.setBadgeText({text: ""});
+				chrome.browserAction.setIcon({ "path": "icons/icone_38.png" });
+				chrome.browserAction.setBadgeText({ text: "" });
 				this.logged = true;
 			}
 		}
 		
 		//récupere les deux listes, celle des MP (0) et celle des notifs (1)
-		contenu = contenu.find("div.notifs-links ul.dropdown-list");
+		contenu = contenu.querySelectorAll("div.notifs-links ul.dropdown-list");
 		
 		// Check les notifications ---------------------------------------
-		var notifications = $("li", $(contenu[1])),
+		var notifications = contenu[1].querySelectorAll("li"),
 			newNotifs = [], // Liste des nouvelles notifications
 			oldNotifs = this.notifications, // Ancienne liste
 			removedNotifs = [], // Notifs enlevées
 			notifsList = []; // Nouvelle liste
 
-		if(!notifications.hasClass('dropdown-empty-message')) {
-			for(var i = 0; i < notifications.length; i++) {
+		console.dir(notifications);
 
-				var notif = $(notifications[i]),
-					notifLink = notif.find('a').attr('href');
+		if(!notifications[0].classList.contains("dropdown-empty-message")) {
+			for(var i=0, nb=notifications.length; i<nb; i++) {
+
+				var notif = notifications[i],
+					notifLink = notif.querySelector("a").getAttribute("href");
 
 				var notifObj = {
-					id: notifLink.split('/')[3],
+					id: parseInt(notifLink.split("/")[3], 10),
 					link: notifLink,
-					title: notif.find("span.topic").text(),
-					date: notif.find("span.date").text(),
+					title: notif.querySelector("span.topic").textContent.trim(),
+					date: notif.querySelector("span.date").textContent.trim(),
 					answerer: {
-						avatar: notif.find("img.avatar").attr('src'),
-						username: notif.find("span.username").text()
+						avatar: notif.querySelector("img.avatar").getAttribute("src"),
+						username: notif.querySelector("span.username").textContent.trim()
 					},
 					type: "forum"
 				};
 
+				if(!notifObj.answerer.avatar.match(/^(http:\/\/|https:\/\/|\/\/)(.*)/i)) {
+					notifObj.answerer.avatar = this.url + notifObj.answerer.avatar;
+				}
+
+				console.dir(notifObj);
+
 				var existingNotif = this.getNotification(notifObj.subjectId);
+
 				if(existingNotif) {
-					$.extend(notifObj, existingNotif);
+					existingNotif.extend(notifObj);
 				}
 				else {
 					newNotifs.push(notifObj);
@@ -378,7 +402,7 @@ Notificateur.prototype = {
 
 				if(this.options.useDetailedNotifs && !notifObj.detailed) {
 					this.fetchNotificationDetails(notifObj, function(newNotif) {
-						var notifTmp = $.extend({}, notifObj, newNotif);
+						var notifTmp = {}.extend(notifObj).extend(newNotif);
 						self.showDesktopNotif(notifTmp);
 					});
 				}
@@ -392,29 +416,38 @@ Notificateur.prototype = {
 
 
 		// Check les mp -----------------------------------------------
-		notifications = $("li", $(contenu[0]));
+		notifications = contenu[0].querySelectorAll("li");
+
+		console.dir(notifications);
 		
-		if(!notifications.hasClass('dropdown-empty-message')) {
-			for(var i = 0; i < notifications.length; i++) { //-1 pour éviter le "tout les mps
+		if(!notifications[0].classList.contains("dropdown-empty-message")) {
+			for(var i=0, nb=notifications.length; i<nb; i++) { //-1 pour éviter le "tout les mps
 								
-				var notif = $(notifications[i]),
-					notifLink = notif.find('a').attr('href');
+				var notif = notifications[i],
+					notifLink = notif.querySelector("a").getAttribute("href");
 
 				var notifObj = {
-					id: notifLink.split('/')[2],
+					id: parseInt(notifLink.split("/")[2], 10),
 					link: notifLink,
-					title: notif.find("span.topic").text(),
-					date: notif.find("span.date").text(),
+					title: notif.querySelector("span.topic").textContent.trim(),
+					date: notif.querySelector("span.date").textContent.trim(),
 					answerer: {
-						avatar: notif.find("img.avatar").attr('src'),
-						username: notif.find("span.username").text()
+						avatar: notif.querySelector("img.avatar").getAttribute("src"),
+						username: notif.querySelector("span.username").textContent.trim()
 					},
 					type: "mp"
 				};
 
+				if(!notifObj.answerer.avatar.match(/^(http:\/\/|https:\/\/|\/\/)(.*)/i)) {
+					notifObj.answerer.avatar = this.url + notifObj.answerer.avatar;
+				}
+
+				console.dir(notifObj);
+
 				var existingNotif = this.getNotification(notifObj.id);
+
 				if(existingNotif) {
-					$.extend(notifObj, existingNotif);
+					existingNotif.extend(notifObj);
 				}
 				else {
 					newNotifs.push(notifObj);
@@ -428,42 +461,6 @@ Notificateur.prototype = {
 				notifsList.push(notifObj);
 			}
 		}
-/*
-		// Check les notifications "alertes" des modos
-		notifications = $data.find(".last-active-item .dropdown-menu .dropdown-menu-item");
-
-		for(var i = 0; i < notifications.length-1; i++) { //-1 our pas avoir le lien "toutes les alertes"
-			var notif = $(notifications[i]),
-				notifLink = notif.find("a").attr('href'),
-				archiveLink = notifLink; //pas de lien d'archives pour les alertes
-
-			if(notifLink == "/mp/") continue;
-
-			var notifObj = {
-				id: "alerte-"+notifLink.substr(notifLink.lastIndexOf("/") + 1),
-				title: notif.find("li.title").text(),
-				date: notif.find("li.date").text(),
-				messageId: notifLink.substr(notifLink.lastIndexOf("/") + 1),
-				thread: notifLink.substr(13, notifLink.lastIndexOf("/") - 13),
-				type: "alerte"
-			};
-
-			var existingNotif = this.getNotification(notifObj.id);
-			if(existingNotif) {
-				$.extend(notifObj, existingNotif);
-			}
-			else {
-				newNotifs.push(notifObj);
-				this.newNotifCallback && this.newNotifCallback(notifObj);
-				hasNewNotif.notification = true;
-			}
-
-			if(!existingNotif)
-				this.showDesktopNotif(notifObj);
-
-			notifsList.push(notifObj);
-		}
-*/
 
 		this.notifications = notifsList;
 
@@ -491,7 +488,7 @@ Notificateur.prototype = {
 		//set le texte du badge
 		this.updateBadge();
 
-		chrome.browserAction.setIcon({"path":"icons/icone_38.png"});
+		chrome.browserAction.setIcon({ "path": "icons/icone_38.png" });
 
 		this.checkPending = false;
 	},
@@ -512,13 +509,13 @@ Notificateur.prototype = {
 			if(this.options.useDetailedNotifs && notif.detailed && (notif.type == "forum")) {
 				var notifOptions = {};
 
-				chrome.notifications.create(notif.id, {
+				chrome.notifications.create(""+notif.id, {
 					type: "basic",
 					iconUrl: notif.avatarUrl,
-					title: notif.answerer['username'] + " - " + notif.title,
+					title: notif.answerer.username + " - " + notif.title,
 					message: notif.postContent.replace(/<br \/>/ig, "\n").replace(/(<([^>]+)>)/ig, "").substr(0, 140) + "...\n" + notif.date,
 					priority: parseInt(this.options.notifPriority),
-					buttons: [{ title: "Voir le message" }, { title: "Voir le début du thread"}]
+					buttons: [{ title: "Voir le message" }, { title: "Voir le début du thread" }]
 				}, function() {});
 			}
 			else {
@@ -526,18 +523,18 @@ Notificateur.prototype = {
 				var priority = 0;
 				var icone = "";
 				switch(notif.type) {
-					case("forum"):
+					case "forum":
 						boutons[0] = { title: "Voir le message" };
 						boutons[1] = { title: "Voir le début du thread" };
 						icone = "icons/big_message.png";
 						priority = this.options.notifPriority;
 						break;
-					case("mp"):
+					case "mp":
 						boutons[0] = { title: "Voir le MP" };
 						icone = "icons/big_mp.png";
 						priority = this.options.mpPriority;
 						break;
-					case("alerte"):
+					case "alerte":
 						boutons[0] = { title: "Voir l'alerte" };
 						icone = "icons/big_alerte.png";
 						priority = this.options.notifPriority;
@@ -552,7 +549,7 @@ Notificateur.prototype = {
 					priority: parseInt(priority)
 				};
 
-				chrome.notifications.create(notif.id, notifOptions, function() {});
+				chrome.notifications.create(""+notif.id, notifOptions, function() {});
 			}
 		}
 	},
@@ -680,8 +677,10 @@ Notificateur.prototype = {
 	 * @param {Function} [callback] Callback when options are loaded
 	 */
 	loadOptions: function(callback) { // Charge les options depuis le chrome.storage
-		this.options = $.extend(this.options, this.default_options);
+		this.options.extend(this.default_options);
+
 		var keys = Object.keys(this.options);
+
 		this.storage.get(keys, function(items) {
 			for(var key in items) {
 				if(this.options.hasOwnProperty(key)) {
@@ -715,7 +714,17 @@ Notificateur.prototype = {
 	 * @param {Function} [callback] Callback fired when soundpacks are loaded
 	 */
 	loadSounds: function(callback) {
-		$.getJSON(chrome.extension.getURL("/sounds/packs.json"), function(data) {
+		new AjaxRequest(chrome.extension.getURL("/sounds/packs.json"), function(data) {
+			try{
+				data = JSON.parse(data);
+			}
+			catch (e) {
+				console.log("Error parsing JSON");
+				return false;
+			}
+			if (!data) {
+				return false;
+			}
 			this.soundpacks = data;
 			if(this.soundpacks.sounds[this.options.soundpack]) {
 				this.soundpack = this.soundpacks.sounds[this.options.soundpack];
