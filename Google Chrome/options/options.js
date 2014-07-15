@@ -7,20 +7,20 @@ var NotificatorOptions = {
     /**
      * Init options
      */
-    init: function(_notificator) {
-        this.notificator = _notificator;
-        
-        this.elems = {
-            updateInterval: document.getElementById('interval'),
-            openListe: document.getElementById('openListe'),
-            openInNewTab: document.getElementById("newTab"),
-            showAllNotifButton: document.getElementById("allNotifs"),
-            showDesktopNotif: document.getElementById("notifNative"),
-            notifPriority: document.getElementById("priorityNotif"),
-            mpPriority: document.getElementById("priorityMP"),
-            playSon: document.getElementById("playSon"),
+	init: function(_notificator) {
+		this.notificator = _notificator;
+		
+		this.elems = {
+			updateInterval: document.getElementById('interval'),
+			openListe: document.getElementById('openListe'),
+			openInNewTab: document.getElementById("newTab"),
+			showAllNotifButton: document.getElementById("allNotifs"),
+			showDesktopNotif: document.getElementById("notifNative"),
+			notifPriority: document.getElementById("priorityNotif"),
+			mpPriority: document.getElementById("priorityMP"),
+		    playSon: document.getElementById("playSon"),
             tweet: document.getElementById("tweet"),
-            ZdSLink: document.getElementById("ZdSLink"),
+            // ZdSLink: document.getElementById("ZdSLink"),
             autoclosePopup: document.getElementById("autoclosePopup"),
             //useDetailedNotifs: document.getElementById("detailedNotifs"),
             //archiveAllLink: document.getElementById("archiveAllLink")
