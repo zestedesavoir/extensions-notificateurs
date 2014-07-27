@@ -181,15 +181,15 @@ var backgroundLoaded = function(bgWindow) {
 		logo.addEventListener("click", linkListener.bind(logo, notificator), false);
 
 		var not_logged_in_elem = document.createElement("div");
-		not_logged_in_elem.className = "not-connected";
+		not_logged_in_elem.classList.add("element", "other", "not-connected");
 		not_logged_in_elem.textContent = "Vous n'êtes pas connecté !";
 
 		content.appendChild(not_logged_in_elem);
 	}
 };
 
-document.addEventListener('DOMContentLoaded', function () {
+// document.addEventListener('DOMContentLoaded', function () {
 	chrome.runtime.getBackgroundPage(function() {
 		backgroundLoaded.apply(this, arguments);
 	});
-});
+// });

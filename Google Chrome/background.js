@@ -29,6 +29,11 @@ Notificateur.prototype = {
 	logged: true,
 
 	/**
+	 * Current notifications
+	 */
+	notifications: [],
+
+	/**
 	 * Options
 	 */
 	default_options: {
@@ -701,11 +706,11 @@ Notificateur.prototype = {
 
 		//action lorsqu'on click sur le bouton (affichage liste ou chargement ZdS
 		if(!this.options.openListe) { //soit on ouvre le ZdS
-			chrome.browserAction.setPopup({popup:""});
+			chrome.browserAction.setPopup({ popup: "" });
 			chrome.browserAction.onClicked.addListener(this.listeners.toolbarClick.bind(this));
 		} else { //sinon on ouvre une popup avec le contenu des notifs
 			chrome.browserAction.onClicked.removeListener(this.listeners.toolbarClick);
-			chrome.browserAction.setPopup({popup:"popup/popup.html"});
+			chrome.browserAction.setPopup({ popup: "popup/popup.html" });
 		}
 	},
 
