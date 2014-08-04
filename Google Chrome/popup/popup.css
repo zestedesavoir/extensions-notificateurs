@@ -8,7 +8,8 @@ body {
 	font-size: 14px;
 	line-height: 1.7em;
 	min-width: 25em;
-	min-height: 11em;
+	max-width: 30em;
+	min-height: 7em;
 	background-color: #f7f7f7;
 	color: #222;
 }
@@ -107,7 +108,7 @@ a {
 }
 
 
-.noNotifs {
+.noNotifs, .notConnected {
 	padding: 1em .5em;
 	text-align: center;
 }

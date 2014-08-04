@@ -41,6 +41,8 @@ var linkListener = function(notificator, event) {
 			});
 		}
 
+		notificator.check();
+		
 		if(notificator.getOptions("autoclosePopup")) {
 			window.close();
 		}
@@ -181,7 +183,7 @@ var backgroundLoaded = function(bgWindow) {
 		logo.addEventListener("click", linkListener.bind(logo, notificator), false);
 
 		var not_logged_in_elem = document.createElement("div");
-		not_logged_in_elem.classList.add("element", "other", "not-connected");
+		not_logged_in_elem.classList.add("element", "other", "notConnected");
 		not_logged_in_elem.textContent = "Vous n'êtes pas connecté !";
 
 		content.appendChild(not_logged_in_elem);
