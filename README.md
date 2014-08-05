@@ -46,6 +46,8 @@ Eskimon, est à l'origine de l'idée et Sandhose, horifié par le code, mais sé
 
 Piwit est ensuite venu apporter sa touche graphique pour proposer les différentes illustrations inspirés des graphismes originaux de Zeste De Savoir.
 
+AmarOk a commencé à porter l'extension sur Firefox (en cours de création). Mais n'étant pas développeur Web, le code horrifiera d'autres personnes.
+
 ## License
 
 The MIT License (MIT)

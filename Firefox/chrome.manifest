@@ -1,0 +1,5 @@
+content   zds-notif                content/
+skin      zds-notif  classic/1.0   skin/
+locale    zds-notif  en-US         locale/en-US/
+
+overlay chrome://browser/content/browser.xul  chrome://zds-notif/content/browserOverlay.xul

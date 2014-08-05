@@ -1,0 +1,81 @@
+.dropdown
+{
+  width: 350px;
+  max-height: 400px;
+  overflow:auto;
+  text-align:center;
+  margin:0;
+  padding:0;
+  font-size:14px;
+  color: #ffffff;
+  background-color:#396a81;
+  border-bottom:3px solid #F8AD32;
+  line-height:30px;
+  vertical-align: middle;
+}
+
+.dropdown-link-all
+{
+  display:block;
+  height:30px;
+  background-color:#396a81;
+}
+
+.dropdown-list
+{
+  width:100%;
+  background-color: #19526c;  
+  list-style-type:none;
+  margin:0;
+  padding:0;
+}
+
+li
+{
+  height:60px;
+  border-bottom: 1px solid #396a81;  
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-empty-message
+{
+  color: #85a3b1;
+  height: 60px;
+  line-height:60px;
+  vertical-align: middle;
+}
+
+.avatar
+{
+  float: left;
+  height: 30px;
+  width: 30px;
+}
+
+.username
+{
+  display: block;
+  float: left;
+  color: #95D7F5;
+  width: 55%;
+  overflow: hidden;
+  text-overflow: hidden;
+  white-space: nowrap;
+}
+
+.date 
+{
+  width: 30%;
+  color: #5196b6;
+  float: right;
+  padding: 0px 10px 0 0;
+}
+
+.topic
+{
+  width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align:left;  
+}
