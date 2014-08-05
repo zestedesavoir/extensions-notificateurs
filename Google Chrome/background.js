@@ -305,17 +305,15 @@ Notificateur.prototype = {
 	 * @returns {Array|Object} A notifications if ID is set, or an array of all Notifications
 	 */
 	getNotification: function(id) {
-		if(id) {
-			for(var i=0, nb=this.notifications.length; i<nb; i++) {
-				if(this.notifications[i].id == id) {
-					return this.notifications[i];
-				}
-			}
-			return false;
-		}
-		else {
+		if(!id) {
 			return this.notifications;
 		}
+		for(var i=0, nb=this.notifications.length; i<nb; i++) {
+			if(this.notifications[i].id == id) {
+				return this.notifications[i];
+			}
+		}
+		return null;
 	},
 
 	/**

@@ -59,11 +59,6 @@ var createNotif = function(notif) {
 	notif_link.id = "notif-" + notif.id;
 	notif_link.dataset.notificationId = notif.id;
 
-
-	// if(!notif.answerer.avatar.match(/^(http:\/\/|https:\/\/|\/\/)(.*)/i)) {
-	// 	notif.answerer.avatar = urlZdS + notif.answerer.avatar;
-	// }
-
 	var notif_answerer = document.createElement("div");
 	notif_answerer.className = "user";
 
@@ -106,17 +101,12 @@ var createNotif = function(notif) {
 };
 
 var backgroundLoaded = function(bgWindow) {
-	console.dir(bgWindow);
 	if(!bgWindow || !bgWindow.theNotificator) {
 		console.error("ZdSNotificator : Failed to load background");
 		return;
 	}
 	notificator = bgWindow.theNotificator;
-	var notifs = notificator.getNotification();
-
-	// var notifs = fakeTestData.notifs;
-
-	console.dir(notifs);
+	var notifs = notificator.notifications;
 
 	var logo = document.getElementById("logo");
 	logo.href = urlZdS;
@@ -190,8 +180,7 @@ var backgroundLoaded = function(bgWindow) {
 	}
 };
 
-// document.addEventListener('DOMContentLoaded', function () {
-	chrome.runtime.getBackgroundPage(function() {
-		backgroundLoaded.apply(this, arguments);
-	});
-// });
+chrome.runtime.getBackgroundPage(function() {
+	console.dir(arguments);
+	backgroundLoaded.apply(this, arguments);
+});
