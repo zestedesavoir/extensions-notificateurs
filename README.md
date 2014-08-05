@@ -37,7 +37,13 @@ L'extension est disponible sur le [Chrome WebStore](https://chrome.google.com/we
 
 Toute aide est la bienvenue! Pour cela, faites un fork du repo, et une fois que vous avez rajouté ce que vous voulez, on prenderas en compte tout *Pull request* ;)
 
-Pour tester l'extension depuis les sources, téléchargez les sources [ici](https://github.com/Eskimon/ZdS_Notificateur/archive/master.zip), et glissez/déposez le dossier "Google Chrome" du zip dans la page [chrome://extensions](chrome://extension) (nécessite d'avoir activé le *mode développeur* )
+### Google Chrome
+
+Pour tester l'extension depuis les sources, téléchargez les sources [ici](https://github.com/zestedesavoir/extensions-notificateurs/archive/master.zip), et glissez/déposez le dossier "Google Chrome" du zip dans la page [chrome://extensions](chrome://extension) (nécessite d'avoir activé le *mode développeur* )
+
+### Firefox
+
+Pour tester l'extension depuis les sources, téléchargez les sources [ici](https://github.com/zestedesavoir/extensions-notificateurs/archive/master.zip) et rendez vous dans le dossier Firefox/test. Enfin, glissez-déposez le fichier .xpi dans la page [about:addons](about:addons).
 
 ## C'est qui qu'a fait ça ?
 
