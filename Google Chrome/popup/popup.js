@@ -9,13 +9,14 @@ var linkListener = function(notificator, event) {
 
 	event.preventDefault();
 
+	var link = this;
 	var isShortcut = this.classList.contains("allNotifs");
 	if(!isShortcut) {
-		var id = this.dataset.notificationId;
+		var id = parseInt(this.dataset.notificationId, 10);
 		var isAlerte = this.classList.contains("alerte");
+		var isNotification = this.classList.contains("notification");
 	}
-	
-	//console.log(url);
+
 	chrome.windows.getCurrent({ populate: true }, function(currentWindow) {
 		var tab = false;
 		for(var i in currentWindow.tabs) {
@@ -40,11 +41,29 @@ var linkListener = function(notificator, event) {
 				}
 			});
 		}
-
-		notificator.check();
 		
 		if(notificator.getOptions("autoclosePopup")) {
 			window.close();
+			return;
+		}
+
+		if (isNotification) {
+			var notification = notificator.getNotification(id);
+
+			if (notification && notification.constructor.name === "Object") {
+				var notif_index = notificator.notifications.indexOf(notification);
+
+				if (notif_index !== -1) {
+					notificator.notifications.splice(notif_index, 1);
+
+					setNotifsList();
+				}
+			}
+			else {
+				console.log('Notif non trouvée');
+			}
+
+			notificator.check();
 		}
 	});
 }
@@ -54,7 +73,7 @@ var createNotif = function(notif) {
 	
 	notif_link.href = urlZdS + notif.link;
 
-	notif_link.className = "notification " + notif.type;
+	notif_link.classList.add("notification", notif.type);
 
 	notif_link.id = "notif-" + notif.id;
 	notif_link.dataset.notificationId = notif.id;
@@ -100,18 +119,13 @@ var createNotif = function(notif) {
 	return notif_link;
 };
 
-var backgroundLoaded = function(bgWindow) {
-	if(!bgWindow || !bgWindow.theNotificator) {
-		console.error("ZdSNotificator : Failed to load background");
-		return;
-	}
-	notificator = bgWindow.theNotificator;
+var setNotifsList = function() {
+	var content = document.getElementById("content");
 	var notifs = notificator.notifications;
 
-	var logo = document.getElementById("logo");
-	logo.href = urlZdS;
-
-	var content = document.getElementById("content");
+	while (content.firstChild) {
+		content.removeChild(content.firstChild);
+	}
 
 	if(notificator.logged || notificator.useFakeData) {
 		var len = notifs.length;
@@ -147,15 +161,15 @@ var backgroundLoaded = function(bgWindow) {
 			content.appendChild(all_notifs_link);
 		}
 		
-		var liens = document.getElementsByTagName("a");
+		var liens = document.querySelectorAll("#content a");
 		for (var i = 0; i < liens.length; i++) {
 			liens[i].addEventListener("click", linkListener.bind(liens[i], notificator), false);
 		}
 		
 		notificator.setNewNotifCallback(function(notif) {
-			var no_notifs_elem = document.getElementsByClassName("noNotifs");
+			var no_notifs_elem = document.querySelector(".noNotifs");
 			if (no_notifs_elem) {
-				no_notifs_elem[0].parentNode.removeChild(no_notifs_elem[0]);
+				no_notifs_elem.parentNode.removeChild(no_notifs_elem);
 			}
 
 			var n = createNotif(notif);
@@ -170,17 +184,29 @@ var backgroundLoaded = function(bgWindow) {
 		});
 	}
 	else {
-		logo.addEventListener("click", linkListener.bind(logo, notificator), false);
-
 		var not_logged_in_elem = document.createElement("div");
 		not_logged_in_elem.classList.add("element", "other", "notConnected");
 		not_logged_in_elem.textContent = "Vous n'êtes pas connecté !";
 
 		content.appendChild(not_logged_in_elem);
 	}
+}
+
+var backgroundLoaded = function(bgWindow) {
+	if(!bgWindow || !bgWindow.theNotificator) {
+		console.error("ZdSNotificator : Failed to load background");
+		return;
+	}
+	notificator = bgWindow.theNotificator;
+
+	var logo = document.getElementById("logo");
+	logo.href = urlZdS;
+
+	logo.addEventListener("click", linkListener.bind(logo, notificator), false);
+
+	setNotifsList();
 };
 
-chrome.runtime.getBackgroundPage(function() {
-	console.dir(arguments);
-	backgroundLoaded.apply(this, arguments);
+chrome.runtime.getBackgroundPage(function(bgWindow) {
+	backgroundLoaded(bgWindow);
 });
