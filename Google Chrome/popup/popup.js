@@ -57,6 +57,7 @@ var linkListener = function(notificator, event) {
 					notificator.notifications.splice(notif_index, 1);
 
 					setNotifsList();
+					notificator.updateBadge();
 				}
 			}
 			else {
