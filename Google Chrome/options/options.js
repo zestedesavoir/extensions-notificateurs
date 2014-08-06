@@ -202,7 +202,7 @@ var NotificatorOptions = {
 			var link = doc.getElementById("my-account");
 			var profileLink = link.getAttribute("href");
 			var profileName = link.querySelector("span.username").textContent;
-			var avatarImgSrc = link.querySelector("img").getAttribute("src");
+			var avatarImgSrc = link.querySelector("img").getAttribute("src").replace(/^\/\/(.*)/, "http://$1");
 			leDiv.querySelector("a").setAttribute("href", "http://zestedesavoir.com" + profileLink/* + profileName*/);
 
 			leDiv.querySelector("strong").textContent = profileName;
