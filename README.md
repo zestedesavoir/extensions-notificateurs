@@ -9,14 +9,14 @@ ZdS_Notificateur
 
 ## Keskecé ?
 
-C'est une extension pour Google Chrome, qui vous averti des nouvelles notifications sur [Zeste de Savoir](http://zestedesavoir.com).
-Elle récupère à interval régulier (réglable) vos dernières notifications, et vous les affichent directement.
+C'est une extension pour Google Chrome, qui vous avertit des nouvelles notifications sur [Zeste de Savoir](http://zestedesavoir.com).
+Elle récupère à intervalle régulier (réglable) vos dernières notifications, et vous les affiche directement.
 
 L'extension est disponible sur le [Chrome WebStore](https://chrome.google.com/webstore/detail/zds-notificateur/jibjnbbmokappnjpdodmpdmpklfhokkn)
 
-## A quoi ça ressemble ?
+## À quoi ça ressemble ?
 
-*L'icone dans la barre d'addresse, et une popup avec la liste des notifications*
+*L'icône dans la barre d'adresse, et une popup avec la liste des notifications*
 
 ![](Images/notificateur.png)
 
@@ -35,7 +35,7 @@ L'extension est disponible sur le [Chrome WebStore](https://chrome.google.com/we
 
 ## J'peux vous aider ?
 
-Toute aide est la bienvenue! Pour cela, faites un fork du repo, et une fois que vous avez rajouté ce que vous voulez, on prenderas en compte tout *Pull request* ;)
+Toute aide est la bienvenue ! Pour cela, faites un fork du repo, et une fois que vous avez rajouté ce que vous voulez, on prendra en compte toute *Pull request* ;)
 
 ### Google Chrome
 
@@ -47,10 +47,10 @@ Pour tester l'extension depuis les sources, téléchargez les sources [ici](http
 
 ## C'est qui qu'a fait ça ?
 
-Eskimon, est à l'origine de l'idée et Sandhose, horifié par le code, mais séduit par l'idée, l'a rejoint par après.
+Eskimon, est à l'origine de l'idée et Sandhose, horrifié par le code, mais séduit par l'idée, l'a rejoint par après. viki53 a ensuite ajouté sa patte pour virer les spaghetti de jQuery.  
 (Pour sa défense, Eskimon déclare avoir fait cette extension pour justement apprendre le javascript. Il remercie Sandhose de sa patience :D )
 
-Piwit est ensuite venu apporter sa touche graphique pour proposer les différentes illustrations inspirés des graphismes originaux de Zeste De Savoir.
+Piwit est ensuite venu apporter sa touche graphique pour proposer les différentes illustrations inspirées des graphismes originaux de Zeste De Savoir.
 
 AmarOk a commencé à porter l'extension sur Firefox (en cours de création). Mais n'étant pas développeur Web, le code horrifiera d'autres personnes.
 

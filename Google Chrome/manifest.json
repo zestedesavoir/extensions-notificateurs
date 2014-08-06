@@ -17,14 +17,14 @@
         "notifications",
         "storage"
     ],
-    "options_page":"options/options.html",
+    "options_page": "options/options.html",
     "browser_action": {
         "default_icon": "icons/icone_38.png",
         "default_title": "ZdS Notificateur",
         "default_popup": "popup/popup.html"
     },
     "background": {
-        "scripts": ["jquery.js","background.js"],
-        "persistent": false
+        "scripts": ["common.js", "background.js"],
+        "persistent": true
     }
 }

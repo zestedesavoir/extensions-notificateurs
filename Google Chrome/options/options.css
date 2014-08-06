@@ -1,35 +1,35 @@
 * {
-    padding: 0;
-    margin: 0;
+	padding: 0;
+	margin: 0;
 }
 
 body, html, .content {
-    height: 100%;
+	height: 100%;
 }
 
 body {
-    background: #F7F7F7;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background: #F7F7F7;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .pull-right {
-    float: right;
+	float: right;
 }
 
 .pull-left {
-    float: left;
+	float: left;
 }
 
 .clear {
-    clear: both;
-    height: 0!important;
+	clear: both;
+	height: 0!important;
 }
 
 header {
-    background: #084561;
-    border-bottom: 3px solid #F8AD32;
-    color: white;
-    padding: 30px 0;
+	background: #084561;
+	border-bottom: 3px solid #F8AD32;
+	color: white;
+	padding: 30px 0;
 	/* La belle ombre :D */
 	/*box-shadow: 0 0 14px rgba(0, 0, 0, 0.7); */
 	position:relative;
@@ -37,79 +37,79 @@ header {
 }
 
 .container {
-    margin: auto;
-    width: 600px;
+	margin: auto;
+	width: 600px;
 }
 
 .champ {
-    padding: 5px 0;
-    -webkit-transition: color .1s ease-in-out;
+	padding: 5px 0;
+	-webkit-transition: color .1s ease-in-out;
 }
 
 .disabled .champ {
-    color: #CCC;
+	color: #CCC;
 }
 
 .options {
-    background-color: white;
-    padding: 20px;
-    /*box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);*/
-    border-bottom: solid 3px #4D4D4D;
-    margin : 20px 0;
+	background-color: white;
+	padding: 20px;
+	/*box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);*/
+	border-bottom: solid 3px #4D4D4D;
+	margin : 20px 0;
 }
 
 body > .content {
-    min-height: 100%;
-    height: auto;
+	min-height: 100%;
+	height: auto;
 }
 
 .form-buttons {
-    float: right;
+	float: right;
 }
 
 input[type="button"] {
-    color: #DDD;
-    padding: 0 15px;
-    border: none;
-    float: right;
-    text-decoration: none;
-    margin-left: 1px;
-    outline: 0;
-    height: 40px;
-    line-height: 40px;
-    cursor: pointer;
+	color: #DDD;
+	padding: 0 15px;
+	border: none;
+	float: right;
+	text-decoration: none;
+	margin-left: 1px;
+	outline: 0;
+	height: 40px;
+	line-height: 40px;
+	cursor: pointer;
 }
 
 input[type="button"]:hover {
-    -webkit-transition: background-color .2s;
-    opacity: 0.95;
+	-webkit-transition: background-color .2s;
+	opacity: 0.95;
 }
 
 #reset {
-    background: #c0392b;
+	background: #c0392b;
 }
 
 #enregistrer {
-    background: #396A81;
+	background: #396A81;
 }
 
 input[type="number"] {
-    border: solid 1px #CCC;
-    background-color: white;
-    /*display: block;*/
-    padding: 2px 5px;
-    margin: 2px 0;
-    box-shadow: inset 0 1px 2px #EEE;
+	border: solid 1px #CCC;
+	background-color: white;
+	/*display: block;*/
+	padding: 2px 5px;
+	margin: 2px 0;
+	box-shadow: inset 0 1px 2px #EEE;
 }
 
 input[type="number"]:focus {
-    outline: none;
-    border-color: #6bb4bf;
+	outline: none;
+	border-color: #6bb4bf;
 }
 
 input[type="checkbox"] {
-    margin: 4px 4px 0 0;
-    float: left;
+	margin: 4px 4px 0 0;
+	float: left;
 }
 
 .complement {
@@ -129,86 +129,86 @@ input[type="checkbox"] {
 }
 
 .experimental {
-    color: #df3716; 
-    font-weight: bold;
-    -webkit-transition: color .1s ease-in-out;
+	color: #df3716; 
+	font-weight: bold;
+	-webkit-transition: color .1s ease-in-out;
 }
 
 .disabled .experimental {
-    color: #e09f92;
+	color: #e09f92;
 }
 
 .priority > div {
-    height: 32px;
+	height: 32px;
 }
 
 .priority .value {
-    line-height: 32px;
-    font-size: 11px;
-    float: right;
-    width: 100px;
+	line-height: 32px;
+	font-size: 11px;
+	float: right;
+	width: 100px;
 }
 
 .priority .pull-right {
-    width: 240px;
-    height: 32px;
+	width: 240px;
+	height: 32px;
 }
 
 .priority input[type="range"] {
-    height: 32px;
-    width: 130px;
+	height: 32px;
+	width: 130px;
 }
 
 footer {
-    background-color: #f8f8f4;
-    padding: 15px 0;
-    font-weight: bold;
-    color: #454545;
-    font-size: 12px;
-    text-align: right;
-    border-top: solid 2px #D4D4D4;
-    position: relative;
-    height: 45px;
-    margin-top: -76px;
-    clear: both;
+	background-color: #f8f8f4;
+	padding: 15px 0;
+	font-weight: bold;
+	color: #454545;
+	font-size: 12px;
+	text-align: right;
+	border-top: solid 2px #D4D4D4;
+	position: relative;
+	height: 45px;
+	margin-top: -76px;
+	clear: both;
 }
 
 footer a {
-    text-decoration: none;
-    color: #03638b;
+	text-decoration: none;
+	color: #03638b;
 }
 
 footer a:hover {
-    color: #065070;
+	color: #065070;
 }
 
 footer p {
-    margin: 5px 10px;
+	margin: 5px 10px;
 }
 
 .footerSubstitutor {
-    height: 96px;
-    width: 100%;
+	height: 96px;
+	width: 100%;
 }
 
 #connecteComme {
-    margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 #connecteComme a {
-    text-decoration: none;
-    color: black;
-    display: block;
+	text-decoration: none;
+	color: black;
+	display: block;
 }
 
 #connecteComme img {
-    margin-top: 10px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding:8px;
-    border:solid;
-    border-color: #dddddd #aaaaaa #aaaaaa #dddddd;
-    border-width: 1px 2px 2px 1px;
-    background-color:white;
+	margin-top: 10px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding:8px;
+	border:solid;
+	border-color: #dddddd #aaaaaa #aaaaaa #dddddd;
+	border-width: 1px 2px 2px 1px;
+	background-color:white;
 }
