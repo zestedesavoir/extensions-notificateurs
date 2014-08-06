@@ -283,6 +283,7 @@ Notificateur.prototype = {
 		}
 
 		this.checkPending = true;
+		self = this;
 		chrome.browserAction.setIcon({ "path": "icons/icone_38_parsing.png" });
 
 		var url = this.useFakeData ? chrome.runtime.getURL("fake-data.html") : this.url;
@@ -333,8 +334,6 @@ Notificateur.prototype = {
 
 		var contenu = doc.querySelector("div.logbox");
 
-		console.log(contenu);
-
 		var hasNewNotif = {
 			notification: false,
 			mp: false
@@ -365,8 +364,6 @@ Notificateur.prototype = {
 			oldNotifs = this.notifications, // Ancienne liste
 			removedNotifs = [], // Notifs enlevées
 			notifsList = []; // Nouvelle liste
-
-		console.dir(notifications);
 
 		if(!notifications[0].classList.contains("dropdown-empty-message")) {
 			for(var i=0, nb=notifications.length; i<nb; i++) {
@@ -420,8 +417,6 @@ Notificateur.prototype = {
 
 		// Check les mp -----------------------------------------------
 		notifications = contenu[0].querySelectorAll("li");
-
-		console.dir(notifications);
 		
 		if(!notifications[0].classList.contains("dropdown-empty-message")) {
 			for(var i=0, nb=notifications.length; i<nb; i++) { //-1 pour éviter le "tout les mps
@@ -564,7 +559,7 @@ Notificateur.prototype = {
 	clearDesktopNotifs: function(notifs) {
 		if(chrome.notifications) {
 			for(var i = 0; i < notifs.length; i++) {
-				chrome.notifications.clear(notifs[i].id, function() {});
+				chrome.notifications.clear(''+notifs[i].id, function() {});
 			}
 		}
 	},
@@ -821,9 +816,11 @@ Notificateur.prototype = {
 		var notifs = this.notifications,
 			len = notifs.length,
 			totMP = 0;
-		for(var i=0; i<len; i++)
-			if(notifs[i].type == "mp")
+		for (var i=0; i<len; i++) {
+			if (notifs[i].type == "mp") {
 				totMP++;
+			}
+		}
 				
 		var badgeTexte = (totMP > 0) ? totMP.toString() + " - " : "";
 		badgeTexte += (len-totMP > 0) ? (len-totMP).toString() : ((totMP > 0) ? "0" : "");
