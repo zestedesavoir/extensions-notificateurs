@@ -344,6 +344,7 @@ Notificateur.prototype = {
 			if(this.logged) {
 				chrome.browserAction.setBadgeText({ text: "log" });
 				chrome.browserAction.setIcon({ "path": "icons/icone_38_logout.png" });
+				chrome.browserAction.enable();
 				this.logged = false;
 			}
 			return;
@@ -351,6 +352,7 @@ Notificateur.prototype = {
 			if(!this.logged) {
 				chrome.browserAction.setIcon({ "path": "icons/icone_38.png" });
 				chrome.browserAction.setBadgeText({ text: "" });
+				chrome.browserAction.enable();
 				this.logged = true;
 			}
 		}
@@ -487,6 +489,7 @@ Notificateur.prototype = {
 		this.updateBadge();
 
 		chrome.browserAction.setIcon({ "path": "icons/icone_38.png" });
+		chrome.browserAction.enable();
 
 		this.checkPending = false;
 	},
@@ -825,6 +828,7 @@ Notificateur.prototype = {
 		var badgeTexte = (totMP > 0) ? totMP.toString() + " - " : "";
 		badgeTexte += (len-totMP > 0) ? (len-totMP).toString() : ((totMP > 0) ? "0" : "");
 		chrome.browserAction.setBadgeText({text: badgeTexte});
+		chrome.browserAction.enable();
 	},
 
 	/**
