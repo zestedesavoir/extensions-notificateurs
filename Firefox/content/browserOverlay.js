@@ -6,6 +6,8 @@ if ("undefined" == typeof(ZDSNotif)) {
 };
 
 ZDSNotif.BrowserOverlay = {
+  showNotif: true,
+  isMP: false,
   init: function() 
   {
     window.removeEventListener("load", ZDSNotif.BrowserOverlay.init, false);
@@ -55,7 +57,7 @@ ZDSNotif.BrowserOverlay = {
       var toolbarbutton = document.getElementById('zds-notif-button');
       var dropdown = document.querySelector('.dropdown');
       var oReq = new XMLHttpRequest();
-      oReq.open("GET", 'http://zestedesavoir.com/', true);
+      oReq.open("GET", 'http://zestedesavoir.com', true);
       oReq.onload = function () {
         //Parse la page
         var DOMPars = HTMLParser(this.responseText.replace(/href=\"\//g, 'href="http://zestedesavoir.com/'));
@@ -66,55 +68,94 @@ ZDSNotif.BrowserOverlay = {
           if(DOMPars.getElementsByClassName('dropdown')[i].innerHTML.indexOf('Notifications') != -1)
           {
             var htmlNotif = DOMPars.getElementsByClassName('dropdown')[i].innerHTML;
+            var notiflab = document.querySelector('.notiflab');
             if(htmlNotif.split("<a").length-2 > 0)
-              toolbarbutton.setAttribute('image', 'chrome://zds-notif/skin/images/icone_n_16.png');
-            else
-              toolbarbutton.setAttribute('image', 'chrome://zds-notif/skin/images/icone_16.png');
+              toolbarbutton.setAttribute('image', 'chrome://zds-notif/skin/images/icone_n_20.png');
+            else if(!ZDSNotif.BrowserOverlay.isMP)
+              toolbarbutton.setAttribute('image', 'chrome://zds-notif/skin/images/icone_20.png');
+            notiflab.innerHTML = (htmlNotif.split("<a").length-2).toString();
 
-            //Convert HTML in XUL
-            htmlNotif = htmlNotif.replace(/<span/g, '<html:span');
-            htmlNotif = htmlNotif.replace(/<\/span/g, '</html:span');
-            htmlNotif = htmlNotif.replace(/<ul/g, '<html:ul');
-            htmlNotif = htmlNotif.replace(/<\/ul/g, '</html:ul');
-            htmlNotif = htmlNotif.replace(/<li/g, '<html:li');
-            htmlNotif = htmlNotif.replace(/<\/li/g, '</html:li');
-            htmlNotif = htmlNotif.replace(/<a/g, '<html:a');
-            htmlNotif = htmlNotif.replace(/<\/a/g, '</html:a');
-            htmlNotif = htmlNotif.replace(/href=\"\//g, 'href="http://zestedesavoir.com/');
-            htmlNotif = htmlNotif.replace('<img(.*)>', '');
-            
-            dropdown.innerHTML = htmlNotif;
+            if(ZDSNotif.BrowserOverlay.showNotif)            
+            {
+              htmlNotif = htmlNotif.substring(htmlNotif.indexOf('<ul'), htmlNotif.indexOf('</ul>')+5);
+
+              //Convert HTML in XUL
+              htmlNotif = htmlNotif.replace(/<span/g, '<html:span');
+              htmlNotif = htmlNotif.replace(/<\/span/g, '</html:span');
+              htmlNotif = htmlNotif.replace(/<ul/g, '<html:ul');
+              htmlNotif = htmlNotif.replace(/<\/ul/g, '</html:ul');
+              htmlNotif = htmlNotif.replace(/<li/g, '<html:li');
+              htmlNotif = htmlNotif.replace(/<\/li/g, '</html:li');
+              htmlNotif = htmlNotif.replace(/<a/g, '<html:a');
+              htmlNotif = htmlNotif.replace(/<\/a/g, '</html:a');
+              htmlNotif = htmlNotif.replace(/href=\"\//g, 'href="http://zestedesavoir.com/');
+              htmlNotif = htmlNotif.replace(/src=\"\//g, 'src="http://zestedesavoir.com/');
+              htmlNotif = htmlNotif.replace('<img(.*)>', '');
+              dropdown.innerHTML = htmlNotif;
+            }
+
             isConnected = true;
           }
           //Messagerie
           if(DOMPars.getElementsByClassName('dropdown')[i].innerHTML.indexOf('Messagerie') != -1)
           {
-            var htmlMP = DOMPars.getElementsByClassName('dropdown')[i].innerHTML;
-            /*htmlNotif = htmlNotif.replace(/<span/g, '<html:span');
-            htmlNotif = htmlNotif.replace(/<\/span/g, '</html:span');
-            htmlNotif = htmlNotif.replace(/<ul/g, '<html:ul');
-            htmlNotif = htmlNotif.replace(/<\/ul/g, '</html:ul');
-            htmlNotif = htmlNotif.replace(/<li/g, '<html:li');
-            htmlNotif = htmlNotif.replace(/<\/li/g, '</html:li');
-            htmlNotif = htmlNotif.replace(/<a/g, '<html:a');
-            htmlNotif = htmlNotif.replace(/<\/a/g, '</html:a');
-            htmlNotif = htmlNotif.replace(/href=\"\//g, 'href="http://zestedesavoir.com/');
-            htmlNotif = htmlNotif.replace('<img(.*)>', '');
+            var htmlNotif = DOMPars.getElementsByClassName('dropdown')[i].innerHTML;
+            var mplab = document.querySelector('.mplab');
+            if(htmlNotif.split("<a").length-2 > 0)
+            {
+              toolbarbutton.setAttribute('image', 'chrome://zds-notif/skin/images/icone_m_20.png');
+              ZDSNotif.BrowserOverlay.isMP = true;
+            }
+            else
+            {
+              toolbarbutton.setAttribute('image', 'chrome://zds-notif/skin/images/icone_20.png');
+              ZDSNotif.BrowserOverlay.isMP = false;
+            }
+            mplab.innerHTML = (htmlNotif.split("<a").length-2).toString();
             
-            dropdown.innerHTML += htmlMP;
-            isConnected = true;*/
+            if(!ZDSNotif.BrowserOverlay.showNotif) 
+            {
+              htmlNotif = htmlNotif.substring(htmlNotif.indexOf('<ul'), htmlNotif.indexOf('</ul>')+5);
+
+              //Convert HTML in XUL
+              htmlNotif = htmlNotif.replace(/<span/g, '<html:span');
+              htmlNotif = htmlNotif.replace(/<\/span/g, '</html:span');
+              htmlNotif = htmlNotif.replace(/<ul/g, '<html:ul');
+              htmlNotif = htmlNotif.replace(/<\/ul/g, '</html:ul');
+              htmlNotif = htmlNotif.replace(/<li/g, '<html:li');
+              htmlNotif = htmlNotif.replace(/<\/li/g, '</html:li');
+              htmlNotif = htmlNotif.replace(/<a/g, '<html:a');
+              htmlNotif = htmlNotif.replace(/<\/a/g, '</html:a');
+              htmlNotif = htmlNotif.replace(/href=\"\//g, 'href="http://zestedesavoir.com/');
+              htmlNotif = htmlNotif.replace(/src=\"\//g, 'src="http://zestedesavoir.com/');
+              htmlNotif = htmlNotif.replace('<img(.*)>', '');
+              dropdown.innerHTML = htmlNotif;
+            }
+            isConnected = true;
           }
         }
+        var toParse = dropdown.innerHTML;
         //Si on est déconnecté.
         if(!isConnected)
         {
           dropdown.innerHTML = '<html:a href="http://zestedesavoir.com/membres/connexion/?next=/" class="dropdown-link-all">Connexion</html:a>';
-          toolbarbutton.setAttribute('image', 'chrome://zds-notif/skin/images/icone_16_logout.png');
+          toolbarbutton.setAttribute('image', 'chrome://zds-notif/skin/images/icone_20_logout.png');
+        }
+        else
+        {
+          if(ZDSNotif.BrowserOverlay.showNotif)
+            dropdown.innerHTML += '<html:a href="http://zestedesavoir.com/forums/notifications/" class="dropdown-link-all">Toutes les notifications</html:a>';
+          else
+            dropdown.innerHTML += '<html:a href="http://zestedesavoir.com/mp/" class="dropdown-link-all">Tous les messages</html:a>';
         }
 
         var Anchors = document.getElementsByTagName("html:a");
 	for (var i = 0; i < Anchors.length ; i++)
 	  Anchors[i].addEventListener("click", linkClick, false);
+        
+        var tempAnchors = document.getElementsByTagName("a");
+	for (var i = 0; i < tempAnchors.length ; i++)
+	  tempAnchors[i].addEventListener("click", linkClick, false);
       };
       oReq.send(null);
     }

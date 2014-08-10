@@ -18,14 +18,23 @@
     class="toolbarbutton-1"
     tooltiptext="&zds-notif.toolbar-label;"
     type="menu"
-    image="chrome://zds-notif/skin/images/icone_16.png"
+    image="chrome://zds-notif/skin/images/icone_20.png"
     oncommand="this.open = true;"
     oncontextmenu="this.open = true;"
     rulesetsApplied="0">
       <menupopup id="zds-notif-popup">
-      <html:div id="temp"><html:div class="dropdown">
+      <html:div id="extension"><html:div class="temp">
+      <html:button onclick="ZDSNotif.BrowserOverlay.showNotif = true;" id="icolink">
+        <html:img src="chrome://zds-notif/skin/images/icone_48_not.png" />
+        <html:div class="notiflab">0</html:div>
+      </html:button>
+      <html:button onclick="ZDSNotif.BrowserOverlay.showNotif = false;" id="icolink">
+        <html:img src="chrome://zds-notif/skin/images/icone_48_mp.png" />
+        <html:div class="mplab">0</html:div>
+      </html:button>
+      <html:div class="dropdown">
       </html:div>
-      </html:div>
+      </html:div></html:div>
       </menupopup>
   </toolbarbutton>
   </toolbarpalette>

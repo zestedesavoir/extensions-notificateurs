@@ -1,3 +1,50 @@
+#zds-notif-button .toolbarbutton-menu-dropmarker { display: none }
+
+#extension
+{
+  background:#19526c;
+}
+
+#icolink
+{
+  position:relative;
+  background:#19526c;
+  width:49%;
+  height:60px;
+  line-height:60px;
+  text-align:center;
+  vertical-align: center;
+  border:transparent;
+  margin:0;
+  padding:0;
+}
+
+#icolink img
+{
+  position:relative;
+  width:30px;
+  height:30px;
+}
+
+#icolink div
+{
+  position:absolute;
+  width:15px;
+  height:15px;
+  font-size:10px;
+  text-align:center;
+  line-height:13px;
+  vertical-align:center;
+  color:#ffffff;
+  background-color:#000;
+  margin-top: -55px;
+  margin-left:55%;
+  background:#c0392b;
+  border-radius:16px;
+}
+
+#icolink:hover{background:#396a81;}
+
 .dropdown
 {
   width: 350px;
@@ -28,6 +75,7 @@
   list-style-type:none;
   margin:0;
   padding:0;
+  text-align:left;
 }
 
 li
@@ -44,6 +92,7 @@ li
   height: 60px;
   line-height:60px;
   vertical-align: middle;
+  text-align:center;
 }
 
 .avatar
@@ -77,5 +126,6 @@ li
   width: 80%;
   overflow: hidden;
   text-overflow: ellipsis;
-  text-align:left;  
+  text-align:left;
+  padding-left:10px;
 }
