@@ -140,6 +140,10 @@ ZDSNotif.BrowserOverlay = {
         {
           dropdown.innerHTML = '<html:a href="http://zestedesavoir.com/membres/connexion/?next=/" class="dropdown-link-all">Connexion</html:a>';
           toolbarbutton.setAttribute('image', 'chrome://zds-notif/skin/images/icone_20_logout.png');
+          var mplab = document.querySelector('.mplab');
+          var notiflab = document.querySelector('.notiflab');
+          mplab.innerHTML = 'x';
+          notiflab.innerHTML = 'x';
         }
         else
         {

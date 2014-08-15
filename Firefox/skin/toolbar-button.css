@@ -45,6 +45,15 @@
 
 #icolink:hover{background:#396a81;}
 
+#https-everywhere-button:([connected="0"]) #icolink {
+  visibility: hidden;
+  width:100%;
+}
+
+#https-everywhere-button:([connected="1"]) #icolink {
+  visibility: visible;
+}
+
 .dropdown
 {
   width: 350px;

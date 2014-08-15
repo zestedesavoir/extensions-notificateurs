@@ -22,8 +22,9 @@
     oncommand="this.open = true;"
     oncontextmenu="this.open = true;"
     rulesetsApplied="0">
-      <menupopup id="zds-notif-popup">
+      <menupopup id="zds-notif-popup" connect="0">
       <html:div id="extension"><html:div class="temp">
+      <html:div id="icons">
       <html:button onclick="ZDSNotif.BrowserOverlay.showNotif = true;" id="icolink">
         <html:img src="chrome://zds-notif/skin/images/icone_48_not.png" />
         <html:div class="notiflab">0</html:div>
@@ -32,6 +33,7 @@
         <html:img src="chrome://zds-notif/skin/images/icone_48_mp.png" />
         <html:div class="mplab">0</html:div>
       </html:button>
+      </html:div>
       <html:div class="dropdown">
       </html:div>
       </html:div></html:div>
