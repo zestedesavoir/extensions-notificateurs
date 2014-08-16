@@ -332,6 +332,8 @@ Notificateur.prototype = {
 			return false;
 		}
 
+		console.dir(doc);
+
 		var contenu = doc.querySelector("div.logbox");
 
 		var hasNewNotif = {
@@ -340,7 +342,7 @@ Notificateur.prototype = {
 		};
 
 		//on est pas connecté !
-		if(contenu.classList.contains("unlogged") && !this.useFakeData) {
+		if(!contenu.classList || (contenu.classList.contains("unlogged") && !this.useFakeData)) {
 			if(this.logged) {
 				chrome.browserAction.setBadgeText({ text: "log" });
 				chrome.browserAction.setIcon({ "path": "icons/icone_38_logout.png" });
