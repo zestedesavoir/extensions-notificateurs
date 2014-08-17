@@ -5,6 +5,11 @@
   background:#19526c;
 }
 
+#icons
+{
+  border-bottom: 1px solid #396a81;
+}
+
 #icolink
 {
   position:relative;
