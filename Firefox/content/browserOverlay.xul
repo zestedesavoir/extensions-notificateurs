@@ -15,6 +15,7 @@
 
   <toolbarpalette id="BrowserToolbarPalette">
   <toolbarbutton id="zds-notif-button" 
+    label="ZdS Notificateur"
     class="toolbarbutton-1"
     tooltiptext="&zds-notif.toolbar-label;"
     type="menu"
