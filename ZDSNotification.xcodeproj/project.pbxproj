@@ -1,0 +1,482 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0EDEE10919AC98C000F12797 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EDEE10819AC98C000F12797 /* Cocoa.framework */; };
+		0EDEE11319AC98C000F12797 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0EDEE11119AC98C000F12797 /* InfoPlist.strings */; };
+		0EDEE11519AC98C000F12797 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDEE11419AC98C000F12797 /* main.m */; };
+		0EDEE11919AC98C000F12797 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0EDEE11719AC98C000F12797 /* Credits.rtf */; };
+		0EDEE11C19AC98C000F12797 /* ZDSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDEE11B19AC98C000F12797 /* ZDSAppDelegate.m */; };
+		0EDEE11F19AC98C000F12797 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EDEE11D19AC98C000F12797 /* MainMenu.xib */; };
+		0EDEE12119AC98C000F12797 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EDEE12019AC98C000F12797 /* Images.xcassets */; };
+		0EDEE12819AC98C000F12797 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EDEE12719AC98C000F12797 /* XCTest.framework */; };
+		0EDEE12919AC98C000F12797 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EDEE10819AC98C000F12797 /* Cocoa.framework */; };
+		0EDEE13119AC98C000F12797 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0EDEE12F19AC98C000F12797 /* InfoPlist.strings */; };
+		0EDEE13319AC98C000F12797 /* ZDSNotificationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDEE13219AC98C000F12797 /* ZDSNotificationTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0EDEE12A19AC98C000F12797 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EDEE0FD19AC98C000F12797 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0EDEE10419AC98C000F12797;
+			remoteInfo = ZDSNotification;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0EDEE10519AC98C000F12797 /* ZDSNotification.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZDSNotification.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0EDEE10819AC98C000F12797 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		0EDEE10B19AC98C000F12797 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		0EDEE10C19AC98C000F12797 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		0EDEE10D19AC98C000F12797 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0EDEE11019AC98C000F12797 /* ZDSNotification-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ZDSNotification-Info.plist"; sourceTree = "<group>"; };
+		0EDEE11219AC98C000F12797 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0EDEE11419AC98C000F12797 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0EDEE11619AC98C000F12797 /* ZDSNotification-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZDSNotification-Prefix.pch"; sourceTree = "<group>"; };
+		0EDEE11819AC98C000F12797 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		0EDEE11A19AC98C000F12797 /* ZDSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZDSAppDelegate.h; sourceTree = "<group>"; };
+		0EDEE11B19AC98C000F12797 /* ZDSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZDSAppDelegate.m; sourceTree = "<group>"; };
+		0EDEE11E19AC98C000F12797 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		0EDEE12019AC98C000F12797 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		0EDEE12619AC98C000F12797 /* ZDSNotificationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZDSNotificationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0EDEE12719AC98C000F12797 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		0EDEE12E19AC98C000F12797 /* ZDSNotificationTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ZDSNotificationTests-Info.plist"; sourceTree = "<group>"; };
+		0EDEE13019AC98C000F12797 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0EDEE13219AC98C000F12797 /* ZDSNotificationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZDSNotificationTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0EDEE10219AC98C000F12797 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EDEE10919AC98C000F12797 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0EDEE12319AC98C000F12797 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EDEE12919AC98C000F12797 /* Cocoa.framework in Frameworks */,
+				0EDEE12819AC98C000F12797 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0EDEE0FC19AC98C000F12797 = {
+			isa = PBXGroup;
+			children = (
+				0EDEE10E19AC98C000F12797 /* ZDSNotification */,
+				0EDEE12C19AC98C000F12797 /* ZDSNotificationTests */,
+				0EDEE10719AC98C000F12797 /* Frameworks */,
+				0EDEE10619AC98C000F12797 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0EDEE10619AC98C000F12797 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0EDEE10519AC98C000F12797 /* ZDSNotification.app */,
+				0EDEE12619AC98C000F12797 /* ZDSNotificationTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0EDEE10719AC98C000F12797 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0EDEE10819AC98C000F12797 /* Cocoa.framework */,
+				0EDEE12719AC98C000F12797 /* XCTest.framework */,
+				0EDEE10A19AC98C000F12797 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0EDEE10A19AC98C000F12797 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0EDEE10B19AC98C000F12797 /* AppKit.framework */,
+				0EDEE10C19AC98C000F12797 /* CoreData.framework */,
+				0EDEE10D19AC98C000F12797 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		0EDEE10E19AC98C000F12797 /* ZDSNotification */ = {
+			isa = PBXGroup;
+			children = (
+				0EDEE11A19AC98C000F12797 /* ZDSAppDelegate.h */,
+				0EDEE11B19AC98C000F12797 /* ZDSAppDelegate.m */,
+				0EDEE11D19AC98C000F12797 /* MainMenu.xib */,
+				0EDEE12019AC98C000F12797 /* Images.xcassets */,
+				0EDEE10F19AC98C000F12797 /* Supporting Files */,
+			);
+			path = ZDSNotification;
+			sourceTree = "<group>";
+		};
+		0EDEE10F19AC98C000F12797 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0EDEE11019AC98C000F12797 /* ZDSNotification-Info.plist */,
+				0EDEE11119AC98C000F12797 /* InfoPlist.strings */,
+				0EDEE11419AC98C000F12797 /* main.m */,
+				0EDEE11619AC98C000F12797 /* ZDSNotification-Prefix.pch */,
+				0EDEE11719AC98C000F12797 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0EDEE12C19AC98C000F12797 /* ZDSNotificationTests */ = {
+			isa = PBXGroup;
+			children = (
+				0EDEE13219AC98C000F12797 /* ZDSNotificationTests.m */,
+				0EDEE12D19AC98C000F12797 /* Supporting Files */,
+			);
+			path = ZDSNotificationTests;
+			sourceTree = "<group>";
+		};
+		0EDEE12D19AC98C000F12797 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0EDEE12E19AC98C000F12797 /* ZDSNotificationTests-Info.plist */,
+				0EDEE12F19AC98C000F12797 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0EDEE10419AC98C000F12797 /* ZDSNotification */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0EDEE13619AC98C000F12797 /* Build configuration list for PBXNativeTarget "ZDSNotification" */;
+			buildPhases = (
+				0EDEE10119AC98C000F12797 /* Sources */,
+				0EDEE10219AC98C000F12797 /* Frameworks */,
+				0EDEE10319AC98C000F12797 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZDSNotification;
+			productName = ZDSNotification;
+			productReference = 0EDEE10519AC98C000F12797 /* ZDSNotification.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0EDEE12519AC98C000F12797 /* ZDSNotificationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0EDEE13919AC98C000F12797 /* Build configuration list for PBXNativeTarget "ZDSNotificationTests" */;
+			buildPhases = (
+				0EDEE12219AC98C000F12797 /* Sources */,
+				0EDEE12319AC98C000F12797 /* Frameworks */,
+				0EDEE12419AC98C000F12797 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0EDEE12B19AC98C000F12797 /* PBXTargetDependency */,
+			);
+			name = ZDSNotificationTests;
+			productName = ZDSNotificationTests;
+			productReference = 0EDEE12619AC98C000F12797 /* ZDSNotificationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0EDEE0FD19AC98C000F12797 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = ZDS;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = Cirdo;
+				TargetAttributes = {
+					0EDEE12519AC98C000F12797 = {
+						TestTargetID = 0EDEE10419AC98C000F12797;
+					};
+				};
+			};
+			buildConfigurationList = 0EDEE10019AC98C000F12797 /* Build configuration list for PBXProject "ZDSNotification" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0EDEE0FC19AC98C000F12797;
+			productRefGroup = 0EDEE10619AC98C000F12797 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0EDEE10419AC98C000F12797 /* ZDSNotification */,
+				0EDEE12519AC98C000F12797 /* ZDSNotificationTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0EDEE10319AC98C000F12797 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EDEE11319AC98C000F12797 /* InfoPlist.strings in Resources */,
+				0EDEE12119AC98C000F12797 /* Images.xcassets in Resources */,
+				0EDEE11919AC98C000F12797 /* Credits.rtf in Resources */,
+				0EDEE11F19AC98C000F12797 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0EDEE12419AC98C000F12797 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EDEE13119AC98C000F12797 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0EDEE10119AC98C000F12797 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EDEE11C19AC98C000F12797 /* ZDSAppDelegate.m in Sources */,
+				0EDEE11519AC98C000F12797 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0EDEE12219AC98C000F12797 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EDEE13319AC98C000F12797 /* ZDSNotificationTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0EDEE12B19AC98C000F12797 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0EDEE10419AC98C000F12797 /* ZDSNotification */;
+			targetProxy = 0EDEE12A19AC98C000F12797 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0EDEE11119AC98C000F12797 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0EDEE11219AC98C000F12797 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0EDEE11719AC98C000F12797 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0EDEE11819AC98C000F12797 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		0EDEE11D19AC98C000F12797 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0EDEE11E19AC98C000F12797 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		0EDEE12F19AC98C000F12797 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0EDEE13019AC98C000F12797 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0EDEE13419AC98C000F12797 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		0EDEE13519AC98C000F12797 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		0EDEE13719AC98C000F12797 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ZDSNotification/ZDSNotification-Prefix.pch";
+				INFOPLIST_FILE = "ZDSNotification/ZDSNotification-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		0EDEE13819AC98C000F12797 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ZDSNotification/ZDSNotification-Prefix.pch";
+				INFOPLIST_FILE = "ZDSNotification/ZDSNotification-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		0EDEE13A19AC98C000F12797 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ZDSNotification.app/Contents/MacOS/ZDSNotification";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ZDSNotification/ZDSNotification-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "ZDSNotificationTests/ZDSNotificationTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		0EDEE13B19AC98C000F12797 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ZDSNotification.app/Contents/MacOS/ZDSNotification";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ZDSNotification/ZDSNotification-Prefix.pch";
+				INFOPLIST_FILE = "ZDSNotificationTests/ZDSNotificationTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0EDEE10019AC98C000F12797 /* Build configuration list for PBXProject "ZDSNotification" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0EDEE13419AC98C000F12797 /* Debug */,
+				0EDEE13519AC98C000F12797 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0EDEE13619AC98C000F12797 /* Build configuration list for PBXNativeTarget "ZDSNotification" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0EDEE13719AC98C000F12797 /* Debug */,
+				0EDEE13819AC98C000F12797 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		0EDEE13919AC98C000F12797 /* Build configuration list for PBXNativeTarget "ZDSNotificationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0EDEE13A19AC98C000F12797 /* Debug */,
+				0EDEE13B19AC98C000F12797 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0EDEE0FD19AC98C000F12797 /* Project object */;
+}
