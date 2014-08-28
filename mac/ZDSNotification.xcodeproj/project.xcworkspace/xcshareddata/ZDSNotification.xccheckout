@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>CBB0FC4D-573F-4546-BE06-107A213C84B8</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ZDSNotification</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>10FF7B91-69A1-4E5B-842B-7E3D96EBAA60</key>
+		<string>https://github.com/MrCirdo/ZDSNotification.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ZDSNotification.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>10FF7B91-69A1-4E5B-842B-7E3D96EBAA60</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/MrCirdo/ZDSNotification.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>10FF7B91-69A1-4E5B-842B-7E3D96EBAA60</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>10FF7B91-69A1-4E5B-842B-7E3D96EBAA60</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ZDSNotification</string>
+		</dict>
+	</array>
+</dict>
+</plist>
