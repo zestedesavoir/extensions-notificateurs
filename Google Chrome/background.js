@@ -341,8 +341,19 @@ Notificateur.prototype = {
 			mp: false
 		};
 
+		console.dir(contenu);
+
+		if (!contenu) {
+			chrome.browserAction.setBadgeText({text: "err"});
+			chrome.browserAction.setIcon({"path":"icons/icone_38_logout.png"});
+			chrome.browserAction.disable();
+			self.logged = false;
+			self.checkPending = false;
+			return;
+		}
+
 		//on est pas connecté !
-		if(!contenu.classList || (contenu.classList.contains("unlogged") && !this.useFakeData)) {
+		if(contenu.classList.contains("unlogged") && !this.useFakeData) {
 			if(this.logged) {
 				chrome.browserAction.setBadgeText({ text: "log" });
 				chrome.browserAction.setIcon({ "path": "icons/icone_38_logout.png" });
