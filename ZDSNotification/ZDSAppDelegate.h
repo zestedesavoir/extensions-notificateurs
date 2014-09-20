@@ -7,9 +7,19 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "ParserZSD.h"
 
-@interface ZDSAppDelegate : NSObject <NSApplicationDelegate>
+
+@interface ZDSAppDelegate : NSObject <NSApplicationDelegate,NSUserNotificationCenterDelegate>{
+    NSMutableArray *_allNotification;
+    
+    IBOutlet NSMenu *statusMenu;
+    
+    NSStatusItem *statusItem;
+}
 
 @property (assign) IBOutlet NSWindow *window;
-
+- (NSUserNotification *) showNotficationWithTitle:(NSString *)title AndWithInformation :(NSString *)infomation withImageAuteurs: (NSString *)url;
+- (void) checkNew;
+-(BOOL)findArrayInArray:(NSMutableArray *)arrayInArray withArray:(NSMutableArray *)arrayValue;
 @end
