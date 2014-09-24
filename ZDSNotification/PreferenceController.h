@@ -15,6 +15,7 @@
     IBOutlet NSTextField *labelConnection;
     IBOutlet NSTextField *labelRafraichissement;
     IBOutlet ITSwitch *checkImage;
+
   
 
 }
@@ -26,6 +27,7 @@
 + (void)setPreferenceImageNotification: (BOOL)a;
 +(float)preferenceRefresh;
 + (void) setPreferenceRefresh: (float)f;
+- (IBAction)Relance:(id)sender;
 
 
 

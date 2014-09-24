@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferenceController">
             <connections>
+                <outlet property="buttonRelance" destination="x5V-Az-1Wa" id="4ZZ-Y9-DyC"/>
                 <outlet property="checkImage" destination="AOh-Y8-C91" id="UWz-9V-vzj"/>
                 <outlet property="imageView" destination="aH9-nU-6Hw" id="JWf-eZ-xg1"/>
                 <outlet property="labelConnection" destination="wpD-PU-hPL" id="zF7-6i-Zti"/>
@@ -17,7 +18,7 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Préférences..." allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" animationBehavior="alertPanel" id="Jxf-PO-JdC" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" utility="YES" HUD="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" utility="YES" HUD="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="90" y="125" width="480" height="270"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
@@ -64,13 +65,23 @@
                         </connections>
                     </customView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="60E-mA-Era">
-                        <rect key="frame" x="92" y="184" width="311" height="17"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Ne pas afficher l'image de l'auteur qui a répondu" id="Ic3-8g-7Ja">
+                        <rect key="frame" x="92" y="184" width="266" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Afficher l'image de l'auteur qui a répondu" id="Ic3-8g-7Ja">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x5V-Az-1Wa">
+                        <rect key="frame" x="344" y="207" width="116" height="25"/>
+                        <buttonCell key="cell" type="roundTextured" title="Relancer" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Whe-dU-ZUG">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="Relance:" target="-2" id="FUb-KZ-gJ9"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <point key="canvasLocation" x="140" y="149"/>

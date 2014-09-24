@@ -16,10 +16,12 @@
     IBOutlet NSMenu *statusMenu;
     
     NSStatusItem *statusItem;
+    NSTimer *timer;
 }
 
 @property (assign) IBOutlet NSWindow *window;
 - (NSUserNotification *) showNotficationWithTitle:(NSString *)title AndWithInformation :(NSString *)infomation withImageAuteurs: (NSString *)url;
 - (void) checkNew;
 -(BOOL)findArrayInArray:(NSMutableArray *)arrayInArray withArray:(NSMutableArray *)arrayValue;
+
 @end

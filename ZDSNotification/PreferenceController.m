@@ -30,6 +30,7 @@
     [labelRafraichissement setStringValue:refresh];
     
     NSLog(@"%hhd",[PreferenceController preferenceImageNotification]);
+
        
     
 }
@@ -39,6 +40,7 @@
     NSString *refresh = [[NSString alloc] initWithFormat:@"Rafraichissement toutes %@ secondes.",[sender stringValue]];
     [labelRafraichissement setStringValue:refresh];
     [PreferenceController setPreferenceRefresh:[sender floatValue]];
+    
 }
 
 
@@ -84,6 +86,17 @@
 }
 + (void) setPreferenceRefresh:(float)f{
     [[NSUserDefaults standardUserDefaults] setFloat:f forKey:CSlider];
+}
+
+- (IBAction)Relance:(id)sender {
+    
+    int processIdentifier = [[NSProcessInfo processInfo] processIdentifier];
+    NSString *myPath = [NSString stringWithFormat:@"%s",
+                        [[[NSBundle mainBundle] executablePath] fileSystemRepresentation]];
+    [NSTask launchedTaskWithLaunchPath:myPath arguments:[NSArray
+                                                         arrayWithObject:[NSString stringWithFormat:@"%d",
+                                                                          processIdentifier]]];
+    [NSApp terminate:self];
 }
 
  

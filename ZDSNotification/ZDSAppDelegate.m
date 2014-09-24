@@ -22,7 +22,7 @@
     self = [super init];
     if (self){
         _allNotification = [[NSMutableArray alloc]init];
-        [NSTimer scheduledTimerWithTimeInterval:[PreferenceController preferenceRefresh]
+        timer = [NSTimer scheduledTimerWithTimeInterval:[PreferenceController preferenceRefresh]
                                          target:self
                                        selector:@selector(checkNew)
                                        userInfo:nil
@@ -39,6 +39,10 @@
     [statusItem setImage:[NSImage imageNamed:@"icone_19.png"]];
    
 }
+
+
+    
+    
 
 - (NSUserNotification *) showNotficationWithTitle:(NSString *)title AndWithInformation :(NSString *)infomation withImageAuteurs: (NSString *)url{
     NSImage *image = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:url]];
