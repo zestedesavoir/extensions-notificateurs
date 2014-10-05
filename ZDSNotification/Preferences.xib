@@ -7,18 +7,21 @@
         <customObject id="-2" userLabel="File's Owner" customClass="PreferenceController">
             <connections>
                 <outlet property="buttonRelance" destination="x5V-Az-1Wa" id="4ZZ-Y9-DyC"/>
+                <outlet property="buttonRelaunch" destination="x5V-Az-1Wa" id="9mB-ji-bZQ"/>
                 <outlet property="checkImage" destination="AOh-Y8-C91" id="UWz-9V-vzj"/>
-                <outlet property="imageView" destination="aH9-nU-6Hw" id="JWf-eZ-xg1"/>
+                <outlet property="imageView" destination="URs-dG-zSl" id="7jV-BJ-Sf0"/>
                 <outlet property="labelConnection" destination="wpD-PU-hPL" id="zF7-6i-Zti"/>
                 <outlet property="labelRafraichissement" destination="jWd-y0-atO" id="wRr-DG-VfO"/>
+                <outlet property="progressIndicator" destination="vac-0A-3ud" id="jaO-Vp-bL6"/>
                 <outlet property="timeSlider" destination="fBH-u7-Ajb" id="iRQ-AC-KNP"/>
+                <outlet property="view" destination="Vua-RI-ovv" id="fdr-9R-4oe"/>
                 <outlet property="window" destination="Jxf-PO-JdC" id="ZlJ-cy-7eq"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Préférences..." allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" animationBehavior="alertPanel" id="Jxf-PO-JdC" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" utility="YES" HUD="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" utility="YES" HUD="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="90" y="125" width="480" height="270"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
@@ -41,10 +44,6 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aH9-nU-6Hw">
-                        <rect key="frame" x="188" y="67" width="105" height="112"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="axesIndependently" id="i1G-Eq-n8A"/>
-                    </imageView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wpD-PU-hPL">
                         <rect key="frame" x="141" y="20" width="199" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="XyS-tY-YLn">
@@ -82,9 +81,20 @@
                             <action selector="Relance:" target="-2" id="FUb-KZ-gJ9"/>
                         </connections>
                     </button>
+                    <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="vac-0A-3ud">
+                        <rect key="frame" x="224" y="85" width="32" height="32"/>
+                    </progressIndicator>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k6s-ak-zCf">
+                        <rect key="frame" x="362" y="-22" width="48" height="48"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="xI3-qj-2Ee"/>
+                    </imageView>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="URs-dG-zSl">
+                        <rect key="frame" x="184" y="52" width="112" height="124"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="2VY-88-Ejc"/>
+                    </imageView>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="140" y="149"/>
+            <point key="canvasLocation" x="232" y="123"/>
         </window>
     </objects>
 </document>

@@ -15,12 +15,12 @@
 
 - (id) init{
     self = [super initWithWindowNibName:@"Preferences"];
+    connexion = [[ConnectonParse alloc] init];
     
     return self;
 }
 
 - (void)windowDidLoad{
-    NSLog(@"Nib file is loaded");
     
     [super windowDidLoad];
     
@@ -29,7 +29,7 @@
     NSString *refresh = [[NSString alloc] initWithFormat:@"Rafraichissement toutes %f secondes.",[PreferenceController preferenceRefresh]];
     [labelRafraichissement setStringValue:refresh];
     
-    NSLog(@"%hhd",[PreferenceController preferenceImageNotification]);
+    [buttonRelaunch setEnabled:NO];
 
        
     
@@ -40,40 +40,28 @@
     NSString *refresh = [[NSString alloc] initWithFormat:@"Rafraichissement toutes %@ secondes.",[sender stringValue]];
     [labelRafraichissement setStringValue:refresh];
     [PreferenceController setPreferenceRefresh:[sender floatValue]];
+    [buttonRelaunch setEnabled:YES];
     
 }
 
 
 
 - (IBAction)changeSwitchImage:(ITSwitch *)sender{
-    NSLog(@"Value check  %d",[sender isOn]);
     [PreferenceController setPreferenceImageNotification:[sender isOn]];
 }
 
 
 - (void) awakeFromNib{
+    [self performSelectorInBackground:@selector(chargeImage:) withObject:nil];
     
-   
-    ConnectonParse *connexion = [[ConnectonParse alloc] init];
-    if ([connexion isConnextionZDS]){
-                NSImage *imagePseudos = [[NSImage alloc] initByReferencingURL:[NSURL URLWithString:[connexion getUrlImagePseudos]]];
-        
-        NSString *pseudo = [[NSString alloc]initWithFormat:@"%@, vous êtes connectés.",[connexion getPseudosZDS]];
-       
-        [imageView setImage:imagePseudos];
-        [labelConnection setStringValue:pseudo];
-        
-    }else{
-        [imageView setImage:[NSImage imageNamed:@"clem_pas_contente.png"]];
-        [labelConnection setStringValue:@"Vous n'êtes pas connectés."];
-    }
-
+    
+    [self update];
+    
     
 }
 + (BOOL)preferenceImageNotification{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSLog(@"%@",[defaults objectForKey:CNotificationPreferenceImage]);
-    return [defaults boolForKey:CNotificationPreferenceImage];
+       return [defaults boolForKey:CNotificationPreferenceImage];
 }
 
 + (void) setPreferenceImageNotification: (BOOL)a{
@@ -87,6 +75,13 @@
 + (void) setPreferenceRefresh:(float)f{
     [[NSUserDefaults standardUserDefaults] setFloat:f forKey:CSlider];
 }
++ (void)setPreferenceVersion:(NSString *)v{
+    [[NSUserDefaults standardUserDefaults] setObject:v forKey:CVersion];
+}
++ (NSString *)preferenceVersion{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:CVersion];
+}
 
 - (IBAction)Relance:(id)sender {
     
@@ -98,6 +93,44 @@
                                                                           processIdentifier]]];
     [NSApp terminate:self];
 }
+-(void)chargeImage:(id)param{
+   
+    @autoreleasepool {
+        NSArray * result=nil;
+        imagePseudos = [[NSImage alloc] initByReferencingURL:[NSURL URLWithString:[connexion getUrlImagePseudos]]];
+        
+        [self performSelectorOnMainThread:@selector(update) withObject:result waitUntilDone:NO ];
+        
+        
+    }
+    
 
+    
+}
+-(void)update{
+    if ([connexion isConnextionZDS] || [connexion isConnextionZDS] !=nil){
+        
+        if (imagePseudos ==nil){
+            [progressIndicator setUsesThreadedAnimation:YES];
+            [progressIndicator startAnimation:nil];
+        }else{
+            [progressIndicator stopAnimation:nil];
+            [progressIndicator setHidden:YES];
+           
+            
+            [imageView setImage:imagePseudos];
+            
+        }
+        NSString *pseudo = [[NSString alloc]initWithFormat:@"%@, vous êtes connecté.",[connexion getPseudosZDS]];
+        
+        [labelConnection setStringValue:pseudo];
+        
+    }else{
+        [imageView setImage:[NSImage imageNamed:@"clem_pas_contente.png"]];
+        [labelConnection setStringValue:@"Vous n'êtes pas connectés."];
+    }
+
+    
+}
  
 @end

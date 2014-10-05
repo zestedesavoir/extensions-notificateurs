@@ -26,6 +26,8 @@
     //3. Le lien
     //4. Le lien de l'image de l'auteur
     
+    NSMutableArray *article; //Liste des arcticle 
+    
     
     
     

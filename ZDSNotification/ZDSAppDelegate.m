@@ -8,7 +8,9 @@
 
 #import "ZDSAppDelegate.h"
 #import "PreferenceController.h"
+#import "ZDSUpdate.h"
 @class ParserZSD;
+@class ZDSUpdate;
 
 
 @implementation ZDSAppDelegate
@@ -21,6 +23,7 @@
 - (id) init{
     self = [super init];
     if (self){
+        
         _allNotification = [[NSMutableArray alloc]init];
         timer = [NSTimer scheduledTimerWithTimeInterval:[PreferenceController preferenceRefresh]
                                          target:self
@@ -29,6 +32,9 @@
                                         repeats:YES];
         
         [self checkNew];
+        
+        
+        
     }
     return self;
 }
@@ -37,6 +43,7 @@
     [statusItem setMenu:statusMenu];
     [statusItem setHighlightMode:YES];
     [statusItem setImage:[NSImage imageNamed:@"icone_19.png"]];
+    ZDSUpdate *update = [[ZDSUpdate alloc]init];
    
 }
 
@@ -60,8 +67,7 @@
 - (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification{
     for (NSMutableArray *array in _allNotification){
         if ([notification isEqualTo:[array objectAtIndex:4]]){
-            NSLog(@"Le lien est trouvé");
-            NSURL *url = [NSURL URLWithString:[array objectAtIndex:2]];
+                       NSURL *url = [NSURL URLWithString:[array objectAtIndex:2]];
             [[NSWorkspace sharedWorkspace]openURL:url];
         }
     }
@@ -82,8 +88,7 @@
             if (![self findArrayInArray:_allNotification withArray:array]){
 
                  NSUserNotification * notification = [self showNotficationWithTitle:[array objectAtIndex:0] AndWithInformation:[NSString stringWithFormat:@"%@ a répondu à votre message",[array objectAtIndex:1]] withImageAuteurs:[array objectAtIndex:3]];
-                NSLog(@"%@",array);
-                [array addObject:notification];
+                               [array addObject:notification];
         
                 [_allNotification addObject:array];
         }

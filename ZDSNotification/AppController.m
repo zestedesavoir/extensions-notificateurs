@@ -10,6 +10,7 @@
 #import  "PreferenceController.h"
 NSString  * const CSlider = @"CSlider";
 NSString  * const CNotificationPreferenceImage = @"CNotificationPreferenceImage";
+NSString * const CVersion = @"CVersion";
 
 
 @implementation AppController
@@ -20,8 +21,8 @@ NSString  * const CNotificationPreferenceImage = @"CNotificationPreferenceImage"
     if (!preferenceController) {
 		preferenceController = [[PreferenceController alloc] init];
 	}
-	NSLog(@"showing %@", preferenceController);
-	[preferenceController showWindow:self];
+		[preferenceController showWindow:self];
+    
 }
 
 +(void)initialize{
@@ -29,12 +30,10 @@ NSString  * const CNotificationPreferenceImage = @"CNotificationPreferenceImage"
     BOOL i = YES;
     [defaultValue setObject:[NSNumber numberWithFloat:5.0] forKey:CSlider];
     [defaultValue setObject: [NSNumber numberWithBool:i] forKey:CNotificationPreferenceImage];
+    [defaultValue setObject:@"1.0.0" forKey:CVersion];
     
-    NSLog(@"avant : %@",[defaultValue objectForKey:CNotificationPreferenceImage]);
-        
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultValue];
-    NSLog(@"après : %@",[[NSUserDefaults standardUserDefaults] objectForKey:CNotificationPreferenceImage]);
-    NSLog(@"Normalement les valeurs insrites :%@",defaultValue);
+   
 }
 
 @end

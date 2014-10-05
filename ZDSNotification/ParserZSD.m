@@ -20,6 +20,7 @@
     
     if (self){
         _infosParserTopic = [[NSMutableArray alloc]init];
+        article = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -62,25 +63,24 @@
             if ([[[span objectAtIndex:2] getAttributeNamed:@"class"] isEqualToString:@"topic"]){
                
                 [array addObject:[self parseString:[[span objectAtIndex:2] rawContents]]];
-                NSLog(@" titre = %@",[[span objectAtIndex:2] rawContents]);
+               
                 
             } //L'auteur
             if ([[[span objectAtIndex:0] getAttributeNamed:@"class"] isEqualToString:@"username"]){
                 [array addObject:[self parseString:[[span objectAtIndex:0] rawContents]]];
-                //NSLog(@" username = %@",[self parseString:[[span objectAtIndex:0] rawContents]]);
+                
                 
                 
             }
             
             //On trouve l'url
             NSArray *inputSecondaireHref = [[parserSecondaire body] findChildTags:@"a"];
-            NSLog(@"lien = %@",[[inputSecondaireHref objectAtIndex:0] getAttributeNamed:@"href"]);
+           
             [array addObject:[@"http://zestedesavoir.com" stringByAppendingString:[[inputSecondaireHref objectAtIndex:0] getAttributeNamed:@"href"]]];
             
             //On trouve l'url de l'image de l'auteur.
             NSArray *image = [[parserSecondaire body] findChildTags:@"img"];
             NSString *lienImageAuteur = [[image objectAtIndex:0] getAttributeNamed:@"src"];
-            NSLog(@"lien de l'image de l'auteur = %@",lienImageAuteur);
             
             if ([lienImageAuteur rangeOfString:@"http://"].location == NSNotFound && [lienImageAuteur rangeOfString:@"https://"].location == NSNotFound ){ //Si l'image ne provient pas d'autre site
                 lienImageAuteur = [@"http://zestedesavoir.com" stringByAppendingString:lienImageAuteur];
@@ -90,7 +90,7 @@
             [array addObject:lienImageAuteur];
             
             [_infosParserTopic addObject:array];
-            //NSLog(@"infosParserTopic = %@, count = %d",_infosParserTopic,[_infosParserTopic count]);
+            
         }
     }
     return _infosParserTopic;
@@ -114,8 +114,7 @@
         }
         
     }
-    NSLog(@"%@",string);
-   // NSLog(@"string result = %@",[stringResult  stringByReplacingCharactersInRange:NSMakeRange([stringResult length]-1, 1) withString:@""]);
+   
     return[stringResult  stringByReplacingCharactersInRange:NSMakeRange([stringResult length]-1, 1) withString:@""];
  
 }

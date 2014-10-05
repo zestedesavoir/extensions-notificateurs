@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "ITSwitch/ITSwitch.h"
+@class ConnectonParse;
 
 @interface PreferenceController : NSWindowController{
     IBOutlet NSSlider *timeSlider;
@@ -15,7 +16,17 @@
     IBOutlet NSTextField *labelConnection;
     IBOutlet NSTextField *labelRafraichissement;
     IBOutlet ITSwitch *checkImage;
+    __weak IBOutlet NSButton *buttonRelaunch;
 
+    __weak IBOutlet NSProgressIndicator *progressIndicator;
+    
+
+
+    
+
+    
+    ConnectonParse *connexion;
+    NSImage *imagePseudos;
   
 
 }
@@ -27,7 +38,11 @@
 + (void)setPreferenceImageNotification: (BOOL)a;
 +(float)preferenceRefresh;
 + (void) setPreferenceRefresh: (float)f;
++ (NSString *)preferenceVersion;
++ (void)setPreferenceVersion:(NSString *)v;
 - (IBAction)Relance:(id)sender;
+-(void)chargeImage:(id)param;
+-(void)update;
 
 
 

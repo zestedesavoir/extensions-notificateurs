@@ -28,15 +28,15 @@
     
     HTMLNode *bodyNode = [parser body];
     NSArray *nodes = [bodyNode findChildTags:@"div"]; //On cherche tout les blocs <li>
-    
+    if (bodyNode == nil){
+        return NO;
+    }
     for (HTMLNode *nodeHTML in nodes ){
         if ([[nodeHTML getAttributeNamed:@"class"] isEqualToString:@"logbox header-right unlogged"]){
             return NO;
         }
-        
-             
-        
     }
+    
     
     return YES;
 }
@@ -66,6 +66,7 @@
             }
     
     
+    
     if ([urlPseudos rangeOfString:@"http://"].location == NSNotFound && [urlPseudos rangeOfString:@"https://"].location == NSNotFound ){ //Si l'image ne provient pas d'autre site
         return [@"http://zestedesavoir.com" stringByAppendingString:urlPseudos];
         
@@ -92,7 +93,7 @@
         }
         
     }
-       // NSLog(@"string result = %@",[stringResult  stringByReplacingCharactersInRange:NSMakeRange([stringResult length]-1, 1) withString:@""]);
+      
     return[stringResult  stringByReplacingCharactersInRange:NSMakeRange([stringResult length]-1, 1) withString:@""];
     
 }

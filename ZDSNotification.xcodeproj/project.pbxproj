@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0E32529C19B0E40300F5BC60 /* clem_pas_contente.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E32529B19B0E40300F5BC60 /* clem_pas_contente.png */; };
+		0E3DA12419E019100039FBAA /* WindowArticle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E3DA12319E019100039FBAA /* WindowArticle.xib */; };
+		0E69B83019E15B430078BA8B /* ZDSUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E69B82F19E15B430078BA8B /* ZDSUpdate.m */; };
 		0EB78FF219AF8A2C0092C8F3 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EB78FF119AF8A2C0092C8F3 /* Preferences.xib */; };
 		0EB78FF519AF9A290092C8F3 /* PreferenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB78FF419AF9A290092C8F3 /* PreferenceController.m */; };
 		0EB78FF819AF9B1C0092C8F3 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB78FF719AF9B1C0092C8F3 /* AppController.m */; };
@@ -44,6 +46,9 @@
 
 /* Begin PBXFileReference section */
 		0E32529B19B0E40300F5BC60 /* clem_pas_contente.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clem_pas_contente.png; sourceTree = "<group>"; };
+		0E3DA12319E019100039FBAA /* WindowArticle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WindowArticle.xib; sourceTree = "<group>"; };
+		0E69B82E19E15B430078BA8B /* ZDSUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZDSUpdate.h; sourceTree = "<group>"; };
+		0E69B82F19E15B430078BA8B /* ZDSUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZDSUpdate.m; sourceTree = "<group>"; };
 		0EB78FF119AF8A2C0092C8F3 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
 		0EB78FF319AF9A290092C8F3 /* PreferenceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceController.h; sourceTree = "<group>"; };
 		0EB78FF419AF9A290092C8F3 /* PreferenceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceController.m; sourceTree = "<group>"; };
@@ -200,9 +205,11 @@
 		0EEEC8EE19B0F09A00B70ADA /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				0EEEC8F019B0F0FA00B70ADA /* Controller */,
+				0EEEC8F019B0F0FA00B70ADA /* Préférences... */,
 				0EEEC8EF19B0F0C900B70ADA /* Parser */,
 				0EDEE11A19AC98C000F12797 /* ZDSAppDelegate.h */,
+				0E69B82E19E15B430078BA8B /* ZDSUpdate.h */,
+				0E69B82F19E15B430078BA8B /* ZDSUpdate.m */,
 				0EDEE11B19AC98C000F12797 /* ZDSAppDelegate.m */,
 			);
 			name = Class;
@@ -223,7 +230,7 @@
 			name = Parser;
 			sourceTree = "<group>";
 		};
-		0EEEC8F019B0F0FA00B70ADA /* Controller */ = {
+		0EEEC8F019B0F0FA00B70ADA /* Préférences... */ = {
 			isa = PBXGroup;
 			children = (
 				0EB78FF419AF9A290092C8F3 /* PreferenceController.m */,
@@ -232,7 +239,7 @@
 				0EB78FF719AF9B1C0092C8F3 /* AppController.m */,
 				0EC8AAE119B1D6F400C24381 /* ITSwitch */,
 			);
-			name = Controller;
+			name = "Préférences...";
 			sourceTree = "<group>";
 		};
 		0EEEC8F119B0F11700B70ADA /* Image */ = {
@@ -248,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				0EDEE11D19AC98C000F12797 /* MainMenu.xib */,
+				0E3DA12319E019100039FBAA /* WindowArticle.xib */,
 				0EB78FF119AF8A2C0092C8F3 /* Preferences.xib */,
 			);
 			name = Ressource;
@@ -330,6 +338,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E3DA12419E019100039FBAA /* WindowArticle.xib in Resources */,
 				0EBE69BC19AE242100AAA1D6 /* icone_19.png in Resources */,
 				0EDEE11319AC98C000F12797 /* InfoPlist.strings in Resources */,
 				0EDEE12119AC98C000F12797 /* Images.xcassets in Resources */,
@@ -356,6 +365,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E69B83019E15B430078BA8B /* ZDSUpdate.m in Sources */,
 				0EDEE18619ACD54200F12797 /* ParserZSD.m in Sources */,
 				0EDEE11C19AC98C000F12797 /* ZDSAppDelegate.m in Sources */,
 				0EB78FF519AF9A290092C8F3 /* PreferenceController.m in Sources */,

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 extern NSString  * const CSlider;
 extern NSString  * const CNotificationPreferenceImage ;
+extern NSString * const CVersion;
 
 @class PreferenceController;
 
