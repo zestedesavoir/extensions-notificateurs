@@ -25,7 +25,7 @@
     [super windowDidLoad];
     
     [timeSlider setFloatValue:[PreferenceController preferenceRefresh]];
-    [checkImage setOn:[PreferenceController preferenceImageNotification]];
+    [checkImage setState:[PreferenceController preferenceImageNotification]];
     NSString *refresh = [[NSString alloc] initWithFormat:@"Rafraichissement toutes %f secondes.",[PreferenceController preferenceRefresh]];
     [labelRafraichissement setStringValue:refresh];
     
@@ -37,23 +37,45 @@
 
 
 - (IBAction)changeTimeRefresh:(id)sender{
-    NSString *refresh = [[NSString alloc] initWithFormat:@"Rafraichissement toutes %@ secondes.",[sender stringValue]];
-    [labelRafraichissement setStringValue:refresh];
-    [PreferenceController setPreferenceRefresh:[sender floatValue]];
+    int minute = ceil([sender floatValue] /60);
+
+        if (minute > 1 ){
+        NSString *refresh = [[NSString alloc] initWithFormat:@"Rafraichissement toutes les %d minutes.",minute];
+        [labelRafraichissement setStringValue:refresh];
+
+    }else{
+        NSString *refresh;
+        long secondes = lround([sender doubleValue]);
+        if (secondes > 1){
+          refresh = [[NSString alloc] initWithFormat:@"Rafraichissement toutes les %ld secondes.",secondes];
+            
+        }else{
+            
+             refresh = [[NSString alloc] initWithFormat:@"Rafraichissement toutes les %ld seconde.",secondes];
+
+            
+        }            [labelRafraichissement setStringValue:refresh];
+    }
+    
+        [PreferenceController setPreferenceRefresh:[sender floatValue]];
     [buttonRelaunch setEnabled:YES];
     
 }
 
 
 
-- (IBAction)changeSwitchImage:(ITSwitch *)sender{
-    [PreferenceController setPreferenceImageNotification:[sender isOn]];
+- (IBAction)changeSwitchImage:(id)sender{
+       [PreferenceController setPreferenceImageNotification:[checkImage state]];
 }
+
+- (IBAction)quitPanel:(id)sender {
+    [hudWindows close];
+}
+
 
 
 - (void) awakeFromNib{
     [self performSelectorInBackground:@selector(chargeImage:) withObject:nil];
-    
     
     [self update];
     
@@ -108,7 +130,7 @@
     
 }
 -(void)update{
-    if ([connexion isConnextionZDS] || [connexion isConnextionZDS] !=nil){
+    if ([connexion isConnextionZDS] || [connexion isConnextionZDS] !=0){
         
         if (imagePseudos ==nil){
             [progressIndicator setUsesThreadedAnimation:YES];

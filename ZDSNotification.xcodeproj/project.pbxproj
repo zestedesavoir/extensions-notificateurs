@@ -16,7 +16,6 @@
 		0EB78FFB19AF9FA50092C8F3 /* ConnectonParse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB78FFA19AF9FA50092C8F3 /* ConnectonParse.m */; };
 		0EBE69BC19AE242100AAA1D6 /* icone_19.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EBE69BB19AE242100AAA1D6 /* icone_19.png */; };
 		0EBE69BE19AE259D00AAA1D6 /* 96d205095a8ed850.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0EBE69BD19AE259D00AAA1D6 /* 96d205095a8ed850.icns */; };
-		0EC8AAE419B1D6F400C24381 /* ITSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC8AAE319B1D6F400C24381 /* ITSwitch.m */; };
 		0EDEE10919AC98C000F12797 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EDEE10819AC98C000F12797 /* Cocoa.framework */; };
 		0EDEE11319AC98C000F12797 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0EDEE11119AC98C000F12797 /* InfoPlist.strings */; };
 		0EDEE11519AC98C000F12797 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDEE11419AC98C000F12797 /* main.m */; };
@@ -58,8 +57,6 @@
 		0EB78FFA19AF9FA50092C8F3 /* ConnectonParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectonParse.m; sourceTree = "<group>"; };
 		0EBE69BB19AE242100AAA1D6 /* icone_19.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icone_19.png; sourceTree = "<group>"; };
 		0EBE69BD19AE259D00AAA1D6 /* 96d205095a8ed850.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = 96d205095a8ed850.icns; sourceTree = "<group>"; };
-		0EC8AAE219B1D6F400C24381 /* ITSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITSwitch.h; sourceTree = "<group>"; };
-		0EC8AAE319B1D6F400C24381 /* ITSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITSwitch.m; sourceTree = "<group>"; };
 		0EDEE10519AC98C000F12797 /* ZDSNotification.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZDSNotification.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EDEE10819AC98C000F12797 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		0EDEE10B19AC98C000F12797 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -110,15 +107,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0EC8AAE119B1D6F400C24381 /* ITSwitch */ = {
-			isa = PBXGroup;
-			children = (
-				0EC8AAE219B1D6F400C24381 /* ITSwitch.h */,
-				0EC8AAE319B1D6F400C24381 /* ITSwitch.m */,
-			);
-			path = ITSwitch;
-			sourceTree = "<group>";
-		};
 		0EDEE0FC19AC98C000F12797 = {
 			isa = PBXGroup;
 			children = (
@@ -237,7 +225,6 @@
 				0EB78FF319AF9A290092C8F3 /* PreferenceController.h */,
 				0EB78FF619AF9B1C0092C8F3 /* AppController.h */,
 				0EB78FF719AF9B1C0092C8F3 /* AppController.m */,
-				0EC8AAE119B1D6F400C24381 /* ITSwitch */,
 			);
 			name = "Préférences...";
 			sourceTree = "<group>";
@@ -369,7 +356,6 @@
 				0EDEE18619ACD54200F12797 /* ParserZSD.m in Sources */,
 				0EDEE11C19AC98C000F12797 /* ZDSAppDelegate.m in Sources */,
 				0EB78FF519AF9A290092C8F3 /* PreferenceController.m in Sources */,
-				0EC8AAE419B1D6F400C24381 /* ITSwitch.m in Sources */,
 				0EDEE14119AC99FE00F12797 /* HTMLParser.m in Sources */,
 				0EB78FF819AF9B1C0092C8F3 /* AppController.m in Sources */,
 				0EB78FFB19AF9FA50092C8F3 /* ConnectonParse.m in Sources */,

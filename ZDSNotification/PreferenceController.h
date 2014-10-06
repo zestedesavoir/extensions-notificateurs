@@ -11,15 +11,20 @@
 @class ConnectonParse;
 
 @interface PreferenceController : NSWindowController{
-    IBOutlet NSSlider *timeSlider;
-    IBOutlet NSImageView *imageView;
-    IBOutlet NSTextField *labelConnection;
-    IBOutlet NSTextField *labelRafraichissement;
-    IBOutlet ITSwitch *checkImage;
+    __weak IBOutlet NSSlider *timeSlider;
+    __weak IBOutlet NSImageView *imageView;
+    __weak IBOutlet NSTextField *labelConnection;
+    __weak IBOutlet NSTextField *labelRafraichissement;
+    
     __weak IBOutlet NSButton *buttonRelaunch;
 
     __weak IBOutlet NSProgressIndicator *progressIndicator;
     
+    IBOutlet NSPanel *hudWindows;
+    __weak IBOutlet NSButton *checkImage;
+
+
+
 
 
     
@@ -32,7 +37,9 @@
 }
 
 - (IBAction) changeTimeRefresh:(id)sender;
-- (IBAction)changeSwitchImage:(ITSwitch *)sender;
+- (IBAction)changeSwitchImage:(id)sender;
+
+- (IBAction)quitPanel:(id)sender;
 
 + (BOOL) preferenceImageNotification;
 + (void)setPreferenceImageNotification: (BOOL)a;
@@ -43,6 +50,7 @@
 - (IBAction)Relance:(id)sender;
 -(void)chargeImage:(id)param;
 -(void)update;
+
 
 
 

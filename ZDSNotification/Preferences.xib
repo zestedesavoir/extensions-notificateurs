@@ -6,13 +6,17 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferenceController">
             <connections>
+                <outlet property="buttonQuit" destination="xDu-UL-Boy" id="2Bz-jL-Cd9"/>
                 <outlet property="buttonRelance" destination="x5V-Az-1Wa" id="4ZZ-Y9-DyC"/>
                 <outlet property="buttonRelaunch" destination="x5V-Az-1Wa" id="9mB-ji-bZQ"/>
-                <outlet property="checkImage" destination="AOh-Y8-C91" id="UWz-9V-vzj"/>
+                <outlet property="checkImage" destination="Wcw-K5-xm4" id="Pui-Bz-e3Z"/>
+                <outlet property="hudWindows" destination="Jxf-PO-JdC" id="avO-sA-tZF"/>
                 <outlet property="imageView" destination="URs-dG-zSl" id="7jV-BJ-Sf0"/>
                 <outlet property="labelConnection" destination="wpD-PU-hPL" id="zF7-6i-Zti"/>
                 <outlet property="labelRafraichissement" destination="jWd-y0-atO" id="wRr-DG-VfO"/>
                 <outlet property="progressIndicator" destination="vac-0A-3ud" id="jaO-Vp-bL6"/>
+                <outlet property="quitPanel" destination="xDu-UL-Boy" id="Nsw-Lz-bPb"/>
+                <outlet property="quitWindows" destination="xDu-UL-Boy" id="u06-0e-4gp"/>
                 <outlet property="timeSlider" destination="fBH-u7-Ajb" id="iRQ-AC-KNP"/>
                 <outlet property="view" destination="Vua-RI-ovv" id="fdr-9R-4oe"/>
                 <outlet property="window" destination="Jxf-PO-JdC" id="ZlJ-cy-7eq"/>
@@ -21,23 +25,23 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Préférences..." allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" animationBehavior="alertPanel" id="Jxf-PO-JdC" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" utility="YES" HUD="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" utility="YES" HUD="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="90" y="125" width="480" height="270"/>
+            <rect key="contentRect" x="90" y="125" width="480" height="256"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <view key="contentView" id="Vua-RI-ovv">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <rect key="frame" x="0.0" y="0.0" width="480" height="256"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fBH-u7-Ajb">
-                        <rect key="frame" x="18" y="237" width="444" height="21"/>
-                        <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="1" maxValue="60" doubleValue="5" tickMarkPosition="above" sliderType="linear" id="Wkh-xq-edw"/>
+                        <rect key="frame" x="18" y="223" width="444" height="21"/>
+                        <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="600" doubleValue="5" tickMarkPosition="above" sliderType="linear" id="Wkh-xq-edw"/>
                         <connections>
                             <action selector="changeTimeRefresh:" target="-2" id="wVM-Wn-tRT"/>
                         </connections>
                     </slider>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jWd-y0-atO">
-                        <rect key="frame" x="18" y="214" width="331" height="17"/>
+                        <rect key="frame" x="18" y="200" width="331" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Rafraichissement toutes 5 secondes." id="Kw2-0A-c7x">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -45,34 +49,15 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wpD-PU-hPL">
-                        <rect key="frame" x="141" y="20" width="199" height="17"/>
+                        <rect key="frame" x="141" y="6" width="199" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="XyS-tY-YLn">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AOh-Y8-C91" customClass="ITSwitch">
-                        <rect key="frame" x="26" y="179" width="41" height="27"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                        <connections>
-                            <action selector="changeSwitchImage:" target="-2" id="aHJ-RR-chf"/>
-                        </connections>
-                    </customView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="60E-mA-Era">
-                        <rect key="frame" x="92" y="184" width="266" height="17"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Afficher l'image de l'auteur qui a répondu" id="Ic3-8g-7Ja">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x5V-Az-1Wa">
-                        <rect key="frame" x="344" y="207" width="116" height="25"/>
+                        <rect key="frame" x="344" y="193" width="116" height="25"/>
                         <buttonCell key="cell" type="roundTextured" title="Relancer" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Whe-dU-ZUG">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -82,19 +67,49 @@
                         </connections>
                     </button>
                     <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="vac-0A-3ud">
-                        <rect key="frame" x="224" y="85" width="32" height="32"/>
+                        <rect key="frame" x="224" y="71" width="32" height="32"/>
                     </progressIndicator>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k6s-ak-zCf">
-                        <rect key="frame" x="362" y="-22" width="48" height="48"/>
+                        <rect key="frame" x="362" y="-36" width="48" height="48"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="xI3-qj-2Ee"/>
                     </imageView>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="URs-dG-zSl">
-                        <rect key="frame" x="184" y="52" width="112" height="124"/>
+                        <rect key="frame" x="184" y="38" width="112" height="124"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="2VY-88-Ejc"/>
                     </imageView>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wcw-K5-xm4">
+                        <rect key="frame" x="18" y="169" width="22" height="18"/>
+                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="bMH-4Z-lO0">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="changeSwitchImage:" target="-2" id="5Ql-vG-R7L"/>
+                        </connections>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="60E-mA-Era">
+                        <rect key="frame" x="44" y="170" width="266" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Afficher l'image de l'auteur qui a répondu" id="Ic3-8g-7Ja">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xDu-UL-Boy">
+                        <rect key="frame" x="344" y="161" width="116" height="25"/>
+                        <buttonCell key="cell" type="roundTextured" title="Quitter" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OiK-lT-ZVv">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent">w</string>
+                            <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="quitPanel:" target="-2" id="uSU-ZJ-uSO"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="232" y="123"/>
+            <point key="canvasLocation" x="266" y="106"/>
         </window>
     </objects>
 </document>
