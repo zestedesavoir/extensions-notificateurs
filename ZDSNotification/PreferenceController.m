@@ -24,41 +24,14 @@
     
     [super windowDidLoad];
     
-    [timeSlider setFloatValue:[PreferenceController preferenceRefresh]];
-    [checkImage setState:[PreferenceController preferenceImageNotification]];
-    NSString *refresh = [[NSString alloc] initWithFormat:@"Rafraichissement toutes %f secondes.",[PreferenceController preferenceRefresh]];
-    [labelRafraichissement setStringValue:refresh];
-    
-    [buttonRelaunch setEnabled:NO];
-
        
     
 }
 
 
 - (IBAction)changeTimeRefresh:(id)sender{
-    int minute = ceil([sender floatValue] /60);
-
-        if (minute > 1 ){
-        NSString *refresh = [[NSString alloc] initWithFormat:@"Rafraichissement toutes les %d minutes.",minute];
-        [labelRafraichissement setStringValue:refresh];
-
-    }else{
-        NSString *refresh;
-        long secondes = lround([sender doubleValue]);
-        if (secondes > 1){
-          refresh = [[NSString alloc] initWithFormat:@"Rafraichissement toutes les %ld secondes.",secondes];
-            
-        }else{
-            
-             refresh = [[NSString alloc] initWithFormat:@"Rafraichissement toutes les %ld seconde.",secondes];
-
-            
-        }            [labelRafraichissement setStringValue:refresh];
-    }
+    [self updateTime:[sender floatValue]];
     
-        [PreferenceController setPreferenceRefresh:[sender floatValue]];
-    [buttonRelaunch setEnabled:YES];
     
 }
 
@@ -75,9 +48,17 @@
 
 
 - (void) awakeFromNib{
+    [timeSlider setFloatValue:[PreferenceController preferenceRefresh]];
+    [checkImage setState:[PreferenceController preferenceImageNotification]];
+    
+    
+    
+    [buttonRelaunch setEnabled:NO];
+
     [self performSelectorInBackground:@selector(chargeImage:) withObject:nil];
     
     [self update];
+    [self updateTime:[PreferenceController preferenceRefresh]];
     
     
 }
@@ -127,6 +108,32 @@
     }
     
 
+    
+}
+-(void) updateTime:(float)time{
+    int minute = ceil(time /60);
+    
+    if (minute > 1 ){
+        NSString *refresh = [[NSString alloc] initWithFormat:@"Rafraichissement toutes les %d minutes.",minute];
+        [labelRafraichissement setStringValue:refresh];
+        
+    }else{
+        NSString *refresh;
+        long secondes = lround((long)time);
+        if (secondes > 1){
+            refresh = [[NSString alloc] initWithFormat:@"Rafraichissement toutes les %ld secondes.",secondes];
+            
+        }else{
+            
+            refresh = [[NSString alloc] initWithFormat:@"Rafraichissement toutes les %ld seconde.",secondes];
+            
+            
+        }            [labelRafraichissement setStringValue:refresh];
+    }
+    
+    [PreferenceController setPreferenceRefresh:time];
+    [buttonRelaunch setEnabled:YES];
+    
     
 }
 -(void)update{

@@ -35,7 +35,7 @@
   
 
 }
-
+- (void)updateTime:(float)time;
 - (IBAction) changeTimeRefresh:(id)sender;
 - (IBAction)changeSwitchImage:(id)sender;
 
