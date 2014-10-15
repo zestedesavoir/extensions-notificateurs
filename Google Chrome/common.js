@@ -92,13 +92,13 @@ var AjaxRequest = function() {
 
 	if (this.postData) {
 		XHR.open('POST', this.url+(this.cache ? '' : '?timestamp='+this.timestamp), true);
-		XHR.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+		// XHR.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 		XHR.setRequestHeader('Content-type','application/x-www-form-urlencoded');
 		XHR.send(typeof this.postData == 'string' ? this.postData : objectToQueryString(this.postData));
 	}
 	else {
 		XHR.open('GET', this.url+(this.cache ? '' : '?timestamp='+this.timestamp), true);
-		XHR.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+		// XHR.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 		XHR.send();
 	}
 

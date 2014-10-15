@@ -21,7 +21,7 @@ Notificateur.prototype = {
 	/**
 	 * ZdS URL
 	 */
-	url: "http://zestedesavoir.com",
+	url: "https://zestedesavoir.com",
 
 	/**
 	 * If logged in last check
@@ -322,7 +322,7 @@ Notificateur.prototype = {
 	 * @param {String} data Page data
 	 */
 	loadCallback: function(event) {
-		console.log("loadCallback >>");
+		console.log("loadCallback >>", event.target);
 
 		// On récupère un DOM que l'on peut manipuler
 		var doc = document.implementation.createHTMLDocument("xhr_result");
