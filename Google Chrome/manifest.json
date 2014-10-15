@@ -11,6 +11,7 @@
         },
     "permissions": [
         "http://*.zestedesavoir.com/*",
+        "https://*.zestedesavoir.com/*",
         "http://www.gravatar.com/*",
         "tabs",
         "alarms",
