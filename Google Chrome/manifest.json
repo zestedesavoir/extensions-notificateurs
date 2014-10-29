@@ -1,6 +1,6 @@
 {
     "name": "ZdS Notificateur",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "manifest_version": 2,
     "description": "Extensions pour Google Chrome pour connaitre le nombre de notifications ou MP de ZesteDeSavoir sans avoir besoin d'ouvrir le site",
     "offline_enabled": false,
