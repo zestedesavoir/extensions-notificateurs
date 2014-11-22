@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0E32529C19B0E40300F5BC60 /* clem_pas_contente.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E32529B19B0E40300F5BC60 /* clem_pas_contente.png */; };
-		0E3DA12419E019100039FBAA /* WindowArticle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E3DA12319E019100039FBAA /* WindowArticle.xib */; };
-		0E69B83019E15B430078BA8B /* ZDSUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E69B82F19E15B430078BA8B /* ZDSUpdate.m */; };
-		0EB78FF219AF8A2C0092C8F3 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EB78FF119AF8A2C0092C8F3 /* Preferences.xib */; };
+		0E9D71D11A1FD5770014D7B2 /* Preference.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E9D71D01A1FD5770014D7B2 /* Preference.xib */; };
+		0EA3D04319F570FE00B9DA0A /* ZDSArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA3D04219F570FE00B9DA0A /* ZDSArticle.m */; };
 		0EB78FF519AF9A290092C8F3 /* PreferenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB78FF419AF9A290092C8F3 /* PreferenceController.m */; };
 		0EB78FF819AF9B1C0092C8F3 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB78FF719AF9B1C0092C8F3 /* AppController.m */; };
-		0EB78FFB19AF9FA50092C8F3 /* ConnectonParse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB78FFA19AF9FA50092C8F3 /* ConnectonParse.m */; };
 		0EBE69BC19AE242100AAA1D6 /* icone_19.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EBE69BB19AE242100AAA1D6 /* icone_19.png */; };
 		0EBE69BE19AE259D00AAA1D6 /* 96d205095a8ed850.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0EBE69BD19AE259D00AAA1D6 /* 96d205095a8ed850.icns */; };
 		0EDEE10919AC98C000F12797 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EDEE10819AC98C000F12797 /* Cocoa.framework */; };
@@ -31,6 +29,7 @@
 		0EDEE14119AC99FE00F12797 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDEE13F19AC99FE00F12797 /* HTMLParser.m */; };
 		0EDEE14319AC9A3E00F12797 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EDEE14219AC9A3E00F12797 /* libxml2.dylib */; };
 		0EDEE18619ACD54200F12797 /* ParserZSD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDEE18519ACD54200F12797 /* ParserZSD.m */; };
+		0EE3E06C19F2C24500825A94 /* ZDSParserArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE3E06B19F2C24500825A94 /* ZDSParserArticle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,17 +43,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E31D9561A016AB900B9DFD6 /* ZDSNotification.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ZDSNotification.entitlements; sourceTree = "<group>"; };
 		0E32529B19B0E40300F5BC60 /* clem_pas_contente.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clem_pas_contente.png; sourceTree = "<group>"; };
-		0E3DA12319E019100039FBAA /* WindowArticle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WindowArticle.xib; sourceTree = "<group>"; };
-		0E69B82E19E15B430078BA8B /* ZDSUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZDSUpdate.h; sourceTree = "<group>"; };
-		0E69B82F19E15B430078BA8B /* ZDSUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZDSUpdate.m; sourceTree = "<group>"; };
-		0EB78FF119AF8A2C0092C8F3 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
+		0E9D71D01A1FD5770014D7B2 /* Preference.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preference.xib; sourceTree = "<group>"; };
+		0EA3D04119F570FE00B9DA0A /* ZDSArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZDSArticle.h; sourceTree = "<group>"; };
+		0EA3D04219F570FE00B9DA0A /* ZDSArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZDSArticle.m; sourceTree = "<group>"; };
 		0EB78FF319AF9A290092C8F3 /* PreferenceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceController.h; sourceTree = "<group>"; };
 		0EB78FF419AF9A290092C8F3 /* PreferenceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceController.m; sourceTree = "<group>"; };
 		0EB78FF619AF9B1C0092C8F3 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		0EB78FF719AF9B1C0092C8F3 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
-		0EB78FF919AF9FA50092C8F3 /* ConnectonParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectonParse.h; sourceTree = "<group>"; };
-		0EB78FFA19AF9FA50092C8F3 /* ConnectonParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectonParse.m; sourceTree = "<group>"; };
 		0EBE69BB19AE242100AAA1D6 /* icone_19.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icone_19.png; sourceTree = "<group>"; };
 		0EBE69BD19AE259D00AAA1D6 /* 96d205095a8ed850.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = 96d205095a8ed850.icns; sourceTree = "<group>"; };
 		0EDEE10519AC98C000F12797 /* ZDSNotification.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZDSNotification.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +80,8 @@
 		0EDEE14219AC9A3E00F12797 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		0EDEE18419ACD54200F12797 /* ParserZSD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParserZSD.h; sourceTree = "<group>"; };
 		0EDEE18519ACD54200F12797 /* ParserZSD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParserZSD.m; sourceTree = "<group>"; };
+		0EE3E06A19F2C24500825A94 /* ZDSParserArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZDSParserArticle.h; sourceTree = "<group>"; };
+		0EE3E06B19F2C24500825A94 /* ZDSParserArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZDSParserArticle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +150,7 @@
 		0EDEE10E19AC98C000F12797 /* ZDSNotification */ = {
 			isa = PBXGroup;
 			children = (
+				0E31D9561A016AB900B9DFD6 /* ZDSNotification.entitlements */,
 				0EEEC8EE19B0F09A00B70ADA /* Class */,
 				0EEEC8F119B0F11700B70ADA /* Image */,
 				0EDEE12019AC98C000F12797 /* Images.xcassets */,
@@ -196,9 +196,9 @@
 				0EEEC8F019B0F0FA00B70ADA /* Préférences... */,
 				0EEEC8EF19B0F0C900B70ADA /* Parser */,
 				0EDEE11A19AC98C000F12797 /* ZDSAppDelegate.h */,
-				0E69B82E19E15B430078BA8B /* ZDSUpdate.h */,
-				0E69B82F19E15B430078BA8B /* ZDSUpdate.m */,
 				0EDEE11B19AC98C000F12797 /* ZDSAppDelegate.m */,
+				0EA3D04119F570FE00B9DA0A /* ZDSArticle.h */,
+				0EA3D04219F570FE00B9DA0A /* ZDSArticle.m */,
 			);
 			name = Class;
 			sourceTree = "<group>";
@@ -208,12 +208,12 @@
 			children = (
 				0EDEE18419ACD54200F12797 /* ParserZSD.h */,
 				0EDEE18519ACD54200F12797 /* ParserZSD.m */,
-				0EB78FF919AF9FA50092C8F3 /* ConnectonParse.h */,
-				0EB78FFA19AF9FA50092C8F3 /* ConnectonParse.m */,
 				0EDEE13C19AC99FE00F12797 /* HTMLNode.h */,
 				0EDEE13D19AC99FE00F12797 /* HTMLNode.m */,
 				0EDEE13E19AC99FE00F12797 /* HTMLParser.h */,
 				0EDEE13F19AC99FE00F12797 /* HTMLParser.m */,
+				0EE3E06A19F2C24500825A94 /* ZDSParserArticle.h */,
+				0EE3E06B19F2C24500825A94 /* ZDSParserArticle.m */,
 			);
 			name = Parser;
 			sourceTree = "<group>";
@@ -242,8 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				0EDEE11D19AC98C000F12797 /* MainMenu.xib */,
-				0E3DA12319E019100039FBAA /* WindowArticle.xib */,
-				0EB78FF119AF8A2C0092C8F3 /* Preferences.xib */,
+				0E9D71D01A1FD5770014D7B2 /* Preference.xib */,
 			);
 			name = Ressource;
 			sourceTree = "<group>";
@@ -296,6 +295,16 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Cirdo;
 				TargetAttributes = {
+					0EDEE10419AC98C000F12797 = {
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 0;
+							};
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
 					0EDEE12519AC98C000F12797 = {
 						TestTargetID = 0EDEE10419AC98C000F12797;
 					};
@@ -325,14 +334,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E3DA12419E019100039FBAA /* WindowArticle.xib in Resources */,
 				0EBE69BC19AE242100AAA1D6 /* icone_19.png in Resources */,
 				0EDEE11319AC98C000F12797 /* InfoPlist.strings in Resources */,
 				0EDEE12119AC98C000F12797 /* Images.xcassets in Resources */,
-				0EB78FF219AF8A2C0092C8F3 /* Preferences.xib in Resources */,
 				0EDEE11919AC98C000F12797 /* Credits.rtf in Resources */,
 				0E32529C19B0E40300F5BC60 /* clem_pas_contente.png in Resources */,
 				0EDEE11F19AC98C000F12797 /* MainMenu.xib in Resources */,
+				0E9D71D11A1FD5770014D7B2 /* Preference.xib in Resources */,
 				0EBE69BE19AE259D00AAA1D6 /* 96d205095a8ed850.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -352,13 +360,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E69B83019E15B430078BA8B /* ZDSUpdate.m in Sources */,
+				0EA3D04319F570FE00B9DA0A /* ZDSArticle.m in Sources */,
 				0EDEE18619ACD54200F12797 /* ParserZSD.m in Sources */,
 				0EDEE11C19AC98C000F12797 /* ZDSAppDelegate.m in Sources */,
 				0EB78FF519AF9A290092C8F3 /* PreferenceController.m in Sources */,
+				0EE3E06C19F2C24500825A94 /* ZDSParserArticle.m in Sources */,
 				0EDEE14119AC99FE00F12797 /* HTMLParser.m in Sources */,
 				0EB78FF819AF9B1C0092C8F3 /* AppController.m in Sources */,
-				0EB78FFB19AF9FA50092C8F3 /* ConnectonParse.m in Sources */,
 				0EDEE11519AC98C000F12797 /* main.m in Sources */,
 				0EDEE14019AC99FE00F12797 /* HTMLNode.m in Sources */,
 			);
@@ -494,6 +502,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = ZDSNotification/ZDSNotification.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZDSNotification/ZDSNotification-Prefix.pch";
@@ -512,6 +521,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = ZDSNotification/ZDSNotification.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZDSNotification/ZDSNotification-Prefix.pch";

@@ -7,58 +7,48 @@
 //
 
 #import "PreferenceController.h"
-#import "ConnectonParse.h"
 #import "AppController.h"
 
 
 @implementation PreferenceController
 
 - (id) init{
-    self = [super initWithWindowNibName:@"Preferences"];
-    connexion = [[ConnectonParse alloc] init];
-    
+    self = [super initWithWindowNibName:@"Preference"];
+    _parser = [[ParserZSD alloc] init]; //Instance du parse;
     return self;
 }
 
 - (void)windowDidLoad{
-    
     [super windowDidLoad];
-    
-       
-    
 }
 
-
-- (IBAction)changeTimeRefresh:(id)sender{
-    [self updateTime:[sender floatValue]];
-    
-    
-}
-
-
-
-- (IBAction)changeSwitchImage:(id)sender{
-       [PreferenceController setPreferenceImageNotification:[checkImage state]];
-}
 
 - (IBAction)quitPanel:(id)sender {
     [hudWindows close];
+    [PreferenceController setPreferenceRefresh:[self time]];
+         //On envoie une notification au Parser comme quoi il faut modifier la valeur
+    NSNotificationCenter *nn = [NSNotificationCenter defaultCenter];
+    [nn postNotificationName:@"updateTime" object:nil];
+    
+
 }
 
 
 
 - (void) awakeFromNib{
-    [timeSlider setFloatValue:[PreferenceController preferenceRefresh]];
-    [checkImage setState:[PreferenceController preferenceImageNotification]];
-    
-    
-    
-    [buttonRelaunch setEnabled:NO];
-
+  
     [self performSelectorInBackground:@selector(chargeImage:) withObject:nil];
     
     [self update];
-    [self updateTime:[PreferenceController preferenceRefresh]];
+    
+    NSButton *closeButton = [hudWindows standardWindowButton:NSWindowCloseButton];
+    [closeButton setKeyEquivalentModifierMask:NSCommandKeyMask];
+    [closeButton setKeyEquivalent:@"w"];
+    [closeButton setTarget:self];
+    [closeButton setAction:@selector(quitPanel:)];
+     [self setTime:[PreferenceController preferenceRefresh]];
+    
+    
     
     
 }
@@ -86,22 +76,25 @@
     return [defaults objectForKey:CVersion];
 }
 
-- (IBAction)Relance:(id)sender {
-    
-    int processIdentifier = [[NSProcessInfo processInfo] processIdentifier];
-    NSString *myPath = [NSString stringWithFormat:@"%s",
-                        [[[NSBundle mainBundle] executablePath] fileSystemRepresentation]];
-    [NSTask launchedTaskWithLaunchPath:myPath arguments:[NSArray
-                                                         arrayWithObject:[NSString stringWithFormat:@"%d",
-                                                                          processIdentifier]]];
-    [NSApp terminate:self];
+- (void) setTime:(int)t{
+    time = t;
+    [self updateTime:(float) time];
+}
+
+- (int)time{
+    return time;
 }
 -(void)chargeImage:(id)param{
    
     @autoreleasepool {
         NSArray * result=nil;
-        imagePseudos = [[NSImage alloc] initByReferencingURL:[NSURL URLWithString:[connexion getUrlImagePseudos]]];
+        NSImage *image = [[NSImage alloc] initByReferencingURL:[_parser getUrlImagePseudos ]];
         
+        if (image != nil)
+        [_imageView setImage:image];
+        else
+        [_imageView setImage:[NSImage imageNamed:@"clem_pas_contente.png"]];
+
         [self performSelectorOnMainThread:@selector(update) withObject:result waitUntilDone:NO ];
         
         
@@ -110,12 +103,18 @@
 
     
 }
+
+
+
 -(void) updateTime:(float)time{
+    
     int minute = ceil(time /60);
     
     if (minute > 1 ){
         NSString *refresh = [[NSString alloc] initWithFormat:@"Rafraichissement toutes les %d minutes.",minute];
-        [labelRafraichissement setStringValue:refresh];
+        [_labelTime setStringValue:refresh];
+        
+        
         
     }else{
         NSString *refresh;
@@ -128,35 +127,25 @@
             refresh = [[NSString alloc] initWithFormat:@"Rafraichissement toutes les %ld seconde.",secondes];
             
             
-        }            [labelRafraichissement setStringValue:refresh];
+        }
+        [_labelTime setStringValue:refresh];
     }
     
-    [PreferenceController setPreferenceRefresh:time];
-    [buttonRelaunch setEnabled:YES];
+    
+  
     
     
 }
+
 -(void)update{
-    if ([connexion isConnextionZDS] || [connexion isConnextionZDS] !=0){
+    if ([_parser isConnextionZDS] || [_parser isConnextionZDS] !=0){
         
-        if (imagePseudos ==nil){
-            [progressIndicator setUsesThreadedAnimation:YES];
-            [progressIndicator startAnimation:nil];
-        }else{
-            [progressIndicator stopAnimation:nil];
-            [progressIndicator setHidden:YES];
-           
-            
-            [imageView setImage:imagePseudos];
-            
-        }
-        NSString *pseudo = [[NSString alloc]initWithFormat:@"%@, vous êtes connecté.",[connexion getPseudosZDS]];
+            NSString *pseudo = [[NSString alloc]initWithFormat:@"%@, vous êtes connecté.",[_parser  getPseudosZDS]];
         
-        [labelConnection setStringValue:pseudo];
+        [_labelPseudos setStringValue:pseudo];
         
     }else{
-        [imageView setImage:[NSImage imageNamed:@"clem_pas_contente.png"]];
-        [labelConnection setStringValue:@"Vous n'êtes pas connectés."];
+                [_labelPseudos setStringValue:@"Vous n'êtes pas connectés."];
     }
 
     

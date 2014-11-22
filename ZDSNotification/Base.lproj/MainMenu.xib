@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6245"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -13,7 +14,8 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="ZDSAppDelegate">
             <connections>
-                <outlet property="statusMenu" destination="1Zw-Zk-Xzp" id="f9R-MF-efG"/>
+                <outlet property="menuArticle" destination="QuO-kc-QhA" id="8in-vf-qvP"/>
+                <outlet property="statusMenu" destination="1Zw-Zk-Xzp" id="9hK-zE-x5p"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
@@ -24,6 +26,9 @@
                         <action selector="showPreferencePanel:" target="SSY-2K-9gU" id="uT3-rv-jIL"/>
                     </connections>
                 </menuItem>
+                <menuItem title="Articles..." id="QuO-kc-QhA">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
                 <menuItem isSeparatorItem="YES" id="Ews-Qa-kya"/>
                 <menuItem title="Quit " keyEquivalent="q" id="V3Q-os-7b3">
                     <connections>
@@ -31,8 +36,10 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="290.5" y="45.5"/>
+            <point key="canvasLocation" x="351.5" y="70.5"/>
         </menu>
         <customObject id="SSY-2K-9gU" customClass="AppController"/>
+        <customObject id="07I-Zf-whE" customClass="ParserZSD"/>
+        <userDefaultsController representsSharedInstance="YES" id="uhh-o1-xuk"/>
     </objects>
 </document>

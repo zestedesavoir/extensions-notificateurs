@@ -7,51 +7,29 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "ITSwitch/ITSwitch.h"
+#import "ParserZSD.h"
 @class ConnectonParse;
 
 @interface PreferenceController : NSWindowController{
-    __weak IBOutlet NSSlider *timeSlider;
-    __weak IBOutlet NSImageView *imageView;
-    __weak IBOutlet NSTextField *labelConnection;
-    __weak IBOutlet NSTextField *labelRafraichissement;
-    
-    __weak IBOutlet NSButton *buttonRelaunch;
-
-    __weak IBOutlet NSProgressIndicator *progressIndicator;
-    
     IBOutlet NSPanel *hudWindows;
-    __weak IBOutlet NSButton *checkImage;
-
-
-
-
-
-    
-
-    
-    ConnectonParse *connexion;
-    NSImage *imagePseudos;
-  
-
+    int time;
 }
-- (void)updateTime:(float)time;
-- (IBAction) changeTimeRefresh:(id)sender;
-- (IBAction)changeSwitchImage:(id)sender;
+@property (weak) IBOutlet NSImageView *imageView;
+
+@property (weak) IBOutlet NSTextField *labelPseudos;
+
+@property (weak) IBOutlet NSTextField *labelTime;
+@property (retain) ParserZSD *parser;
 
 - (IBAction)quitPanel:(id)sender;
-
 + (BOOL) preferenceImageNotification;
 + (void)setPreferenceImageNotification: (BOOL)a;
 +(float)preferenceRefresh;
 + (void) setPreferenceRefresh: (float)f;
 + (NSString *)preferenceVersion;
 + (void)setPreferenceVersion:(NSString *)v;
-- (IBAction)Relance:(id)sender;
--(void)chargeImage:(id)param;
--(void)update;
 
-
-
+- (void) setTime:(int)t;
+- (int)time;
 
 @end
