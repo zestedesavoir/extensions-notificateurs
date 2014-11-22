@@ -16,8 +16,9 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Préférences..." allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="18W-l5-daM" customClass="NSPanel">
+        <window title="Préférences..." allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" appearanceType="aqua" animationBehavior="default" id="18W-l5-daM" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES" nonactivatingPanel="YES" HUD="YES"/>
+            <windowCollectionBehavior key="collectionBehavior" canJoinAllSpaces="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="401" y="276" width="506" height="368"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
@@ -35,7 +36,7 @@
                     </textField>
                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="24w-7G-kZ4">
                         <rect key="frame" x="18" y="83" width="470" height="21"/>
-                        <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="600" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="UlI-Wi-jKa">
+                        <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="1" maxValue="600" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="UlI-Wi-jKa">
                             <connections>
                                 <binding destination="-2" name="value" keyPath="time" id="FdR-Le-aKP"/>
                             </connections>
@@ -58,9 +59,12 @@
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <binding destination="-2" name="value" keyPath="self.imageAffiche" id="Ibo-IO-H6b"/>
+                        </connections>
                     </button>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jXi-WX-h65">
-                        <rect key="frame" x="110" y="158" width="287" height="198"/>
+                        <rect key="frame" x="110" y="148" width="287" height="198"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="PM2-lp-UfW"/>
                     </imageView>
                 </subviews>

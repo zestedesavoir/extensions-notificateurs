@@ -12,10 +12,11 @@
     NSString *nomArticle;
     NSURL *urlArticle;
 }
-@property (readwrite, copy) NSString *nomArticle;
-@property (readwrite, copy) NSURL *urlArticle;
+@property (retain) NSString *nomArticle;
+@property (retain) NSURL *urlArticle;
+@property (retain) NSImage *imageArticle;
 
--(id)initWithNomArticle:(NSString*)nom Url:(NSURL *)url;
--(void)openUrl;
+-(id)initWithNomArticle:(NSString*)nom Url:(NSURL *)url Image:(NSImage *)image;
+
 
 @end

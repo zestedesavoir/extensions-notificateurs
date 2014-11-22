@@ -15,7 +15,7 @@
     
     IBOutlet NSMenu *statusMenu;
     
-    __weak IBOutlet NSMenu *menuArticle;
+    
     NSStatusItem *statusItem;
     NSTimer *timer;
     NSMutableArray *article;
@@ -24,6 +24,7 @@
 @property (assign) IBOutlet NSWindow *window;
 @property (retain)NSMutableArray *article;
 
+- (void)openUrl:(NSMenuItem *) item;
 - (NSUserNotification *) showNotficationWithTitle:(NSString *)title AndWithInformation :(NSString *)infomation withImageAuteurs: (NSString *)url;
 - (void) checkNew;
 -(BOOL)findArrayInArray:(NSMutableArray *)arrayInArray withArray:(NSMutableArray *)arrayValue;

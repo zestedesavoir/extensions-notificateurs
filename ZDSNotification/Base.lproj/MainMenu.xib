@@ -39,7 +39,6 @@
             <point key="canvasLocation" x="351.5" y="70.5"/>
         </menu>
         <customObject id="SSY-2K-9gU" customClass="AppController"/>
-        <customObject id="07I-Zf-whE" customClass="ParserZSD"/>
         <userDefaultsController representsSharedInstance="YES" id="uhh-o1-xuk"/>
     </objects>
 </document>

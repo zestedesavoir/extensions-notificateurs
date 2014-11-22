@@ -11,10 +11,10 @@
 
 
 @implementation PreferenceController
-
+@synthesize imageAffiche;
 - (id) init{
     self = [super initWithWindowNibName:@"Preference"];
-    _parser = [[ParserZSD alloc] init]; //Instance du parse;
+    _parser = [[ParserZSD alloc] initForInformationUtilisateur]; //Instance du parse;
     return self;
 }
 
@@ -26,6 +26,7 @@
 - (IBAction)quitPanel:(id)sender {
     [hudWindows close];
     [PreferenceController setPreferenceRefresh:[self time]];
+    [PreferenceController setPreferenceImageNotification:[self imageAffiche]];
          //On envoie une notification au Parser comme quoi il faut modifier la valeur
     NSNotificationCenter *nn = [NSNotificationCenter defaultCenter];
     [nn postNotificationName:@"updateTime" object:nil];
@@ -47,6 +48,7 @@
     [closeButton setTarget:self];
     [closeButton setAction:@selector(quitPanel:)];
      [self setTime:[PreferenceController preferenceRefresh]];
+    [self setImageAffiche:[PreferenceController preferenceImageNotification]];
     
     
     

@@ -13,9 +13,10 @@
 @interface PreferenceController : NSWindowController{
     IBOutlet NSPanel *hudWindows;
     int time;
+    
 }
 @property (weak) IBOutlet NSImageView *imageView;
-
+@property (assign) bool imageAffiche;
 @property (weak) IBOutlet NSTextField *labelPseudos;
 
 @property (weak) IBOutlet NSTextField *labelTime;
@@ -31,5 +32,6 @@
 
 - (void) setTime:(int)t;
 - (int)time;
+
 
 @end

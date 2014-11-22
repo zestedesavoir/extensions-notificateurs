@@ -35,6 +35,9 @@ extern NSString * const ZDSUpdateNotification;
     }
 @property (retain) NSTimer *timer;
 @property (retain) HTMLParser *parser;
+
+
+- (id) initForInformationUtilisateur;
 - (void)startTimer;
 - (void)stopTimer;
 - (void)reStartTimer;

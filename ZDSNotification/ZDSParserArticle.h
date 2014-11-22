@@ -14,7 +14,7 @@
 }
 
 -(NSMutableArray *) parseArticle;
-
+- (NSString *) parseString:(NSString *)string;
 
 
 @end

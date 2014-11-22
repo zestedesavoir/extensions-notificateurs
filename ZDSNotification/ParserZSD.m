@@ -27,6 +27,11 @@ NSString * const ZDSUpdateNotification = @"ZDSUpdateNotification";
         NSURL *tutorialsUrl = [NSURL URLWithString:@"http://zestedesavoir.com/"];
         
         NSData *tutorialsHtmlData = [NSData dataWithContentsOfURL:tutorialsUrl];
+        if (!tutorialsHtmlData){
+            NSAlert *alertInternet = [NSAlert alertWithMessageText:@"Erreur de connexion" defaultButton:@"Quitter" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Vous n'êtes pas connécté à Internet"];
+            [alertInternet runModal];
+            exit(173);
+        }
         NSString *string = [[NSString alloc] initWithUTF8String:[tutorialsHtmlData bytes]];
         while (!parser){
         NSError *error = nil;
@@ -36,13 +41,32 @@ NSString * const ZDSUpdateNotification = @"ZDSUpdateNotification";
         [self parseZDS]; //Parsing du zds
         
         
-        //Observateur
-        NSNotificationCenter *nn = [NSNotificationCenter defaultCenter];
-        [nn addObserver:self selector:@selector(reStartTimer) name:@"updateTime" object:nil];
-    }
+           }
     return self;
 }
 
+- (id) initForInformationUtilisateur{
+    self = [super init];
+    if (self){
+        _infosParserTopic = [[NSMutableArray alloc]init];
+        article = [[NSMutableArray alloc] init];
+        
+        NSURL *tutorialsUrl = [NSURL URLWithString:@"http://zestedesavoir.com/"];
+        
+        NSData *tutorialsHtmlData = [NSData dataWithContentsOfURL:tutorialsUrl];
+        NSString *string = [[NSString alloc] initWithUTF8String:[tutorialsHtmlData bytes]];
+        while (!parser){
+            NSError *error = nil;
+            parser = [[HTMLParser alloc] initWithString:string error:&error];
+        }
+        //Observateur
+        NSNotificationCenter *nn = [NSNotificationCenter defaultCenter];
+        [nn addObserver:self selector:@selector(reStartTimer) name:@"updateTime" object:nil];
+
+
+    }
+    return self;
+}
 - (void)parseZDS{
     // Example : file:///Users/Odric/Documents/ZDSNotificationHtml.html
     // Exampe : file:///Users/Odric/Documents/ZDSAvec1Message.html
@@ -72,8 +96,7 @@ NSString * const ZDSUpdateNotification = @"ZDSUpdateNotification";
     
     for (HTMLNode *input in inputNodes){
          NSMutableArray *array = [[NSMutableArray alloc] init];
-        NSLog(@"%@",array);
-        if ([[input rawContents] rangeOfString:@"username"].location != NSNotFound){ //On cherche dans les blocs le mot username
+            if ([[input rawContents] rangeOfString:@"username"].location != NSNotFound){ //On cherche dans les blocs le mot username
             //On fait un liste qui contient tout les informations
             
             
@@ -226,7 +249,7 @@ NSString * const ZDSUpdateNotification = @"ZDSUpdateNotification";
     
     for (NSMutableArray *arrayIn in arrayInArray){
         
-        if ([[arrayIn objectAtIndex:2] isEqualToString:[arrayValue objectAtIndex:2]]){ //C'est le lien qui fait toute la difference
+        if ([[arrayIn objectAtIndex:2] isEqualTo:[arrayValue objectAtIndex:2]]){ //C'est le lien qui fait toute la difference
             findIsYes = YES;
             
             
@@ -241,6 +264,7 @@ NSString * const ZDSUpdateNotification = @"ZDSUpdateNotification";
 //----------
 
 -(void)updateNotificationWithArray: (NSMutableArray *)array{
+    NSLog(@"Envoie une notification");
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     NSDictionary *d = [NSDictionary dictionaryWithObject:array forKey:@"ZDSParser"];
     [nc postNotificationName:ZDSUpdateNotification object:nil userInfo:d];
