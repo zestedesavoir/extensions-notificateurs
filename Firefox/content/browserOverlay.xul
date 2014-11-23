@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet type="text/css" href="chrome://global/skin/" ?>
+<?xml-stylesheet href="chrome://zds-notif/skin/toolbar-button.css" type="text/css"?>
+
+<!DOCTYPE overlay SYSTEM
+  "chrome://zds-notif/locale/browserOverlay.dtd">
+
+<overlay id="zds-notif-browser-overlay"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  xmlns:html="http://www.w3.org/1999/xhtml">
+
+  <script type="application/x-javascript"
+    src="chrome://zds-notif/content/browserOverlay.js" />
+
+  <toolbarpalette id="BrowserToolbarPalette">
+  <toolbarbutton id="zds-notif-button" 
+    label="ZdS Notificateur"
+    class="toolbarbutton-1"
+    tooltiptext="&zds-notif.toolbar-label;"
+    type="menu"
+    image="chrome://zds-notif/skin/images/icone_20.png"
+    oncommand="this.open = true;"
+    oncontextmenu="this.open = true;"
+    rulesetsApplied="0">
+      <menupopup id="zds-notif-popup" connect="0">
+      <html:div id="extension"><html:div class="temp">
+      <html:div id="icons">
+      <html:button onclick="ZDSNotif.BrowserOverlay.showNotif = true;" id="icolink">
+        <html:img src="chrome://zds-notif/skin/images/icone_48_not.png" />
+        <html:div class="notiflab">0</html:div>
+      </html:button>
+      <html:button onclick="ZDSNotif.BrowserOverlay.showNotif = false;" id="icolink">
+        <html:img src="chrome://zds-notif/skin/images/icone_48_mp.png" />
+        <html:div class="mplab">0</html:div>
+      </html:button>
+      </html:div>
+      <html:div class="dropdown">
+      </html:div>
+      </html:div></html:div>
+      </menupopup>
+  </toolbarbutton>
+  </toolbarpalette>
+</overlay>

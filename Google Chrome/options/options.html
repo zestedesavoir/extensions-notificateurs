@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ZdS Notificateur — Options</title>
+		<link rel="stylesheet" href="options.css" />
+	</head>
+	 
+	<body>
+		<div class="content">
+			<header>
+				<div class="container">
+					<h1>Options de l'extension</h1>
+				</div>
+			</header>
+			<div class="container">
+				<div class="options">
+					<div class="champ">
+						<label for="interval">Intervalle de rafraîchissement (en minutes) </label>
+						<input type="number" name="interval" id="interval" min="1" max="60" placeholder=" min." required/>
+					</div>
+					<div class="champ">
+						<label for="openListe"><input type="checkbox" name="openListe" id="openListe" /> Ouvrir une liste de notifications ?</label>
+						<span class="complement">Sinon, un clic ouvrira l'accueil de ZdS</span>
+					</div>
+					<div class="sub subPopupFields">
+						<div class="champ">
+							<label for="newTab"><input type="checkbox" name="newTab" id="newTab" /> Ouvrir les liens dans un nouvel onglet ?</label>
+							<span class="complement">Les notifications s'ouvrent de toute façon dans un nouvel onglet si la page courante n'est pas une page de ZdS</span>
+						</div>
+						<div class="champ">
+							<label for="allNotifs"><input type="checkbox" name="allNotifs" id="allNotifs"/> Afficher une ligne "Toutes mes notifications" ?</label>
+						</div>
+						<!-- <div class="champ">
+							<label for="ZdSLink"><input type="checkbox" name="ZdSLink" id="ZdSLink"/> Afficher une ligne "Ouvrir ZdS" ?</label>
+						</div> -->
+						<div class="champ">
+							<label for="autoclosePopup"><input type="checkbox" name="autoclosePopup" id="autoclosePopup"/> Fermer automatiquement la popup ?</label>
+							<span class="complement">La popup se fermera automatiquement lors d'un clic sur une notification</span>
+						</div>
+						<!-- <div class="champ">
+							<label for="archiveAllLink"><input type="checkbox" name="archiveAllLink" id="archiveAllLink"/> Afficher une ligne "Tout archiver" ?</label>
+						</div> -->
+					</div>
+					<div class="champ">
+						<label for="notifNative"><input type="checkbox" name="notifNative" id="notifNative" /> Afficher les notifications du bureau ?</label>
+						<span class="complement">Attention, cette option a un comportement incomplet sur Linux et Mac (limitation de Chrome)</span>
+					</div>
+					<div class="sub subNotifFields">
+					<!--
+						<div class="champ">
+							<label for="detailedNotifs"><input type="checkbox" name="detailedNotifs" id="detailedNotifs"/> Utiliser des notifications d&eacute;taill&eacute;es ?</label>
+							<span class="complement"><span class="experimental">EXPERIMENTAL</span> Les notifications afficheront plus d'informations (plus long &agrave; charger)</span>
+						</div>
+					-->
+						<div class="champ priority">
+							<div class="pull-left">
+								<label for="priorityNotif">Priorité des notifications (<strong>Forum</strong>)</label>
+								<span class="complement">Les notifications seront plus ou moins visibles</span>
+							</div>
+							<div class="pull-right">
+								<input type="range" name="priorityNotif" id="priorityNotif" min="-2" max="2" step="1" value="0" />
+								<div class="value"></div>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="champ priority">
+							<div class="pull-left">
+								<label for="priorityMP">Priorité des notifications (<strong title="Messages Privés">MP</strong>)</label>
+								<span class="complement">Les notifications seront plus ou moins visibles</span>
+							</div>
+							<div class="pull-right">
+								<input type="range" name="priorityMP" id="priorityMP" min="-2" max="2" step="1" value="0" />
+								<div class="value"></div>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div class="champ">
+						<label for="playSon"><input type="checkbox" name="playSon" id="playSon" /> Jouer un son lors d'une nouvelle notification ?</label>
+						<span class="complement">Un son sera joué pour vous alerter d'une nouvelle notification</span>
+					</div>
+					<div class="champ hidden">
+						<label for="tweet"><input type="checkbox" name="tweet" id="tweet" /> Récupérer les tweets du compte @ZesteDeSavoir ?</label>
+						<span class="complement">Une notification apparaitra lors d'un nouveau tweet de Zeste de Savoir</span>
+					</div>
+
+					<div class="form-buttons">
+						<input type="button" id="enregistrer" value="Enregistrer" />
+						<input type="button" id="reset" value="Reset" />
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div id="connecteComme" class="options">
+					<a href="#">
+						<div>Vous êtes connecté(e) sur Zeste de Savoir en tant que <strong>(chargement...)</strong></div>
+						<img src="" alt="">
+					</a>
+				</div>
+			</div>
+			
+			<div class="footerSubstitutor"></div> <!-- dat nom -->
+		</div>
+		<footer>
+			<div class="container">
+				<p>
+					<a href="https://github.com/Eskimon/ZdS_Notificateur">Voir le projet GitHub</a>
+				</p>
+				<p>
+					Créé par Eskimon (<a href="http://zestedesavoir.com/membres/voir/Eskimon">ZdS</a>, <a href="http://twitter.com/Eskimon_fr">Twitter</a>), Sandhose (<a href="http://zestedesavoir.com/membres/voir/Sandhose">ZdS</a>, <a href="https://twitter.com/Sandhose">Twitter</a>) &amp; viki53 (<a href="http://zestedesavoir.com/membres/voir/viki53">ZdS</a>, <a href="https://twitter.com/viki53">Twitter</a>)
+				</p>
+				<p>
+					Illustré par Piwit (<a href="http://zestedesavoir.com/membres/voir/Piwit/">ZdS</a>, <a href="https://twitter.com/Choucroute3000">Twitter</a>)
+				</p>
+			</div>
+		</footer>
+		<script src="../common.js"></script>
+		<script src="options.js"></script>
+	</body>
+</html>

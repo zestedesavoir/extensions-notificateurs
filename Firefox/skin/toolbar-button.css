@@ -1,0 +1,145 @@
+#zds-notif-button .toolbarbutton-menu-dropmarker { display: none }
+
+#extension
+{
+  background:#19526c;
+}
+
+#icons
+{
+  border-bottom: 1px solid #396a81;
+}
+
+#icolink
+{
+  position:relative;
+  background:#19526c;
+  width:49%;
+  height:60px;
+  line-height:60px;
+  text-align:center;
+  vertical-align: center;
+  border:transparent;
+  margin:0;
+  padding:0;
+}
+
+#icolink img
+{
+  position:relative;
+  width:30px;
+  height:30px;
+}
+
+#icolink div
+{
+  position:absolute;
+  width:15px;
+  height:15px;
+  font-size:10px;
+  text-align:center;
+  line-height:13px;
+  vertical-align:center;
+  color:#ffffff;
+  background-color:#000;
+  margin-top: -55px;
+  margin-left:55%;
+  background:#c0392b;
+  border-radius:16px;
+}
+
+#icolink:hover{background:#396a81;}
+
+#https-everywhere-button:([connected="0"]) #icolink {
+  visibility: hidden;
+  width:100%;
+}
+
+#https-everywhere-button:([connected="1"]) #icolink {
+  visibility: visible;
+}
+
+.dropdown
+{
+  width: 350px;
+  max-height: 400px;
+  overflow:auto;
+  text-align:center;
+  margin:0;
+  padding:0;
+  font-size:14px;
+  color: #ffffff;
+  background-color:#396a81;
+  border-bottom:3px solid #F8AD32;
+  line-height:30px;
+  vertical-align: middle;
+}
+
+.dropdown-link-all
+{
+  display:block;
+  height:30px;
+  background-color:#396a81;
+}
+
+.dropdown-list
+{
+  width:100%;
+  background-color: #19526c;  
+  list-style-type:none;
+  margin:0;
+  padding:0;
+  text-align:left;
+}
+
+li
+{
+  height:60px;
+  border-bottom: 1px solid #396a81;  
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-empty-message
+{
+  color: #85a3b1;
+  height: 60px;
+  line-height:60px;
+  vertical-align: middle;
+  text-align:center;
+}
+
+.avatar
+{
+  float: left;
+  height: 30px;
+  width: 30px;
+}
+
+.username
+{
+  display: block;
+  float: left;
+  color: #95D7F5;
+  width: 55%;
+  overflow: hidden;
+  text-overflow: hidden;
+  white-space: nowrap;
+}
+
+.date 
+{
+  width: 30%;
+  color: #5196b6;
+  float: right;
+  padding: 0px 10px 0 0;
+}
+
+.topic
+{
+  width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align:left;
+  padding-left:10px;
+}
