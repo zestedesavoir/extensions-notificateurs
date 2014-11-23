@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+            <connections>
+                <outlet property="delegate" destination="Voe-Tx-rLC" id="GzC-gU-4Uq"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customObject id="Voe-Tx-rLC" customClass="ZDSAppDelegate">
+            <connections>
+                <outlet property="menuArticle" destination="QuO-kc-QhA" id="8in-vf-qvP"/>
+                <outlet property="statusMenu" destination="1Zw-Zk-Xzp" id="9hK-zE-x5p"/>
+            </connections>
+        </customObject>
+        <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <menu id="1Zw-Zk-Xzp">
+            <items>
+                <menuItem title="Préférences..." keyEquivalent="," id="2i2-a9-bSZ">
+                    <connections>
+                        <action selector="showPreferencePanel:" target="SSY-2K-9gU" id="uT3-rv-jIL"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Articles..." id="QuO-kc-QhA">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="Ews-Qa-kya"/>
+                <menuItem title="Quit " keyEquivalent="q" id="V3Q-os-7b3">
+                    <connections>
+                        <action selector="terminate:" target="-1" id="vOc-9K-rW6"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="351.5" y="70.5"/>
+        </menu>
+        <customObject id="SSY-2K-9gU" customClass="AppController"/>
+        <userDefaultsController representsSharedInstance="YES" id="uhh-o1-xuk"/>
+    </objects>
+</document>
