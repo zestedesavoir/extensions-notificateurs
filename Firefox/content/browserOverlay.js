@@ -1,5 +1,3 @@
-//TODO : Afficher les MP, quitter au clic d'une notification ?, Refaire le code pour qu'il ressemble plus à la version chrome ? Notifications ?
-
 if ("undefined" == typeof(ZDSNotif)) {
   var ZDSNotif = {
   };
@@ -11,17 +9,10 @@ ZDSNotif.BrowserOverlay = {
   init: function() 
   {
     window.removeEventListener("load", ZDSNotif.BrowserOverlay.init, false);
-
-    /*//Ajouter un système de préférence (pour régler les listeners)
-    var prefs = Components.classes["@mozilla.org/preferences-service;1"]
-                          .getService(Components.interfaces.nsIPrefService);
-    prefs = prefs.getBranch("extensions.zds-notif.");
-    prefs.addObserver("", this, false);*/
-
     var timer = Components.classes["@mozilla.org/timer;1"]
                           .createInstance(Components.interfaces.nsITimer);
-    timer.initWithCallback(ZDSNotif.BrowserOverlay.updateUI, 60000, Components.interfaces.nsITimer.TYPE_REPEATING_SLACK);
-    
+    timer.initWithCallback(ZDSNotif.BrowserOverlay.updateUI, 60000,  
+                           Components.interfaces.nsITimer.TYPE_REPEATING_SLACK);    
     ZDSNotif.BrowserOverlay.updateUI();
   },
   updateUI: function()
@@ -39,7 +30,7 @@ ZDSNotif.BrowserOverlay = {
       return body;
     }
 
-    //Lorsque l'on clic sur un lien. Désactive l'évènement (pour éviter un bug) et ouvre un nouvel onglet.
+    //When we click on a link. Remove the event and open a new tab.
     function linkClick(e) {
       var win = Components.classes['@mozilla.org/appshell/window-mediator;1']
                   .getService(Components.interfaces.nsIWindowMediator)
@@ -59,12 +50,12 @@ ZDSNotif.BrowserOverlay = {
       var oReq = new XMLHttpRequest();
       oReq.open("GET", 'http://zestedesavoir.com', true);
       oReq.onload = function () {
-        //Parse la page
+        //Parser
         var DOMPars = HTMLParser(this.responseText.replace(/href=\"\//g, 'href="http://zestedesavoir.com/'));
         var isConnected = false;
         for(var i = 0; i < DOMPars.getElementsByClassName('dropdown').length; ++i)
         {
-          //Notifications
+          //Notification
           if(DOMPars.getElementsByClassName('dropdown')[i].innerHTML.indexOf('Notifications') != -1)
           {
             var htmlNotif = DOMPars.getElementsByClassName('dropdown')[i].innerHTML;
@@ -96,7 +87,7 @@ ZDSNotif.BrowserOverlay = {
 
             isConnected = true;
           }
-          //Messagerie
+          //PM
           if(DOMPars.getElementsByClassName('dropdown')[i].innerHTML.indexOf('Messagerie') != -1)
           {
             var htmlNotif = DOMPars.getElementsByClassName('dropdown')[i].innerHTML;
@@ -135,7 +126,7 @@ ZDSNotif.BrowserOverlay = {
           }
         }
         var toParse = dropdown.innerHTML;
-        //Si on est déconnecté.
+        //If we are disconnected
         if(!isConnected)
         {
           dropdown.innerHTML = '<html:a href="http://zestedesavoir.com/membres/connexion/?next=/" class="dropdown-link-all">Connexion</html:a>';
@@ -154,12 +145,12 @@ ZDSNotif.BrowserOverlay = {
         }
 
         var Anchors = document.getElementsByTagName("html:a");
-	for (var i = 0; i < Anchors.length ; i++)
-	  Anchors[i].addEventListener("click", linkClick, false);
+	      for(var i = 0; i < Anchors.length ; i++)
+	        Anchors[i].addEventListener("click", linkClick, false);
         
         var tempAnchors = document.getElementsByTagName("a");
-	for (var i = 0; i < tempAnchors.length ; i++)
-	  tempAnchors[i].addEventListener("click", linkClick, false);
+	      for(var i = 0; i < tempAnchors.length ; i++)
+	        tempAnchors[i].addEventListener("click", linkClick, false);
       };
       oReq.send(null);
     }
