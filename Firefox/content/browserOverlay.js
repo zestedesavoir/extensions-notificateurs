@@ -48,10 +48,10 @@ ZDSNotif.BrowserOverlay = {
       var toolbarbutton = document.getElementById('zds-notif-button');
       var dropdown = document.querySelector('.dropdown');
       var oReq = new XMLHttpRequest();
-      oReq.open("GET", 'http://zestedesavoir.com', true);
+      oReq.open("GET", 'https://zestedesavoir.com', true);
       oReq.onload = function () {
         //Parser
-        var DOMPars = HTMLParser(this.responseText.replace(/href=\"\//g, 'href="http://zestedesavoir.com/'));
+        var DOMPars = HTMLParser(this.responseText.replace(/href=\"\//g, 'href="https://zestedesavoir.com/'));
         var isConnected = false;
         for(var i = 0; i < DOMPars.getElementsByClassName('dropdown').length; ++i)
         {
@@ -79,8 +79,8 @@ ZDSNotif.BrowserOverlay = {
               htmlNotif = htmlNotif.replace(/<\/li/g, '</html:li');
               htmlNotif = htmlNotif.replace(/<a/g, '<html:a');
               htmlNotif = htmlNotif.replace(/<\/a/g, '</html:a');
-              htmlNotif = htmlNotif.replace(/href=\"\//g, 'href="http://zestedesavoir.com/');
-              htmlNotif = htmlNotif.replace(/src=\"\//g, 'src="http://zestedesavoir.com/');
+              htmlNotif = htmlNotif.replace(/href=\"\//g, 'href="https://zestedesavoir.com/');
+              htmlNotif = htmlNotif.replace(/src=\"\//g, 'src="https://zestedesavoir.com/');
               htmlNotif = htmlNotif.replace('<img(.*)>', '');
               dropdown.innerHTML = htmlNotif;
             }
@@ -117,8 +117,8 @@ ZDSNotif.BrowserOverlay = {
               htmlNotif = htmlNotif.replace(/<\/li/g, '</html:li');
               htmlNotif = htmlNotif.replace(/<a/g, '<html:a');
               htmlNotif = htmlNotif.replace(/<\/a/g, '</html:a');
-              htmlNotif = htmlNotif.replace(/href=\"\//g, 'href="http://zestedesavoir.com/');
-              htmlNotif = htmlNotif.replace(/src=\"\//g, 'src="http://zestedesavoir.com/');
+              htmlNotif = htmlNotif.replace(/href=\"\//g, 'href="https://zestedesavoir.com/');
+              htmlNotif = htmlNotif.replace(/src=\"\//g, 'src="https://zestedesavoir.com/');
               htmlNotif = htmlNotif.replace('<img(.*)>', '');
               dropdown.innerHTML = htmlNotif;
             }
@@ -129,7 +129,7 @@ ZDSNotif.BrowserOverlay = {
         //If we are disconnected
         if(!isConnected)
         {
-          dropdown.innerHTML = '<html:a href="http://zestedesavoir.com/membres/connexion/?next=/" class="dropdown-link-all">Connexion</html:a>';
+          dropdown.innerHTML = '<html:a href="https://zestedesavoir.com/membres/connexion/?next=/" class="dropdown-link-all">Connexion</html:a>';
           toolbarbutton.setAttribute('image', 'chrome://zds-notif/skin/images/icone_20_logout.png');
           var mplab = document.querySelector('.mplab');
           var notiflab = document.querySelector('.notiflab');
@@ -139,9 +139,9 @@ ZDSNotif.BrowserOverlay = {
         else
         {
           if(ZDSNotif.BrowserOverlay.showNotif)
-            dropdown.innerHTML += '<html:a href="http://zestedesavoir.com/forums/notifications/" class="dropdown-link-all">Toutes les notifications</html:a>';
+            dropdown.innerHTML += '<html:a href="https://zestedesavoir.com/forums/notifications/" class="dropdown-link-all">Toutes les notifications</html:a>';
           else
-            dropdown.innerHTML += '<html:a href="http://zestedesavoir.com/mp/" class="dropdown-link-all">Tous les messages</html:a>';
+            dropdown.innerHTML += '<html:a href="https://zestedesavoir.com/mp/" class="dropdown-link-all">Tous les messages</html:a>';
         }
 
         var Anchors = document.getElementsByTagName("html:a");
