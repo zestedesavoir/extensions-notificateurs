@@ -1,146 +1,127 @@
-#zds-notif-button .toolbarbutton-menu-dropmarker { display: none }
+#zds-notif-button .toolbarbutton-menu-dropmarker { display: none; }
 
-#extension
-{
-  background:#19526c;
+#extension { background: #19526c; }
+
+#icons {
+    border-bottom: 1px solid #396a81;
 }
 
-#icons
-{
-  border-bottom: 1px solid #396a81;
+#icolink {
+    position: relative;
+    background: #19526c;
+    width: 49%;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    vertical-align: center;
+    border: transparent;
+    margin: 0;
+    padding: 0;
+    padding-top: 7px;
 }
 
-#icolink
-{
-  position:relative;
-  background:#19526c;
-  width:49%;
-  height:60px;
-  line-height:60px;
-  text-align:center;
-  vertical-align: center;
-  border:transparent;
-  margin:0;
-  padding:0;
-  padding-top:7px;
+#icolink img {
+    width: 30px;
+    height: 30px;
 }
 
-#icolink img
-{
-  position:relative;
-  width:30px;
-  height:30px;
+#icolink .notiflab, #icolink .mplab {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    line-height: 13px;
+    top: 10px;
+    right: 59px;
+    border-radius: 16px;
+    text-align: center;
+    font-size: 10px;
+    background: #c0392b;
+    color: #ffffff;
 }
 
-#icolink div
-{
-  position:absolute;
-  width:15px;
-  height:15px;
-  font-size:10px;
-  text-align:center;
-  line-height:13px;
-  vertical-align:center;
-  color:#ffffff;
-  background-color:#000;
-  margin-top: -55px;
-  margin-left:55%;
-  background:#c0392b;
-  border-radius:16px;
-}
-
-#icolink:hover{background:#396a81;}
+#icolink:hover{ background: #396a81; }
 
 #https-everywhere-button:([connected="0"]) #icolink {
-  visibility: hidden;
-  width:100%;
+    visibility: hidden;
+    width: 100%;
 }
 
 #https-everywhere-button:([connected="1"]) #icolink {
-  visibility: visible;
+    visibility: visible;
 }
 
-.dropdown
-{
-  width: 350px;
-  max-height: 400px;
-  overflow:auto;
-  text-align:center;
-  margin:0;
-  padding:0;
-  font-size:14px;
-  color: #ffffff;
-  background-color:#396a81;
-  border-bottom:3px solid #F8AD32;
-  line-height:30px;
-  vertical-align: middle;
+.dropdown {
+    width: 350px;
+    max-height: 400px;
+    line-height: 30px;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    overflow: auto;
+    border-bottom: 3px solid #f8ad32;
+    text-align: center;
+    font-size: 14px;
+    background: #396a81;
+    color: #ffffff;
 }
 
-.dropdown-link-all
-{
-  display:block;
-  height:30px;
-  background-color:#396a81;
+.dropdown-link-all {
+    display: block;
+    height: 30px;
+    background: #396a81;
 }
 
-.dropdown-list
-{
-  width:100%;
-  background-color: #19526c;  
-  list-style-type:none;
-  margin:0;
-  padding:0;
-  text-align:left;
+.dropdown-list {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    list-style-type: none;
+    background: #19526c;
 }
 
-li
-{
-  height:60px;
-  border-bottom: 1px solid #396a81;  
-  overflow: hidden;
-  text-overflow: ellipsis;
+li {
+    height: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-bottom: 1px solid #396a81;
 }
 
-.dropdown-empty-message
-{
-  color: #85a3b1;
-  height: 60px;
-  line-height:60px;
-  vertical-align: middle;
-  text-align:center;
+.dropdown-empty-message {
+    height: 60px;
+    line-height: 60px;
+    vertical-align: middle;
+    text-align: center;
+    color: #85a3b1;
 }
 
-.avatar
-{
-  float: left;
-  height: 30px;
-  width: 30px;
+.avatar {
+    width: 30px;
+    height: 30px;
+    float: left;
 }
 
-.username
-{
-  display: block;
-  float: left;
-  color: #95D7F5;
-  width: 55%;
-  overflow: hidden;
-  text-overflow: hidden;
-  white-space: nowrap;
+.username {
+    display: block;
+    width: 55%;
+    float: left;
+    overflow: hidden;
+    text-overflow: hidden;
+    white-space: nowrap;
+    color: #95d7f5;
 }
 
-.date 
-{
-  width: 30%;
-  color: #5196b6;
-  float: right;
-  padding: 0px 10px 0 0;
+.date {
+    width: 30%;
+    float: right;
+    padding: 0px 10px 0 0;
+    color: #5196b6;
 }
 
-.topic
-{
-  width: 80%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align:left;
-  padding-left:10px;
+.topic {
+    width: 80%;
+    padding-left: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
 }
