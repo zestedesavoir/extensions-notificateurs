@@ -4,11 +4,12 @@ html, body, h1, h2, h3, h4, h5, h6, p {
 }
 
 * {
-    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-    background: #ECECEC;
+    background: #ececec;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
 }
@@ -50,7 +51,7 @@ header h1 {
     line-height: 40px;
     font-size: 2em;
     padding: 82px 0 6px 142px;
-    color: rgb(9,33,49);
+    color: #092131;
 }
 
 section {
@@ -69,22 +70,19 @@ section {
 }
 
 .github-btns .wrapper .button {
-    margin: auto;
     width: 80px;
+    margin: auto;
 }
 
 .links {
-    border-top: solid 1px #E3E3E3;
-    border-bottom: solid 1px #E3E3E3;
     height: 62px;
-    line-height: 20px;
-    background-color: #f8f8f4;
     padding: 20px;
-    color: #707070;
+    line-height: 20px;
+    border-top: solid 1px #e3e3e3;
+    border-bottom: solid 1px #e3e3e3;
     text-align: center;
-}
-
-.links a {
+    background-color: #f8f8f4;
+    color: #707070;
 }
 
 .authors {
@@ -95,8 +93,8 @@ section {
     width: 45%;
     margin-left: 5%;
     padding: 6px;
-    background-color: white;
-    border-bottom: solid 2px #4D4D4D;
+    border-bottom: solid 2px #4d4d4d;
+    background-color: #fff;
 }
 
 .authors .author.eskimon {
@@ -134,6 +132,6 @@ section {
 }
 
 .author .text h3 {
-    color: #222;
     margin: 2px 0;
+    color: #222;
 }
