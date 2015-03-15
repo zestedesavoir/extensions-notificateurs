@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0610"
+   LastUpgradeVersion = "0620"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -34,6 +34,20 @@
                ReferencedContainer = "container:iClem.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "0EA91AD81AA24AB200083D8A"
+               BuildableName = "iClem Tests.xctest"
+               BlueprintName = "iClem Tests"
+               ReferencedContainer = "container:iClem.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -49,6 +63,16 @@
                BlueprintIdentifier = "0EF6E63C1A6A5AB700FE7035"
                BuildableName = "iClemTests.xctest"
                BlueprintName = "iClemTests"
+               ReferencedContainer = "container:iClem.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "0EA91AD81AA24AB200083D8A"
+               BuildableName = "iClem Tests.xctest"
+               BlueprintName = "iClem Tests"
                ReferencedContainer = "container:iClem.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -72,7 +96,8 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0EF6E62A1A6A5AB600FE7035"
@@ -90,7 +115,8 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0EF6E62A1A6A5AB600FE7035"

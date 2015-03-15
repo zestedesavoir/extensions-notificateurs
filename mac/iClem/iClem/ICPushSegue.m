@@ -4,6 +4,8 @@
 //
 
 #import "ICPushSegue.h"
+#import "iClem-Bridging-Header.h"
+#import <iClem-Swift.h>
 
 @import QuartzCore;
 
@@ -15,7 +17,10 @@
 #define kPushAnimationDuration 0.3f
 
 - (void)animatePresentationOfViewController:(NSViewController *)viewController fromViewController:(NSViewController *)fromViewController
+
 {
+    [fromViewController viewDidDisappear];
+    
     viewController.view.frame = NSMakeRect(NSWidth(fromViewController.view.frame), // x
                                            0, // y
                                            NSWidth(fromViewController.view.frame), // width
@@ -25,8 +30,7 @@
     [fromViewController.view addSubview:viewController.view];
     
     NSRect destinationRect = fromViewController.view.frame;
-    
-    [fromViewController.view addSubview:viewController.view];
+   
     
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
         context.duration = kPushAnimationDuration;
@@ -42,6 +46,7 @@
                                         0, // y
                                         NSWidth(fromViewController.view.frame), // width
                                         NSHeight(fromViewController.view.frame)); // height
+    [fromViewController viewDidAppear];
     
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
         context.duration = kPushAnimationDuration;

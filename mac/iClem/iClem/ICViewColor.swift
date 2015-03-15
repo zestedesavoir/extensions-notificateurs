@@ -10,12 +10,21 @@ import Cocoa
 
 class ICViewColor: NSView {
 
+    override func awakeFromNib() {
+        self.wantsLayer = true
+    }
     var colorBackground:NSColor!
+    
     override func drawRect(dirtyRect: NSRect) {
         if let color = colorBackground{
             color.set();
             }
         NSRectFill(dirtyRect)
+        self.acceptsFirstResponder
     }
+    
+   
+    
+
     
 }

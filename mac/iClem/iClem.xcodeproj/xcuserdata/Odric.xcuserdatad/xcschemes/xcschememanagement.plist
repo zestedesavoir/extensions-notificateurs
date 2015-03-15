@@ -6,12 +6,29 @@
 	<dict>
 		<key>iClem.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0E7701D21AB42D1600E75F34</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0EA91AD81AA24AB200083D8A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0EEAE8421AB48C3F00AA3F93</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0EF6E62A1A6A5AB600FE7035</key>
 		<dict>
 			<key>primary</key>

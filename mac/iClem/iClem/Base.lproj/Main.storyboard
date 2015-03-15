@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="j2z-BG-gdX">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="j2z-BG-gdX">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
@@ -22,6 +22,12 @@
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
                                         <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
+                                        <menuItem title="Preferences du compte..." id="8iV-m2-mRN">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <segue destination="myi-Db-hEz" kind="show" id="FyP-hQ-wTK"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
                                         <menuItem title="Services" id="NMo-om-nkz">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -101,6 +107,12 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="revertDocumentToSaved:" target="Ady-hI-5gd" id="iJ3-Pv-kwq"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="TimeLine" id="wBu-pj-yxo">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <segue destination="ncP-Nf-2qz" kind="show" id="v2N-Pa-3YK"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="aJh-i4-bef"/>
@@ -647,14 +659,219 @@
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
         <!--Window Controller-->
+        <scene sceneID="gyr-Dw-mK6">
+            <objects>
+                <windowController id="ncP-Nf-2qz" customClass="ICWindowTimelineController" customModule="iClem" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Ui5-fC-aOA">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+                    </window>
+                    <connections>
+                        <segue destination="bTU-gh-EjJ" kind="relationship" relationship="window.shadowedContentViewController" id="cDB-co-Jek"/>
+                    </connections>
+                </windowController>
+                <customObject id="muh-41-cls" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="789" y="-23"/>
+        </scene>
+        <!--View Time Line Controller-->
+        <scene sceneID="hJv-pr-pFa">
+            <objects>
+                <viewController id="bTU-gh-EjJ" customClass="ICViewTimeLineController" customModule="iClem" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" wantsLayer="YES" id="Rha-vd-W5g">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Otb-fx-txS">
+                                <rect key="frame" x="20" y="87" width="440" height="96"/>
+                            </customView>
+                        </subviews>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="layer.backgroundColor">
+                                <color key="value" red="0.086274509803921567" green="0.21568627450980393" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </viewController>
+                <customObject id="ijn-i0-rod" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1418" y="-23"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="a6H-t6-Lpq">
+            <objects>
+                <windowController id="myi-Db-hEz" sceneMemberID="viewController">
+                    <window key="window" title="Préférences du compte..." allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="MvE-lf-WrP" customClass="ICWindow" customModule="iClem" customModuleProvider="target">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+                    </window>
+                    <connections>
+                        <segue destination="izB-UU-Hd4" kind="relationship" relationship="window.shadowedContentViewController" id="XYd-PK-jF2"/>
+                    </connections>
+                </windowController>
+                <customObject id="jwC-1B-l6w" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="79" y="-531"/>
+        </scene>
+        <!--View Preferences Compte Controller-->
+        <scene sceneID="fqK-Ms-C5d">
+            <objects>
+                <viewController id="izB-UU-Hd4" customClass="ICViewPreferencesCompteController" customModule="iClem" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="9SV-Vi-Z7L">
+                        <rect key="frame" x="0.0" y="0.0" width="416" height="399"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lvh-18-leJ">
+                                <rect key="frame" x="173" y="307" width="71" height="72"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="aYC-LR-Xgp"/>
+                            </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gqV-Tu-fs1">
+                                <rect key="frame" x="152" y="277" width="112" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" placeholderString="Username" id="Q9p-6l-DON">
+                                    <font key="font" size="18" name=".HelveticaNeueDeskInterface-Regular"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3pt-B1-sYs">
+                                <rect key="frame" x="20" y="149" width="376" height="114"/>
+                                <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Votre biographie au format Markdown" drawsBackground="YES" id="pAT-8B-W2N">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YCE-xf-HR9">
+                                <rect key="frame" x="20" y="100" width="321" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Lien vers votre site internet" drawsBackground="YES" id="DO3-KG-hMr">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mCG-av-5PP">
+                                <rect key="frame" x="18" y="271" width="71" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Biographie" id="oWM-zb-mDB">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uby-OQ-3tv">
+                                <rect key="frame" x="18" y="124" width="80" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Site Internet" id="Rqa-yj-PTo">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3dc-su-Hu8">
+                                <rect key="frame" x="343" y="94" width="78" height="32"/>
+                                <buttonCell key="cell" type="push" title="Ouvrir" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qjM-1y-HWp">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xZz-ZY-lur">
+                                <rect key="frame" x="20" y="75" width="63" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Signature" id="EEg-jQ-kpB">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="naN-6g-2nN">
+                                <rect key="frame" x="20" y="45" width="376" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Votre signature" drawsBackground="YES" id="VeQ-Sr-wSt">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="GQm-s6-1x3">
+                                <rect key="frame" x="20" y="343" width="16" height="16"/>
+                            </progressIndicator>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mLH-9G-Ek8">
+                                <rect key="frame" x="295" y="9" width="107" height="32"/>
+                                <buttonCell key="cell" type="push" title="Enregistrer" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="e5x-m3-Sje">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="saveProfile:" target="izB-UU-Hd4" id="uKE-Sn-raU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="biographie" destination="3pt-B1-sYs" id="8x1-UZ-Glv"/>
+                        <outlet property="portrait" destination="lvh-18-leJ" id="A9R-G3-2tm"/>
+                        <outlet property="progressIndicator" destination="GQm-s6-1x3" id="Fxg-Dz-WzA"/>
+                        <outlet property="signature" destination="naN-6g-2nN" id="UYm-cH-07q"/>
+                        <outlet property="urlSiteInternet" destination="YCE-xf-HR9" id="4JV-ph-mKR"/>
+                        <outlet property="username" destination="gqV-Tu-fs1" id="P9g-SK-Bhc"/>
+                    </connections>
+                </viewController>
+                <customObject id="LBp-W6-Py8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="665" y="-511.5"/>
+        </scene>
+        <!--DownloadView-->
+        <scene sceneID="D1x-KE-D3a">
+            <objects>
+                <viewController title="DownloadView" storyboardIdentifier="DownloadView" id="dO5-Bh-5AH" customClass="ICDownloadMembreController" customModule="iClem" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="x0I-dW-wtV">
+                        <rect key="frame" x="0.0" y="0.0" width="386" height="109"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <box autoresizesSubviews="NO" fixedFrame="YES" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="B9K-Vo-Qwg">
+                                <rect key="frame" x="6" y="15" width="375" height="94"/>
+                                <view key="contentView">
+                                    <rect key="frame" x="1" y="1" width="373" height="78"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <progressIndicator fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="rUQ-Pg-ste">
+                                            <rect key="frame" x="13" y="31" width="346" height="20"/>
+                                        </progressIndicator>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ozv-Ou-3aQ">
+                                            <rect key="frame" x="16" y="14" width="202" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Téléchargement des membres..." id="448-ap-JoT">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                </view>
+                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </box>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="progressBar" destination="rUQ-Pg-ste" id="Rfh-Ag-ZZC"/>
+                    </connections>
+                </viewController>
+                <customObject id="nhB-Uk-kQf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1883" y="-108.5"/>
+        </scene>
+        <!--Window Controller-->
         <scene sceneID="fLN-dn-cXC">
             <objects>
                 <windowController id="j2z-BG-gdX" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="YWl-Xb-pgr" customClass="ICWindow" customModule="iClem" customModuleProvider="target">
+                    <window key="window" title="Authentification" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="YWl-Xb-pgr" customClass="ICWindow" customModule="iClem" customModuleProvider="target">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="538" y="290" width="263" height="323"/>
+                        <rect key="contentRect" x="618" y="320" width="300" height="401"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="sdfdsqf" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </window>
                     <connections>
                         <segue destination="m22-nk-cHg" kind="relationship" relationship="window.shadowedContentViewController" id="jZ0-mL-Cit"/>
@@ -662,38 +879,26 @@
                 </windowController>
                 <customObject id="lKf-Jd-KN7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="74.5" y="330.5"/>
+            <point key="canvasLocation" x="93" y="369.5"/>
         </scene>
         <!--Login Controller-->
         <scene sceneID="tnh-iA-qkh">
             <objects>
                 <viewController id="m22-nk-cHg" customClass="ICLoginController" customModule="iClem" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="7j1-mE-eES" customClass="ICViewColor" customModule="iClem" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="275" height="304"/>
+                        <rect key="frame" x="0.0" y="0.0" width="259" height="295"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="58Y-Gm-kLY">
-                                <rect key="frame" x="89" y="125" width="96" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" bezelStyle="round" id="ek7-GD-iqy">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <connections>
-                                    <outlet property="nextKeyView" destination="lth-sa-7G0" id="vax-jv-2we"/>
-                                </connections>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kUt-Lj-Gat">
-                                <rect key="frame" x="82" y="155" width="110" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Nom d'utilisateur" id="Qg6-Xw-adF">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="d8h-OB-GLo">
+                                <rect key="frame" x="0.0" y="279" width="16" height="16"/>
+                            </progressIndicator>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Ao-df-Pig">
+                                <rect key="frame" x="57" y="180" width="144" height="95"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icone_128" id="K7y-jo-bOT"/>
+                            </imageView>
                             <secureTextField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lth-sa-7G0">
-                                <rect key="frame" x="89" y="70" width="96" height="22"/>
-                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" usesSingleLineMode="YES" bezelStyle="round" id="p9a-dL-MhE">
+                                <rect key="frame" x="20" y="92" width="219" height="29"/>
+                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Mot de passe." drawsBackground="YES" usesSingleLineMode="YES" id="p9a-dL-MhE">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -701,159 +906,118 @@
                                         <string>NSAllRomanInputSourcesLocaleIdentifier</string>
                                     </allowedInputSourceLocales>
                                 </secureTextFieldCell>
-                                <connections>
-                                    <outlet property="nextKeyView" destination="Bqg-1W-TRq" id="8bl-jH-39s"/>
-                                </connections>
                             </secureTextField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h87-tk-2sX">
-                                <rect key="frame" x="93" y="100" width="88" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Mot de passe" id="6oT-kw-N5a">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Ao-df-Pig">
-                                <rect key="frame" x="65" y="180" width="144" height="95"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="original" id="K7y-jo-bOT"/>
-                            </imageView>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bqg-1W-TRq">
-                                <rect key="frame" x="152" y="17" width="91" height="25"/>
-                                <buttonCell key="cell" type="roundTextured" title="Connexion" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5pQ-Zt-opu">
+                            <button wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bqg-1W-TRq" customClass="ICButtonConnect" customModule="iClem" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="259" height="41"/>
+                                <buttonCell key="cell" type="bevel" title="Connexion" bezelStyle="regularSquare" image="7780FFCD-D1FE-469F-9641-A85B847209D1" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="5pQ-Zt-opu">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                     <string key="keyEquivalent" base64-UTF8="YES">
 DQ
 </string>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="actionLogin:" target="m22-nk-cHg" id="s4c-2C-bwy"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ajn-Np-f55">
-                                <rect key="frame" x="35" y="17" width="97" height="25"/>
-                                <buttonCell key="cell" type="roundTextured" title="Inscription" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ie8-Uh-FMp">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qp0-tZ-BSQ">
+                                <rect key="frame" x="20" y="131" width="219" height="28"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Nom d'utilisateur" drawsBackground="YES" id="dsN-x9-iqt">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <outlet property="nextKeyView" destination="lth-sa-7G0" id="8CR-xO-CCy"/>
+                                </connections>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7YA-bC-74n">
+                                <rect key="frame" x="38" y="49" width="161" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Connexion Automatique :" id="NyR-mv-Nmy">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R4I-5Z-6Bq">
+                                <rect key="frame" x="202" y="47" width="18" height="19"/>
+                                <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="overlaps" state="on" inset="2" id="QtZ-Rz-ROr">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
-                                <connections>
-                                    <segue destination="jrL-0T-Uw2" kind="custom" customClass="ICPushSegue" id="cmd-1z-wOt"/>
-                                </connections>
                             </button>
                         </subviews>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="colorBackground">
-                                <color key="value" red="0.078431372549019607" green="0.20784313725490197" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="value" red="0.074509803921568626" green="0.20392156862745098" blue="0.30588235294117649" alpha="1" colorSpace="calibratedRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <connections>
+                        <outlet property="buttonConnect" destination="Bqg-1W-TRq" id="EoG-Hn-QuU"/>
+                        <outlet property="imageClem" destination="4Ao-df-Pig" id="FzE-rL-UE8"/>
+                        <outlet property="login" destination="Qp0-tZ-BSQ" id="Aw8-Hz-EPp"/>
+                        <outlet property="password" destination="lth-sa-7G0" id="Frm-xl-aRC"/>
+                        <outlet property="progress" destination="d8h-OB-GLo" id="Eh9-eE-9K3"/>
+                    </connections>
                 </viewController>
                 <customObject id="tb0-su-Rrh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="74.5" y="829"/>
-        </scene>
-        <!--Inscription Controller-->
-        <scene sceneID="HxL-is-at1">
-            <objects>
-                <viewController id="jrL-0T-Uw2" customClass="ICInscriptionController" customModule="iClem" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="czv-b4-E8n" customClass="ICViewColor" customModule="iClem" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="275" height="306"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="da6-US-2Cv">
-                                <rect key="frame" x="89" y="222" width="96" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="" bezelStyle="round" id="nyp-2l-xeL">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <connections>
-                                    <outlet property="nextKeyView" destination="nQ0-Oj-ynL" id="yWi-zh-Roy"/>
-                                </connections>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fN4-VZ-lI2">
-                                <rect key="frame" x="82" y="252" width="110" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Nom d'utilisateur" id="Wxe-fz-oxO">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8vc-4R-QXC">
-                                <rect key="frame" x="93" y="197" width="88" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Mot de passe" id="PF0-u8-bG5">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <secureTextField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nQ0-Oj-ynL">
-                                <rect key="frame" x="89" y="167" width="96" height="22"/>
-                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" usesSingleLineMode="YES" bezelStyle="round" id="kmA-wb-npc">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <allowedInputSourceLocales>
-                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
-                                    </allowedInputSourceLocales>
-                                </secureTextFieldCell>
-                                <connections>
-                                    <outlet property="nextKeyView" destination="WPy-X8-zNR" id="IQ2-QN-S3d"/>
-                                </connections>
-                            </secureTextField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GS3-6r-WG2">
-                                <rect key="frame" x="144" y="18" width="111" height="25"/>
-                                <buttonCell key="cell" type="squareTextured" title="Ok" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zEL-X4-gGz">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                    <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                                </buttonCell>
-                                <connections>
-                                    <outlet property="nextKeyView" destination="da6-US-2Cv" id="obF-Mc-wVY"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l4c-3L-qbd">
-                                <rect key="frame" x="20" y="18" width="111" height="25"/>
-                                <buttonCell key="cell" type="squareTextured" title="Annuler" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QiN-C9-WwO">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="dismissController:" target="jrL-0T-Uw2" id="JzL-fT-sPZ"/>
-                                </connections>
-                            </button>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WPy-X8-zNR">
-                                <rect key="frame" x="89" y="112" width="96" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" bezelStyle="round" id="ZAO-og-WZZ">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <connections>
-                                    <outlet property="nextKeyView" destination="GS3-6r-WG2" id="rVo-sU-N7h"/>
-                                </connections>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t5c-tQ-VUu">
-                                <rect key="frame" x="95" y="142" width="84" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Adresse Mail" id="nx4-ZS-StC">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="colorBackground">
-                                <color key="value" red="0.078431372549019607" green="0.20784313725490197" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </view>
-                </viewController>
-                <customObject id="nE1-BL-pw7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="435.5" y="830"/>
+            <point key="canvasLocation" x="512.5" y="369.5"/>
         </scene>
     </scenes>
     <resources>
-        <image name="original" width="72" height="72"/>
+        <image name="7780FFCD-D1FE-469F-9641-A85B847209D1" width="1" height="1">
+            <mutableData key="keyedArchiveRepresentation">
+YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
+GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
+c1dOU0NvbG9ygAKADRIgwwAAgAOAC1Z7MSwgMX3SFQoWGFpOUy5vYmplY3RzoReABIAK0hUKGh2iGxyA
+BYAGgAkQANIgCiEiXxAUTlNUSUZGUmVwcmVzZW50YXRpb26AB4AITxEIdE1NACoAAAAKAAAADgEAAAMA
+AAABAAEAAAEBAAMAAAABAAEAAAECAAMAAAACAAgACAEDAAMAAAABAAEAAAEGAAMAAAABAAEAAAERAAQA
+AAABAAAACAESAAMAAAABAAEAAAEVAAMAAAABAAIAAAEWAAMAAAABAAEAAAEXAAQAAAABAAAAAgEcAAMA
+AAABAAEAAAFSAAMAAAABAAEAAAFTAAMAAAACAAEAAYdzAAcAAAe8AAAAuAAAAAAAAAe8YXBwbAIgAABt
+bnRyR1JBWVhZWiAH0AACAA4ADAAAAABhY3NwQVBQTAAAAABub25lAAAAAAAAAAAAAAAAAAAAAAAA9tYA
+AQAAAADTLWFwcGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVk
+ZXNjAAAAwAAAAG9kc2NtAAABMAAABi5jcHJ0AAAHYAAAADh3dHB0AAAHmAAAABRrVFJDAAAHrAAAAA5k
+ZXNjAAAAAAAAABVHZW5lcmljIEdyYXkgUHJvZmlsZQAAAAAAAAAAAAAAFUdlbmVyaWMgR3JheSBQcm9m
+aWxlAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAbWx1YwAAAAAA
+AAAeAAAADHNrU0sAAAAqAAABeGRhREsAAAA0AAABomNhRVMAAAAsAAAB1nB0QlIAAAAqAAACAnVrVUEA
+AAAsAAACLGZyRlUAAAAqAAACWGh1SFUAAAAuAAACgnpoVFcAAAAQAAACsG5iTk8AAAAsAAACwGNzQ1oA
+AAAkAAAC7GhlSUwAAAAgAAADEGl0SVQAAAAuAAADMHJvUk8AAAAkAAADXmRlREUAAAA6AAADgmtvS1IA
+AAAYAAADvHN2U0UAAAAuAAAD1HpoQ04AAAAQAAAEAmphSlAAAAAWAAAEEmVsR1IAAAAkAAAEKHB0UE8A
+AAA4AAAETG5sTkwAAAAqAAAEhGVzRVMAAAAoAAAErnRoVEgAAAAkAAAE1nRyVFIAAAAiAAAE+mZpRkkA
+AAAsAAAFHGhySFIAAAA6AAAFSHBsUEwAAAA2AAAFgnJ1UlUAAAAmAAAFuGFyRUcAAAAoAAAF3mVuVVMA
+AAAoAAAGBgBWAWEAZQBvAGIAZQBjAG4A/QAgAHMAaQB2AP0AIABwAHIAbwBmAGkAbABHAGUAbgBlAHIA
+ZQBsACAAZwByAOUAdABvAG4AZQBiAGUAcwBrAHIAaQB2AGUAbABzAGUAUABlAHIAZgBpAGwAIABkAGUA
+IABnAHIAaQBzACAAZwBlAG4A6AByAGkAYwBQAGUAcgBmAGkAbAAgAEMAaQBuAHoAYQAgAEcAZQBuAOkA
+cgBpAGMAbwQXBDAEMwQwBDsETAQ9BDgEOQAgBD8EQAQ+BEQEMAQ5BDsAIABHAHIAYQB5AFAAcgBvAGYA
+aQBsACAAZwDpAG4A6QByAGkAcQB1AGUAIABnAHIAaQBzAMEAbAB0AGEAbADhAG4AbwBzACAAcwB6APwA
+cgBrAGUAIABwAHIAbwBmAGkAbJAadShwcJaOgnJfaWPPj/AARwBlAG4AZQByAGkAcwBrACAAZwByAOUA
+dABvAG4AZQBwAHIAbwBmAGkAbABPAGIAZQBjAG4A/QAgAWEAZQBkAP0AIABwAHIAbwBmAGkAbAXkBegF
+1QXkBdkF3AAgAEcAcgBhAHkAIAXbBdwF3AXZAFAAcgBvAGYAaQBsAG8AIABnAHIAaQBnAGkAbwAgAGcA
+ZQBuAGUAcgBpAGMAbwBQAHIAbwBmAGkAbAAgAGcAcgBpACAAZwBlAG4AZQByAGkAYwBBAGwAbABnAGUA
+bQBlAGkAbgBlAHMAIABHAHIAYQB1AHMAdAB1AGYAZQBuAC0AUAByAG8AZgBpAGzHfLwYACAARwByAGEA
+eQAg1QS4XNMMx3wARwBlAG4AZQByAGkAcwBrACAAZwByAOUAcwBrAGEAbABlAHAAcgBvAGYAaQBsZm6Q
+GnBwXqZjz4/wZYdO9k4AgiwwsDDsMKQw1zDtMNUwoTCkMOsDkwO1A70DuQO6A8wAIAPAA8EDvwPGA68D
+uwAgA7MDugPBA7kAUABlAHIAZgBpAGwAIABnAGUAbgDpAHIAaQBjAG8AIABkAGUAIABjAGkAbgB6AGUA
+bgB0AG8AcwBBAGwAZwBlAG0AZQBlAG4AIABnAHIAaQBqAHMAcAByAG8AZgBpAGUAbABQAGUAcgBmAGkA
+bAAgAGcAcgBpAHMAIABnAGUAbgDpAHIAaQBjAG8OQg4bDiMORA4fDiUOTA4qDjUOQA4XDjIOFw4xDkgO
+Jw5EDhsARwBlAG4AZQBsACAARwByAGkAIABQAHIAbwBmAGkAbABpAFkAbABlAGkAbgBlAG4AIABoAGEA
+cgBtAGEAYQBwAHIAbwBmAGkAaQBsAGkARwBlAG4AZQByAGkBDQBrAGkAIABwAHIAbwBmAGkAbAAgAHMA
+aQB2AGkAaAAgAHQAbwBuAG8AdgBhAFUAbgBpAHcAZQByAHMAYQBsAG4AeQAgAHAAcgBvAGYAaQBsACAA
+cwB6AGEAcgBvAVsAYwBpBB4EMQRJBDgEOQAgBEEENQRABEsEOQAgBD8EQAQ+BEQEOAQ7BEwGRQZEBkEA
+IAYqBjkGMQZKBkEAIABHAHIAYQB5ACAGJwZEBjkGJwZFAEcAZQBuAGUAcgBpAGMAIABHAHIAYQB5ACAA
+UAByAG8AZgBpAGwAZQAAdGV4dAAAAABDb3B5cmlnaHQgMjAwNyBBcHBsZSBJbmMuLCBhbGwgcmlnaHRz
+IHJlc2VydmVkLgBYWVogAAAAAAAA81EAAQAAAAEWzGN1cnYAAAAAAAAAAQHNAADSJSYnKFokY2xhc3Nu
+YW1lWCRjbGFzc2VzXxAQTlNCaXRtYXBJbWFnZVJlcKMpKitfEBBOU0JpdG1hcEltYWdlUmVwWk5TSW1h
+Z2VSZXBYTlNPYmplY3TSJSYtLldOU0FycmF5oi0r0iUmMDFeTlNNdXRhYmxlQXJyYXmjMC0r0zM0CjU2
+N1dOU1doaXRlXE5TQ29sb3JTcGFjZUQwIDAAEAOADNIlJjk6V05TQ29sb3KiOSvSJSY8PVdOU0ltYWdl
+ojwrXxAPTlNLZXllZEFyY2hpdmVy0UBBVHJvb3SAAQAIABEAGgAjAC0AMgA3AEYATABXAF4AZQByAHkA
+gQCDAIUAigCMAI4AlQCaAKUApwCpAKsAsACzALUAtwC5ALsAwADXANkA2wlTCVgJYwlsCX8JgwmWCaEJ
+qgmvCbcJugm/Cc4J0gnZCeEJ7gnzCfUJ9wn8CgQKBwoMChQKFwopCiwKMQAAAAAAAAIBAAAAAAAAAEIA
+AAAAAAAAAAAAAAAAAAozA
+</mutableData>
+        </image>
+        <image name="icone_128" width="128" height="128"/>
     </resources>
 </document>
