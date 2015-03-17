@@ -347,6 +347,8 @@ Notificateur.prototype = {
 				chrome.browserAction.enable();
 				this.logged = false;
 			}
+			// on arrete le parsing
+			this.checkPending = false;
 			return;
 		} else {
 			if(!this.logged) {
