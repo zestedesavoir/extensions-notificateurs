@@ -26,6 +26,11 @@
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@",[CToken defaultToken].accessToken]
                      forHTTPHeaderField:@"Authorization"];
     
+    if ([CToken defaultToken]){
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@",[CToken defaultToken].accessToken]
+                         forHTTPHeaderField:@"Authorization"];
+        
+    }
     [manager GET:@"https://zestedesavoir.com/api/membres/mon_profil/" parameters:nil
          success:^(AFHTTPRequestOperation *operation, NSDictionary  *responseObject) {
              
@@ -69,6 +74,12 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    if ([CToken defaultToken]){
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@",[CToken defaultToken].accessToken]
+                         forHTTPHeaderField:@"Authorization"];
+        
+    }
     
     [manager GET:[NSString stringWithFormat:@"https://zestedesavoir.com/api/membres/%d/", pk]
       parameters:nil

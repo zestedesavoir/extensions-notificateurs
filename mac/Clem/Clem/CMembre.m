@@ -10,7 +10,7 @@
 #import "CJSONDeserializer.h"
 #import "CJSONSerializer.h"
 #import "NSURLComponents+ZDSUrlAvatar.h"
-
+#import "CProfile.h"
 
 @implementation CMembre
 
@@ -26,6 +26,8 @@
 @synthesize sign;
 @synthesize site;
 @synthesize username;
+
+@synthesize blocUpdate;
 
 - (id)initWithPK:(int)PK
         username:(NSString *)name
@@ -60,6 +62,25 @@
 
 - (NSString *)description{
     return [NSString stringWithFormat:@"Membre : %@, pk : %d", username, pk];
+}
+
+- (void)updateMembre:(CUpdateMembre)bloc{
+    blocUpdate = [bloc copy];
+    
+    [[CProfile profile] checkProfileWithPK:self.pk bloc:^(CMembre *membre, NSError *error) {
+        blocUpdate(error);
+        if (membre){
+            self.showEmail = membre.showEmail;
+            self.urlAvatar = membre.urlAvatar;
+            self.sign = membre.sign;
+            self.site = membre.site;
+            self.biography = membre.biography;
+            self.email = membre.email;
+            self.emailForAnswer = membre.emailForAnswer;
+            self.lastVisit = membre.lastVisit;
+            
+        }
+    }];
 }
 
 + (CMembre *)jsonToMembre:(NSString *)json{

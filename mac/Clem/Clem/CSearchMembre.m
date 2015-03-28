@@ -16,7 +16,7 @@
 - (void)searchMembre:(NSString *)m bloc:(CSearchBloc)bloc{
     searchBloc = [bloc copy];
     membre = [NSMutableArray array];
-    [self sendRequestWithURL:[NSString stringWithFormat:@"https://zestedesavoir.com/api/membres/?search=%@", m]];
+    [self sendRequestWithURL:[NSString stringWithFormat:@"https://zestedesavoir.com/api/membres/?search=%@&page_size=100", m]];
 }
 
 - (void)sendRequestWithURL:(NSString *)url{

@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+typedef void(^CUpdateMembre)(NSError *error);
 @interface CMembre : NSObject
 @property (assign) int pk;
 @property          NSString *username;
@@ -22,6 +22,9 @@
 @property (strong) NSDate *dateJoined;
 @property (strong) NSString *email;
 
+
+@property (copy, nonatomic) CUpdateMembre blocUpdate;
+
 - (id)initWithPK:(int)PK
         username:(NSString *)name
      isShowEmail:(BOOL)showMail
@@ -35,6 +38,7 @@
            email:(NSString *)m;
 
 - (BOOL)isEqualToMembre:(CMembre *)m;
+- (void)updateMembre:(CUpdateMembre)bloc;
 
 + (CMembre *)jsonToMembre:(NSString *)json;
 + (CMembre *)dictionnaryToMembre:(NSDictionary *)dico;
