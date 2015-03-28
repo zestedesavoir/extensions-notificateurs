@@ -10,7 +10,7 @@ import Cocoa
 import Clem
 class ICViewTimeLineController: NSViewController {
 
-    let profileDownload: CProfileAll = CProfileAll()
+    //let profileDownload: CProfileAll = CProfileAll()
     
     
     override func viewDidLoad() {
@@ -20,15 +20,7 @@ class ICViewTimeLineController: NSViewController {
         
         
     }
-    override func viewDidAppear() {
-        //on appelle le controller
-        let story = NSStoryboard(name: "Main", bundle: nil)
-        let controller: ICDownloadMembreController = story?.instantiateControllerWithIdentifier("DownloadView") as ICDownloadMembreController
-        controller.profileDownload = profileDownload
-
-        self.presentViewControllerAsSheet(controller)
-        
-            }
+   
     
     override func awakeFromNib() {
         

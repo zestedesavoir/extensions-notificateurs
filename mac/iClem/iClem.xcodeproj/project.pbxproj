@@ -16,6 +16,7 @@
 		0E52CAE81AA8C7ED006E66AE /* ICViewTimeLineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E52CAE71AA8C7ED006E66AE /* ICViewTimeLineController.swift */; };
 		0E52CAF01AA8C8F2006E66AE /* ICDownloadMembreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E52CAEF1AA8C8F2006E66AE /* ICDownloadMembreController.swift */; };
 		0E5DE6791A6D974B000C1D2F /* ICPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE6781A6D974B000C1D2F /* ICPreferences.swift */; };
+		0E6E1D8C1ABC894E00028F3A /* Clem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6E1D8B1ABC894E00028F3A /* Clem.framework */; };
 		0E8AE2AB1A96044500908F26 /* lock-locked-8x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E8AE2AA1A96044500908F26 /* lock-locked-8x.png */; };
 		0E9761321A9530D400545CA4 /* ICTextFieldConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9761311A9530D400545CA4 /* ICTextFieldConnection.swift */; };
 		0EA4ACF11AB48E7B00948583 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EF6E6361A6A5AB700FE7035 /* Main.storyboard */; };
@@ -24,6 +25,8 @@
 		0ECFD2C91A6A7A0E004B3326 /* ICPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECFD2C81A6A7A0E004B3326 /* ICPushSegue.m */; };
 		0ED92D531A9266EE00E663B0 /* clem_pas_contente.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED92D521A9266EE00E663B0 /* clem_pas_contente.png */; };
 		0ED92D571A9267C800E663B0 /* icone_128.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED92D561A9267C800E663B0 /* icone_128.png */; };
+		0EE86F731AC6D187001D50FC /* ICOpacitySegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE86F721AC6D187001D50FC /* ICOpacitySegue.m */; };
+		0EE86F751AC6D579001D50FC /* ICLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE86F741AC6D579001D50FC /* ICLoadingViewController.swift */; };
 		0EF6E6311A6A5AB700FE7035 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF6E6301A6A5AB700FE7035 /* AppDelegate.swift */; };
 		0EF6E6331A6A5AB700FE7035 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF6E6321A6A5AB700FE7035 /* ViewController.swift */; };
 		0EF6E6351A6A5AB700FE7035 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EF6E6341A6A5AB700FE7035 /* Images.xcassets */; };
@@ -31,25 +34,7 @@
 		0EF6E6B41A6A640200FE7035 /* ICViewColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF6E6B31A6A640200FE7035 /* ICViewColor.swift */; };
 		0EF6E6B61A6A659800FE7035 /* ICLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF6E6B51A6A659800FE7035 /* ICLoginController.swift */; };
 		0EF6E6B91A6A67AA00FE7035 /* original.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF6E6B81A6A67AA00FE7035 /* original.png */; };
-		0EF6E6BF1A6A6F9100FE7035 /* ICInscriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF6E6BE1A6A6F9100FE7035 /* ICInscriptionController.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		0E7701D91AB42D1600E75F34 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0EF6E6231A6A5AB600FE7035 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0EF6E62A1A6A5AB600FE7035;
-			remoteInfo = iClem;
-		};
-		0EEAE8491AB48C3F00AA3F93 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0EF6E6231A6A5AB600FE7035 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0EF6E62A1A6A5AB600FE7035;
-			remoteInfo = iClem;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		0EB974E21A86739E00E174DF /* Copy Files */ = {
@@ -72,8 +57,8 @@
 		0E52CAE71AA8C7ED006E66AE /* ICViewTimeLineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICViewTimeLineController.swift; sourceTree = "<group>"; };
 		0E52CAEF1AA8C8F2006E66AE /* ICDownloadMembreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICDownloadMembreController.swift; sourceTree = "<group>"; };
 		0E5DE6781A6D974B000C1D2F /* ICPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICPreferences.swift; sourceTree = "<group>"; };
+		0E6E1D8B1ABC894E00028F3A /* Clem.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Clem.framework; sourceTree = "<group>"; };
 		0E7701CB1AB385ED00E75F34 /* libPods-iClem-SSKeychain.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-iClem-SSKeychain.a"; path = "../../../../../Library/Developer/Xcode/DerivedData/Clem-gwqcmgalanadlseofbxgfsvasnza/Build/Products/Debug/libPods-iClem-SSKeychain.a"; sourceTree = "<group>"; };
-		0E7701D31AB42D1600E75F34 /* iClemTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iClemTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E8AE2AA1A96044500908F26 /* lock-locked-8x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lock-locked-8x.png"; sourceTree = "<group>"; };
 		0E9761311A9530D400545CA4 /* ICTextFieldConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICTextFieldConnection.swift; sourceTree = "<group>"; };
 		0EAF075E1AAC4936001A094C /* ICViewPreferencesCompteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICViewPreferencesCompteController.swift; sourceTree = "<group>"; };
@@ -82,7 +67,9 @@
 		0ECFD2C81A6A7A0E004B3326 /* ICPushSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICPushSegue.m; sourceTree = "<group>"; };
 		0ED92D521A9266EE00E663B0 /* clem_pas_contente.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clem_pas_contente.png; path = ../clem_pas_contente.png; sourceTree = "<group>"; };
 		0ED92D561A9267C800E663B0 /* icone_128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icone_128.png; sourceTree = "<group>"; };
-		0EEAE8431AB48C3F00AA3F93 /* iClem Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iClem Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0EE86F711AC6D187001D50FC /* ICOpacitySegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICOpacitySegue.h; sourceTree = "<group>"; };
+		0EE86F721AC6D187001D50FC /* ICOpacitySegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICOpacitySegue.m; sourceTree = "<group>"; };
+		0EE86F741AC6D579001D50FC /* ICLoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICLoadingViewController.swift; sourceTree = "<group>"; };
 		0EF6E62B1A6A5AB700FE7035 /* iClem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iClem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EF6E62F1A6A5AB700FE7035 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EF6E6301A6A5AB700FE7035 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,7 +81,6 @@
 		0EF6E6B51A6A659800FE7035 /* ICLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICLoginController.swift; sourceTree = "<group>"; };
 		0EF6E6B81A6A67AA00FE7035 /* original.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = original.png; sourceTree = "<group>"; };
 		0EF6E6BC1A6A6A5A00FE7035 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		0EF6E6BE1A6A6F9100FE7035 /* ICInscriptionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICInscriptionController.swift; sourceTree = "<group>"; };
 		0EF6E6C71A6A72E900FE7035 /* iClem-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iClem-Bridging-Header.h"; sourceTree = "<group>"; };
 		95D0DB937EC8E0D4D2B4E8E1 /* Pods-iClem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iClem.release.xcconfig"; path = "Pods/Target Support Files/Pods-iClem/Pods-iClem.release.xcconfig"; sourceTree = "<group>"; };
 		C28ECA13C479D033A7C18B7C /* libPods-iClem.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iClem.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,20 +89,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0E7701D01AB42D1600E75F34 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0EEAE8401AB48C3F00AA3F93 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		0EF6E6281A6A5AB600FE7035 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,6 +96,7 @@
 				0E4FAB3E1AB495B800A27F84 /* Security.framework in Frameworks */,
 				0E4FAB3C1AB495B200A27F84 /* libPods-iClem-SSKeychain.a in Frameworks */,
 				0E4FAB3D1AB495B200A27F84 /* libPods-iClem.a in Frameworks */,
+				0E6E1D8C1ABC894E00028F3A /* Clem.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,10 +109,10 @@
 				0EF6E6B51A6A659800FE7035 /* ICLoginController.swift */,
 				0E3F78BC1AA633AB00D657BA /* ICWindowTimelineController.swift */,
 				0E52CAE71AA8C7ED006E66AE /* ICViewTimeLineController.swift */,
-				0EF6E6BE1A6A6F9100FE7035 /* ICInscriptionController.swift */,
 				0E52CAEF1AA8C8F2006E66AE /* ICDownloadMembreController.swift */,
 				0EF6E6321A6A5AB700FE7035 /* ViewController.swift */,
 				0EAF075E1AAC4936001A094C /* ICViewPreferencesCompteController.swift */,
+				0EE86F741AC6D579001D50FC /* ICLoadingViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -158,8 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				0EF6E62B1A6A5AB700FE7035 /* iClem.app */,
-				0E7701D31AB42D1600E75F34 /* iClemTests.xctest */,
-				0EEAE8431AB48C3F00AA3F93 /* iClem Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -167,6 +138,7 @@
 		0EF6E62D1A6A5AB700FE7035 /* iClem */ = {
 			isa = PBXGroup;
 			children = (
+				0E6E1D8B1ABC894E00028F3A /* Clem.framework */,
 				0EF6E6301A6A5AB700FE7035 /* AppDelegate.swift */,
 				0EAF075B1AAC48EF001A094C /* Controller */,
 				0EF6E67C1A6A5B3B00FE7035 /* ICWindow.swift */,
@@ -176,6 +148,8 @@
 				0E9761311A9530D400545CA4 /* ICTextFieldConnection.swift */,
 				0E2C980B1AA8E720004A7B43 /* ICTimeLineView.swift */,
 				0EC58BD81AAB349E00B9107B /* ICTextFieldPadding.swift */,
+				0EE86F711AC6D187001D50FC /* ICOpacitySegue.h */,
+				0EE86F721AC6D187001D50FC /* ICOpacitySegue.m */,
 				0ECFD2C71A6A7A0E004B3326 /* ICPushSegue.h */,
 				0ECFD2C81A6A7A0E004B3326 /* ICPushSegue.m */,
 				0EF6E6341A6A5AB700FE7035 /* Images.xcassets */,
@@ -230,42 +204,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0E7701D21AB42D1600E75F34 /* iClemTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0E7701DD1AB42D1600E75F34 /* Build configuration list for PBXNativeTarget "iClemTests" */;
-			buildPhases = (
-				0E7701CF1AB42D1600E75F34 /* Sources */,
-				0E7701D01AB42D1600E75F34 /* Frameworks */,
-				0E7701D11AB42D1600E75F34 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0E7701DA1AB42D1600E75F34 /* PBXTargetDependency */,
-			);
-			name = iClemTests;
-			productName = iClemTests;
-			productReference = 0E7701D31AB42D1600E75F34 /* iClemTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		0EEAE8421AB48C3F00AA3F93 /* iClem Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0EEAE84B1AB48C3F00AA3F93 /* Build configuration list for PBXNativeTarget "iClem Tests" */;
-			buildPhases = (
-				0EEAE83F1AB48C3F00AA3F93 /* Sources */,
-				0EEAE8401AB48C3F00AA3F93 /* Frameworks */,
-				0EEAE8411AB48C3F00AA3F93 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0EEAE84A1AB48C3F00AA3F93 /* PBXTargetDependency */,
-			);
-			name = "iClem Tests";
-			productName = "iClem Tests";
-			productReference = 0EEAE8431AB48C3F00AA3F93 /* iClem Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		0EF6E62A1A6A5AB600FE7035 /* iClem */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0EF6E6471A6A5AB700FE7035 /* Build configuration list for PBXNativeTarget "iClem" */;
@@ -295,14 +233,6 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = Cirdo;
 				TargetAttributes = {
-					0E7701D21AB42D1600E75F34 = {
-						CreatedOnToolsVersion = 6.2;
-						TestTargetID = 0EF6E62A1A6A5AB600FE7035;
-					};
-					0EEAE8421AB48C3F00AA3F93 = {
-						CreatedOnToolsVersion = 6.2;
-						TestTargetID = 0EF6E62A1A6A5AB600FE7035;
-					};
 					0EF6E62A1A6A5AB600FE7035 = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
@@ -322,27 +252,11 @@
 			projectRoot = "";
 			targets = (
 				0EF6E62A1A6A5AB600FE7035 /* iClem */,
-				0E7701D21AB42D1600E75F34 /* iClemTests */,
-				0EEAE8421AB48C3F00AA3F93 /* iClem Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		0E7701D11AB42D1600E75F34 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0EEAE8411AB48C3F00AA3F93 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		0EF6E6291A6A5AB600FE7035 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -392,20 +306,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0E7701CF1AB42D1600E75F34 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0EEAE83F1AB48C3F00AA3F93 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		0EF6E6271A6A5AB600FE7035 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -416,10 +316,11 @@
 				0E2C980C1AA8E720004A7B43 /* ICTimeLineView.swift in Sources */,
 				0ECFD2C91A6A7A0E004B3326 /* ICPushSegue.m in Sources */,
 				0EC58BD91AAB349E00B9107B /* ICTextFieldPadding.swift in Sources */,
-				0EF6E6BF1A6A6F9100FE7035 /* ICInscriptionController.swift in Sources */,
 				0EAF075F1AAC4936001A094C /* ICViewPreferencesCompteController.swift in Sources */,
 				0EF6E67D1A6A5B3B00FE7035 /* ICWindow.swift in Sources */,
 				0E5DE6791A6D974B000C1D2F /* ICPreferences.swift in Sources */,
+				0EE86F731AC6D187001D50FC /* ICOpacitySegue.m in Sources */,
+				0EE86F751AC6D579001D50FC /* ICLoadingViewController.swift in Sources */,
 				0EF6E6B61A6A659800FE7035 /* ICLoginController.swift in Sources */,
 				0E52CAE81AA8C7ED006E66AE /* ICViewTimeLineController.swift in Sources */,
 				0EF6E6B41A6A640200FE7035 /* ICViewColor.swift in Sources */,
@@ -430,19 +331,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		0E7701DA1AB42D1600E75F34 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0EF6E62A1A6A5AB600FE7035 /* iClem */;
-			targetProxy = 0E7701D91AB42D1600E75F34 /* PBXContainerItemProxy */;
-		};
-		0EEAE84A1AB48C3F00AA3F93 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0EF6E62A1A6A5AB600FE7035 /* iClem */;
-			targetProxy = 0EEAE8491AB48C3F00AA3F93 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0EF6E6361A6A5AB700FE7035 /* Main.storyboard */ = {
@@ -456,80 +344,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		0E7701DB1AB42D1600E75F34 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = iClemTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iClem.app/Contents/MacOS/iClem";
-			};
-			name = Debug;
-		};
-		0E7701DC1AB42D1600E75F34 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = iClemTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iClem.app/Contents/MacOS/iClem";
-			};
-			name = Release;
-		};
-		0EEAE84C1AB48C3F00AA3F93 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "iClem Tests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iClem.app/Contents/MacOS/iClem";
-			};
-			name = Debug;
-		};
-		0EEAE84D1AB48C3F00AA3F93 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "iClem Tests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iClem.app/Contents/MacOS/iClem";
-			};
-			name = Release;
-		};
 		0EF6E6451A6A5AB700FE7035 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -616,6 +430,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = NO;
 				DEFINES_MODULE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/iClem",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = iClem/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Clem-gwqcmgalanadlseofbxgfsvasnza/Build/Products/Debug";
@@ -637,6 +456,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = NO;
 				DEFINES_MODULE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/iClem",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = iClem/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Clem-gwqcmgalanadlseofbxgfsvasnza/Build/Products/Debug";
@@ -650,24 +474,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0E7701DD1AB42D1600E75F34 /* Build configuration list for PBXNativeTarget "iClemTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0E7701DB1AB42D1600E75F34 /* Debug */,
-				0E7701DC1AB42D1600E75F34 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0EEAE84B1AB48C3F00AA3F93 /* Build configuration list for PBXNativeTarget "iClem Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0EEAE84C1AB48C3F00AA3F93 /* Debug */,
-				0EEAE84D1AB48C3F00AA3F93 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		0EF6E6261A6A5AB600FE7035 /* Build configuration list for PBXProject "iClem" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

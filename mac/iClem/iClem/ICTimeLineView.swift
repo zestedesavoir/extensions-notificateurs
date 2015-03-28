@@ -10,12 +10,11 @@ import Cocoa
 
 class ICTimeLineView: NSView {
 
+    let membreArray = []
+    
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
 
         // Drawing code here.
     }
-    
-    
-    
-}
+  }

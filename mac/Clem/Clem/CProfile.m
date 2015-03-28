@@ -8,10 +8,12 @@
 
 #import "CProfile.h"
 #import <AFNetworking/AFNetworking.h>
+
 @implementation CProfile
 @synthesize membreProfile;
 @synthesize bloc;
 @synthesize blocSave;
+@synthesize blocProfilePK;
 
 - (void)checkParametreProfil:(CCheckParamterProfilEnd)aBloc{
     bloc = [aBloc copy];
@@ -43,7 +45,7 @@
     
     blocSave = [aBloc copy];
     
-  
+    NSDictionary *paramJSON = @{@"sign":@"My little Sign"};
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -52,7 +54,7 @@
     
     
     [manager PUT:[NSString stringWithFormat:@"https://zestedesavoir.com/api/membres/%d/", saveMembre.pk]
-      parameters:[CMembre membreToDictionnary:saveMembre]
+      parameters:paramJSON
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              
         
@@ -61,6 +63,23 @@
     }];
  
    
+}
+- (void)checkProfileWithPK:(int)pk bloc:(CCheckProfileWithPK)blocPK{
+    blocProfilePK = [blocPK copy];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [manager GET:[NSString stringWithFormat:@"https://zestedesavoir.com/api/membres/%d/", pk]
+      parameters:nil
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             
+        CMembre *m = [CMembre dictionnaryToMembre:responseObject];
+        blocProfilePK(m, nil);
+             
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        blocProfilePK(nil, error);
+    }];
 }
  
 + (instancetype)profile{

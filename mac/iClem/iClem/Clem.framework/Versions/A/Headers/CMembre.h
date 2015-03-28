@@ -9,12 +9,13 @@
 #import <Cocoa/Cocoa.h>
 
 @interface CMembre : NSObject
+
 @property (assign) int pk;
-@property          NSString *username;
+@property  NSString *username;
 @property (assign, getter=isShowEmail) BOOL showEmail;
 @property (assign, getter=isActive) BOOL active;
 @property (strong) NSURL *site;
-@property          NSURL *urlAvatar;
+@property (strong) NSURL *urlAvatar;
 @property NSString *biography;
 @property NSString *sign;
 @property (assign, getter=isEmailForAnswer) BOOL emailForAnswer;

@@ -25,7 +25,6 @@ FOUNDATION_EXPORT const unsigned char ClemVersionString[];
 #import <Clem/CProfile.h>
 #import <Clem/CToken.h>
 #import <Clem/CPRofileAll.h>
-#import <Clem/CSearchMembre.h>
 
 
 

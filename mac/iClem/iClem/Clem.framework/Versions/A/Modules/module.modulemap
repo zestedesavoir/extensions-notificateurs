@@ -1,0 +1,6 @@
+framework module Clem {
+  umbrella header "Clem.h"
+
+  export *
+  module * { export * }
+}

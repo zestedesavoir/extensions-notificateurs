@@ -5,7 +5,7 @@
 
 #import "ICPushSegue.h"
 #import "iClem-Bridging-Header.h"
-#import <iClem-Swift.h>
+
 
 @import QuartzCore;
 

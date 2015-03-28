@@ -15,7 +15,7 @@
 @implementation CMembre
 
 @synthesize active;
-@synthesize avatar;
+@synthesize urlAvatar;
 @synthesize biography;
 @synthesize dateJoined;
 @synthesize email;
@@ -31,7 +31,7 @@
         username:(NSString *)name
      isShowEmail:(BOOL)showMail
             site:(NSURL *)url
-     imageAvatar:(NSImage *)iAvatar
+     imageAvatar:(NSURL *)iAvatar
        biography:(NSString *)bio
        signature:(NSString *)signn
   emailForAnswer:(BOOL)answer
@@ -43,7 +43,7 @@
         pk = PK;
         username = name;
         showEmail = showMail;
-        avatar = iAvatar;
+        urlAvatar = iAvatar;
         biography = bio;
         sign = signn;
         emailForAnswer = answer;
@@ -70,9 +70,7 @@
     NSDateFormatter *f = [[NSDateFormatter alloc] init];
     [f setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
 
-    NSURLComponents *urlComponents = [NSURLComponents componentsWithString:dicoJson[@"avatar_url"]];
-    [urlComponents ZDSrectifiUrlAvatar];
-    NSURL *urlAvatar = [urlComponents URL];
+   
     
     
     CMembre *membre = [[CMembre alloc] init];
@@ -82,12 +80,20 @@
     [membre setEmail:dicoJson[@"email"]];
     [membre setActive:[dicoJson[@"is_active"] boolValue]];
     [membre setSite:[NSURL URLWithString:dicoJson[@"site"]]];
-    [membre setAvatar:[[NSImage alloc] initWithContentsOfURL:urlAvatar]];
     [membre setBiography:dicoJson[@"biography"]];
     [membre setSign:dicoJson[@"sign"]];
     [membre setEmailForAnswer:[dicoJson[@"email_for_answer"] boolValue]];
     [membre setLastVisit:[f dateFromString:dicoJson[@"last_visit"]]];
     [membre setDateJoined:[f dateFromString:dicoJson[@"date_joined"]]];
+    
+    
+    if (!dicoJson[@"avatar_url"] ){
+        NSURLComponents *urlComponents = [NSURLComponents componentsWithString:dicoJson[@"avatar_url"]];
+        [urlComponents ZDSrectifiUrlAvatar];
+        NSURL *urlAvatar = [urlComponents URL];
+        [membre setUrlAvatar:urlAvatar];
+    }
+
     
     return membre;
 }
@@ -95,10 +101,6 @@
     NSDateFormatter *f = [[NSDateFormatter alloc] init];
     [f setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
     
-    NSURLComponents *urlComponents = [NSURLComponents componentsWithString:dico[@"avatar_url"]];
-    [urlComponents ZDSrectifiUrlAvatar];
-    NSURL *urlAvatar = [urlComponents URL];
-
     
     
     CMembre *membre = [[CMembre alloc] init];
@@ -110,12 +112,20 @@
     [membre setEmail:dico[@"email"]];
     [membre setActive:[dico[@"is_active"] boolValue]];
     [membre setSite:[NSURL URLWithString:dico[@"site"]]];
-    [membre setAvatar:[[NSImage alloc] initWithContentsOfURL:urlAvatar]];
     [membre setBiography:dico[@"biography"]];
     [membre setSign:dico[@"sign"]];
     [membre setEmailForAnswer:[dico[@"email_for_answer"] boolValue]];
     [membre setLastVisit:[f dateFromString:dico[@"last_visit"]]];
     [membre setDateJoined:[f dateFromString:dico[@"date_joined"]]];
+    
+    
+    if (!dico[@"avatar_url"] ){
+        NSURLComponents *urlComponents = [NSURLComponents componentsWithString:dico[@"avatar_url"]];
+        [urlComponents ZDSrectifiUrlAvatar];
+        NSURL *urlAvatar = [urlComponents URL];
+        [membre setUrlAvatar:urlAvatar];
+    }
+
     
     return membre;
 }

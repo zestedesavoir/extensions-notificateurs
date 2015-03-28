@@ -9,9 +9,11 @@
 #import "NSURLComponents+ZDSUrlAvatar.h"
 
 @implementation NSURLComponents (ZDSUrlAvatar)
+
 - (void)ZDSrectifiUrlAvatar{
     NSString *urlString = [self string];
     NSRange rangeUrl = [urlString rangeOfString:@"http"];
+    
     if (rangeUrl.length == 0){
         self.host = @"zestedesavoir.com";
         self.scheme = @"https";

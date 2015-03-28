@@ -11,13 +11,21 @@ import Cocoa
 /*
     Constantes pour les développeurs
 */
-
-let useApiZDS: Bool = false //Utilisation des apis de ZesteDeSavoir
-
+let ZDSConnectDefault = "ZDSConnectDefault"
 
 /*
      D'initilisation des préférences
 */
+
+
+
+func setBoolConnectDefault(connect:Bool){
+    NSUserDefaults.standardUserDefaults().setBool(connect, forKey: ZDSConnectDefault)
+}
+func boolConnectDefault() -> Bool{
+    return NSUserDefaults.standardUserDefaults().boolForKey(ZDSConnectDefault)
+}
+
 
 
 /*

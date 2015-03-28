@@ -8,6 +8,7 @@
 
 #import "CToken.h"
 #import <SSKeychain/SSKeychain.h>
+
 @implementation CToken
 @synthesize accessToken, refreshToken, expireIn;
 
