@@ -5,6 +5,8 @@ if ("undefined" == typeof(ZDSNotif)) {
 ZDSNotif.BrowserOverlay = {
     showNotif: true,
     isMP: false,
+    preNotifF: 0,
+    preNotifMP: 0,
     init: function() {
         window.removeEventListener("load", ZDSNotif.BrowserOverlay.init, false);
         var timer = Components.classes["@mozilla.org/timer;1"]
@@ -41,6 +43,20 @@ ZDSNotif.BrowserOverlay = {
 
             e.preventDefault();
         }
+        
+        function notifyMe(text) {
+          if (!("Notification" in window)) { }
+          else if (Notification.permission === "granted") {
+            var notification = new Notification(text);
+          }
+          else if (Notification.permission !== 'denied') {
+            Notification.requestPermission(function (permission) {
+              if (permission === "granted") {
+                var notification = new Notification(text);
+              }
+            });
+          }
+         }
 
         function getNotifAndMP() {
             var toolbarbutton = document.getElementById('zds-notif-button');
@@ -56,10 +72,22 @@ ZDSNotif.BrowserOverlay = {
                     if (DOMPars.getElementsByClassName('dropdown')[i].innerHTML.indexOf('Notifications') != -1) {
                         var htmlNotif = DOMPars.getElementsByClassName('dropdown')[i].innerHTML;
                         var notiflab = document.querySelector('.notiflab');
-                        if (htmlNotif.split("<a").length - 2 > 0)
+                        if (htmlNotif.split("<a").length - 2 > 0) {
                             toolbarbutton.setAttribute('image', 'chrome://zds-notif/skin/images/icone_n_20.png');
-                        else if (!ZDSNotif.BrowserOverlay.isMP)
+                            var nbNotif = htmlNotif.split("<a").length - 2;
+                            if(nbNotif > 1 && ZDSNotif.BrowserOverlay.preNotifF < nbNotif) {
+                              notifyMe('Clem Notificateur : Vous avez ' + nbNotif.toString() + ' nouvelles notifications sur le forum');
+                              ZDSNotif.BrowserOverlay.preNotifF = nbNotif;
+                            }
+                            else if(ZDSNotif.BrowserOverlay.preNotifF < nbNotif) {
+                              notifyMe('Clem Notificateur : Vous avez une nouvelle notification sur le forum');
+                              ZDSNotif.BrowserOverlay.preNotifF = nbNotif;
+                            }
+                        }
+                        else if (!ZDSNotif.BrowserOverlay.isMP) {
                             toolbarbutton.setAttribute('image', 'chrome://zds-notif/skin/images/icone_20.png');
+                            ZDSNotif.BrowserOverlay.preNotifF = 0;
+                        }
                         notiflab.innerHTML = (htmlNotif.split("<a").length - 2).toString();
 
                         if (ZDSNotif.BrowserOverlay.showNotif) {
@@ -89,9 +117,19 @@ ZDSNotif.BrowserOverlay = {
                         if (htmlNotif.split("<a").length - 2 > 0) {
                             toolbarbutton.setAttribute('image', 'chrome://zds-notif/skin/images/icone_m_20.png');
                             ZDSNotif.BrowserOverlay.isMP = true;
+                            var nbNotif = htmlNotif.split("<a").length - 2;
+                            if(nbNotif > 1 && ZDSNotif.BrowserOverlay.preNotifMP < nbNotif) {
+                              notifyMe('Clem Notificateur : Vous avez ' + nbNotif.toString() + ' nouveaux messages privé');
+                              ZDSNotif.BrowserOverlay.preNotifMP = nbNotif;
+                            }
+                            else if(ZDSNotif.BrowserOverlay.preNotifMP < nbNotif) {
+                              notifyMe('Clem Notificateur : Vous avez 1 nouveau message privé');
+                              ZDSNotif.BrowserOverlay.preNotifMP = nbNotif;
+                            }
                         } else {
                             toolbarbutton.setAttribute('image', 'chrome://zds-notif/skin/images/icone_20.png');
                             ZDSNotif.BrowserOverlay.isMP = false;
+                            ZDSNotif.BrowserOverlay.preNotifMP = 0;
                         }
                         mplab.innerHTML = (htmlNotif.split("<a").length - 2).toString();
 
