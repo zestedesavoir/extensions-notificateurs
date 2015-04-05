@@ -102,8 +102,8 @@ ZDSNotif.BrowserOverlay = {
                             htmlNotif = htmlNotif.replace(/<\/li/g, '</html:li');
                             htmlNotif = htmlNotif.replace(/<a/g, '<html:a');
                             htmlNotif = htmlNotif.replace(/<\/a/g, '</html:a');
-                            htmlNotif = htmlNotif.replace(/href=\"\//g, 'href="https://zestedesavoir.com/');
-                            htmlNotif = htmlNotif.replace(/src=\"\//g, 'src="https://zestedesavoir.com/');
+                            htmlNotif = htmlNotif.replace(/href=\"\//g, 'href=\"https://zestedesavoir.com/');
+                            htmlNotif = htmlNotif.replace(/src=\"\//g, 'src=\"https://zestedesavoir.com/');
                             htmlNotif = htmlNotif.replace('<img(.*)>', '');
                             dropdown.innerHTML = htmlNotif;
                         }
@@ -145,8 +145,8 @@ ZDSNotif.BrowserOverlay = {
                             htmlNotif = htmlNotif.replace(/<\/li/g, '</html:li');
                             htmlNotif = htmlNotif.replace(/<a/g, '<html:a');
                             htmlNotif = htmlNotif.replace(/<\/a/g, '</html:a');
-                            htmlNotif = htmlNotif.replace(/href=\"\//g, 'href="https://zestedesavoir.com/');
-                            htmlNotif = htmlNotif.replace(/src=\"\//g, 'src="https://zestedesavoir.com/');
+                            htmlNotif = htmlNotif.replace(/href=\"\//g, 'href=\"https://zestedesavoir.com/');
+                            htmlNotif = htmlNotif.replace(/src=\"\//g, 'src=\"https://zestedesavoir.com/');
                             htmlNotif = htmlNotif.replace('<img(.*)>', '');
                             dropdown.innerHTML = htmlNotif;
                         }
