@@ -22,6 +22,7 @@ Notificateur.prototype = {
 	 * ZdS URL
 	 */
 	url: "https://zestedesavoir.com",
+	url_to_fetch: "https://zestedesavoir.com/pages/", // lighter than the root
 
 	/**
 	 * If logged in last check
@@ -286,7 +287,7 @@ Notificateur.prototype = {
 		self = this;
 		chrome.browserAction.setIcon({ "path": "icons/icone_38_parsing.png" });
 
-		var url = this.useFakeData ? chrome.runtime.getURL("fake-data.html") : this.url;
+		var url = this.useFakeData ? chrome.runtime.getURL("fake-data.html") : this.url_to_fetch;
 
 		new AjaxRequest(url, this.loadCallback.bind(this), function() {
 			//si jamais la requete plante (pas d'internet, 404 ou autre 500...)
@@ -358,10 +359,10 @@ Notificateur.prototype = {
 				this.logged = true;
 			}
 		}
-		
+
 		//récupere les deux listes, celle des MP (0) et celle des notifs (1)
 		contenu = contenu.querySelectorAll("div.notifs-links ul.dropdown-list");
-		
+
 		// Check les notifications ---------------------------------------
 		var notifications = contenu[1].querySelectorAll("li"),
 			newNotifs = [], // Liste des nouvelles notifications
@@ -421,10 +422,10 @@ Notificateur.prototype = {
 
 		// Check les mp -----------------------------------------------
 		notifications = contenu[0].querySelectorAll("li");
-		
+
 		if(!notifications[0].classList.contains("dropdown-empty-message")) {
 			for(var i=0, nb=notifications.length; i<nb; i++) { //-1 pour éviter le "tout les mps
-								
+
 				var notif = notifications[i],
 					notifLink = notif.querySelector("a").getAttribute("href");
 
@@ -813,7 +814,7 @@ Notificateur.prototype = {
 			this.removeNotifCallback = undefined;
 		}
 	},
-	
+
 	/**
 	 * Update badge
 	 */
@@ -826,7 +827,7 @@ Notificateur.prototype = {
 				totMP++;
 			}
 		}
-				
+
 		var badgeTexte = (totMP > 0) ? totMP.toString() + " - " : "";
 		badgeTexte += (len-totMP > 0) ? (len-totMP).toString() : ((totMP > 0) ? "0" : "");
 		chrome.browserAction.setBadgeText({text: badgeTexte});
