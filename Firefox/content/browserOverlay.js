@@ -9,10 +9,6 @@ ZDSNotif.BrowserOverlay = {
     preNotifMP: 0,
     init: function() {
         window.removeEventListener("load", ZDSNotif.BrowserOverlay.init, false);
-        var timer = Components.classes["@mozilla.org/timer;1"]
-            .createInstance(Components.interfaces.nsITimer);
-        timer.initWithCallback(ZDSNotif.BrowserOverlay.updateUI, 60000,
-            Components.interfaces.nsITimer.TYPE_REPEATING_SLACK);
         ZDSNotif.BrowserOverlay.updateUI();
     },
     updateUI: function() {
@@ -47,12 +43,12 @@ ZDSNotif.BrowserOverlay = {
         function notifyMe(text) {
           if (!("Notification" in window)) { }
           else if (Notification.permission === "granted") {
-            var notification = new Notification(text);
+            var notification = new Notification(text, {icon:'chrome://zds-notif/skin/images/icone_20.png'});
           }
           else if (Notification.permission !== 'denied') {
             Notification.requestPermission(function (permission) {
               if (permission === "granted") {
-                var notification = new Notification(text);
+                var notification = new Notification(text, {icon:'chrome://zds-notif/skin/images/icone_20.png'});
               }
             });
           }
@@ -102,8 +98,8 @@ ZDSNotif.BrowserOverlay = {
                             htmlNotif = htmlNotif.replace(/<\/li/g, '</html:li');
                             htmlNotif = htmlNotif.replace(/<a/g, '<html:a');
                             htmlNotif = htmlNotif.replace(/<\/a/g, '</html:a');
-                            htmlNotif = htmlNotif.replace(/href=\"\//g, 'href="https://zestedesavoir.com/');
-                            htmlNotif = htmlNotif.replace(/src=\"\//g, 'src="https://zestedesavoir.com/');
+                            htmlNotif = htmlNotif.replace(/href=\"\//g, 'href=\"https://zestedesavoir.com/');
+                            htmlNotif = htmlNotif.replace(/src=\"\//g, 'src=\"https://zestedesavoir.com/');
                             htmlNotif = htmlNotif.replace('<img(.*)>', '');
                             dropdown.innerHTML = htmlNotif;
                         }
@@ -145,8 +141,8 @@ ZDSNotif.BrowserOverlay = {
                             htmlNotif = htmlNotif.replace(/<\/li/g, '</html:li');
                             htmlNotif = htmlNotif.replace(/<a/g, '<html:a');
                             htmlNotif = htmlNotif.replace(/<\/a/g, '</html:a');
-                            htmlNotif = htmlNotif.replace(/href=\"\//g, 'href="https://zestedesavoir.com/');
-                            htmlNotif = htmlNotif.replace(/src=\"\//g, 'src="https://zestedesavoir.com/');
+                            htmlNotif = htmlNotif.replace(/href=\"\//g, 'href=\"https://zestedesavoir.com/');
+                            htmlNotif = htmlNotif.replace(/src=\"\//g, 'src=\"https://zestedesavoir.com/');
                             htmlNotif = htmlNotif.replace('<img(.*)>', '');
                             dropdown.innerHTML = htmlNotif;
                         }
@@ -185,4 +181,8 @@ ZDSNotif.BrowserOverlay = {
 
 //Listener
 window.addEventListener("load", ZDSNotif.BrowserOverlay.init, false);
-window.addEventListener('click', ZDSNotif.BrowserOverlay.updateUI, false);
+
+var timer = Components.classes["@mozilla.org/timer;1"]
+            .createInstance(Components.interfaces.nsITimer);
+timer.initWithCallback(ZDSNotif.BrowserOverlay.updateUI, 3000,
+            Components.interfaces.nsITimer.TYPE_REPEATING_PRECISE_CAN_SKIP);
