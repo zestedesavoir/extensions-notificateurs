@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<vbox xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <setting pref="extensions.zds-notif.show-notification" type="bool" title="Enable notification"/>
+  <setting pref="extensions.zds-notif.timer-refresh" type="integer" title="Check notifications every x secondes:" min="1"/>
+  <setting pref="extensions.zds-notif.sound-notif" type="file" title="Play sound (not supported yet):"/>
+</vbox>
