@@ -7,11 +7,13 @@
     <em:id>amarok@enconn.fr</em:id>
     <em:name>zds-notif</em:name>
     <em:description>Une extension pour connaitre le nombre de notifications et de MP de ZesteDeSavoir sans avoir besoin d'ouvrir le site</em:description>
-    <em:version>1.1.0</em:version>
+    <em:version>2.0</em:version>
     <em:creator>AmarOk</em:creator>
     <em:homepageURL>http://zestedesavoir.com/</em:homepageURL>
     <em:iconURL>chrome://zds-notif/skin/images/icone_48.png</em:iconURL>
     <em:type>2</em:type>
+    <em:optionsURL>chrome://zds-notif/content/options.xul</em:optionsURL>
+    <em:optionsType>2</em:optionsType>
 
     <!-- Mozilla Firefox -->
     <em:targetApplication>
