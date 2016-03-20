@@ -12,6 +12,7 @@ timer.initWithCallback(getNotifAndMP, prefTimer*1000, Components.interfaces.nsIT
 var g_preNotifF = 0;
 var g_preNotifMP = 0;
 var g_showNotifF = true;
+var base_url = 'https://zestedesavoir.com';
 
 function escapeHTML(str) str.replace(/[&"<>]/g, function (m) escapeHTML.replacements[m]);
 escapeHTML.replacements = { "&": "&amp;", '"': "&quot;", "<": "&lt;", ">": "&gt;" };
@@ -108,8 +109,8 @@ function HTMLToXUL(htmlNotif)
   htmlNotif = htmlNotif.replace(/<\/li/g, '</html:li');
   htmlNotif = htmlNotif.replace(/<a/g, '<html:a');
   htmlNotif = htmlNotif.replace(/<\/a/g, '</html:a');
-  htmlNotif = htmlNotif.replace(/href=\"\//g, 'href=\"https://zestedesavoir.com/');
-  htmlNotif = htmlNotif.replace(/src=\"\//g, 'src=\"https://zestedesavoir.com/');
+  htmlNotif = htmlNotif.replace(/href=\"\//g, 'href=\"' + base_url + '/');
+  htmlNotif = htmlNotif.replace(/src=\"\//g, 'src=\"' + base_url + '/');
   htmlNotif = htmlNotif.replace('<img(.*)>', '');
   escapeHTML(htmlNotif);
   return htmlNotif;
@@ -118,10 +119,10 @@ function HTMLToXUL(htmlNotif)
 function getNotifAndMP() {
 
   var oReq = new XMLHttpRequest();
-  oReq.open("GET", 'https://zestedesavoir.com', true);//DEBUG
+  oReq.open("GET", base_url, true);//DEBUG
   oReq.onload = function() {
     //To have real links
-    var DOMPars = HTMLParser(this.responseText.replace(/href=\"\//g, 'href="https://zestedesavoir.com/'));
+    var DOMPars = HTMLParser(this.responseText.replace(/href=\"\//g, 'href="' + base_url + '/'));
     var isConnected = false;
 
     var dropdownContent = DOMPars.getElementsByClassName('dropdown');
@@ -150,7 +151,7 @@ function getNotifAndMP() {
 
         if(g_showNotifF) {
           dropdown.innerHTML = HTMLToXUL(htmlNotif);
-          dropdown.innerHTML += '<html:a href="https://zestedesavoir.com/forums/notifications/" class="dropdown-link-all">Toutes les notifications</html:a>';
+          dropdown.innerHTML += '<html:a href="'+base_url+'/forums/notifications/" class="dropdown-link-all">Toutes les notifications</html:a>';
         }
       }
 
@@ -173,7 +174,7 @@ function getNotifAndMP() {
 
         if(!g_showNotifF) {
           dropdown.innerHTML = HTMLToXUL(htmlNotif);
-          dropdown.innerHTML += '<html:a href="https://zestedesavoir.com/mp/" class="dropdown-link-all">Tous les messages</html:a>';
+          dropdown.innerHTML += '<html:a href="'+base_url+'/mp/" class="dropdown-link-all">Tous les messages</html:a>';
         }
       }
     }
@@ -186,7 +187,7 @@ function getNotifAndMP() {
     if(!isConnected)
     {
       changeIconBtn(StateEnum.NOT_CONNECTED);
-      dropdown.innerHTML = '<html:a href="https://zestedesavoir.com/membres/connexion/?next=/" class="dropdown-link-all">Connexion</html:a>';
+      dropdown.innerHTML = '<html:a href="'+base_url+'/membres/connexion/?next=/" class="dropdown-link-all">Connexion</html:a>';
       var mplab = document.querySelector('.mplab');
       var notiflab = document.querySelector('.notiflab');
       mplab.innerHTML = 'x';
