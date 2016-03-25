@@ -127,7 +127,7 @@ function getNotifAndMP() {
 
     var dropdownContent = DOMPars.getElementsByClassName('dropdown');
     var dropdown = document.querySelector('.dropdownZDSNOTIF');
-    for (var i = 0; i < dropdownContent.length; ++i) { //TODO WHY -2 ?!!!!
+    for (var i = 0; i < dropdownContent.length; ++i) {
       //Get forums posts
       if (dropdownContent[i].innerHTML.indexOf('Notifications') != -1) {
         //If we can check notifications, the user is connected.
