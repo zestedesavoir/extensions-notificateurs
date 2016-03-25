@@ -34,9 +34,9 @@ function linkClick(e) {
 function notifyMe(text) {
   var showNotif = preferences.getBoolPref("show-notification");
   //Note: Notification.sound is not supported yet
-  var soundFile = preferences.getComplexValue("sound-notif", Components.interfaces.nsILocalFile);
+  //var soundFile = preferences.getComplexValue("sound-notif", Components.interfaces.nsILocalFile);
   var options = {
-    sound:soundFile.path,
+    //sound:soundFile.path,
     icon:'chrome://zds-notif/skin/images/icone_20.png'
   }
   if (!("Notification" in window) || !showNotif) { }
@@ -119,15 +119,15 @@ function HTMLToXUL(htmlNotif)
 function getNotifAndMP() {
 
   var oReq = new XMLHttpRequest();
-  oReq.open("GET", base_url, true);//DEBUG
+  oReq.open("GET", base_url, true);
   oReq.onload = function() {
     //To have real links
     var DOMPars = HTMLParser(this.responseText.replace(/href=\"\//g, 'href="' + base_url + '/'));
     var isConnected = false;
 
     var dropdownContent = DOMPars.getElementsByClassName('dropdown');
-    var dropdown = document.querySelector('.dropdown');
-    for (var i = 0; i < dropdownContent.length; ++i) {
+    var dropdown = document.querySelector('.dropdownZDSNOTIF');
+    for (var i = 0; i < dropdownContent.length; ++i) { //TODO WHY -2 ?!!!!
       //Get forums posts
       if (dropdownContent[i].innerHTML.indexOf('Notifications') != -1) {
         //If we can check notifications, the user is connected.
@@ -205,3 +205,6 @@ function getNotifAndMP() {
   };
   oReq.send(null);
 }
+
+
+window.addEventListener("load", getNotifAndMP, false);
