@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".ui.auth.LoginActivity">
+
+  <LinearLayout
+    android:id="@+id/ll_register"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:padding="@dimen/very_small_margin">
+
+      <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+          android:id="@+id/et_login"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="@string/hint_login"
+          android:imeOptions="actionNext"
+          android:inputType="textPersonName"
+          android:lines="1"
+          android:maxLines="1"
+          android:singleLine="true"/>
+      </android.support.design.widget.TextInputLayout>
+
+      <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+          android:id="@+id/et_password"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="@string/hint_password"
+          android:imeOptions="actionNext"
+          android:inputType="textPassword"
+          android:lines="1"
+          android:maxLines="1"
+          android:singleLine="true"/>
+      </android.support.design.widget.TextInputLayout>
+
+      <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+          android:id="@+id/et_email"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="@string/hint_email"
+          android:imeOptions="actionDone"
+          android:inputType="textEmailAddress"
+          android:lines="1"
+          android:maxLines="1"
+          android:singleLine="true"/>
+      </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+    <Button
+      android:id="@+id/btn_register"
+      style="@style/Base.Theme.ZdS.Button.Primary"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/btn_register"/>
+  </LinearLayout>
+</ScrollView>
