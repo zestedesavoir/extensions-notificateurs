@@ -57,7 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <EditText
+        <android.support.design.widget.TextInputEditText
           android:id="@+id/et_login"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <EditText
+        <android.support.design.widget.TextInputEditText
           android:id="@+id/et_password"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
