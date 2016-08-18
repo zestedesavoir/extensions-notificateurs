@@ -37,14 +37,12 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
 
   public void call(List<Notification> notifications) {
     this.notifications = notifications;
-    Collections.sort(this.notifications, new Comparator<Notification>() {
-      @Override public int compare(Notification lhs, Notification rhs) {
-        final int compareToRead = lhs.isRead == rhs.isRead ? 0 : lhs.isRead ? 1 : -1;
-        if (compareToRead != 0) {
-          return compareToRead;
-        }
-        return rhs.pubdate.compareTo(lhs.pubdate);
+    Collections.sort(this.notifications, (lhs, rhs) -> {
+      final int compareToRead = lhs.isRead == rhs.isRead ? 0 : lhs.isRead ? 1 : -1;
+      if (compareToRead != 0) {
+        return compareToRead;
       }
+      return rhs.pubdate.compareTo(lhs.pubdate);
     });
     notifyDataSetChanged();
   }

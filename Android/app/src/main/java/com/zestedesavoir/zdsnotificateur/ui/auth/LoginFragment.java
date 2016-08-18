@@ -50,26 +50,17 @@ public class LoginFragment extends Fragment {
   @Override public void onViewCreated(View view, Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    etPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-      @Override
-      public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-        if (id == EditorInfo.IME_ACTION_DONE) {
-          trySubmit();
-          return true;
-        }
-        return false;
-      }
-    });
-    btnConnect.setOnClickListener(new View.OnClickListener() {
-      @Override public void onClick(View v) {
+    etPassword.setOnEditorActionListener((textView, id, keyEvent) -> {
+      if (id == EditorInfo.IME_ACTION_DONE) {
         trySubmit();
+        return true;
       }
+      return false;
     });
-    btnRegister.setOnClickListener(new View.OnClickListener() {
-      @Override public void onClick(View v) {
-        if (listener != null) {
-          listener.goToRegisterScreen();
-        }
+    btnConnect.setOnClickListener(v -> trySubmit());
+    btnRegister.setOnClickListener(v -> {
+      if (listener != null) {
+        listener.goToRegisterScreen();
       }
     });
   }
