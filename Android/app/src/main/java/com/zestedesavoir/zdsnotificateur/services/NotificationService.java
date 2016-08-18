@@ -11,6 +11,8 @@ import com.zestedesavoir.zdsnotificateur.R;
 import com.zestedesavoir.zdsnotificateur.internal.Callback;
 import com.zestedesavoir.zdsnotificateur.internal.ZdSLibrary;
 import com.zestedesavoir.zdsnotificateur.notifications.Notification;
+import com.zestedesavoir.zdsnotificateur.ui.MainActivity;
+import com.zestedesavoir.zdsnotificateur.ui.utils.IntentUtil;
 
 import java.util.List;
 
@@ -57,24 +59,35 @@ public class NotificationService extends IntentService {
   }
 
   private void generateNotification(List<Notification> notifications) {
+    final NotificationManager manager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
     if (notifications.size() == 0) {
+      manager.cancel(NOTIFICATION_ID);
       return;
     }
     final NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
     if (notifications.size() == 1) {
-      builder.setContentTitle(getString(R.string.app_name))
-          .setAutoCancel(true)
-          .setContentText(notifications.get(0).title)
-          .setSmallIcon(R.drawable.ic_notif_clem);
-    } else {
-      builder.setContentTitle(getString(R.string.app_name))
+      builder.setContentTitle(notifications.get(0).title)
           .setAutoCancel(true)
           .setColor(getResources().getColor(R.color.accent))
-          .setContentText(getResources().getQuantityString(R.plurals.notif_title, notifications.size(), notifications.size()))
-          .setSmallIcon(R.drawable.ic_notif_clem);
-    }
+          .setContentText(getString(R.string.notif_author, notifications.get(0).sender().username()))
+          .setSmallIcon(R.drawable.ic_notif_clem)
+          .setContentIntent(IntentUtil.createBrowserIntent(this, notifications.get(0)));
+    } else {
+      NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
+      inboxStyle.setBigContentTitle(getResources().getQuantityString(R.plurals.notif_title, notifications.size(), notifications.size()));
+      for (Notification notification : notifications) {
+        inboxStyle.addLine(notification.title);
+      }
 
-    final NotificationManager manager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+      builder.setContentTitle(getResources().getQuantityString(R.plurals.notif_title, notifications.size(), notifications.size()))
+          .setAutoCancel(true)
+          .setColor(getResources().getColor(R.color.accent))
+          .setContentText(getString(R.string.notif_description))
+          .setSmallIcon(R.drawable.ic_notif_clem)
+          .setContentIntent(IntentUtil.createActivityIntent(this, MainActivity.class))
+          .setStyle(inboxStyle);
+    }
     manager.notify(NOTIFICATION_ID, builder.build());
   }
+
 }
