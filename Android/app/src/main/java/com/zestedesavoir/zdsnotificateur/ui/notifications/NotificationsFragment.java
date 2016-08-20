@@ -9,6 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -35,6 +38,11 @@ public class NotificationsFragment extends Fragment {
   private OnMainNavigation listener;
   private NotificationsAdapter adapter;
 
+  @Override public void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setHasOptionsMenu(true);
+  }
+
   @Nullable @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
     final View inflate = inflater.inflate(R.layout.notifications_fragment, container, false);
     ButterKnife.bind(this, inflate);
@@ -56,7 +64,7 @@ public class NotificationsFragment extends Fragment {
 
     ZdSLibrary.get(getContext()).getNotificationManager().getAll(new Callback<List<Notification>>() {
       @Override public void success(List<Notification> notifications) {
-        adapter.call(notifications);
+        adapter.filter(Type.NONE, notifications);
       }
 
       @Override public void failure(Throwable e) {
@@ -65,6 +73,32 @@ public class NotificationsFragment extends Fragment {
         }
       }
     });
+  }
+
+  @Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    inflater.inflate(R.menu.menu_main, menu);
+    super.onCreateOptionsMenu(menu, inflater);
+  }
+
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case R.id.action_topic:
+        adapter.filter(Type.TOPIC);
+        return true;
+      case R.id.action_post:
+        adapter.filter(Type.POST);
+        return true;
+      case R.id.action_private_post:
+        adapter.filter(Type.PRIVATE_POST);
+        return true;
+      case R.id.action_reaction:
+        adapter.filter(Type.REACTION);
+        return true;
+      case R.id.action_clear:
+        adapter.filter(Type.NONE);
+        return true;
+    }
+    return super.onOptionsItemSelected(item);
   }
 
   @Override

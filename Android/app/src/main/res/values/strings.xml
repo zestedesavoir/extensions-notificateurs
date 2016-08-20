@@ -22,6 +22,14 @@
   <string name="notif_author">Envoyé par %s</string>
   <string name="notif_description">Appuyez pour consulter vos notifications.</string>
 
+  <string name="menu_filter">Filtre</string>
+  <string name="menu_topic">Sujets</string>
+  <string name="menu_post">Messages</string>
+  <string name="menu_private_post">Messages privés</string>
+  <string name="menu_reaction">Réactions</string>
+  <string name="menu_clear">Annuler</string>
+  <string name="menu_disconnect">Déconnexion</string>
+
   <string name="alert_register">Un e-mail a été envoyé pour valider votre compte !</string>
   <string name="alert_connection">Connecté en tant que %1$s</string>
   <string name="alert_disconnection">Impossible de se déconnecter</string>

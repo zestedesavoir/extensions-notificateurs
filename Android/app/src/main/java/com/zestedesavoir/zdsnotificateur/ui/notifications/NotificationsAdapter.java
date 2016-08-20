@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -17,7 +19,6 @@ import net.danlew.android.joda.DateUtils;
 import org.joda.time.DateTime;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import butterknife.BindView;
@@ -27,24 +28,33 @@ import de.hdodenhof.circleimageview.CircleImageView;
 /**
  * @author Gerard Paligot
  */
-public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdapter.ViewHolder> {
+public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdapter.ViewHolder> implements Filterable {
   private List<Notification> notifications = Collections.emptyList();
+  private List<Notification> notificationsFiltered = Collections.emptyList();
   private Context context;
+  private TypeFilter filter;
 
   public NotificationsAdapter(Context context) {
     this.context = context;
   }
 
-  public void call(List<Notification> notifications) {
+  public void filter(Type constraint) {
+    getFilter().filter(constraint.key());
+  }
+
+  public void filter(Type constraint, List<Notification> notifications) {
     this.notifications = notifications;
-    Collections.sort(this.notifications, (lhs, rhs) -> {
-      final int compareToRead = lhs.isRead == rhs.isRead ? 0 : lhs.isRead ? 1 : -1;
-      if (compareToRead != 0) {
-        return compareToRead;
-      }
-      return rhs.pubdate.compareTo(lhs.pubdate);
-    });
+    this.notificationsFiltered = notifications;
+    filter(constraint);
+  }
+
+  public void updateNotifications(List<Notification> notifications) {
+    this.notificationsFiltered = notifications;
     notifyDataSetChanged();
+  }
+
+  public List<Notification> getNotifications() {
+    return Collections.unmodifiableList(notifications);
   }
 
   @Override public NotificationsAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
@@ -52,7 +62,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
   }
 
   @Override public void onBindViewHolder(NotificationsAdapter.ViewHolder viewHolder, final int i) {
-    final Notification notification = notifications.get(i);
+    final Notification notification = notificationsFiltered.get(i);
     String update = DateUtils.getRelativeTimeSpanString(context, DateTime.now().withMillis(notification.pubdate.getTime()), DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_ALL).toString();
 
     viewHolder.tvMeta.setText("Par " + notification.sender().username() + ", " + update);
@@ -68,9 +78,15 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
   }
 
   @Override public int getItemCount() {
-    return notifications.size();
+    return notificationsFiltered.size();
   }
 
+  @Override public Filter getFilter() {
+    if (filter == null) {
+      filter = new TypeFilter(this);
+    }
+    return filter;
+  }
 
   public final class ViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.ll_item_notification) LinearLayout llItem;

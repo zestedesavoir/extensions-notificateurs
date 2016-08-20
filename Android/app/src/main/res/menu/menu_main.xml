@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  tools:context=".ui.MainActivity">
+  <item
+    android:icon="@drawable/ic_filter"
+    android:title="@string/menu_filter"
+    app:showAsAction="ifRoom">
+    <menu>
+      <item
+        android:id="@+id/action_topic"
+        android:title="@string/menu_topic"/>
+      <item
+        android:id="@+id/action_post"
+        android:title="@string/menu_post"/>
+      <item
+        android:id="@+id/action_private_post"
+        android:title="@string/menu_private_post"/>
+      <item
+        android:id="@+id/action_reaction"
+        android:title="@string/menu_reaction"/>
+      <item
+        android:id="@+id/action_clear"
+        android:title="@string/menu_clear"/>
+    </menu>
+  </item>
+  <item
+    android:id="@+id/action_disconnect"
+    android:icon="@drawable/ic_logout"
+    android:title="@string/menu_disconnect"
+    app:showAsAction="never"/>
+</menu>

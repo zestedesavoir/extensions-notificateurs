@@ -7,7 +7,7 @@ public enum Config {
   ;
 
   public static String url() {
-    return "http://192.168.0.11:80";
+    return "http://10.0.100.225:80";
   }
 
   public static String clientId() {
