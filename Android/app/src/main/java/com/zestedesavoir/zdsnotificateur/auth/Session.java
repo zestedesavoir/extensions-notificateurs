@@ -26,4 +26,11 @@ public interface Session {
    * @param callback Callback with the new tokens.
    */
   void authenticateByToken(Callback<Token> callback);
+
+  /**
+   * Disconnect the current authenticated user.
+   *
+   * @param callback Callback called when the user is disconnected.
+   */
+  void disconnect(Callback<Void> callback);
 }

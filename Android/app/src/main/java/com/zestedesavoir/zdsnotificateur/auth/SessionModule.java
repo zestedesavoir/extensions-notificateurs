@@ -4,6 +4,7 @@ import com.zestedesavoir.zdsnotificateur.auth.actions.TokenActionModule;
 import com.zestedesavoir.zdsnotificateur.auth.database.TokenDaoModule;
 import com.zestedesavoir.zdsnotificateur.auth.queries.Authentication;
 import com.zestedesavoir.zdsnotificateur.auth.queries.AuthenticationQueryParameter;
+import com.zestedesavoir.zdsnotificateur.auth.queries.Disconnect;
 import com.zestedesavoir.zdsnotificateur.auth.queries.RefreshToken;
 import com.zestedesavoir.zdsnotificateur.auth.queries.TokenQueryModule;
 import com.zestedesavoir.zdsnotificateur.internal.query.Query;
@@ -29,7 +30,8 @@ import dagger.Provides;
 public final class SessionModule {
   @Provides @Singleton Session providesSession(
       @Authentication QueryParameter<Token, AuthenticationQueryParameter> authenticateQuery,
-      @RefreshToken Query<Token> refreshTokenQuery) {
-    return new SessionImpl(authenticateQuery, refreshTokenQuery);
+      @RefreshToken Query<Token> refreshTokenQuery,
+      @Disconnect Query<Void> disconnectQuery) {
+    return new SessionImpl(authenticateQuery, refreshTokenQuery, disconnectQuery);
   }
 }

@@ -9,6 +9,8 @@ import com.zestedesavoir.zdsnotificateur.auth.database.TokenDao;
 import com.zestedesavoir.zdsnotificateur.internal.query.Query;
 import com.zestedesavoir.zdsnotificateur.internal.query.QueryParameter;
 import com.zestedesavoir.zdsnotificateur.internal.utils.NetworkConnectivity;
+import com.zestedesavoir.zdsnotificateur.member.database.AuthenticatedMemberDao;
+import com.zestedesavoir.zdsnotificateur.notifications.database.NotificationDao;
 
 import javax.inject.Singleton;
 
@@ -30,5 +32,10 @@ public final class TokenQueryModule {
       Context context, TokenDao tokenDao, RefreshTokenAction refreshTokenAction,
       NetworkConnectivity networkConnectivity) {
     return new RefreshTokenQuery(context, tokenDao, refreshTokenAction, networkConnectivity);
+  }
+
+  @Provides @Disconnect @Singleton Query<Void> providesDisconnectQuery(
+      TokenDao tokenDao, AuthenticatedMemberDao memberDao, NotificationDao notificationDao) {
+    return new DisconnectionQuery(tokenDao, memberDao, notificationDao);
   }
 }

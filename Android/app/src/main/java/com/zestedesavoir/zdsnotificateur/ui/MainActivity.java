@@ -48,6 +48,28 @@ public class MainActivity extends AppCompatActivity implements OnMainNavigation 
     }
   }
 
+  @Override public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.menu_main, menu);
+    return super.onCreateOptionsMenu(menu);
+  }
+
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case R.id.action_disconnect:
+        ZdSLibrary.get(this).getSession().disconnect(new Callback<Void>() {
+          @Override public void success(Void aVoid) {
+            goToLoginScreen();
+          }
+
+          @Override public void failure(Throwable e) {
+          }
+        });
+
+        return true;
+    }
+    return super.onOptionsItemSelected(item);
+  }
+
   @Override public void goToLoginScreen() {
     final Intent intent = new Intent(MainActivity.this, LoginActivity.class);
     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
