@@ -24,7 +24,7 @@ import timber.log.Timber;
  * @author Gerard Paligot
  */
 public class NotificationService extends IntentService {
-  private static final int NOTIFICATION_ID = 42;
+  public static final int NOTIFICATION_ID = 42;
   private static final String ACTION_START = "ACTION_START";
 
   public static Intent createIntentStartNotificationService(Context context) {

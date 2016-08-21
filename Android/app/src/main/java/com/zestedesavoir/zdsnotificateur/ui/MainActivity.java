@@ -1,5 +1,7 @@
 package com.zestedesavoir.zdsnotificateur.ui;
 
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +14,7 @@ import com.zestedesavoir.zdsnotificateur.R;
 import com.zestedesavoir.zdsnotificateur.auth.Token;
 import com.zestedesavoir.zdsnotificateur.internal.Callback;
 import com.zestedesavoir.zdsnotificateur.internal.ZdSLibrary;
+import com.zestedesavoir.zdsnotificateur.services.NotificationService;
 import com.zestedesavoir.zdsnotificateur.services.StarterReceiver;
 import com.zestedesavoir.zdsnotificateur.ui.auth.LoginActivity;
 import com.zestedesavoir.zdsnotificateur.ui.notifications.NotificationsFragment;
@@ -31,7 +34,9 @@ public class MainActivity extends AppCompatActivity implements OnMainNavigation 
     setContentView(R.layout.main_activity);
     ButterKnife.bind(this);
     setSupportActionBar(toolbar);
-    sendBroadcast(StarterReceiver.getStartIntent(getApplicationContext()));
+
+    final NotificationManager manager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+    manager.cancel(NotificationService.NOTIFICATION_ID);
 
     if (savedInstanceState == null) {
       ZdSLibrary.get(this).getSession().authenticateByToken(new Callback<Token>() {
@@ -46,6 +51,11 @@ public class MainActivity extends AppCompatActivity implements OnMainNavigation 
         }
       });
     }
+  }
+
+  @Override protected void onPause() {
+    super.onPause();
+    sendBroadcast(StarterReceiver.getStartIntent(getApplicationContext()));
   }
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {
