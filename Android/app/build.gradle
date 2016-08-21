@@ -20,13 +20,13 @@ def versionPatch = 0
 def versionBuild = 0
 
 android {
-  compileSdkVersion 23
-  buildToolsVersion "23.0.2"
+  compileSdkVersion 24
+  buildToolsVersion "24.0.1"
 
   defaultConfig {
     applicationId "com.zestedesavoir.zdsnotificateur"
     minSdkVersion 15
-    targetSdkVersion 23
+    targetSdkVersion 24
 
     versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100 + versionBuild
     versionName "${versionMajor}.${versionMinor}.${versionPatch}"
@@ -71,10 +71,10 @@ android {
 
 dependencies {
   testCompile 'junit:junit:4.12'
-  compile 'com.android.support:appcompat-v7:23.3.0'
-  compile 'com.android.support:design:23.3.0'
-  compile 'com.android.support:recyclerview-v7:23.3.0'
-  compile 'com.android.support:support-v4:23.3.0'
+  compile 'com.android.support:appcompat-v7:24.2.0'
+  compile 'com.android.support:design:24.2.0'
+  compile 'com.android.support:recyclerview-v7:24.2.0'
+  compile 'com.android.support:support-v4:24.2.0'
 
   compile 'com.squareup.retrofit:retrofit:2.0.0-beta1'
   compile 'com.squareup.retrofit:converter-gson:2.0.0-beta1'
