@@ -1,9 +1,11 @@
 package com.zestedesavoir.zdsnotificateur.ui.utils;
 
+import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.TaskStackBuilder;
 
 import com.zestedesavoir.zdsnotificateur.internal.Config;
@@ -20,7 +22,7 @@ public final class IntentUtil {
     return PendingIntent.getActivity(context, 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
   }
 
-  public static PendingIntent createActivityIntent(Context context, Class<MainActivity> activityClass) {
+  public static PendingIntent createActivityIntent(Context context, Class<? extends Activity> activityClass) {
     final Intent resultIntent = new Intent(context, activityClass);
     TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
     stackBuilder.addParentStack(activityClass);

@@ -10,8 +10,10 @@ import android.support.v7.app.NotificationCompat;
 import com.zestedesavoir.zdsnotificateur.R;
 import com.zestedesavoir.zdsnotificateur.internal.Callback;
 import com.zestedesavoir.zdsnotificateur.internal.ZdSLibrary;
+import com.zestedesavoir.zdsnotificateur.internal.exceptions.AuthenticationException;
 import com.zestedesavoir.zdsnotificateur.notifications.Notification;
 import com.zestedesavoir.zdsnotificateur.ui.MainActivity;
+import com.zestedesavoir.zdsnotificateur.ui.auth.LoginActivity;
 import com.zestedesavoir.zdsnotificateur.ui.utils.IntentUtil;
 
 import java.util.List;
@@ -53,9 +55,23 @@ public class NotificationService extends IntentService {
       }
 
       @Override public void failure(Throwable e) {
+        if (e instanceof AuthenticationException) {
+          generateNotificationLogin();
+        }
         Timber.e("Fatal error occurred.");
       }
     });
+  }
+
+  private void generateNotificationLogin() {
+    final NotificationManager manager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+    manager.notify(NOTIFICATION_ID, new NotificationCompat.Builder(this)
+        .setContentTitle(getString(R.string.notif_not_logged))
+        .setAutoCancel(true)
+        .setColor(getResources().getColor(R.color.accent))
+        .setContentText(getString(R.string.notif_not_logged_description))
+        .setSmallIcon(R.drawable.ic_notif_clem)
+        .setContentIntent(IntentUtil.createActivityIntent(this, LoginActivity.class)).build());
   }
 
   private void generateNotification(List<Notification> notifications) {
@@ -89,5 +105,4 @@ public class NotificationService extends IntentService {
     }
     manager.notify(NOTIFICATION_ID, builder.build());
   }
-
 }

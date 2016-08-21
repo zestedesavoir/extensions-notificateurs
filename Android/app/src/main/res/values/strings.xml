@@ -21,6 +21,8 @@
   </plurals>
   <string name="notif_author">Envoyé par %s</string>
   <string name="notif_description">Appuyez pour consulter vos notifications.</string>
+  <string name="notif_not_logged">Vous n\'êtes pas connecté</string>
+  <string name="notif_not_logged_description">Appuyez pour ouvrir l\'écran de connexion.</string>
 
   <string name="menu_filter">Filtre</string>
   <string name="menu_topic">Sujets</string>
