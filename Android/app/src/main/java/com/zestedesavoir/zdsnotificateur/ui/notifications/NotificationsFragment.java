@@ -70,7 +70,10 @@ public class NotificationsFragment extends Fragment {
     rvNotifications.setHasFixedSize(true);
     rvNotifications.setLayoutManager(new LinearLayoutManager(getContext()));
     rvNotifications.setAdapter(adapter);
+  }
 
+  @Override public void onResume() {
+    super.onResume();
     ZdSLibrary.get(getContext()).getNotificationManager().getAll(new Callback<List<Notification>>() {
       @Override public void success(List<Notification> notifications) {
         adapter.filter(Type.NONE, notifications);

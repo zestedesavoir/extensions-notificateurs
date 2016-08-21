@@ -71,7 +71,7 @@ public class NotificationService extends IntentService {
         .setColor(getResources().getColor(R.color.accent))
         .setContentText(getString(R.string.notif_not_logged_description))
         .setSmallIcon(R.drawable.ic_notif_clem)
-        .setContentIntent(IntentUtil.createActivityIntent(this, LoginActivity.class)).build());
+        .setContentIntent(IntentUtil.createActivityPendingIntent(this, LoginActivity.class)).build());
   }
 
   private void generateNotification(List<Notification> notifications) {
@@ -87,7 +87,7 @@ public class NotificationService extends IntentService {
           .setColor(getResources().getColor(R.color.accent))
           .setContentText(getString(R.string.notif_author, notifications.get(0).sender().username()))
           .setSmallIcon(R.drawable.ic_notif_clem)
-          .setContentIntent(IntentUtil.createBrowserIntent(this, notifications.get(0)));
+          .setContentIntent(IntentUtil.createBrowserPendingIntent(this, notifications.get(0)));
     } else {
       NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
       inboxStyle.setBigContentTitle(getResources().getQuantityString(R.plurals.notif_title, notifications.size(), notifications.size()));
@@ -100,7 +100,7 @@ public class NotificationService extends IntentService {
           .setColor(getResources().getColor(R.color.accent))
           .setContentText(getString(R.string.notif_description))
           .setSmallIcon(R.drawable.ic_notif_clem)
-          .setContentIntent(IntentUtil.createActivityIntent(this, MainActivity.class))
+          .setContentIntent(IntentUtil.createActivityPendingIntent(this, MainActivity.class))
           .setStyle(inboxStyle);
     }
     manager.notify(NOTIFICATION_ID, builder.build());

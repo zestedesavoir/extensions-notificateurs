@@ -35,9 +35,6 @@ public class MainActivity extends AppCompatActivity implements OnMainNavigation 
     ButterKnife.bind(this);
     setSupportActionBar(toolbar);
 
-    final NotificationManager manager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
-    manager.cancel(NotificationService.NOTIFICATION_ID);
-
     if (savedInstanceState == null) {
       ZdSLibrary.get(this).getSession().authenticateByToken(new Callback<Token>() {
         @Override public void success(Token token) {
@@ -51,6 +48,12 @@ public class MainActivity extends AppCompatActivity implements OnMainNavigation 
         }
       });
     }
+  }
+
+  @Override protected void onResume() {
+    super.onResume();
+    final NotificationManager manager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+    manager.cancel(NotificationService.NOTIFICATION_ID);
   }
 
   @Override protected void onPause() {

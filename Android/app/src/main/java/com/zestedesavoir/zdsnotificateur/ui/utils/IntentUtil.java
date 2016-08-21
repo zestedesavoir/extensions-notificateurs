@@ -16,13 +16,17 @@ import com.zestedesavoir.zdsnotificateur.ui.MainActivity;
  * @author Gerard Paligot
  */
 public final class IntentUtil {
-  public static PendingIntent createBrowserIntent(Context context, Notification notification) {
+  public static Intent createBrowserIntent(Notification notification) {
     final Intent resultIntent = new Intent(Intent.ACTION_VIEW);
     resultIntent.setData(Uri.parse(Config.url() + notification.url));
-    return PendingIntent.getActivity(context, 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+    return resultIntent;
   }
 
-  public static PendingIntent createActivityIntent(Context context, Class<? extends Activity> activityClass) {
+  public static PendingIntent createBrowserPendingIntent(Context context, Notification notification) {
+    return PendingIntent.getActivity(context, 0, createBrowserIntent(notification), PendingIntent.FLAG_UPDATE_CURRENT);
+  }
+
+  public static PendingIntent createActivityPendingIntent(Context context, Class<? extends Activity> activityClass) {
     final Intent resultIntent = new Intent(context, activityClass);
     TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
     stackBuilder.addParentStack(activityClass);

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.zestedesavoir.zdsnotificateur.R;
 import com.zestedesavoir.zdsnotificateur.notifications.Notification;
+import com.zestedesavoir.zdsnotificateur.ui.utils.IntentUtil;
 
 import net.danlew.android.joda.DateUtils;
 
@@ -75,6 +76,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
     } else {
       viewHolder.llItem.setBackgroundResource(R.color.window_background);
     }
+    viewHolder.llItem.setOnClickListener(view -> context.startActivity(IntentUtil.createBrowserIntent(notification)));
   }
 
   @Override public int getItemCount() {
@@ -94,7 +96,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
     @BindView(R.id.tv_meta) TextView tvMeta;
     @BindView(R.id.tv_title) TextView tvTitle;
 
-    public ViewHolder(View itemView) {
+    ViewHolder(View itemView) {
       super(itemView);
       ButterKnife.bind(this, itemView);
     }
