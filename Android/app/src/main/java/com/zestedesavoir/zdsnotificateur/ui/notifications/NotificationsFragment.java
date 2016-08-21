@@ -7,6 +7,7 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -16,11 +17,13 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 
 import com.zestedesavoir.zdsnotificateur.R;
 import com.zestedesavoir.zdsnotificateur.internal.Callback;
 import com.zestedesavoir.zdsnotificateur.internal.ZdSLibrary;
+import com.zestedesavoir.zdsnotificateur.internal.exceptions.AuthenticationException;
 import com.zestedesavoir.zdsnotificateur.notifications.Notification;
 
 import java.util.List;
@@ -36,6 +39,7 @@ public class NotificationsFragment extends Fragment {
     return new NotificationsFragment();
   }
 
+  @BindView(R.id.container) FrameLayout flContainer;
   @BindView(R.id.progress) ProgressBar pbLoading;
   @BindView(R.id.rv_notifications) RecyclerView rvNotifications;
 
@@ -74,8 +78,13 @@ public class NotificationsFragment extends Fragment {
       }
 
       @Override public void failure(Throwable e) {
-        if (listener != null) {
-          listener.goToLoginScreen();
+        if (e instanceof AuthenticationException) {
+          if (listener != null) {
+            listener.goToLoginScreen();
+          }
+        } else {
+          showProgress(false);
+          Snackbar.make(flContainer, R.string.alert_server_error, Snackbar.LENGTH_LONG).show();
         }
       }
     });
