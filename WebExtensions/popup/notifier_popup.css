@@ -1,0 +1,118 @@
+body
+{
+  margin: 0;
+  padding: 0;
+  color: white;
+  background-color: #0c4863;
+  border-bottom: 3px solid #f8ad32;
+}
+
+#notconnected
+{
+  margin-top: 20px;
+  text-align:center;
+}
+
+#home_clem img
+{
+  width: 20%;
+  margin-bottom: 10px;
+}
+
+#payload
+{
+  margin: 0 20px 0 20px;
+}
+
+a
+{
+  text-decoration: none;
+  color: white;
+}
+
+#notconnected #button
+{
+  margin-top: 20px;
+  padding: 20px 0 20px 0;
+  background: #154e69;
+}
+
+#notconnected #button:hover
+{
+  background: #396a81;
+}
+
+
+#connected #button
+{
+  padding: 5px 0 5px 0;
+  background: #154e69;
+  text-align:center;
+  font-size: 13px;
+}
+
+#connected #button:hover, #connected #notification:hover
+{
+  background: #396a81;
+}
+
+#notification
+{
+  font-size:13px;
+  height: 50px;
+  width: 300px;
+  border-bottom: #154e69 1px solid;
+}
+
+#notification img
+{
+  height: 50px;
+}
+
+#notification #blocNotif
+{
+  float:right;
+  width: 250px;
+  height: 50px;
+  overflow: hidden;
+}
+
+#notification #pseudo
+{
+  width:50%;
+  color: #77b8d5;
+}
+
+#notification #date
+{
+  width:50%;
+  float:right;
+  text-align:right;
+  padding-right:10px;
+  color: #77b8d5;
+}
+
+#notification #title
+{
+  margin-top: 5px;
+}
+
+#header
+{
+  text-align:center;
+  background: #154e69;
+}
+
+#notificationList
+{
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#noNotif
+{
+  font-size: 12px;
+  text-align: center;
+  padding: 10px;
+}
