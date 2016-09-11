@@ -3,6 +3,7 @@
 */
 var _notifForum = 0;
 var _notifMP = 0;
+var _delayUpdate = 60 * 1000;
 //Used by the popup
 var _currentDom = null;
 var _contentDiv = null;
@@ -33,14 +34,14 @@ function getNewPrivateMessages() {
   var result_mp = xhr_mp.status;
 
   //If we are not connected
-  if(result_mp == 401) {
+  if(result_mp === 401) {
     if(_debug) console.log("Not connected");
     //Change the icon
     chrome.browserAction.setIcon({path:"icons/notconnected.png"});
-  } else if (result_mp == 200) {
+  } else if (result_mp === 200) {
     var parser = new DOMParser();
     var rootDOM = parser.parseFromString(xhr_mp.response, "application/xml");
-    if(rootDOM.documentElement.nodeName == "parsererror") {
+    if(rootDOM.documentElement.nodeName === "parsererror") {
       if(_debug) console.log("Error while parsing");
     } else {
       var countNotifications = 0;
@@ -74,7 +75,7 @@ function getNewPrivateMessages() {
         var content = "Vous avez " + countNotifications + " message";
         if (countNotifications > 1) content += "s";
         notifyMe(title, content);
-      } else if (countNotifications == 0) {
+      } else if (countNotifications === 0) {
         chrome.browserAction.setIcon({path:"icons/clem_48.png"});
       }
       _notifMP = countNotifications;
@@ -94,24 +95,24 @@ function getNewForumsNotifications() {
   xhr.send();
   var result = xhr.status;
 
-  if(result == 401) {
+  if(result === 401) {
     _connected = false;
     if(_debug) console.log("Not connected");
     //Change popup image
     chrome.browserAction.setIcon({path:"icons/notconnected.png"});
-  } else if (result == 200) {
+  } else if (result === 200) {
     _connected = true;
     var parser = new DOMParser();
     var rootDOM = parser.parseFromString(xhr.response, "application/xml");
-    if(rootDOM.documentElement.nodeName == "parsererror") {
+    if(rootDOM.documentElement.nodeName === "parsererror") {
       if(_debug) console.log("Error while parsing");
     } else {
       //Get new notifications
       var resultsNotification = rootDOM.documentElement.getElementsByTagName("results")[0].childNodes;
       var countNotifications = 0;
       for(var notif = 0; notif < resultsNotification.length; ++notif) {
-        //is_read == False
-        if(resultsNotification[notif].childNodes[2].innerHTML == "False") {
+        //is_read === False
+        if(resultsNotification[notif].childNodes[2].innerHTML === "False") {
           countNotifications += 1;
           var titleNotif = resultsNotification[notif].childNodes[1].innerHTML
           var senderNotif = resultsNotification[notif].childNodes[4].childNodes[1].innerHTML;
@@ -130,7 +131,7 @@ function getNewForumsNotifications() {
         var content = "Vous avez " + countNotifications + " notification";
         if (countNotifications > 1) content += "s";
         notifyMe(title, content);
-      } else if (countNotifications == 0) {
+      } else if (countNotifications === 0) {
         chrome.browserAction.setIcon({path:"icons/clem_48.png"});
       }
       _notifForum = countNotifications;
@@ -194,7 +195,7 @@ function getNewNotifications() {
   _contentDiv = document.createElement('div');
   getNewForumsNotifications();
   getNewPrivateMessages();
-  if(_notifMP == 0 && _notifForum == 0) {
+  if(_notifMP === 0 && _notifForum === 0) {
     var divNoNotif = document.createElement('div');
     divNoNotif.id = "noNotif";
     divNoNotif.innerHTML = "Aucune notification";
@@ -206,5 +207,5 @@ function getNewNotifications() {
 }
 
 //Update the popup
-setInterval(getNewNotifications, 60000);
+setInterval(getNewNotifications, _delayUpdate);
 getNewNotifications();
