@@ -86,11 +86,16 @@ function getNotificationsFromAPI() {
       var divNoNotif = document.createElement('div');
       divNoNotif.id = "noNotif";
       divNoNotif.innerHTML = "Aucune notification";
-      document.body.appendChild(divNoNotif);
+      _contentDiv.appendChild(divNoNotif);
       if(_debug) console.log("Aucune notification");
     }
-    document.body.appendChild(_contentDiv);
-    _currentDom = document.body;
+    var body = document.body;
+    body.appendChild(_contentDiv);
+    //Remove useless nodes
+    while(body.childNodes.length > 2) {
+      body.removeChild(body.childNodes[1]);
+    }
+    _currentDom = body;
   };
 
   xhr.onerror = function (e) {
