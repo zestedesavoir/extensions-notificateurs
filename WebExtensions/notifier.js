@@ -1,8 +1,7 @@
 /*
 * Global variables
 */
-var _notifForum = 0;
-var _notifMP = 0;
+var _notifCounter = 0;
 var _delayUpdate = 60 * 1000;
 //Used by the popup
 var _currentDom = null;
@@ -23,73 +22,12 @@ var _base_url = "https://zestedesavoir.com/";
 var _token = "zds-notifier-firefox";
 if(_debug) _base_url = "https://beta.zestedesavoir.com/";
 
-/**
-* Get private messages
-*/
-function getNewPrivateMessages() {
-  var target_mp = _base_url + "api/mps/unread/?Authorization=" + _token;
-  var xhr_mp = new XMLHttpRequest();
-  xhr_mp.open("GET", target_mp, false);
-  xhr_mp.send();
-  var result_mp = xhr_mp.status;
-
-  //If we are not connected
-  if(result_mp === 401) {
-    if(_debug) console.log("Not connected");
-    //Change the icon
-    chrome.browserAction.setIcon({path:"icons/notconnected.png"});
-  } else if (result_mp === 200) {
-    var parser = new DOMParser();
-    var rootDOM = parser.parseFromString(xhr_mp.response, "application/xml");
-    if(rootDOM.documentElement.nodeName === "parsererror") {
-      if(_debug) console.log("Error while parsing");
-    } else {
-      var countNotifications = 0;
-      //count != 0
-      if(rootDOM.documentElement.firstChild.innerHTML != "0") {
-        var resultsNotification = rootDOM.documentElement.getElementsByTagName("results")[0].childNodes;
-        countNotifications = resultsNotification.length;
-        for(var notif = 0; notif < resultsNotification.length; ++notif) {
-          var title = resultsNotification[notif].childNodes[2].innerHTML;
-          var url = _base_url + "mp/" + resultsNotification[notif].childNodes[0].innerHTML + "/" + encodeURI(title).toLowerCase() + "/messages/";
-          var date = resultsNotification[notif].childNodes[4].innerHTML;
-
-          var target_membre = "https://beta.zestedesavoir.com:443/api/membres/" + resultsNotification[notif].childNodes[5].innerHTML + "/?Authorization=" + token;
-          var xhr_membre = new XMLHttpRequest();
-          xhr_membre.open("GET", target_membre, false);
-          xhr_membre.send();
-          var result_membre = xhr_membre.status;
-          var parserMembre = new DOMParser();
-          var membreDOM = parserMembre.parseFromString(xhr_membre.response, "application/xml");
-          var pseudo = membreDOM.documentElement.getElementsByTagName("username")[0].innerHTML;
-          var avatarUrl = membreDOM.documentElement.getElementsByTagName("avatar_url")[0].innerHTML;
-          addNotification(title, pseudo, avatarUrl, date, url);
-        }
-      }
-
-      //Notify the user
-      if(countNotifications > 0) {
-        if(_debug) console.log("Nouveaux messages : " + countNotifications);
-        chrome.browserAction.setIcon({path:"icons/icone_n_20.png"});
-        var title = "Zds-notificateur : MPs !";
-        var content = "Vous avez " + countNotifications + " message";
-        if (countNotifications > 1) content += "s";
-        notifyMe(title, content);
-      } else if (countNotifications === 0) {
-        chrome.browserAction.setIcon({path:"icons/clem_48.png"});
-      }
-      _notifMP = countNotifications;
-    }
-  } else {
-    if(_debug) console.log(result_mp);
-  }
-}
 
 /**
-* Get forum notifications
+* getNotificationsFromAPI
 */
-function getNewForumsNotifications() {
-  var target = _base_url + "api/notifications/?Authorization=" + _token;
+function getNotificationsFromAPI() {
+  var target = _base_url + "api/notifications/?page_size=30&Authorization=" + _token;
   var xhr = new XMLHttpRequest();
   xhr.open("GET", target, false);
   xhr.send();
@@ -111,7 +49,7 @@ function getNewForumsNotifications() {
       var resultsNotification = rootDOM.documentElement.getElementsByTagName("results")[0].childNodes;
       var countNotifications = 0;
       for(var notif = 0; notif < resultsNotification.length; ++notif) {
-        //is_read === False
+        //If a notification is new we have is_read === False
         if(resultsNotification[notif].childNodes[2].innerHTML === "False") {
           countNotifications += 1;
           var titleNotif = resultsNotification[notif].childNodes[1].innerHTML
@@ -124,7 +62,7 @@ function getNewForumsNotifications() {
         }
       }
       //Notify the user
-      if(countNotifications > _notifForum) {
+      if(countNotifications > _notifCounter) {
         if(_debug) console.log("Nouvelles notifications : " + countNotifications);
         chrome.browserAction.setIcon({path:"icons/icone_n_20.png"});
         var title = "Zds-notificateur : Nouvelle notification !";
@@ -134,7 +72,7 @@ function getNewForumsNotifications() {
       } else if (countNotifications === 0) {
         chrome.browserAction.setIcon({path:"icons/clem_48.png"});
       }
-      _notifForum = countNotifications;
+      _notifCounter = countNotifications;
     }
   } else {
     if(_debug) console.log(result);
@@ -193,9 +131,8 @@ function notifyMe(title, content) {
 */
 function getNewNotifications() {
   _contentDiv = document.createElement('div');
-  getNewForumsNotifications();
-  getNewPrivateMessages();
-  if(_notifMP === 0 && _notifForum === 0) {
+  getNotificationsFromAPI();
+  if(!_notifCounter) {
     var divNoNotif = document.createElement('div');
     divNoNotif.id = "noNotif";
     divNoNotif.innerHTML = "Aucune notification";
