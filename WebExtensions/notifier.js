@@ -27,56 +27,77 @@ if(_debug) _base_url = "https://beta.zestedesavoir.com/";
 * getNotificationsFromAPI
 */
 function getNotificationsFromAPI() {
+  _contentDiv = document.createElement('div');
   var target = _base_url + "api/notifications/?page_size=30&Authorization=" + _token;
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", target, false);
-  xhr.send();
-  var result = xhr.status;
+  xhr.open("GET", target, true);
+  xhr.onload = function (e) {
+    if (xhr.readyState === 4) {
+      var result = xhr.status;
 
-  if(result === 401) {
-    _connected = false;
-    if(_debug) console.log("Not connected");
-    //Change popup image
-    chrome.browserAction.setIcon({path:"icons/notconnected.png"});
-  } else if (result === 200) {
-    _connected = true;
-    var parser = new DOMParser();
-    var rootDOM = parser.parseFromString(xhr.response, "application/xml");
-    if(rootDOM.documentElement.nodeName === "parsererror") {
-      if(_debug) console.log("Error while parsing");
-    } else {
-      //Get new notifications
-      var resultsNotification = rootDOM.documentElement.getElementsByTagName("results")[0].childNodes;
-      var countNotifications = 0;
-      for(var notif = 0; notif < resultsNotification.length; ++notif) {
-        //If a notification is new we have is_read === False
-        if(resultsNotification[notif].childNodes[2].innerHTML === "False") {
-          countNotifications += 1;
-          var titleNotif = resultsNotification[notif].childNodes[1].innerHTML
-          var senderNotif = resultsNotification[notif].childNodes[4].childNodes[1].innerHTML;
-          var senderAvatarNotif = resultsNotification[notif].childNodes[4].childNodes[5].innerHTML;
-          var dateNotif = resultsNotification[notif].childNodes[5].innerHTML;
-          var urlNotif = "https://beta.zestedesavoir.com" + resultsNotification[notif].childNodes[3].innerHTML;
-          if(_debug) console.log(urlNotif + " by " + senderNotif);
-          addNotification(titleNotif, senderNotif, senderAvatarNotif, dateNotif, urlNotif);
+      if(result === 401) {
+        _connected = false;
+        if(_debug) console.log("Not connected");
+        //Change popup image
+        chrome.browserAction.setIcon({path:"icons/notconnected.png"});
+      } else if (result === 200) {
+        _connected = true;
+        var parser = new DOMParser();
+        var rootDOM = parser.parseFromString(xhr.response, "application/xml");
+        if(rootDOM.documentElement.nodeName === "parsererror") {
+          if(_debug) console.log("Error while parsing");
+        } else {
+          //Get new notifications
+          var resultsNotification = rootDOM.documentElement.getElementsByTagName("results")[0].childNodes;
+          var countNotifications = 0;
+          for(var notif = 0; notif < resultsNotification.length; ++notif) {
+            //If a notification is new we have is_read === False
+            if(resultsNotification[notif].childNodes[2].innerHTML === "False") {
+              countNotifications += 1;
+              var titleNotif = resultsNotification[notif].childNodes[1].innerHTML
+              var senderNotif = resultsNotification[notif].childNodes[4].childNodes[1].innerHTML;
+              var senderAvatarNotif = resultsNotification[notif].childNodes[4].childNodes[5].innerHTML;
+              var dateNotif = resultsNotification[notif].childNodes[5].innerHTML;
+              var urlNotif = "https://beta.zestedesavoir.com" + resultsNotification[notif].childNodes[3].innerHTML;
+              if(_debug) console.log(urlNotif + " by " + senderNotif);
+              addNotification(titleNotif, senderNotif, senderAvatarNotif, dateNotif, urlNotif);
+            }
+          }
+          //Notify the user
+          if(countNotifications > _notifCounter) {
+            if(_debug) console.log("Nouvelles notifications : " + countNotifications);
+            chrome.browserAction.setIcon({path:"icons/icone_n_20.png"});
+            var title = "Zds-notificateur : Nouvelle notification !";
+            var content = "Vous avez " + countNotifications + " notification";
+            if (countNotifications > 1) content += "s";
+            notifyMe(title, content);
+          } else if (countNotifications === 0) {
+            chrome.browserAction.setIcon({path:"icons/clem_48.png"});
+          }
+          _notifCounter = countNotifications;
         }
+      } else {
+        if(_debug) console.log(result);
       }
-      //Notify the user
-      if(countNotifications > _notifCounter) {
-        if(_debug) console.log("Nouvelles notifications : " + countNotifications);
-        chrome.browserAction.setIcon({path:"icons/icone_n_20.png"});
-        var title = "Zds-notificateur : Nouvelle notification !";
-        var content = "Vous avez " + countNotifications + " notification";
-        if (countNotifications > 1) content += "s";
-        notifyMe(title, content);
-      } else if (countNotifications === 0) {
-        chrome.browserAction.setIcon({path:"icons/clem_48.png"});
-      }
-      _notifCounter = countNotifications;
     }
-  } else {
-    if(_debug) console.log(result);
-  }
+
+
+    if(!_notifCounter) {
+      var divNoNotif = document.createElement('div');
+      divNoNotif.id = "noNotif";
+      divNoNotif.innerHTML = "Aucune notification";
+      document.body.appendChild(divNoNotif);
+      if(_debug) console.log("Aucune notification");
+    }
+    document.body.appendChild(_contentDiv);
+    _currentDom = document.body;
+  };
+
+  xhr.onerror = function (e) {
+    console.error(xhr.statusText);
+    _connected = false;
+  };
+  xhr.send(null);
 }
 
 /*
@@ -126,23 +147,6 @@ function notifyMe(title, content) {
   }
 }
 
-/*
-* Main function. Get all notification and build the final DOM object
-*/
-function getNewNotifications() {
-  _contentDiv = document.createElement('div');
-  getNotificationsFromAPI();
-  if(!_notifCounter) {
-    var divNoNotif = document.createElement('div');
-    divNoNotif.id = "noNotif";
-    divNoNotif.innerHTML = "Aucune notification";
-    document.body.appendChild(divNoNotif);
-    if(_debug) console.log("Aucune notification");
-  }
-  document.body.appendChild(_contentDiv);
-  _currentDom = document.body;
-}
-
 //Update the popup
-setInterval(getNewNotifications, _delayUpdate);
-getNewNotifications();
+setInterval(getNotificationsFromAPI, _delayUpdate);
+getNotificationsFromAPI();
