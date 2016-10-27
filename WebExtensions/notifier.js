@@ -14,14 +14,10 @@ chrome.storage.local.get('notify', (res) => {
   _showNotification = res.notify || false;
 });
 //If we are in debug mode
-var _debug = true;
-chrome.storage.local.get('debug', (res) => {
-  _debug = res.debug || false;
-});
+var _debug = false;
 var _base_url = "https://zestedesavoir.com/";
 var _token = "zds-notifier-firefox";
 if(_debug) _base_url = "https://beta.zestedesavoir.com/";
-
 
 /**
 * getNotificationsFromAPI
@@ -58,9 +54,14 @@ function getNotificationsFromAPI() {
               var senderNotif = resultsNotification[notif].childNodes[4].childNodes[1].innerHTML;
               var senderAvatarNotif = resultsNotification[notif].childNodes[4].childNodes[5].innerHTML;
               var dateNotif = resultsNotification[notif].childNodes[5].innerHTML;
-              var urlNotif = "https://beta.zestedesavoir.com" + resultsNotification[notif].childNodes[3].innerHTML;
+              var date = new Date((dateNotif || "").replace(/-/g,"/").replace(/[TZ]/g," "));
+              var formatedDate = [date.getDate(),
+               date.getMonth()+1].join('/') + ' à ' +
+              [date.getHours(),
+               date.getMinutes()].join('h');
+              var urlNotif = "https://zestedesavoir.com" + resultsNotification[notif].childNodes[3].innerHTML;
               if(_debug) console.log(urlNotif + " by " + senderNotif);
-              addNotification(titleNotif, senderNotif, senderAvatarNotif, dateNotif, urlNotif);
+              addNotification(titleNotif, senderNotif, senderAvatarNotif, formatedDate, urlNotif);
             }
           }
           //Notify the user
