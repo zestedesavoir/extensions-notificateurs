@@ -55,7 +55,7 @@ function getNotificationsFromAPI() {
               var senderAvatarNotif = resultsNotification[notif].childNodes[4].childNodes[5].innerHTML;
               var dateNotif = resultsNotification[notif].childNodes[5].innerHTML;
               var date = new Date((dateNotif || "").replace(/-/g,"/").replace(/[TZ]/g," "));
-              var formatedDate = [date.getDate(),
+              var formatedDate = 'le ' + [date.getDate(),
                date.getMonth()+1].join('/') + ' à ' +
               [date.getHours(),
                date.getMinutes()].join('h');
