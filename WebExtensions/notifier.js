@@ -19,6 +19,9 @@ var _base_url = "https://zestedesavoir.com/";
 var _token = "zds-notifier-firefox";
 if(_debug) _base_url = "https://beta.zestedesavoir.com/";
 
+function escapeHTML(str) { return str.replace(/[&"'<>]/g, (m) => escapeHTML.replacements[m]); }
+escapeHTML.replacements = { "&": "&amp;", '"': "&quot;", "'": "&#39;", "<": "&lt;", ">": "&gt;" };
+
 /**
 * getNotificationsFromAPI
 */
@@ -122,13 +125,13 @@ function addNotification(title, sender, senderAvatar, date, url) {
   divBlocNotif.id="blocNotif";
   var divDate = document.createElement('div');
   divDate.id = "date";
-  divDate.innerHTML = date;
+  divDate.innerHTML = escapeHTML(date);
   var divPseudo = document.createElement('div');
   divPseudo.id = "pseudo";
-  divPseudo.innerHTML = sender;
+  divPseudo.innerHTML = escapeHTML(sender);
   var divTitle = document.createElement('div');
   divTitle.id = "title";
-  divTitle.innerHTML = title;
+  divTitle.innerHTML = escapeHTML(title);
 
   divBlocNotif.appendChild(divDate);
   divBlocNotif.appendChild(divPseudo);
