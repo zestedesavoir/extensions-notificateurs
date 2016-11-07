@@ -1,0 +1,36 @@
+{
+  "manifest_version": 2,
+  "name": "Zds-Notificateur",
+  "version": "2.0",
+  "homepage_url": "https://zestedesavoir.com",
+  "description": "Une extension pour connaitre le nombre de notifications et de MP de ZesteDeSavoir sans avoir besoin d'ouvrir le site",
+
+  "icons": {
+    "48": "icons/clem_48.png"
+  },
+
+  "permissions": [
+    "http://useragentstring.com/*", "*://*.zestedesavoir.com/*", "notifications", "storage"
+  ],
+
+  "applications": {
+    "gecko": {
+      "id": "contact@enconn.fr"
+    }
+  },
+  "options_ui": {
+    "page": "options/options.html"
+  },
+
+  "background": {
+    "scripts": ["notifier.js"]
+  },
+
+  "browser_action": {
+    "default_icon": {
+      "48": "icons/clem_48.png"
+    },
+    "default_title": "Zds-Notificateur",
+    "default_popup": "popup/notifier_popup.html"
+  }
+}

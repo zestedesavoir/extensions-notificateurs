@@ -9,10 +9,10 @@ ZdS_Notificateur
 
 ## Keskecé ?
 
-C'est une extension pour Google Chrome, qui vous avertit des nouvelles notifications sur [Zeste de Savoir](http://zestedesavoir.com).
+C'est une extension pour Google Chrome et Firefox, qui vous avertit des nouvelles notifications sur [Zeste de Savoir](http://zestedesavoir.com).
 Elle récupère à intervalle régulier (réglable) vos dernières notifications, et vous les affiche directement.
 
-L'extension est disponible sur le [Chrome WebStore](https://chrome.google.com/webstore/detail/zds-notificateur/jibjnbbmokappnjpdodmpdmpklfhokkn)
+L'extension est disponible sur le [Chrome WebStore](https://chrome.google.com/webstore/detail/zds-notificateur/jibjnbbmokappnjpdodmpdmpklfhokkn) ainsi que sur le [AMO de Mozilla](https://addons.mozilla.org/fr/firefox/addon/zds-notificateur/)
 
 ## À quoi ça ressemble ?
 
@@ -43,7 +43,7 @@ Pour tester l'extension depuis les sources, téléchargez les sources [ici](http
 
 ### Firefox
 
-Pour tester l'extension depuis les sources, téléchargez les sources [ici](https://github.com/zestedesavoir/extensions-notificateurs/archive/master.zip) et rendez vous dans le dossier Firefox/test. Enfin, glissez-déposez le fichier .xpi dans la page [about:addons](about:addons).
+Pour tester l'extension depuis les sources, clonez ce dépot, mettez dans un .zip le contenu du dossier Firefox, puis modifiez l'extension en .xpi. Enfin, glissez-déposez le fichier .xpi dans la page [about:addons](about:addons).
 
 ## C'est qui qu'a fait ça ?
 
@@ -52,7 +52,7 @@ Eskimon, est à l'origine de l'idée et Sandhose, horrifié par le code, mais s�
 
 Piwit est ensuite venu apporter sa touche graphique pour proposer les différentes illustrations inspirées des graphismes originaux de Zeste De Savoir.
 
-AmarOk a commencé à porter l'extension sur Firefox (en cours de création). Mais n'étant pas développeur Web, le code horrifiera d'autres personnes.
+AmarOk a réalisé l'extension Firefox. Mais n'étant pas développeur Web, le code horrifiera d'autres personnes.
 
 ## License
 
