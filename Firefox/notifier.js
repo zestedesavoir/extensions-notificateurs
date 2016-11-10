@@ -27,7 +27,7 @@ escapeHTML.replacements = { "&": "&amp;", '"': "&quot;", "'": "&#39;", "<": "&lt
 */
 function getNotificationsFromAPI() {
   _contentDiv = document.createElement('div');
-  var target = _base_url + "api/notifications/?page_size=30&Authorization=" + _token;
+  var target = _base_url + "api/notifications/?page_size=30&ordering=-pubdate&Authorization=" + _token;
   var xhr = new XMLHttpRequest();
   xhr.open("GET", target, true);
   xhr.onload = function (e) {
