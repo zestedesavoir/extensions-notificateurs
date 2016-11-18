@@ -58,10 +58,28 @@ function getNotificationsFromAPI() {
               var senderAvatarNotif = resultsNotification[notif].childNodes[4].childNodes[5].innerHTML;
               var dateNotif = resultsNotification[notif].childNodes[5].innerHTML;
               var date = new Date((dateNotif || "").replace(/-/g,"/").replace(/[TZ]/g," "));
+              var minutes = '' + date.getMinutes();
+              if(minutes.length < 2) {
+                minutes = '0' + minutes;
+              }
               var formatedDate = 'le ' + [date.getDate(),
                date.getMonth()+1].join('/') + ' à ' +
               [date.getHours(),
-               date.getMinutes()].join('h');
+               minutes].join('h');
+              var actualDate = new Date();
+              if(date.getDate() == actualDate.getDate() &&
+                 date.getMonth() == actualDate.getMonth() &&
+                 date.getYear() == actualDate.getYear()) {
+                   formatedDate = "Aujourd'hui";
+              } else {
+                var yesterday = actualDate;
+                yesterday.setDate(actualDate.getDate() - 1);
+                if(date.getDate() == yesterday.getDate() &&
+                   date.getMonth() == yesterday.getMonth() &&
+                   date.getYear() == yesterday.getYear()) {
+                     formatedDate = "Hier";
+                }
+              }
               var urlNotif = "https://zestedesavoir.com" + resultsNotification[notif].childNodes[3].innerHTML;
               if(_debug) console.log(urlNotif + " by " + senderNotif);
               addNotification(titleNotif, senderNotif, senderAvatarNotif, formatedDate, urlNotif);
