@@ -33,7 +33,6 @@ function getNotificationsFromAPI() {
   xhr.onload = function (e) {
     if (xhr.readyState === 4) {
       var result = xhr.status;
-
       if(result === 401) {
         _connected = false;
         if(_debug) console.log("Not connected");
@@ -41,22 +40,21 @@ function getNotificationsFromAPI() {
         chrome.browserAction.setIcon({path:"icons/notconnected.png"});
       } else if (result === 200) {
         _connected = true;
-        var parser = new DOMParser();
-        var rootDOM = parser.parseFromString(xhr.response, "application/xml");
-        if(rootDOM.documentElement.nodeName === "parsererror") {
+        var rootDOM = JSON.parse(xhr.response);
+        if(rootDOM.details) {
           if(_debug) console.log("Error while parsing");
         } else {
           //Get new notifications
-          var resultsNotification = rootDOM.documentElement.getElementsByTagName("results")[0].childNodes;
+          var resultsNotification = rootDOM.results;
           var countNotifications = 0;
           for(var notif = 0; notif < resultsNotification.length; ++notif) {
             //If a notification is new we have is_read === False
-            if(resultsNotification[notif].childNodes[2].innerHTML === "False") {
+            if(!resultsNotification[notif].is_read) {
               countNotifications += 1;
-              var titleNotif = resultsNotification[notif].childNodes[1].innerHTML
-              var senderNotif = resultsNotification[notif].childNodes[4].childNodes[1].innerHTML;
-              var senderAvatarNotif = resultsNotification[notif].childNodes[4].childNodes[5].innerHTML;
-              var dateNotif = resultsNotification[notif].childNodes[5].innerHTML;
+              var titleNotif = resultsNotification[notif].title
+              var senderNotif = resultsNotification[notif].sender.username;
+              var senderAvatarNotif = resultsNotification[notif].sender.avatar_url;
+              var dateNotif = resultsNotification[notif].pubdate;
               var date = new Date((dateNotif || "").replace(/-/g,"/").replace(/[TZ]/g," "));
               var minutes = '' + date.getMinutes();
               if(minutes.length < 2) {
@@ -80,7 +78,7 @@ function getNotificationsFromAPI() {
                      formatedDate = "Hier";
                 }
               }
-              var urlNotif = "https://zestedesavoir.com" + resultsNotification[notif].childNodes[3].innerHTML;
+              var urlNotif = "https://zestedesavoir.com" + resultsNotification[notif].url;
               if(_debug) console.log(urlNotif + " by " + senderNotif);
               addNotification(titleNotif, senderNotif, senderAvatarNotif, formatedDate, urlNotif);
             }
