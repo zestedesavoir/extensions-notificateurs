@@ -1,0 +1,102 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath 'me.tatarka:gradle-retrolambda:3.2.3'
+    }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
+
+def clientId() {
+    return hasProperty('CLIENT_ID') ? CLIENT_ID : ''
+}
+
+def clientSecret() {
+    return hasProperty('CLIENT_SECRET') ? CLIENT_SECRET : ''
+}
+
+def keystorePass() {
+    return hasProperty('KEYSTORE_PASS') ? KEYSTORE_PASS : ''
+}
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        applicationId "com.zestedesavoir.android"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        buildConfigField "String", "CLIENT_ID", "\"${clientId()}\""
+        buildConfigField "String", "CLIENT_SECRET", "\"${clientSecret()}\""
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("znotificateur.keystore")
+            storePassword keystorePass()
+            keyAlias 'znotificateur'
+            keyPassword keystorePass()
+        }
+        beta {
+            storeFile file("beta.keystore")
+            storePassword 'android'
+            keyAlias 'beta'
+            keyPassword 'android'
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            buildConfigField 'String', 'BASE_URL', "\"https://zestedesavoir.com\""
+        }
+        beta {
+            applicationIdSuffix '.beta'
+            signingConfig signingConfigs.beta
+            buildConfigField 'String', 'BASE_URL', "\"https://beta.zestedesavoir.com\""
+            debuggable true
+        }
+        debug {
+            applicationIdSuffix '.debug'
+            buildConfigField 'String', 'BASE_URL', "\"http://0.0.0.0:80\""
+            debuggable true
+        }
+    }
+}
+
+retrolambda {
+    javaVersion JavaVersion.VERSION_1_7
+    incremental true
+}
+
+dependencies {
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'com.squareup.okhttp3:okhttp:3.3.1'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
+    compile 'io.reactivex:rxandroid:1.1.0'
+    compile 'com.google.dagger:dagger:2.7'
+    apt 'com.google.dagger:dagger-compiler:2.7'
+    compile 'com.jakewharton:butterknife:8.2.0'
+    apt 'com.jakewharton:butterknife-compiler:8.2.0'
+    compile 'com.jakewharton.timber:timber:4.5.1'
+
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.android.support:design:25.1.0'
+    compile 'com.android.support:recyclerview-v7:25.1.0'
+    compile 'com.android.support:support-v4:25.1.0'
+}

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ZdS Notificateur</string>
+    <string name="app_slogan">Le partage entre tous et sans pépin !</string>
+
+    <!-- Login. -->
+    <string name="hint_login">Pseudo</string>
+    <string name="hint_password">Mot de passe</string>
+    <string name="btn_connect">Connexion</string>
+    <string name="field_login">Renseignez correctement votre pseudo.</string>
+    <string name="field_password">Renseignez correctement votre mot de passe.</string>
+    <string name="alert_server_error">Erreur avec la connexion entre votre mobile et Zeste de Savoir</string>
+    <string name="alert_success_auth">Vous êtes bien connecté !</string>
+</resources>
