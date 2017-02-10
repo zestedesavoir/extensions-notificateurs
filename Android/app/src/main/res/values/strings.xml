@@ -1,0 +1,45 @@
+<resources>
+  <string name="app_name">ZdS Notificateur</string>
+  <string name="app_slogan">Le partage entre tous et sans pépin !</string>
+
+  <string name="hint_login">Pseudo</string>
+  <string name="hint_password">Mot de passe</string>
+  <string name="hint_email">Adresse e-mail</string>
+  <string name="hint_new_message">Votre message</string>
+
+  <string name="btn_connect">Connexion</string>
+  <string name="btn_register">Créer un compte</string>
+
+  <string name="field_login">Renseignez correctement votre pseudo.</string>
+  <string name="field_password">Renseignez correctement votre mot de passe.</string>
+  <string name="field_email">Renseignez correctement votre e-mail.</string>
+  <string name="field_message">Renseignez correctement votre message.</string>
+
+  <plurals name="notif_title">
+    <item quantity="one">%d nouvelle notification</item>
+    <item quantity="other">%d nouvelles notifications</item>
+  </plurals>
+  <string name="notif_author">Envoyé par %s</string>
+  <string name="notif_description">Appuyez pour consulter vos notifications.</string>
+  <string name="notif_not_logged">Vous n\'êtes pas connecté</string>
+  <string name="notif_not_logged_description">Appuyez pour ouvrir l\'écran de connexion.</string>
+
+  <string name="menu_filter">Filtre</string>
+  <string name="menu_topic">Sujets</string>
+  <string name="menu_post">Messages</string>
+  <string name="menu_private_post">Messages privés</string>
+  <string name="menu_reaction">Réactions</string>
+  <string name="menu_clear">Annuler</string>
+  <string name="menu_disconnect">Déconnexion</string>
+
+  <string name="alert_register">Un e-mail a été envoyé pour valider votre compte !</string>
+  <string name="alert_connection">Connecté en tant que %1$s</string>
+  <string name="alert_disconnection">Impossible de se déconnecter</string>
+  <string name="alert_server_error">Zeste de Savoir semble avoir des soucis. Réessayez plus tard !</string>
+
+  <string name="exception_internal">Vous avez sûrement trouvé un bug interne.</string>
+  <string name="exception_server">La réponse du serveur n\'est pas la réponse attendue.</string>
+  <string name="exception_connection">Activez votre connexion pour faire cette action.</string>
+  <string name="exception_empty_topic">Il n\'y a aucune conversation sauvegardée.</string>
+  <string name="exception_wrong_login">Vos identifiants sont erronés.</string>
+</resources>
