@@ -7,6 +7,8 @@ import com.zestedesavoir.android.internal.ioc.AppModule;
 import com.zestedesavoir.android.internal.ioc.DaggerAppComponent;
 import com.zestedesavoir.android.internal.ioc.NetworkModule;
 
+import net.danlew.android.joda.JodaTimeAndroid;
+
 import timber.log.Timber;
 
 public class ZdSApplication extends Application {
@@ -24,6 +26,8 @@ public class ZdSApplication extends Application {
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
         }
+
+        JodaTimeAndroid.init(this);
     }
 
     public AppComponent getAppComponent() {

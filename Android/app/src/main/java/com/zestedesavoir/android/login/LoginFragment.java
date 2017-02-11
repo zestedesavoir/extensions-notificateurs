@@ -1,5 +1,6 @@
 package com.zestedesavoir.android.login;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 
+import com.zestedesavoir.android.OnNavigationListener;
 import com.zestedesavoir.android.R;
 import com.zestedesavoir.android.internal.ui.AbsFragment;
 import com.zestedesavoir.android.login.managers.Session;
@@ -30,12 +32,21 @@ public class LoginFragment extends AbsFragment<LoginContracts.Presenter> impleme
     @BindView(R.id.btn_connect)
     Button btnConnect;
 
-    public LoginFragment() {
-    }
+    private OnNavigationListener listener;
 
     @Override
     protected int getResLayout() {
         return R.layout.fragment_login;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            listener = (OnNavigationListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + " must implement " + OnNavigationListener.class.getName());
+        }
     }
 
     @Override
@@ -85,6 +96,8 @@ public class LoginFragment extends AbsFragment<LoginContracts.Presenter> impleme
 
     @Override
     public void authenticated() {
-        Snackbar.make(getView(), R.string.alert_success_auth, Snackbar.LENGTH_LONG).show();
+        if (listener != null) {
+            listener.goToNotificationScreen();
+        }
     }
 }

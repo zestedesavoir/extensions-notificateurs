@@ -9,5 +9,4 @@
     <string name="field_login">Renseignez correctement votre pseudo.</string>
     <string name="field_password">Renseignez correctement votre mot de passe.</string>
     <string name="alert_server_error">Erreur avec la connexion entre votre mobile et Zeste de Savoir</string>
-    <string name="alert_success_auth">Vous êtes bien connecté !</string>
 </resources>

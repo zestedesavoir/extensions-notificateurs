@@ -9,6 +9,8 @@ import com.zestedesavoir.android.BuildConfig;
 import com.zestedesavoir.android.login.managers.AutoLoginManagerImpl;
 import com.zestedesavoir.android.login.managers.TokenAuthenticator;
 
+import java.util.Date;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -26,6 +28,7 @@ public class NetworkModule {
     Gson provideGson() {
         return new GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+                .registerTypeAdapter(Date.class, new DateTypeDeserializer())
                 .create();
     }
 

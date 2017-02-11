@@ -94,6 +94,7 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.2.0'
     apt 'com.jakewharton:butterknife-compiler:8.2.0'
     compile 'com.jakewharton.timber:timber:4.5.1'
+    compile 'net.danlew:android.joda:2.9.5.1'
 
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.android.support:design:25.1.0'

@@ -65,6 +65,10 @@ public final class Token implements Parcelable {
         return scope;
     }
 
+    public String token() {
+        return "Bearer " + accessToken;
+    }
+
     public boolean hasTokens() {
         return accessToken != null && !accessToken.isEmpty() && refreshToken != null && !refreshToken.isEmpty();
     }

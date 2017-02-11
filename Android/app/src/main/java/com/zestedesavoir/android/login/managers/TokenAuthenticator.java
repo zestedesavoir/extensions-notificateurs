@@ -26,7 +26,7 @@ public class TokenAuthenticator implements Authenticator {
         final Token newToken = manager.authenticateByToken().execute().body();
         new Builder(context, newToken).commit();
         return response.request().newBuilder()
-                .header("Authorization", newToken.accessToken())
+                .header("Authorization", newToken.token())
                 .build();
     }
 }

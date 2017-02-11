@@ -13,6 +13,7 @@
         <item name="android:windowBackground">@color/window_background</item>
         <item name="actionMenuTextColor">@color/primary_text</item>
         <item name="android:buttonStyle">@style/Base.Theme.ZdS.Button</item>
+        <item name="colorControlHighlight">@color/accent</item>
     </style>
 
     <style name="Base.Theme.ZdS.Overlay" parent="ThemeOverlay.AppCompat.Light">
