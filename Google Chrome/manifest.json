@@ -1,30 +1,31 @@
 {
-    "name": "ZdS Notificateur",
-    "version": "1.1.1",
-    "manifest_version": 2,
-    "description": "Extensions pour Google Chrome pour connaitre le nombre de notifications ou MP de ZesteDeSavoir sans avoir besoin d'ouvrir le site",
-    "offline_enabled": false,
-    "icons": {
-        "16": "icons/icone_16.png",
-        "48": "icons/icone_48.png",
-        "128": "icons/icone_128.png"
-        },
-    "permissions": [
-        "http://*.zestedesavoir.com/*",
-        "http://www.gravatar.com/*",
-        "tabs",
-        "alarms",
-        "notifications",
-        "storage"
-    ],
-    "options_page": "options/options.html",
-    "browser_action": {
-        "default_icon": "icons/icone_38.png",
-        "default_title": "ZdS Notificateur",
-        "default_popup": "popup/popup.html"
+  "manifest_version": 2,
+  "name": "Zds-Notificateur",
+  "version": "2.0",
+  "homepage_url": "https://zestedesavoir.com",
+  "description": "Une extension pour connaitre le nombre de notifications et de MP de ZesteDeSavoir sans avoir besoin d'ouvrir le site",
+
+  "icons": {
+    "48": "icons/clem_48.png"
+  },
+
+  "permissions": [
+    "http://useragentstring.com/*", "*://*.zestedesavoir.com/*", "notifications", "storage"
+  ],
+
+  "options_ui": {
+    "page": "options/options.html"
+  },
+
+  "background": {
+    "scripts": ["notifier.js"]
+  },
+
+  "browser_action": {
+    "default_icon": {
+      "48": "icons/clem_48.png"
     },
-    "background": {
-        "scripts": ["common.js", "background.js"],
-        "persistent": true
-    }
+    "default_title": "Zds-Notificateur",
+    "default_popup": "popup/notifier_popup.html"
+  }
 }
