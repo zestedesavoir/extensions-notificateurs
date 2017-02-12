@@ -32,7 +32,6 @@ L'extension est disponible sur le [Chrome WebStore](https://chrome.google.com/we
 
 ![](Images/options.png)
 
-
 ## J'peux vous aider ?
 
 Toute aide est la bienvenue ! Pour cela, faites un fork du repo, et une fois que vous avez rajouté ce que vous voulez, on prendra en compte toute *Pull request* ;)
@@ -44,6 +43,10 @@ Pour tester l'extension depuis les sources, téléchargez les sources [ici](http
 ### Firefox
 
 Pour tester l'extension depuis les sources, clonez ce dépot, mettez dans un .zip le contenu du dossier Firefox, puis modifiez l'extension en .xpi. Enfin, glissez-déposez le fichier .xpi dans la page [about:addons](about:addons).
+
+### Android
+
+[Si vous êtes intéressé par le projet Android, rendez-vous sur le README du projet.](https://github.com/zestedesavoir/extensions-notificateurs/tree/master/Android)
 
 ## C'est qui qu'a fait ça ?
 
