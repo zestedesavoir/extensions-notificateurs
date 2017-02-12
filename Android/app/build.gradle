@@ -24,6 +24,11 @@ def keystorePass() {
     return hasProperty('KEYSTORE_PASS') ? KEYSTORE_PASS : ''
 }
 
+def versionMajor = 0
+def versionMinor = 1
+def versionPatch = 0
+def versionBuild = 0
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -32,8 +37,8 @@ android {
         applicationId "com.zestedesavoir.android"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100 + versionBuild
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
         buildConfigField "String", "CLIENT_ID", "\"${clientId()}\""
         buildConfigField "String", "CLIENT_SECRET", "\"${clientSecret()}\""
     }
@@ -47,7 +52,7 @@ android {
         release {
             storeFile file("znotificateur.keystore")
             storePassword keystorePass()
-            keyAlias 'znotificateur'
+            keyAlias 'zmessenger'
             keyPassword keystorePass()
         }
         beta {
