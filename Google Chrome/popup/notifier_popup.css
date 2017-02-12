@@ -1,0 +1,144 @@
+html {
+  height: 100px;
+}
+
+body
+{
+  height: 100px;
+  margin: 0;
+  padding: 0;
+  color: white;
+  background-color: #0c4863;
+  font-family: 'Source Sans Pro', Fallback, sans-serif;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  src: local("Source Sans Pro"), url('fonts/source-sans-pro.woff2') format('woff2');
+}
+
+#notconnected
+{
+  font-size: 1.2em;
+  margin-top: 20px;
+  text-align: center;
+  width: 200px;
+}
+
+#home_clem img
+{
+  width: 20%;
+  margin-bottom: 10px;
+}
+
+#payload
+{
+  margin: 0 20px 0 20px;
+}
+
+a
+{
+  text-decoration: none;
+  color: white;
+}
+
+#notconnected #button
+{
+  margin-top: 20px;
+  padding: 20px 0 20px 0;
+  background: #154e69;
+}
+
+#notconnected #button:hover
+{
+  background: #396a81;
+}
+
+
+#connected #button
+{
+  padding: 5px 0 5px 0;
+  background: #154e69;
+  text-align:center;
+  font-size: 13px;
+}
+
+#connected #button:hover, #connected #notification:hover
+{
+  background: #396a81;
+}
+
+#button
+{
+  border-bottom: 3px solid #f8ad32;
+}
+
+#notification
+{
+  font-size:13px;
+  height: 50px;
+  width: 350px;
+  border-bottom: #154e69 1px solid;
+}
+
+#notification img
+{
+  height: 50px;
+  width: 50px;
+}
+
+#notification #blocNotif
+{
+  float:right;
+  width: 300px;
+  height: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#notification #pseudo
+{
+  width:50%;
+  max-height: 18px;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
+  padding-left: 5px;
+  color: #77b8d5;
+}
+
+#notification #date
+{
+  width:40%;
+  max-height: 13px;
+  float:right;
+  text-align:right;
+  padding-right:10px;
+  color: #77b8d5;
+}
+
+#notification #title
+{
+  margin-top: 5px;
+  padding-left: 5px;
+}
+
+#header
+{
+  text-align:center;
+  background: #154e69;
+}
+
+#notificationList
+{
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#noNotif
+{
+  font-size: 12px;
+  text-align: center;
+  padding: 10px;
+}
