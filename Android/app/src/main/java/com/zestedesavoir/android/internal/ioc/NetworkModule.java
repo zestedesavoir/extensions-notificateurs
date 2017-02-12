@@ -6,6 +6,7 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.zestedesavoir.android.BuildConfig;
+import com.zestedesavoir.android.internal.exceptions.RxErrorHandlingCallAdapterFactory;
 import com.zestedesavoir.android.login.managers.AutoLoginManagerImpl;
 import com.zestedesavoir.android.login.managers.TokenAuthenticator;
 
@@ -18,7 +19,6 @@ import dagger.Provides;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
@@ -48,7 +48,7 @@ public class NetworkModule {
                 .baseUrl(BuildConfig.BASE_URL)
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addCallAdapterFactory(RxErrorHandlingCallAdapterFactory.create())
                 .build();
     }
 }

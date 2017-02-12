@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import android.widget.ProgressBar;
 
 import com.zestedesavoir.android.OnNavigationListener;
 import com.zestedesavoir.android.R;
+import com.zestedesavoir.android.internal.exceptions.RetrofitException;
 import com.zestedesavoir.android.internal.ui.AbsFragment;
 import com.zestedesavoir.android.internal.ui.EndlessRecyclerViewScrollListener;
 import com.zestedesavoir.android.notification.managers.NotificationsManager;
@@ -87,9 +89,13 @@ public class NotificationsFragment extends AbsFragment<NotificationsContracts.Pr
     }
 
     @Override
-    public void showError(Throwable throwable) {
-        if (listener != null) {
+    public void showError(RetrofitException throwable) {
+        if (listener != null && throwable.getKind() == RetrofitException.Kind.HTTP && throwable.getResponse().code() == 401) {
             listener.goToLoginScreen();
+        } else if (throwable.getKind() == RetrofitException.Kind.NETWORK) {
+            Snackbar.make(getView(), R.string.alert_network_error, Snackbar.LENGTH_LONG).show();
+        } else {
+            Snackbar.make(getView(), R.string.alert_server_error, Snackbar.LENGTH_LONG).show();
         }
     }
 

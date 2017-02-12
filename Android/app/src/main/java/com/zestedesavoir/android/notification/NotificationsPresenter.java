@@ -2,6 +2,7 @@ package com.zestedesavoir.android.notification;
 
 import android.support.annotation.NonNull;
 
+import com.zestedesavoir.android.internal.exceptions.RetrofitException;
 import com.zestedesavoir.android.internal.ui.AbsPresenter;
 import com.zestedesavoir.android.notification.managers.NotificationsManager;
 
@@ -31,7 +32,7 @@ class NotificationsPresenter extends AbsPresenter implements NotificationsContra
                     view.updateNotifications(notifications);
                 }, throwable -> {
                     view.showProgress(false);
-                    view.showError(throwable);
+                    view.showError((RetrofitException) throwable);
                 })
         );
     }

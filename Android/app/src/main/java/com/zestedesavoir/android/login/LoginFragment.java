@@ -11,6 +11,7 @@ import android.widget.Button;
 
 import com.zestedesavoir.android.OnNavigationListener;
 import com.zestedesavoir.android.R;
+import com.zestedesavoir.android.internal.exceptions.RetrofitException;
 import com.zestedesavoir.android.internal.ui.AbsFragment;
 import com.zestedesavoir.android.login.managers.Session;
 
@@ -89,7 +90,7 @@ public class LoginFragment extends AbsFragment<LoginContracts.Presenter> impleme
     }
 
     @Override
-    public void showServerError(Throwable throwable) {
+    public void showServerError(RetrofitException throwable) {
         Timber.e(throwable);
         Snackbar.make(getView(), R.string.alert_server_error, Snackbar.LENGTH_LONG).show();
     }

@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements OnNavigationListe
     @Override
     public void goToLoginScreen() {
         toolbar.setVisibility(View.GONE);
+        session.disconnect();
         goTo(LoginFragment.newInstance(session));
     }
 

@@ -1,5 +1,6 @@
 package com.zestedesavoir.android.notification;
 
+import com.zestedesavoir.android.internal.exceptions.RetrofitException;
 import com.zestedesavoir.android.internal.ui.BasePresenter;
 import com.zestedesavoir.android.internal.ui.BaseView;
 import com.zestedesavoir.android.notification.models.Notification;
@@ -10,7 +11,7 @@ interface NotificationsContracts {
     interface View extends BaseView<Presenter> {
         void updateNotifications(List<Notification> notifications);
 
-        void showError(Throwable throwable);
+        void showError(RetrofitException throwable);
 
         void showProgress(final boolean show);
     }

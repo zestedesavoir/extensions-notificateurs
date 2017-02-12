@@ -29,7 +29,7 @@ public class StarterReceiver extends BroadcastReceiver {
     public static void setupAlarm(Context context) {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         PendingIntent alarmIntent = NotificationEventReceiver.getStartPendingIntent(context);
-        alarmManager.setRepeating(RTC, getTriggerAt(15), INTERVAL_FIFTEEN_MINUTES, alarmIntent);
+        alarmManager.setRepeating(RTC, getTriggerAt(0), INTERVAL_FIFTEEN_MINUTES, alarmIntent);
     }
 
     /**

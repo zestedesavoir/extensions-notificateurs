@@ -1,5 +1,6 @@
 package com.zestedesavoir.android.login;
 
+import com.zestedesavoir.android.internal.exceptions.RetrofitException;
 import com.zestedesavoir.android.internal.ui.BasePresenter;
 import com.zestedesavoir.android.internal.ui.BaseView;
 
@@ -9,7 +10,7 @@ interface LoginContracts {
 
         void showPasswordError();
 
-        void showServerError(Throwable throwable);
+        void showServerError(RetrofitException throwable);
 
         void authenticated();
     }

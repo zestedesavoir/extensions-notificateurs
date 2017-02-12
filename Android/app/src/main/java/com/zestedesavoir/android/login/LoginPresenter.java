@@ -3,6 +3,7 @@ package com.zestedesavoir.android.login;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
+import com.zestedesavoir.android.internal.exceptions.RetrofitException;
 import com.zestedesavoir.android.internal.ui.AbsPresenter;
 import com.zestedesavoir.android.login.managers.Session;
 
@@ -32,7 +33,7 @@ class LoginPresenter extends AbsPresenter implements LoginContracts.Presenter {
             subscription.add(session.authenticate(username, password)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(token -> view.authenticated(), view::showServerError)
+                    .subscribe(token -> view.authenticated(), throwable -> view.showServerError((RetrofitException) throwable))
             );
         }
     }

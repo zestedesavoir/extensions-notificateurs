@@ -15,7 +15,8 @@ import com.zestedesavoir.android.BuildConfig;
 import com.zestedesavoir.android.MainActivity;
 import com.zestedesavoir.android.R;
 import com.zestedesavoir.android.ZdSApplication;
-import com.zestedesavoir.android.login.dao.TokenDao;
+import com.zestedesavoir.android.internal.exceptions.RetrofitException;
+import com.zestedesavoir.android.login.managers.Session;
 import com.zestedesavoir.android.notification.managers.NotificationsManager;
 import com.zestedesavoir.android.notification.models.Notification;
 
@@ -39,7 +40,7 @@ public class NotificationService extends IntentService {
     NotificationsManager manager;
 
     @Inject
-    TokenDao tokenDao;
+    Session session;
 
     public NotificationService() {
         super("NotificationService");
@@ -65,20 +66,22 @@ public class NotificationService extends IntentService {
                     .flatMapIterable(notifications -> notifications)
                     .filter(notification -> !notification.isRead)
                     .toList()
-                    .subscribe(this::generateNotification, throwable -> generateNotificationLogin());
+                    .subscribe(this::generateNotification, throwable -> generateNotificationLogin((RetrofitException) throwable));
         }
     }
 
-    private void generateNotificationLogin() {
-        tokenDao.delete();
-        final NotificationManager manager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(NOTIFICATION_ID, new NotificationCompat.Builder(this)
-                .setContentTitle(getString(R.string.notif_not_logged))
-                .setAutoCancel(true)
-                .setColor(getResources().getColor(R.color.accent))
-                .setContentText(getString(R.string.notif_not_logged_description))
-                .setSmallIcon(R.drawable.ic_notif_clem)
-                .setContentIntent(createActivityPendingIntent(this, MainActivity.class)).build());
+    private void generateNotificationLogin(RetrofitException throwable) {
+        if (throwable.getKind() == RetrofitException.Kind.HTTP && throwable.getResponse().code() == 401) {
+            session.disconnect();
+            final NotificationManager manager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+            manager.notify(NOTIFICATION_ID, new NotificationCompat.Builder(this)
+                    .setContentTitle(getString(R.string.notif_not_logged))
+                    .setAutoCancel(true)
+                    .setColor(getResources().getColor(R.color.accent))
+                    .setContentText(getString(R.string.notif_not_logged_description))
+                    .setSmallIcon(R.drawable.ic_notif_clem)
+                    .setContentIntent(createActivityPendingIntent(this, MainActivity.class)).build());
+        }
     }
 
     private void generateNotification(List<Notification> notifications) {
