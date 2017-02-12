@@ -13,7 +13,7 @@ import rx.Observable;
  *
  * @author Gerard Paligot
  */
-public interface NotificationManager {
+public interface NotificationsManager {
     /**
      * Get all notifications of the user authenticated.
      *

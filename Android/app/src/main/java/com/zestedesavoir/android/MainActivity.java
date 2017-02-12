@@ -1,5 +1,7 @@
 package com.zestedesavoir.android;
 
+import android.app.NotificationManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,7 +14,9 @@ import android.view.View;
 import com.zestedesavoir.android.login.LoginFragment;
 import com.zestedesavoir.android.login.managers.Session;
 import com.zestedesavoir.android.notification.NotificationsFragment;
-import com.zestedesavoir.android.notification.managers.NotificationManager;
+import com.zestedesavoir.android.notification.managers.NotificationsManager;
+import com.zestedesavoir.android.notification.services.NotificationService;
+import com.zestedesavoir.android.notification.services.StarterReceiver;
 
 import javax.inject.Inject;
 
@@ -27,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements OnNavigationListe
     Session session;
 
     @Inject
-    NotificationManager notificationManager;
+    NotificationsManager mNotificationsManager;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -57,6 +61,19 @@ public class MainActivity extends AppCompatActivity implements OnNavigationListe
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        final NotificationManager manager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.cancel(NotificationService.NOTIFICATION_ID);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        sendBroadcast(StarterReceiver.getStartIntent(getApplicationContext()));
+    }
+
+    @Override
     public void goToLoginScreen() {
         toolbar.setVisibility(View.GONE);
         goTo(LoginFragment.newInstance(session));
@@ -65,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements OnNavigationListe
     @Override
     public void goToNotificationScreen() {
         toolbar.setVisibility(View.VISIBLE);
-        goTo(NotificationsFragment.newInstance(notificationManager));
+        goTo(NotificationsFragment.newInstance(mNotificationsManager));
     }
 
     private void goTo(Fragment fragment) {

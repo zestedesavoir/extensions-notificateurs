@@ -3,7 +3,7 @@ package com.zestedesavoir.android.notification;
 import android.support.annotation.NonNull;
 
 import com.zestedesavoir.android.internal.ui.AbsPresenter;
-import com.zestedesavoir.android.notification.managers.NotificationManager;
+import com.zestedesavoir.android.notification.managers.NotificationsManager;
 
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -13,9 +13,9 @@ class NotificationsPresenter extends AbsPresenter implements NotificationsContra
     private final NotificationsContracts.View view;
 
     @NonNull
-    private final NotificationManager manager;
+    private final NotificationsManager manager;
 
-    NotificationsPresenter(@NonNull NotificationsContracts.View view, @NonNull NotificationManager manager) {
+    NotificationsPresenter(@NonNull NotificationsContracts.View view, @NonNull NotificationsManager manager) {
         this.view = view;
         this.manager = manager;
     }

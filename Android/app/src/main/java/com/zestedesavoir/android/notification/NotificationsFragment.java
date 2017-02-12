@@ -18,7 +18,7 @@ import com.zestedesavoir.android.OnNavigationListener;
 import com.zestedesavoir.android.R;
 import com.zestedesavoir.android.internal.ui.AbsFragment;
 import com.zestedesavoir.android.internal.ui.EndlessRecyclerViewScrollListener;
-import com.zestedesavoir.android.notification.managers.NotificationManager;
+import com.zestedesavoir.android.notification.managers.NotificationsManager;
 import com.zestedesavoir.android.notification.models.Notification;
 
 import java.util.List;
@@ -26,7 +26,7 @@ import java.util.List;
 import butterknife.BindView;
 
 public class NotificationsFragment extends AbsFragment<NotificationsContracts.Presenter> implements NotificationsContracts.View {
-    public static Fragment newInstance(NotificationManager manager) {
+    public static Fragment newInstance(NotificationsManager manager) {
         final NotificationsFragment fragment = new NotificationsFragment();
         fragment.setPresenter(new NotificationsPresenter(fragment, manager));
         return fragment;

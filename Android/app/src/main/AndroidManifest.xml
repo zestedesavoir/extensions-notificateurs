@@ -19,6 +19,17 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <service
+            android:name=".notification.services.NotificationService"
+            android:enabled="true"
+            android:exported="false"/>
+
+        <receiver android:name=".notification.services.NotificationEventReceiver"/>
+        <receiver android:name=".notification.services.StarterReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

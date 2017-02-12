@@ -9,4 +9,14 @@
     <string name="field_login">Renseignez correctement votre pseudo.</string>
     <string name="field_password">Renseignez correctement votre mot de passe.</string>
     <string name="alert_server_error">Erreur avec la connexion entre votre mobile et Zeste de Savoir</string>
+
+    <!-- Notification. -->
+    <plurals name="notif_title">
+        <item quantity="one">%d nouvelle notification</item>
+        <item quantity="other">%d nouvelles notifications</item>
+    </plurals>
+    <string name="notif_author">Envoyé par %s</string>
+    <string name="notif_description">Appuyez pour consulter vos notifications.</string>
+    <string name="notif_not_logged">Vous n\'êtes pas connecté</string>
+    <string name="notif_not_logged_description">Appuyez pour ouvrir l\'écran de connexion.</string>
 </resources>

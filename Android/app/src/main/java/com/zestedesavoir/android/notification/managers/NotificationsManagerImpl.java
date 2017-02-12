@@ -8,11 +8,11 @@ import java.util.List;
 
 import rx.Observable;
 
-public class NotificationManagerImpl implements NotificationManager {
+public class NotificationsManagerImpl implements NotificationsManager {
     private final NotificationService service;
     private final TokenDao tokenDao;
 
-    public NotificationManagerImpl(NotificationService service, TokenDao tokenDao) {
+    public NotificationsManagerImpl(NotificationService service, TokenDao tokenDao) {
         this.service = service;
         this.tokenDao = tokenDao;
     }
