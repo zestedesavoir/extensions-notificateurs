@@ -1,22 +1,18 @@
 package com.zestedesavoir.android.notification.services;
 
-import android.app.Activity;
 import android.app.IntentService;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.IBinder;
-import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.NotificationCompat;
 
-import com.zestedesavoir.android.BuildConfig;
 import com.zestedesavoir.android.MainActivity;
 import com.zestedesavoir.android.R;
 import com.zestedesavoir.android.ZdSApplication;
 import com.zestedesavoir.android.internal.exceptions.RetrofitException;
+import com.zestedesavoir.android.internal.utils.IntentUtil;
 import com.zestedesavoir.android.login.managers.Session;
 import com.zestedesavoir.android.notification.managers.NotificationsManager;
 import com.zestedesavoir.android.notification.models.Notification;
@@ -76,16 +72,21 @@ public class NotificationService extends IntentService {
 
     private void generateNotificationLogin(RetrofitException throwable) {
         if (throwable.getKind() == RetrofitException.Kind.HTTP && throwable.getResponse().code() == 401) {
-            session.disconnect();
-            final NotificationManager manager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
-            manager.notify(NOTIFICATION_ID, new NotificationCompat.Builder(this)
-                    .setContentTitle(getString(R.string.notif_not_logged))
-                    .setAutoCancel(true)
-                    .setColor(ContextCompat.getColor(this, R.color.accent))
-                    .setContentText(getString(R.string.notif_not_logged_description))
-                    .setSmallIcon(R.drawable.ic_notif_clem)
-                    .setContentIntent(createActivityPendingIntent(this, MainActivity.class)).build());
+            session.disconnect()
+                    .subscribeOn(Schedulers.io())
+                    .subscribe(aVoid -> generateNotificationLogin(), Timber::e);
         }
+    }
+
+    private void generateNotificationLogin() {
+        final NotificationManager manager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.notify(NOTIFICATION_ID, new NotificationCompat.Builder(this)
+                .setContentTitle(getString(R.string.notif_not_logged))
+                .setAutoCancel(true)
+                .setColor(ContextCompat.getColor(this, R.color.accent))
+                .setContentText(getString(R.string.notif_not_logged_description))
+                .setSmallIcon(R.drawable.ic_notif_clem)
+                .setContentIntent(IntentUtil.createActivityPendingIntent(this, MainActivity.class)).build());
     }
 
     private void generateNotification(List<Notification> notifications) {
@@ -101,7 +102,8 @@ public class NotificationService extends IntentService {
                     .setColor(ContextCompat.getColor(this, R.color.accent))
                     .setContentText(getString(R.string.notif_author, notifications.get(0).sender.username))
                     .setSmallIcon(R.drawable.ic_notif_clem)
-                    .setContentIntent(createBrowserPendingIntent(this, notifications.get(0)));
+                    .setDeleteIntent(OperationNotificationReceiver.getCancelPendingIntent(this))
+                    .setContentIntent(OperationNotificationReceiver.getOpenPendingIntent(this, notifications.get(0)));
         } else {
             NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
             inboxStyle.setBigContentTitle(getResources().getQuantityString(R.plurals.notif_title, notifications.size(), notifications.size()));
@@ -114,27 +116,10 @@ public class NotificationService extends IntentService {
                     .setColor(ContextCompat.getColor(this, R.color.accent))
                     .setContentText(getString(R.string.notif_description))
                     .setSmallIcon(R.drawable.ic_notif_clem)
-                    .setContentIntent(createActivityPendingIntent(this, MainActivity.class))
+                    .setDeleteIntent(OperationNotificationReceiver.getCancelPendingIntent(this))
+                    .setContentIntent(OperationNotificationReceiver.getOpenListPendingIntent(this, notifications))
                     .setStyle(inboxStyle);
         }
         manager.notify(NOTIFICATION_ID, builder.build());
-    }
-
-    private PendingIntent createBrowserPendingIntent(Context context, Notification notification) {
-        return PendingIntent.getActivity(context, 0, createBrowserIntent(notification), PendingIntent.FLAG_UPDATE_CURRENT);
-    }
-
-    private Intent createBrowserIntent(Notification notification) {
-        final Intent resultIntent = new Intent(Intent.ACTION_VIEW);
-        resultIntent.setData(Uri.parse(BuildConfig.BASE_URL + notification.url));
-        return resultIntent;
-    }
-
-    private PendingIntent createActivityPendingIntent(Context context, Class<? extends Activity> activityClass) {
-        final Intent resultIntent = new Intent(context, activityClass);
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-        stackBuilder.addParentStack(activityClass);
-        stackBuilder.addNextIntent(resultIntent);
-        return stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 }

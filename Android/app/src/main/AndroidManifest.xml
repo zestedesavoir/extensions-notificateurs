@@ -26,6 +26,7 @@
             android:exported="false"/>
 
         <receiver android:name=".notification.services.NotificationEventReceiver"/>
+        <receiver android:name=".notification.services.OperationNotificationReceiver"/>
         <receiver android:name=".notification.services.StarterReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>

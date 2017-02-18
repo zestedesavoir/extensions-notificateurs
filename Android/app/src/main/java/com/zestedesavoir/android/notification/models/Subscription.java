@@ -30,14 +30,12 @@ public final class Subscription implements Parcelable {
         this.pubdate = pubdate;
     }
 
-    private final static ClassLoader CL = Notification.class.getClassLoader();
-
     private Subscription(Parcel in) {
-        this.id = (Integer) in.readValue(CL);
+        this.id = in.readInt();
         this.user = in.readParcelable(Member.class.getClassLoader());
-        this.isActive = (Boolean) in.readValue(CL);
-        this.byEmail = (Boolean) in.readValue(CL);
-        this.contentType = (String) in.readValue(CL);
+        this.isActive = in.readByte() != 0; ;
+        this.byEmail = in.readByte() != 0; ;
+        this.contentType = in.readString();
         this.pubdate = (Date) in.readSerializable();
     }
 
@@ -60,12 +58,12 @@ public final class Subscription implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeValue(id);
+        dest.writeInt(id);
         dest.writeParcelable(user, flags);
-        dest.writeValue(isActive);
-        dest.writeValue(byEmail);
+        dest.writeByte((byte) (isActive ? 1 : 0));
+        dest.writeByte((byte) (byEmail ? 1 : 0));
+        dest.writeString(contentType);
         dest.writeSerializable(pubdate);
-        dest.writeValue(contentType);
     }
 
     @Override

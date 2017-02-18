@@ -19,16 +19,13 @@ public final class Member implements Parcelable {
     public final String htmlUrl;
     @SerializedName("avatar_url")
     public final String avatar;
-    @SerializedName("date_joined")
-    public final Date dateJoined;
 
-    public Member(int pk, String username, boolean isActive, String htmlUrl, String avatar, Date dateJoined) {
+    public Member(int pk, String username, boolean isActive, String htmlUrl, String avatar) {
         this.pk = pk;
         this.username = username;
         this.isActive = isActive;
         this.htmlUrl = htmlUrl;
         this.avatar = avatar;
-        this.dateJoined = dateJoined;
     }
 
     @Override
@@ -54,10 +51,7 @@ public final class Member implements Parcelable {
         if (htmlUrl != null ? !htmlUrl.equals(member.htmlUrl) : member.htmlUrl != null) {
             return false;
         }
-        if (avatar != null ? !avatar.equals(member.avatar) : member.avatar != null) {
-            return false;
-        }
-        return dateJoined != null ? dateJoined.equals(member.dateJoined) : member.dateJoined == null;
+        return avatar != null ? avatar.equals(member.avatar) : member.avatar == null;
 
     }
 
@@ -68,14 +62,13 @@ public final class Member implements Parcelable {
         result = 31 * result + (isActive ? 1 : 0);
         result = 31 * result + (htmlUrl != null ? htmlUrl.hashCode() : 0);
         result = 31 * result + (avatar != null ? avatar.hashCode() : 0);
-        result = 31 * result + (dateJoined != null ? dateJoined.hashCode() : 0);
         return result;
     }
 
     private final static ClassLoader CL = Member.class.getClassLoader();
 
     public Member(android.os.Parcel in) {
-        this((Integer) in.readValue(CL), (String) in.readValue(CL), (Boolean) in.readValue(CL), (String) in.readValue(CL), (String) in.readValue(CL), (Date) in.readValue(CL));
+        this((Integer) in.readValue(CL), (String) in.readValue(CL), (Boolean) in.readValue(CL), (String) in.readValue(CL), (String) in.readValue(CL));
     }
 
     public static final Creator<Member> CREATOR = new Creator<Member>() {
@@ -97,7 +90,6 @@ public final class Member implements Parcelable {
         dest.writeValue(isActive);
         dest.writeValue(htmlUrl);
         dest.writeValue(avatar);
-        dest.writeSerializable(dateJoined);
     }
 
     @Override

@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.zestedesavoir.android.BuildConfig;
 import com.zestedesavoir.android.R;
+import com.zestedesavoir.android.internal.utils.IntentUtil;
 import com.zestedesavoir.android.notification.models.Notification;
 
 import net.danlew.android.joda.DateUtils;
@@ -75,13 +76,7 @@ class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdapter.Vie
         } else {
             viewHolder.itemView.setBackgroundResource(R.color.window_background);
         }
-        viewHolder.itemView.setOnClickListener(view -> context.startActivity(createBrowserIntent(notification)));
-    }
-
-    private Intent createBrowserIntent(Notification notification) {
-        final Intent resultIntent = new Intent(Intent.ACTION_VIEW);
-        resultIntent.setData(Uri.parse(BuildConfig.BASE_URL + notification.url));
-        return resultIntent;
+        viewHolder.itemView.setOnClickListener(view -> context.startActivity(IntentUtil.createBrowserIntent(notification.url)));
     }
 
     @Override
