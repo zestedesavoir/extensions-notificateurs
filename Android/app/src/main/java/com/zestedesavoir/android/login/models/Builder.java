@@ -1,5 +1,6 @@
 package com.zestedesavoir.android.login.models;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -17,6 +18,7 @@ public final class Builder {
         this(context, null);
     }
 
+    @SuppressLint("CommitPrefEdits")
     public Builder(Context context, Token token) {
         editor = context.getSharedPreferences(KEY, Context.MODE_PRIVATE).edit();
         if (token != null) {

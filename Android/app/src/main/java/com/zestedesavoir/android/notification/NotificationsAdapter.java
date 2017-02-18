@@ -54,7 +54,7 @@ class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdapter.Vie
         final Notification notification = notifications.get(i);
         String update = DateUtils.getRelativeTimeSpanString(context, DateTime.now().withMillis(notification.pubdate.getTime()), DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_ALL).toString();
 
-        viewHolder.tvMeta.setText("Par " + notification.sender.username + ", " + update);
+        viewHolder.tvMeta.setText(context.getString(R.string.notif_meta, notification.sender.username, update));
         viewHolder.tvTitle.setText(notification.title);
         switch (notification.contentType) {
             case "topic":

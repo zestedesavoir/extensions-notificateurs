@@ -24,7 +24,7 @@ public class NotificationEventReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Timber.tag(NotificationService.TAG).i("Start NotificationEventReceiver with action " + intent.getAction());
+        Timber.tag(NotificationService.TAG).i("Start NotificationEventReceiver with action %s", intent.getAction());
         if (ACTION_START_NOTIFICATION_SERVICE.equals(intent.getAction())) {
             Timber.tag(NotificationService.TAG).i("Start Notification service");
             context.startService(NotificationService.createIntentStartNotificationService(context));

@@ -1,5 +1,6 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -21,7 +22,8 @@
                 android:layout_height="150dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="@dimen/large_margin"
-                android:src="@drawable/ic_clementine"/>
+                android:src="@drawable/ic_clementine"
+                tools:ignore="ContentDescription"/>
 
             <TextView
                 style="@style/Theme.ZdS.TextAppearance.Large"
@@ -63,8 +65,7 @@
                     android:imeOptions="actionNext"
                     android:inputType="textPersonName"
                     android:lines="1"
-                    android:maxLines="1"
-                    android:singleLine="true"/>
+                    android:maxLines="1"/>
 
             </android.support.design.widget.TextInputLayout>
 

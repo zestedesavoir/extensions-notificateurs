@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.IBinder;
 import android.support.v4.app.TaskStackBuilder;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.NotificationCompat;
 
 import com.zestedesavoir.android.BuildConfig;
@@ -61,7 +62,7 @@ public class NotificationService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        Timber.tag(TAG).i("Handle intent in NotificationService with action " + intent.getAction());
+        Timber.tag(TAG).i("Handle intent in NotificationService with action %s", intent.getAction());
         String action = intent.getAction();
         if (ACTION_START.equals(action)) {
             manager.getAll(1)
@@ -80,7 +81,7 @@ public class NotificationService extends IntentService {
             manager.notify(NOTIFICATION_ID, new NotificationCompat.Builder(this)
                     .setContentTitle(getString(R.string.notif_not_logged))
                     .setAutoCancel(true)
-                    .setColor(getResources().getColor(R.color.accent))
+                    .setColor(ContextCompat.getColor(this, R.color.accent))
                     .setContentText(getString(R.string.notif_not_logged_description))
                     .setSmallIcon(R.drawable.ic_notif_clem)
                     .setContentIntent(createActivityPendingIntent(this, MainActivity.class)).build());
@@ -97,7 +98,7 @@ public class NotificationService extends IntentService {
         if (notifications.size() == 1) {
             builder.setContentTitle(notifications.get(0).title)
                     .setAutoCancel(true)
-                    .setColor(getResources().getColor(R.color.accent))
+                    .setColor(ContextCompat.getColor(this, R.color.accent))
                     .setContentText(getString(R.string.notif_author, notifications.get(0).sender.username))
                     .setSmallIcon(R.drawable.ic_notif_clem)
                     .setContentIntent(createBrowserPendingIntent(this, notifications.get(0)));
@@ -110,7 +111,7 @@ public class NotificationService extends IntentService {
 
             builder.setContentTitle(getResources().getQuantityString(R.plurals.notif_title, notifications.size(), notifications.size()))
                     .setAutoCancel(true)
-                    .setColor(getResources().getColor(R.color.accent))
+                    .setColor(ContextCompat.getColor(this, R.color.accent))
                     .setContentText(getString(R.string.notif_description))
                     .setSmallIcon(R.drawable.ic_notif_clem)
                     .setContentIntent(createActivityPendingIntent(this, MainActivity.class))

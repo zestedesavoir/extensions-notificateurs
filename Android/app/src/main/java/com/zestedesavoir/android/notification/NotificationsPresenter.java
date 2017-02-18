@@ -24,7 +24,7 @@ class NotificationsPresenter extends AbsPresenter implements NotificationsContra
 
     @Override
     public void getNotifications(int page) {
-        Timber.i("Load page: " + page);
+        Timber.i("Load page: %d", page);
         view.showProgress(true);
         subscription.add(manager.getAll(page)
                 .subscribeOn(Schedulers.io())

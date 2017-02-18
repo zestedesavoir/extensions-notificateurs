@@ -20,7 +20,10 @@ public class StarterReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        setupAlarm(context);
+        Timber.tag(NotificationService.TAG).i("Start StarterReceiver with action %s", intent.getAction());
+        if (intent.getAction() == null || "android.intent.action.BOOT_COMPLETED".equals(intent.getAction())) {
+            setupAlarm(context);
+        }
     }
 
     /**

@@ -2,17 +2,12 @@
 <resources>
     <color name="dark_primary">#063348</color>
     <color name="primary">#084561</color>
-    <color name="light_primary">#B2EBF2</color>
     <color name="accent">#F8AD32</color>
-    <color name="accent_darker">#d68807</color>
     <color name="primary_text">#212121</color>
-    <color name="secondary_text">#727272</color>
-    <color name="divider">#B6B6B6</color>
     <color name="default_action_selected">#CCC</color>
     <color name="default_action">#EEE</color>
     <color name="window_background">#FFF5F5F5</color>
     <color name="add_action">#48a200</color>
     <color name="add_action_selected">#87C952</color>
-    <color name="delete_action">#c0392b</color>
     <color name="is_not_read">#E0E0F8</color>
 </resources>

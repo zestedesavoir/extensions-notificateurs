@@ -18,6 +18,7 @@
     <string name="notif_description">Appuyez pour consulter vos notifications.</string>
     <string name="notif_not_logged">Vous n\'êtes pas connecté</string>
     <string name="notif_not_logged_description">Appuyez pour ouvrir l\'écran de connexion.</string>
+    <string name="notif_meta">Par %1$s, %2$s</string>
 
     <!-- Error. -->
     <string name="alert_network_error">Veuillez-vous connecter à une connexion internet</string>

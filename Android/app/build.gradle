@@ -2,10 +2,6 @@ buildscript {
     repositories {
         jcenter()
     }
-    dependencies {
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-        classpath 'me.tatarka:gradle-retrolambda:3.2.3'
-    }
 }
 
 apply plugin: 'com.android.application'
@@ -79,6 +75,11 @@ android {
             buildConfigField 'String', 'BASE_URL', "\"http://0.0.0.0:80\""
             debuggable true
         }
+    }
+
+    lintOptions {
+        abortOnError true
+        disable 'InvalidPackage', 'GoogleAppIndexingWarning'
     }
 }
 
