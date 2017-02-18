@@ -8,6 +8,8 @@ import android.content.Intent;
 
 import java.util.Calendar;
 
+import timber.log.Timber;
+
 import static android.app.AlarmManager.INTERVAL_FIFTEEN_MINUTES;
 import static android.app.AlarmManager.RTC;
 
@@ -27,6 +29,7 @@ public class StarterReceiver extends BroadcastReceiver {
      * @param context Application context.
      */
     public static void setupAlarm(Context context) {
+        Timber.tag(NotificationService.TAG).i("Alarm setup for 15 minutes");
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         PendingIntent alarmIntent = NotificationEventReceiver.getStartPendingIntent(context);
         alarmManager.setRepeating(RTC, getTriggerAt(0), INTERVAL_FIFTEEN_MINUTES, alarmIntent);

@@ -25,8 +25,10 @@ import java.util.List;
 import javax.inject.Inject;
 
 import rx.schedulers.Schedulers;
+import timber.log.Timber;
 
 public class NotificationService extends IntentService {
+    public static final String TAG = "ZdSNotificationService";
     public static final int NOTIFICATION_ID = 42;
     private static final String ACTION_START = "ACTION_START";
 
@@ -59,6 +61,7 @@ public class NotificationService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
+        Timber.tag(TAG).i("Handle intent in NotificationService with action " + intent.getAction());
         String action = intent.getAction();
         if (ACTION_START.equals(action)) {
             manager.getAll(1)
