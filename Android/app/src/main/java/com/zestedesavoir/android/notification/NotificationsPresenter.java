@@ -8,6 +8,7 @@ import com.zestedesavoir.android.notification.managers.NotificationsManager;
 
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
+import timber.log.Timber;
 
 class NotificationsPresenter extends AbsPresenter implements NotificationsContracts.Presenter {
     @NonNull
@@ -23,6 +24,7 @@ class NotificationsPresenter extends AbsPresenter implements NotificationsContra
 
     @Override
     public void getNotifications(int page) {
+        Timber.i("Load page: " + page);
         view.showProgress(true);
         subscription.add(manager.getAll(page)
                 .subscribeOn(Schedulers.io())

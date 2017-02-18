@@ -90,6 +90,10 @@ public class NotificationsFragment extends AbsFragment<NotificationsContracts.Pr
 
     @Override
     public void showError(RetrofitException throwable) {
+        if (throwable.getKind() == RetrofitException.Kind.HTTP && throwable.getResponse().code() == 404) {
+            // ignore, 404 is returned when we are at the last page.
+            return;
+        }
         if (listener != null && throwable.getKind() == RetrofitException.Kind.HTTP && throwable.getResponse().code() == 401) {
             listener.goToLoginScreen();
         } else if (throwable.getKind() == RetrofitException.Kind.NETWORK) {
