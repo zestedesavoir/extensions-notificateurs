@@ -14,6 +14,8 @@ public interface StateNotificationDao {
 
     void saveOrUpdate(int id, StateNotification state, Date pubdate);
 
+    void closeAll();
+
     class UnreadNotification {
         public final Notification notification;
         public final StateNotification state;

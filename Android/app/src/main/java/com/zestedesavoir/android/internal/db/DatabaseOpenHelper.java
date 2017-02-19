@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.zestedesavoir.android.notification.daos.Query;
 
 public final class DatabaseOpenHelper extends SQLiteOpenHelper {
-    private static final int VERSION = 1;
+    private static final int VERSION = 2;
 
     public DatabaseOpenHelper(Context context) {
         super(context, "zds.db", null /* factory */, VERSION);
@@ -20,5 +20,7 @@ public final class DatabaseOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL(Query.DROP);
+        this.onCreate(db);
     }
 }

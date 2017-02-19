@@ -29,4 +29,9 @@ public interface NotificationsManager {
      * @param page
      */
     Observable<UnreadNotifications> getAllUnread(int page);
+
+    /**
+     * Marks all notifications as closed.
+     */
+    Observable<Void> clear();
 }

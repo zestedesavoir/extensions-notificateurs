@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rx.Observable;
+import rx.Subscriber;
 import timber.log.Timber;
 
 public class NotificationsManagerImpl implements NotificationsManager {
@@ -63,5 +64,17 @@ public class NotificationsManagerImpl implements NotificationsManager {
                     }
                     return new UnreadNotifications(unreads, shouldGenerateNotif);
                 });
+    }
+
+    @Override
+    public Observable<Void> clear() {
+        return Observable.create(new Observable.OnSubscribe<Void>() {
+            @Override
+            public void call(Subscriber<? super Void> subscriber) {
+                notificationDao.closeAll();
+                subscriber.onNext(null);
+                subscriber.onCompleted();
+            }
+        });
     }
 }

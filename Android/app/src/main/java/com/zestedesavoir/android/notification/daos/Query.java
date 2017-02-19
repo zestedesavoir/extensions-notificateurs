@@ -14,4 +14,8 @@ public interface Query {
             + ")";
 
     String QUERY_ONE = "SELECT * FROM " + TABLE + " WHERE " + ID + " = ?";
+
+    String QUERY_STATE = "SELECT * FROM " + TABLE + " WHERE " + STATE + " = ?";
+
+    String DROP = "DROP TABLE IF EXISTS " + TABLE;
 }

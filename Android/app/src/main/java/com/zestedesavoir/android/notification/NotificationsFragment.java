@@ -78,8 +78,8 @@ public class NotificationsFragment extends AbsFragment<NotificationsContracts.Pr
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onResume() {
+        super.onResume();
         presenter.getNotifications(1);
     }
 

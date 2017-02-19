@@ -31,13 +31,13 @@ public class MainActivity extends AppCompatActivity implements OnNavigationListe
     Session session;
 
     @Inject
-    NotificationsManager mNotificationsManager;
+    NotificationsManager manager;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
     @NonNull
-    private final CompositeSubscription mCompositeSubscription = new CompositeSubscription();
+    private CompositeSubscription subscription = new CompositeSubscription();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,8 +46,16 @@ public class MainActivity extends AppCompatActivity implements OnNavigationListe
         ButterKnife.bind(this);
         ((ZdSApplication) getApplicationContext()).getAppComponent().inject(this);
         setSupportActionBar(toolbar);
+    }
 
-        mCompositeSubscription.add(session.isAuthenticated()
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (subscription.isUnsubscribed()) {
+            subscription = new CompositeSubscription();
+        }
+        subscription.add(session.isAuthenticated()
+                .flatMap(aBoolean -> manager.clear().map(aVoid -> aBoolean))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(aBoolean -> {
@@ -58,13 +66,14 @@ public class MainActivity extends AppCompatActivity implements OnNavigationListe
                     }
                 })
         );
+        final NotificationManager manager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.cancel(NotificationService.NOTIFICATION_ID);
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        final NotificationManager manager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.cancel(NotificationService.NOTIFICATION_ID);
+    protected void onPause() {
+        super.onPause();
+        subscription.clear();
     }
 
     @Override
@@ -83,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements OnNavigationListe
     @Override
     public void goToNotificationScreen() {
         toolbar.setVisibility(View.VISIBLE);
-        goTo(NotificationsFragment.newInstance(mNotificationsManager));
+        goTo(NotificationsFragment.newInstance(manager));
     }
 
     private void goTo(Fragment fragment) {

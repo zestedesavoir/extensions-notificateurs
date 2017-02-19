@@ -9,7 +9,9 @@ import com.zestedesavoir.android.internal.db.DatabaseUtil;
 import com.zestedesavoir.android.notification.models.Notification;
 import com.zestedesavoir.android.notification.models.StateNotification;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import rx.Observable;
 
@@ -53,5 +55,29 @@ class StateNotificationDaoImpl implements StateNotificationDao {
         values.put(Query.STATE, state.name());
         values.put(Query.PUBDATE, pubdate.getTime());
         database.insert(Query.TABLE, values, SQLiteDatabase.CONFLICT_REPLACE);
+    }
+
+    @Override
+    public void closeAll() {
+        final List<Integer> ids = new ArrayList<>();
+        final Cursor cursor = database.query(Query.QUERY_STATE, StateNotification.GENERATED.name());
+        try {
+            while (cursor.moveToNext()) {
+                ids.add(DatabaseUtil.getInt(cursor, Query.ID));
+            }
+        } finally {
+            cursor.close();
+        }
+        final BriteDatabase.Transaction transaction = database.newTransaction();
+        try {
+            for (Integer id : ids) {
+                final ContentValues values = new ContentValues();
+                values.put(Query.STATE, StateNotification.CLOSED.name());
+                database.update(Query.TABLE, values, Query.ID + " = ?", String.valueOf(id));
+            }
+            transaction.markSuccessful();
+        } finally {
+            transaction.end();
+        }
     }
 }
