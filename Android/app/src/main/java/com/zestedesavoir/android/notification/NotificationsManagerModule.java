@@ -1,6 +1,7 @@
 package com.zestedesavoir.android.notification;
 
 import com.zestedesavoir.android.login.dao.TokenDao;
+import com.zestedesavoir.android.notification.daos.StateNotificationDao;
 import com.zestedesavoir.android.notification.managers.NotificationsManager;
 import com.zestedesavoir.android.notification.managers.NotificationsManagerImpl;
 import com.zestedesavoir.android.notification.managers.NotificationService;
@@ -21,7 +22,7 @@ public class NotificationsManagerModule {
 
     @Provides
     @Singleton
-    NotificationsManager provideManager(NotificationService service, TokenDao tokenDao) {
-        return new NotificationsManagerImpl(service, tokenDao);
+    NotificationsManager provideManager(NotificationService service, TokenDao tokenDao, StateNotificationDao notificationDao) {
+        return new NotificationsManagerImpl(service, tokenDao, notificationDao);
     }
 }

@@ -16,6 +16,7 @@ import com.zestedesavoir.android.internal.utils.IntentUtil;
 import com.zestedesavoir.android.login.managers.Session;
 import com.zestedesavoir.android.notification.managers.NotificationsManager;
 import com.zestedesavoir.android.notification.models.Notification;
+import com.zestedesavoir.android.notification.models.UnreadNotifications;
 
 import java.util.List;
 
@@ -61,11 +62,8 @@ public class NotificationService extends IntentService {
         Timber.tag(TAG).i("Handle intent in NotificationService with action %s", intent.getAction());
         String action = intent.getAction();
         if (ACTION_START.equals(action)) {
-            manager.getAll(1)
+            manager.getAllUnread(1)
                     .subscribeOn(Schedulers.io())
-                    .flatMapIterable(notifications -> notifications)
-                    .filter(notification -> !notification.isRead)
-                    .toList()
                     .subscribe(this::generateNotification, throwable -> generateNotificationLogin((RetrofitException) throwable));
         }
     }
@@ -89,10 +87,14 @@ public class NotificationService extends IntentService {
                 .setContentIntent(IntentUtil.createActivityPendingIntent(this, MainActivity.class)).build());
     }
 
-    private void generateNotification(List<Notification> notifications) {
+    private void generateNotification(UnreadNotifications unreadNotifications) {
         final NotificationManager manager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+        final List<Notification> notifications = unreadNotifications.notifications;
         if (notifications.size() == 0) {
             manager.cancel(NOTIFICATION_ID);
+            return;
+        }
+        if (!unreadNotifications.shouldGenerateNotification) {
             return;
         }
         final NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
@@ -102,8 +104,8 @@ public class NotificationService extends IntentService {
                     .setColor(ContextCompat.getColor(this, R.color.accent))
                     .setContentText(getString(R.string.notif_author, notifications.get(0).sender.username))
                     .setSmallIcon(R.drawable.ic_notif_clem)
-                    .setDeleteIntent(OperationNotificationReceiver.getCancelPendingIntent(this))
-                    .setContentIntent(OperationNotificationReceiver.getOpenPendingIntent(this, notifications.get(0)));
+                    .setDeleteIntent(OperationNotificationReceiver.getCancelPendingIntent(this, notifications))
+                    .setContentIntent(OperationNotificationReceiver.getOpenListPendingIntent(this, notifications));
         } else {
             NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
             inboxStyle.setBigContentTitle(getResources().getQuantityString(R.plurals.notif_title, notifications.size(), notifications.size()));
@@ -116,7 +118,7 @@ public class NotificationService extends IntentService {
                     .setColor(ContextCompat.getColor(this, R.color.accent))
                     .setContentText(getString(R.string.notif_description))
                     .setSmallIcon(R.drawable.ic_notif_clem)
-                    .setDeleteIntent(OperationNotificationReceiver.getCancelPendingIntent(this))
+                    .setDeleteIntent(OperationNotificationReceiver.getCancelPendingIntent(this, notifications))
                     .setContentIntent(OperationNotificationReceiver.getOpenListPendingIntent(this, notifications))
                     .setStyle(inboxStyle);
         }

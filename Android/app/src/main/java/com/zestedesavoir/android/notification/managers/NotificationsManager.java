@@ -1,6 +1,7 @@
 package com.zestedesavoir.android.notification.managers;
 
 import com.zestedesavoir.android.notification.models.Notification;
+import com.zestedesavoir.android.notification.models.UnreadNotifications;
 
 import java.util.List;
 
@@ -20,4 +21,12 @@ public interface NotificationsManager {
      * @param page
      */
     Observable<List<Notification>> getAll(int page);
+
+    /**
+     * Gets all unread notifications of the user authenticated and not generated in an android
+     * notification.
+     *
+     * @param page
+     */
+    Observable<UnreadNotifications> getAllUnread(int page);
 }
