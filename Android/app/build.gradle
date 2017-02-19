@@ -21,8 +21,8 @@ def keystorePass() {
 }
 
 def versionMajor = 0
-def versionMinor = 1
-def versionPatch = 3
+def versionMinor = 2
+def versionPatch = 0
 def versionBuild = 0
 
 android {
