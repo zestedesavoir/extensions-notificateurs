@@ -18,11 +18,11 @@ import java.util.TimeZone;
 
 import timber.log.Timber;
 
-public class DateTypeDeserializer implements JsonDeserializer<Date>, JsonSerializer<Date> {
+class DateTypeDeserializer implements JsonDeserializer<Date>, JsonSerializer<Date> {
     private static final String DATE_UTC_MEDIUM = "yyyy-MM-dd'T'HH:mm:ss";
     private final DateFormat dateFormat;
 
-    public DateTypeDeserializer() {
+    DateTypeDeserializer() {
         dateFormat = new SimpleDateFormat(DATE_UTC_MEDIUM, Locale.getDefault());
         dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
     }

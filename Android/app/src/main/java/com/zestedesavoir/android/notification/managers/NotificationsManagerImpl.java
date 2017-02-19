@@ -41,35 +41,27 @@ public class NotificationsManagerImpl implements NotificationsManager {
         return getAll(page)
                 .flatMapIterable(notifications -> notifications)
                 .filter(notification -> !notification.isRead)
-                .flatMap(notification -> notificationDao.get(notification.id).map(stateNotification -> new UnreadNotification(notification, stateNotification)))
-                .filter(unread -> unread.state == StateNotification.NOT_EXIST || unread.state == StateNotification.GENERATED)
+                .flatMap(notificationDao::get)
+                .filter(unread -> unread.state == StateNotification.NOT_EXIST
+                        || unread.state == StateNotification.GENERATED
+                        || unread.notification.pubdate.compareTo(unread.pubdate) > 0)
                 .doOnNext(unread -> {
                     Timber.i("Unread state found: %s", unread.state.name());
-                    if (unread.state == StateNotification.NOT_EXIST) {
-                        notificationDao.saveOrUpdate(unread.notification.id);
+                    if (unread.state != StateNotification.GENERATED) {
+                        notificationDao.saveOrUpdate(unread.notification.id, unread.notification.pubdate);
                     }
                 })
                 .toList()
                 .map(notifications -> {
                     final List<Notification> unreads = new ArrayList<>();
                     boolean shouldGenerateNotif = false;
-                    for (UnreadNotification unread : notifications) {
-                        if (!shouldGenerateNotif && unread.state == StateNotification.NOT_EXIST) {
+                    for (StateNotificationDao.UnreadNotification unread : notifications) {
+                        if (!shouldGenerateNotif && unread.state != StateNotification.GENERATED) {
                             shouldGenerateNotif = true;
                         }
                         unreads.add(unread.notification);
                     }
                     return new UnreadNotifications(unreads, shouldGenerateNotif);
                 });
-    }
-
-    private class UnreadNotification {
-        final Notification notification;
-        final StateNotification state;
-
-        UnreadNotification(Notification notification, StateNotification state) {
-            this.notification = notification;
-            this.state = state;
-        }
     }
 }

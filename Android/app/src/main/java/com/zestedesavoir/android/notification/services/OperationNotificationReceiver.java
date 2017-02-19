@@ -67,7 +67,7 @@ public class OperationNotificationReceiver extends BroadcastReceiver {
 
     private void updateNotificationRead(Intent intent, StateNotification state, Action1<List<Notification>> action) {
         Observable.from(intent.<Notification>getParcelableArrayListExtra(KEY_NOTIFICATIONS))
-                .doOnNext(notification -> dao.saveOrUpdate(notification.id, state))
+                .doOnNext(notification -> dao.saveOrUpdate(notification.id, state, notification.pubdate))
                 .toList()
                 .subscribeOn(Schedulers.io())
                 .subscribe(action, Timber::e);
