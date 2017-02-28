@@ -26,6 +26,7 @@ import com.zestedesavoir.android.notification.models.Notification;
 import java.util.List;
 
 import butterknife.BindView;
+import timber.log.Timber;
 
 public class NotificationsFragment extends AbsFragment<NotificationsContracts.Presenter> implements NotificationsContracts.View {
     public static Fragment newInstance(NotificationsManager manager) {
@@ -97,8 +98,10 @@ public class NotificationsFragment extends AbsFragment<NotificationsContracts.Pr
         if (listener != null && throwable.getKind() == RetrofitException.Kind.HTTP && throwable.getResponse().code() == 401) {
             listener.goToLoginScreen();
         } else if (throwable.getKind() == RetrofitException.Kind.NETWORK) {
+            Timber.e(throwable);
             Snackbar.make(getView(), R.string.alert_network_error, Snackbar.LENGTH_LONG).show();
         } else {
+            Timber.e(throwable);
             Snackbar.make(getView(), R.string.alert_server_error, Snackbar.LENGTH_LONG).show();
         }
     }

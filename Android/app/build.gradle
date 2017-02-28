@@ -5,6 +5,7 @@ buildscript {
 }
 
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'me.tatarka.retrolambda'
 
@@ -102,6 +103,9 @@ dependencies {
     compile 'com.squareup.sqlbrite:sqlbrite:1.1.1'
     compile 'com.jakewharton.timber:timber:4.5.1'
     compile 'net.danlew:android.joda:2.9.5.1'
+
+    compile 'com.google.firebase:firebase-core:10.2.0'
+    compile 'com.google.firebase:firebase-crash:10.2.0'
 
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.android.support:design:25.1.0'

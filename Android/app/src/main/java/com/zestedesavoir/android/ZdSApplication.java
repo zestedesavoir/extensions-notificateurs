@@ -2,6 +2,7 @@ package com.zestedesavoir.android;
 
 import android.app.Application;
 
+import com.zestedesavoir.android.internal.exceptions.FirebaseTree;
 import com.zestedesavoir.android.internal.ioc.AppComponent;
 import com.zestedesavoir.android.internal.ioc.AppModule;
 import com.zestedesavoir.android.internal.ioc.DaggerAppComponent;
@@ -25,6 +26,8 @@ public class ZdSApplication extends Application {
 
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
+        } else {
+            Timber.plant(new FirebaseTree());
         }
 
         JodaTimeAndroid.init(this);

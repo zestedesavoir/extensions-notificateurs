@@ -62,6 +62,8 @@ public class OperationNotificationReceiver extends BroadcastReceiver {
                 updateNotificationRead(intent, StateNotification.CLOSED, notifications -> {
                 });
             }
+        } else {
+            Timber.e("OperationNotificationReceiver is called with a wrong action: " + intent.getAction());
         }
     }
 
