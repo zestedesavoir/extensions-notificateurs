@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "821522545588",
+    "firebase_url": "https://zds-notificateur.firebaseio.com",
+    "project_id": "zds-notificateur",
+    "storage_bucket": "zds-notificateur.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:821522545588:android:e1b0e720bc284089",
+        "android_client_info": {
+          "package_name": "com.zestedesavoir.android.beta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "821522545588-kig7isr8n5mad0rfvhtas6snqmbu8gil.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaUYzSaYe6Ioh-UANjNZA1gqXwVIicP9w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
