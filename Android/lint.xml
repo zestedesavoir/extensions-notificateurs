@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
-    <!-- Retrolambda/lombok -->
-    <issue id="NewApi">
-        <ignore regexp="Try-with-resources requires API level 19"/>
+    <issue id="UnusedResources">
+        <ignore regexp="google_crash_reporting_api_key" />
     </issue>
 </lint>

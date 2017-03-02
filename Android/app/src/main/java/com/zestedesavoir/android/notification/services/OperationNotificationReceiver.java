@@ -63,7 +63,7 @@ public class OperationNotificationReceiver extends BroadcastReceiver {
                 });
             }
         } else {
-            Timber.e("OperationNotificationReceiver is called with a wrong action: " + intent.getAction());
+            Timber.e("OperationNotificationReceiver is called with a wrong action %s", intent.getAction());
         }
     }
 

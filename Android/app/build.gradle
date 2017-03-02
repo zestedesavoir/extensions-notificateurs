@@ -81,6 +81,7 @@ android {
     lintOptions {
         abortOnError true
         disable 'InvalidPackage', 'GoogleAppIndexingWarning'
+        lintConfig file('../lint.xml')
     }
 }
 
@@ -107,8 +108,8 @@ dependencies {
     compile 'com.google.firebase:firebase-core:10.2.0'
     compile 'com.google.firebase:firebase-crash:10.2.0'
 
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    compile 'com.android.support:design:25.1.0'
-    compile 'com.android.support:recyclerview-v7:25.1.0'
-    compile 'com.android.support:support-v4:25.1.0'
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support:design:25.2.0'
+    compile 'com.android.support:recyclerview-v7:25.2.0'
+    compile 'com.android.support:support-v4:25.2.0'
 }
