@@ -12,12 +12,14 @@ import com.zestedesavoir.android.MainActivity;
 
 public final class IntentUtil {
     public static Intent createBrowserIntent(String url) {
-        return new Intent(Intent.ACTION_VIEW, Uri.parse(BuildConfig.BASE_URL + url));
+        final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(BuildConfig.BASE_URL + url));
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        return intent;
     }
 
     public static Intent createAppIntent(Context context) {
         final Intent intent = new Intent(context, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         return intent;
     }
 
