@@ -16,11 +16,17 @@
         android:visibility="gone"
         tools:visibility="visible"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_notifications"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srl_notifications"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        app:layoutManager="LinearLayoutManager"
-        tools:listitem="@layout/item_notification"/>
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_notifications"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            app:layoutManager="LinearLayoutManager"
+            tools:listitem="@layout/item_notification"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </FrameLayout>

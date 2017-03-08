@@ -31,7 +31,11 @@ class NotificationsPresenter extends AbsPresenter implements NotificationsContra
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(notifications -> {
                     view.showProgress(false);
-                    view.updateNotifications(notifications);
+                    if (page == 1) {
+                        view.updateNotifications(notifications);
+                    } else {
+                        view.addAllNotifications(notifications);
+                    }
                 }, throwable -> {
                     view.showProgress(false);
                     view.showError((RetrofitException) throwable);

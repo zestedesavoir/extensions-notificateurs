@@ -9,6 +9,8 @@ import java.util.List;
 
 interface NotificationsContracts {
     interface View extends BaseView<Presenter> {
+        void addAllNotifications(List<Notification> notifications);
+
         void updateNotifications(List<Notification> notifications);
 
         void showError(RetrofitException throwable);

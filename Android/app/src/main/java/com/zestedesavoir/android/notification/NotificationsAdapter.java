@@ -1,8 +1,6 @@
 package com.zestedesavoir.android.notification;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.zestedesavoir.android.BuildConfig;
 import com.zestedesavoir.android.R;
 import com.zestedesavoir.android.internal.utils.IntentUtil;
 import com.zestedesavoir.android.notification.models.Notification;
@@ -40,9 +37,14 @@ class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdapter.Vie
         this.context = context;
     }
 
-    void updateNotifications(List<Notification> notifications) {
+    void addAll(List<Notification> notifications) {
         this.notifications.addAll(notifications);
         notifyDataSetChanged();
+    }
+
+    void update(List<Notification> notifications) {
+        this.notifications.clear();
+        addAll(notifications);
     }
 
     @Override

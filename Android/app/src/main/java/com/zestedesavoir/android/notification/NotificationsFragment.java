@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -39,6 +40,8 @@ public class NotificationsFragment extends AbsFragment<NotificationsContracts.Pr
     ProgressBar pbLoading;
     @BindView(R.id.rv_notifications)
     RecyclerView rvNotifications;
+    @BindView(R.id.srl_notifications)
+    SwipeRefreshLayout srlNotifications;
 
     private NotificationsAdapter adapter;
     private OnNavigationListener listener;
@@ -76,6 +79,9 @@ public class NotificationsFragment extends AbsFragment<NotificationsContracts.Pr
                 presenter.getNotifications(page);
             }
         });
+
+        srlNotifications.setOnRefreshListener(() -> presenter.getNotifications(1));
+        srlNotifications.setColorSchemeResources(R.color.accent);
     }
 
     @Override
@@ -85,8 +91,13 @@ public class NotificationsFragment extends AbsFragment<NotificationsContracts.Pr
     }
 
     @Override
+    public void addAllNotifications(List<Notification> notifications) {
+        adapter.addAll(notifications);
+    }
+
+    @Override
     public void updateNotifications(List<Notification> notifications) {
-        adapter.updateNotifications(notifications);
+        adapter.update(notifications);
     }
 
     @Override
@@ -108,6 +119,7 @@ public class NotificationsFragment extends AbsFragment<NotificationsContracts.Pr
 
     @Override
     public void showProgress(final boolean show) {
+        srlNotifications.setRefreshing(show);
         // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
         // for very easy animations. If available, use these APIs to fade-in
         // the progress spinner.
