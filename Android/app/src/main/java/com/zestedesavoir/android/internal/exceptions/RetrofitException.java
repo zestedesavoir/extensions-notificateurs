@@ -18,6 +18,10 @@ public class RetrofitException extends RuntimeException {
         return new RetrofitException(exception.getMessage(), null, null, Kind.NETWORK, exception, null);
     }
 
+    public static RetrofitException noTokenError() {
+        return new RetrofitException(null, null, null, Kind.NO_TOKEN, null, null);
+    }
+
     public static RetrofitException unexpectedError(Throwable exception) {
         return new RetrofitException(exception.getMessage(), null, null, Kind.UNEXPECTED, exception, null);
     }
@@ -34,6 +38,10 @@ public class RetrofitException extends RuntimeException {
          * A non-200 HTTP status code was received from the server.
          */
         HTTP,
+        /**
+         * An exception occurred while the app don't have any token.
+         */
+        NO_TOKEN,
         /**
          * An internal error occurred while attempting to execute a request. It is best practice to
          * re-throw this exception so your application crashes.

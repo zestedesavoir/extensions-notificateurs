@@ -13,10 +13,12 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.zestedesavoir.android.OnNavigationListener;
 import com.zestedesavoir.android.R;
 import com.zestedesavoir.android.internal.exceptions.RetrofitException;
 import com.zestedesavoir.android.internal.ui.AbsFragment;
@@ -30,6 +32,8 @@ import butterknife.BindView;
 import timber.log.Timber;
 
 public class NotificationsFragment extends AbsFragment<NotificationsContracts.Presenter> implements NotificationsContracts.View {
+    public static final String TAG = "NotificationsFragment";
+
     public static Fragment newInstance(NotificationsManager manager) {
         final NotificationsFragment fragment = new NotificationsFragment();
         fragment.setPresenter(new NotificationsPresenter(fragment, manager));
@@ -44,7 +48,6 @@ public class NotificationsFragment extends AbsFragment<NotificationsContracts.Pr
     SwipeRefreshLayout srlNotifications;
 
     private NotificationsAdapter adapter;
-    private OnNavigationListener listener;
 
     @Override
     protected int getResLayout() {
@@ -54,12 +57,8 @@ public class NotificationsFragment extends AbsFragment<NotificationsContracts.Pr
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        setHasOptionsMenu(true);
         adapter = new NotificationsAdapter(context);
-        try {
-            listener = (OnNavigationListener) context;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + " must implement " + OnNavigationListener.class.getName());
-        }
     }
 
     @Override
@@ -91,6 +90,22 @@ public class NotificationsFragment extends AbsFragment<NotificationsContracts.Pr
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.main_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_settings:
+                listener.goToSettingsScreen();
+                return true;
+        }
+        return false;
+    }
+
+    @Override
     public void addAllNotifications(List<Notification> notifications) {
         adapter.addAll(notifications);
     }
@@ -102,6 +117,9 @@ public class NotificationsFragment extends AbsFragment<NotificationsContracts.Pr
 
     @Override
     public void showError(RetrofitException throwable) {
+        if (throwable.getKind() == RetrofitException.Kind.NO_TOKEN) {
+            return;
+        }
         if (throwable.getKind() == RetrofitException.Kind.HTTP && throwable.getResponse().code() == 404) {
             // ignore, 404 is returned when we are at the last page.
             return;

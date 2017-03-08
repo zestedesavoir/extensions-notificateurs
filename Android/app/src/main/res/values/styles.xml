@@ -16,6 +16,7 @@
         <item name="colorControlHighlight">@color/accent</item>
         <item name="android:textAppearanceMedium">@style/Theme.ZdS.TextAppearance.Medium</item>
         <item name="android:textAppearanceSmall">@style/Theme.ZdS.TextAppearance.Small</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
     </style>
 
     <style name="Base.Theme.ZdS.Overlay" parent="ThemeOverlay.AppCompat.Light">

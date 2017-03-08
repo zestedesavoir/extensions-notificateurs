@@ -17,6 +17,7 @@ import com.zestedesavoir.android.notification.NotificationsFragment;
 import com.zestedesavoir.android.notification.managers.NotificationsManager;
 import com.zestedesavoir.android.notification.services.NotificationService;
 import com.zestedesavoir.android.notification.services.StarterReceiver;
+import com.zestedesavoir.android.settings.SettingsFragment;
 
 import javax.inject.Inject;
 
@@ -27,6 +28,8 @@ import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 public class MainActivity extends AppCompatActivity implements OnNavigationListener {
+    private static final String STACK_MAIN = "Main";
+
     @Inject
     Session session;
 
@@ -84,20 +87,43 @@ public class MainActivity extends AppCompatActivity implements OnNavigationListe
 
     @Override
     public void goToLoginScreen() {
-        toolbar.setVisibility(View.GONE);
-        session.disconnect();
-        goTo(LoginFragment.newInstance(session));
+        subscription.add(session.disconnect()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(aVoid -> {
+                    toolbar.setVisibility(View.GONE);
+                    goTo(LoginFragment.newInstance(session), LoginFragment.TAG, null);
+                })
+        );
     }
 
     @Override
     public void goToNotificationScreen() {
         toolbar.setVisibility(View.VISIBLE);
-        goTo(NotificationsFragment.newInstance(manager));
+        goTo(NotificationsFragment.newInstance(manager), NotificationsFragment.TAG, null);
     }
 
-    private void goTo(Fragment fragment) {
+    @Override
+    public void goToSettingsScreen() {
+        toolbar.setVisibility(View.VISIBLE);
+        goTo(SettingsFragment.newInstance(session), SettingsFragment.TAG);
+    }
+
+    @Override
+    public void back() {
+        getSupportFragmentManager().popBackStack();
+    }
+
+    private void goTo(Fragment fragment, String tag) {
+        goTo(fragment, tag, tag);
+    }
+
+    private void goTo(Fragment fragment, String tag, String nameStack) {
         final FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.content, fragment);
+        ft.replace(R.id.content, fragment, tag);
+        if (nameStack != null) {
+            ft.addToBackStack(nameStack);
+        }
         ft.commit();
     }
 }

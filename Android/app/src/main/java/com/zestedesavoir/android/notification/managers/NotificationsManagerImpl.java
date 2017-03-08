@@ -33,7 +33,7 @@ public class NotificationsManagerImpl implements NotificationsManager {
                     if (token.hasTokens()) {
                         return service.list(token.token(), page, 50).map(ListNotification::getResults);
                     }
-                    return Observable.error(RetrofitException.unexpectedError(new RuntimeException()));
+                    return Observable.error(RetrofitException.noTokenError());
                 });
     }
 

@@ -1,6 +1,5 @@
 package com.zestedesavoir.android.login;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
@@ -9,7 +8,6 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 
-import com.zestedesavoir.android.OnNavigationListener;
 import com.zestedesavoir.android.R;
 import com.zestedesavoir.android.internal.exceptions.RetrofitException;
 import com.zestedesavoir.android.internal.ui.AbsFragment;
@@ -20,6 +18,8 @@ import butterknife.OnClick;
 import timber.log.Timber;
 
 public class LoginFragment extends AbsFragment<LoginContracts.Presenter> implements LoginContracts.View {
+    public static final String TAG = "LoginFragment";
+
     public static Fragment newInstance(Session session) {
         final LoginFragment fragment = new LoginFragment();
         fragment.setPresenter(new LoginPresenter(fragment, session));
@@ -33,21 +33,9 @@ public class LoginFragment extends AbsFragment<LoginContracts.Presenter> impleme
     @BindView(R.id.btn_connect)
     Button btnConnect;
 
-    private OnNavigationListener listener;
-
     @Override
     protected int getResLayout() {
         return R.layout.fragment_login;
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        try {
-            listener = (OnNavigationListener) context;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + " must implement " + OnNavigationListener.class.getName());
-        }
     }
 
     @Override

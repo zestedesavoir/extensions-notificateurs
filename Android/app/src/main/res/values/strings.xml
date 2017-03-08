@@ -20,6 +20,16 @@
     <string name="notif_not_logged_description">Appuyez pour ouvrir l\'écran de connexion.</string>
     <string name="notif_meta">Par %1$s, %2$s</string>
 
+    <!-- Settings. -->
+    <string name="settings_licenses">Licences open-source</string>
+    <string name="settings_version">Version de l\'application</string>
+    <string name="settings_disconnect">Se déconnecter</string>
+    <string name="settings_notice_title">Licences</string>
+    <string name="settings_notice_close">Fermer</string>
+
+    <!-- Menus. -->
+    <string name="menu_settings">Paramètres</string>
+
     <!-- Error. -->
     <string name="alert_network_error">Veuillez-vous connecter à une connexion internet</string>
     <string name="alert_server_error">Erreur avec la connexion entre votre mobile et Zeste de Savoir</string>
