@@ -57,6 +57,7 @@ public final class Builder {
 
     public void clear() {
         editor.clear();
+        commit();
     }
 
     public void commit() {

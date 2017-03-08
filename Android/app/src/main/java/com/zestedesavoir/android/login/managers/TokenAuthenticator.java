@@ -24,9 +24,11 @@ public class TokenAuthenticator implements Authenticator {
     @Override
     public Request authenticate(Route route, Response response) throws IOException {
         final Token newToken = manager.authenticateByToken().execute().body();
-        new Builder(context, newToken).commit();
-        return response.request().newBuilder()
-                .header("Authorization", newToken.token())
-                .build();
+        final Request.Builder builder = response.request().newBuilder();
+        if (newToken != null) {
+            new Builder(context, newToken).commit();
+            builder.header("Authorization", newToken.token());
+        }
+        return builder.build();
     }
 }
