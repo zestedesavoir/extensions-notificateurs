@@ -55,7 +55,7 @@ class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdapter.Vie
     @Override
     public void onBindViewHolder(NotificationsAdapter.ViewHolder viewHolder, final int i) {
         final Notification notification = notifications.get(i);
-        String update = DateUtils.getRelativeTimeSpanString(context, DateTime.now().withMillis(notification.pubdate.getTime()), DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_ALL).toString();
+        String update = DateUtils.getRelativeTimeSpanString(context, DateTime.now().withMillis(notification.pubdate.getTime())).toString();
 
         viewHolder.tvMeta.setText(context.getString(R.string.notif_meta, notification.sender.username, update));
         viewHolder.tvTitle.setText(notification.title);

@@ -14,6 +14,8 @@
         <item name="actionMenuTextColor">@color/primary_text</item>
         <item name="android:buttonStyle">@style/Base.Theme.ZdS.Button</item>
         <item name="colorControlHighlight">@color/accent</item>
+        <item name="android:textAppearanceMedium">@style/Theme.ZdS.TextAppearance.Medium</item>
+        <item name="android:textAppearanceSmall">@style/Theme.ZdS.TextAppearance.Small</item>
     </style>
 
     <style name="Base.Theme.ZdS.Overlay" parent="ThemeOverlay.AppCompat.Light">
@@ -30,12 +32,19 @@
         <item name="android:textColor">@android:color/white</item>
     </style>
 
-    <style name="Theme.ZdS.TextAppearance.Large" parent="Base.TextAppearance.AppCompat.Large">
-        <item name="android:textColor">@android:color/white</item>
-    </style>
-
     <style name="Theme.ZdS.TextAppearance.Medium" parent="Base.TextAppearance.AppCompat.Medium">
+        <item name="android:textSize">@dimen/normal_size</item>
+    </style>
+
+    <style name="Theme.ZdS.TextAppearance.Small" parent="Base.TextAppearance.AppCompat.Small">
+        <item name="android:textSize">@dimen/small_size</item>
+    </style>
+
+    <style name="Theme.ZdS.Title.TextAppearance.Large" parent="Base.TextAppearance.AppCompat.Large">
         <item name="android:textColor">@android:color/white</item>
     </style>
 
+    <style name="Theme.ZdS.Title.TextAppearance.Medium" parent="Base.TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 </resources>

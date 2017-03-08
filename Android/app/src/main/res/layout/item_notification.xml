@@ -35,20 +35,22 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_meta"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:lines="1"
-                    tools:text="Par Andr0, le 22 Juillet 2016"/>
-
-                <TextView
                     android:id="@+id/tv_title"
+                    style="@style/Theme.ZdS.TextAppearance.Medium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:lines="1"
                     tools:text="Aller plus loin dans le développement Android"/>
+
+                <TextView
+                    android:id="@+id/tv_meta"
+                    style="@style/Theme.ZdS.TextAppearance.Small"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    tools:text="Par Andr0, le 22 Juillet 2016"/>
             </LinearLayout>
         </LinearLayout>
     </FrameLayout>

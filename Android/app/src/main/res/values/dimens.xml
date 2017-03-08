@@ -1,9 +1,12 @@
 <resources>
-  <dimen name="small_margin">8dp</dimen>
-  <dimen name="normal_margin">12dp</dimen>
-  <dimen name="large_margin">16dp</dimen>
-  <dimen name="very_large_margin">24dp</dimen>
+    <dimen name="small_margin">8dp</dimen>
+    <dimen name="normal_margin">12dp</dimen>
+    <dimen name="large_margin">16dp</dimen>
+    <dimen name="very_large_margin">24dp</dimen>
 
-  <dimen name="activity_horizontal_margin">16dp</dimen>
-  <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="small_size">12sp</dimen>
+    <dimen name="normal_size">14sp</dimen>
 </resources>
