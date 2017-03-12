@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <Preference
+        android:key="pref_version"
+        android:title="@string/settings_version"/>
+    <Preference
+        android:key="pref_licenses"
+        android:title="@string/settings_licenses"/>
+    <Preference
+        android:key="pref_disconnect"
+        android:title="@string/settings_disconnect"/>
+</PreferenceScreen>

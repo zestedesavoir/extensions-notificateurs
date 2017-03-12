@@ -1,0 +1,15 @@
+# IntelliJ IDEA
+.idea
+*.iml
+
+# Gradle
+.gradle
+build
+local.properties
+gradle.properties
+
+# Mac OS
+.DS_Store
+
+# Firebase
+app/google-services.json
