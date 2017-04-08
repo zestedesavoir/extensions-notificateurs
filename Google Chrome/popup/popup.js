@@ -156,7 +156,7 @@ var setNotifsList = function() {
 		if(notificator.getOptions("showAllNotifButton")) {
 			var all_notifs_link = document.createElement("a");
 			all_notifs_link.classList.add("element", "other", "allNotifs");
-			all_notifs_link.href = urlZdS + "/forums/notifications";
+			all_notifs_link.href = urlZdS + "/notifications/";
 			all_notifs_link.textContent = "Toutes les notifications";
 
 			content.appendChild(all_notifs_link);
