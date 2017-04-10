@@ -1,6 +1,6 @@
 var notificator;
 
-var urlZdS = "http://zestedesavoir.com";
+var urlZdS = "https://zestedesavoir.com";
 
 var linkListener = function(notificator, event) {
 	var url = this.href;
