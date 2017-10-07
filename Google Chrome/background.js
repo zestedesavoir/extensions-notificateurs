@@ -21,7 +21,7 @@ Notificateur.prototype = {
 	/**
 	 * ZdS URL
 	 */
-	url: "http://zestedesavoir.com",
+	url: "https://zestedesavoir.com/pages/apropos/",
 
 	/**
 	 * If logged in last check
