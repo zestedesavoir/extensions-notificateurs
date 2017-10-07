@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Zds-Notificateur",
-  "version": "2.2",
+  "version": "2.3",
   "homepage_url": "https://zestedesavoir.com",
   "description": "Une extension pour connaitre le nombre de notifications et de MP de ZesteDeSavoir sans avoir besoin d'ouvrir le site",
 

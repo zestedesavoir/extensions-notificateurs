@@ -131,3 +131,11 @@ a
   text-align: center;
   padding: 10px;
 }
+
+.pm-new
+{
+  float: right;
+  margin-top: -23px;
+  margin-right: 5px;
+  margin-left: -28px;
+}
