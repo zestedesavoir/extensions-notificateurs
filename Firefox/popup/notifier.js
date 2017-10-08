@@ -12,6 +12,11 @@ function updateUI () {
     const connectedDiv = document.getElementById('connected')
     connectedDiv.style.display = 'none'
   }
+
+  chrome.storage.local.get('white_theme', (res) => {
+    if (res.white_theme) document.body.classList.add('white')
+    else document.body.classList.remove('white')
+  })
 }
 
 // sleep time expects milliseconds

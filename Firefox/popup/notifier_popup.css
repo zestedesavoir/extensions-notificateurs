@@ -4,7 +4,6 @@ body
   padding: 0;
   color: white;
   background-color: #0c4863;
-  border-bottom: 3px solid #f8ad32;
   font-family: 'Source Sans Pro', Fallback, sans-serif;
 }
 
@@ -42,6 +41,8 @@ a
   margin-top: 20px;
   padding: 20px 0 20px 0;
   background: #154e69;
+  border-top: 0;
+  border-bottom: 3px solid #f8ad32;
 }
 
 #notconnected #button:hover
@@ -49,18 +50,33 @@ a
   background: #396a81;
 }
 
-
 #connected #button
 {
   padding: 5px 0 5px 0;
   background: #154e69;
   text-align:center;
   font-size: 13px;
+  border-top: 0;
+  border-bottom: 3px solid #f8ad32;
+}
+
+.white #connected #button
+{
+  padding: 10px 0 10px 0;
+  font-weight: bold;
+  border-top: 3px solid #f8ad32;
+  border-bottom: 0;
+
 }
 
 #connected #button:hover, #connected #notification:hover
 {
   background: #396a81;
+}
+
+.white #connected #notification:hover
+{
+  background: #fdebce;
 }
 
 #notification
@@ -69,6 +85,11 @@ a
   height: 50px;
   width: 385px;
   border-bottom: #154e69 1px solid;
+}
+
+.white #notification
+{
+  border-bottom: #f8ad32 1px solid;
 }
 
 #notification img
@@ -93,7 +114,13 @@ a
   overflow-y: hidden;
   text-overflow: ellipsis;
   padding-left: 5px;
+  padding-top: 3px;
   color: #77b8d5;
+}
+
+.white #notification #pseudo
+{
+  color: #666;
 }
 
 #notification #date
@@ -102,14 +129,25 @@ a
   max-height: 13px;
   float:right;
   text-align:right;
+  padding-top: 3px;
   padding-right:20px;
   color: #77b8d5;
+}
+
+.white #notification #date
+{
+  color: #f8ad32;
 }
 
 #notification #title
 {
   margin-top: 5px;
   padding-left: 5px;
+}
+
+.white #notification #title
+{
+  color: #0c4863;
 }
 
 #header
@@ -125,6 +163,13 @@ a
   overflow-x: hidden;
 }
 
+.white #notificationList
+{
+  color: black;
+  border-top: 3px solid #f8ad32;
+  background-color: #fcfcfc;
+}
+
 #noNotif
 {
   font-size: 12px;
@@ -138,4 +183,9 @@ a
   margin-top: -23px;
   margin-right: 5px;
   margin-left: -28px;
+}
+
+.white .pm-new
+{
+  margin-top: -28px;
 }
