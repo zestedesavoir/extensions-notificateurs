@@ -22,6 +22,11 @@
     "page": "options/options.html"
   },
 
+  "content_scripts": [ {
+    "matches": ["*://zestedesavoir.com/*"],
+    "js": ["updateState.js"]
+  }],
+
   "background": {
     "scripts": ["notifier.js"]
   },

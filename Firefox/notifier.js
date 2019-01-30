@@ -198,3 +198,30 @@ function popupNotification (title, content) {
 // Update the popup
 setInterval(getNotificationsFromAPI, updateDelay)
 getNotificationsFromAPI()
+
+/**
+ * Compare current state with the one of the loading page
+ * @param  the content of the message request
+ */
+
+function updateState(request) {
+  const lastState = connected ? (notifCounter > 0 ? 2 : 1 ) : 0;
+
+  if( request.state !== lastState ) { // If any difference update the state
+    switch( request.state ) {
+      case 1:
+        chrome.browserAction.setIcon({path: 'icons/clem_48.png'})
+        break;
+      case 2:
+        chrome.browserAction.setIcon({path: 'icons/icone_n_20.png'})
+        break;
+      case 0:
+        chrome.browserAction.setIcon({path: 'icons/notconnected.png'})
+        break;
+    }
+    lastIcon = request.state;
+    getNotificationsFromAPI(); // Update the state
+  }
+}
+
+browser.runtime.onMessage.addListener(updateState);
