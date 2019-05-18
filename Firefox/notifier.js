@@ -17,8 +17,8 @@ chrome.storage.local.get('notify', (res) => {
   showPopupNotification = res.notify || false
 })
 
-let baseUrl = 'https://zestedesavoir.com/'
-if (debugMode) baseUrl = 'https://beta.zestedesavoir.com/'
+let baseUrl = 'https://zestedesavoir.com'
+if (debugMode) baseUrl = 'https://beta.zestedesavoir.com'
 const token = 'zds-notifier'
 
 /**
@@ -27,7 +27,7 @@ const token = 'zds-notifier'
 function getNotificationsFromAPI () {
   contentDiv = document.createElement('div')
   const options = `page_size=30&ordering=-pubdate&Authorization=${token}`
-  const target = `${baseUrl}api/notifications/?${options}`
+  const target = `${baseUrl}/api/notifications/?${options}`
   // TODO use fetch instead
   const xhr = new XMLHttpRequest()
   xhr.open('GET', target, true)
