@@ -1,12 +1,9 @@
 /* Variables de configuration (répétées depuis `config.js`) en l'absence de support des modules ES6 dans les extensions */
 
-const DEBUG = true
+const DEBUG = false
 const BASE_URL = DEBUG ? 'https://beta.zestedesavoir.com' : 'https://zestedesavoir.com'
 
-if (!document.location.href.startsWith(BASE_URL)) {
-	console.warn('ZdS: Domaine ignoré')
-}
-else {
+if (document.location.href.startsWith(BASE_URL)) {
 	/* Sélecteurs pour détecter l'état de connexion et le nombre de notifications */
 
 	const SELECTOR_LOGBOX = '.logbox'

@@ -1,6 +1,6 @@
 /* Variables de configuration */
 
-export const DEBUG = true
+export const DEBUG = false
 
 export const BASE_URL = DEBUG ? 'https://beta.zestedesavoir.com' : 'https://zestedesavoir.com'
 
