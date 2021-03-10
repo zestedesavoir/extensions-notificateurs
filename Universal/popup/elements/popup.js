@@ -3,6 +3,11 @@ import { relativeDate } from '../../date-format.js'
 
 import { ZdsElement } from './_element.js'
 
+/**
+ * WebComponent permettant d'afficher la popup de notifications
+ * @property {string} userState - L'état de l'utilisateur
+ * @property {ZdsNotification[]} notifications - Les notifications non lues
+*/
 export class Popup extends ZdsElement {
 	get styles () {
 		return `
@@ -33,7 +38,7 @@ ${this.notifications.length
 				</header>
 				<span class="topic">${notif.title}</span>
 			</a>
-		</li>`)}
+		</li>`).join('')}
 	</ul>`
 	: `<div class="alert">
 		<h1 class="title">Bravo !</h1>
@@ -55,6 +60,8 @@ ${this.notifications.length
 		super()
 		this.userState = 'LOGGED_OUT'
 		this.notifications = []
+
+		browser.runtime.sendMessage({ state: 'LOGGED_IN' })
 
 		browser.storage.local.get({
 			userState: 'LOGGED_OUT',

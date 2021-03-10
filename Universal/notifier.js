@@ -1,9 +1,9 @@
-import { BASE_URL } from '../../config.js'
+import { BASE_URL, BADGE_COLOR_DEFAULT, BADGE_COLOR_ERROR, BADGE_COLOR_OK, POLLING_RATE } from './config.js'
 
-/** 
- * Class representing the extension's core.
- * @property {number} userState - The user's state on the Website
- * @property {ZdsNotification[]} notifications - The user's pending notifications
+/**
+ * Classe tournant en fond permettant de gérer l'icône et le badge ainsi que de mettre à jour les notifications
+ * @property {string} userState - L'état de l'utilisateur
+ * @property {ZdsNotification[]} notifications - Les notifications non lues
 */
 class Notifier {
 	constructor() {
@@ -18,10 +18,11 @@ class Notifier {
 	}
 
 	/**
-	 * Update the user's state
-	 * @param {number} state 
+	 * Met à jour l'état de connexion
+	 * @param {number} state - État à afficher pour le badge
+	 * @param {boolean} stopApiUpdate - Empêche de relancer un appel vers l'API
 	 */
-	updateState(state) {
+	updateState(state, stopApiUpdate) {
 		if (state !== this.userState) { // If any difference update the state
 			switch(state) {
 				case 'ERROR':
@@ -42,25 +43,58 @@ class Notifier {
 			browser.storage.local.set({ userState: this.userState, notifications: this.notifications })
 		}
 
-		if (!['LOGGED_OUT', 'ERROR'].includes(state)) {
+		if (!stopApiUpdate && !['LOGGED_OUT', 'ERROR'].includes(state)) {
 			return this.getNotificationsFromAPI()
 		}
 	}
 
+	/**
+	 * Rafraîchit la liste des notifications depuis l'API et met à jour le badge sur l'icône
+	 */
 	getNotificationsFromAPI() {
-		// const options = `page_size=100&ordering=-pubdate&Authorization=${token}`
 		const options = `page_size=100&ordering=-pubdate`
+
+		try {
+			browser.browserAction.setBadgeText({ text: '…' })
+			browser.browserAction.setBadgeBackgroundColor({ color: BADGE_COLOR_OK })
+		}
+		catch (err) {
+			console.error(err)
+		}
 
 		return fetch(`${BASE_URL}/api/notifications/?${options}`)
 		.then(res => res.json())
 		.then((res) => {
-			this.notifications = res.results.filter(notif => !notif.is_read)
+			this.notifications = ((res || {}).results || []).filter(notif => !notif.is_read)
+			console.info(res.results.length)
+			console.dir(this.notifications)
 			browser.storage.local.set({ userState: this.userState, notifications: this.notifications })
+
+			/* On met à jour le badge sans recharger l'API */
+
+			if (this.notifications.length) {
+				browser.browserAction.setBadgeText({ text: (this.notifications.length >= 100 ? '99+' : `${this.notifications.length}`) })
+				browser.browserAction.setBadgeBackgroundColor({ color: BADGE_COLOR_DEFAULT })
+
+				this.updateState('PENDING_NOTIFICATIONS', true)
+			}
+			else {
+				browser.browserAction.setBadgeText({ text: '' })
+				this.updateState('LOGGED_IN', true)
+			}
 		})
 		.catch((err) => {
-			this.updateState('ERROR')
+			console.error(err)
+			this.updateState('ERROR', true)
+			browser.browserAction.setBadgeText({ text: 'ERR' })
+			browser.browserAction.setBadgeBackgroundColor({ color: BADGE_COLOR_ERROR })
+		})
+		.finally(() => {
+			setTimeout(() => {
+				this.getNotificationsFromAPI()
+			}, POLLING_RATE * 1000)
 		})
 	}
 }
 
-export const NOTIFIER = new Notifier()
+const NOTIFIER = new Notifier()

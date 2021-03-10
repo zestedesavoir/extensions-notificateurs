@@ -3,6 +3,9 @@
 	--color-logo: #084663;
 	--color-primary: #0d6791;
 	--color-hover: #396a81;
+	--color-notif: #003753;
+	--color-notif-alternate: #00496f;
+	--color-notif-hover: #063d56;
 	--color-dark: #063d56;
 	--color-orange: #f8ab30;
 	--color-blue-light: #95d7f5;
@@ -109,12 +112,12 @@ img {
 #notifications-list li a {
 	display: block;
 	overflow: hidden;
-	background-color: var(--color-dark);
+	background-color: var(--color-notif);
 	color: var(--color-white);
 	text-decoration: none;
 }
 #notifications-list li:nth-child(2n) a {
-	background-color: var(--color-logo);
+	background-color: var(--color-notif-alternate);
 }
 #notifications-list li a header {
 	color: var(--color-blue-light);
@@ -123,6 +126,7 @@ img {
 #notifications-list li a header .avatar {
 	width: 2em;
 	height: 2em;
+	background-color: var(--color-white);
 }
 #notifications-list li a header .username {
 	padding: .5em;
@@ -144,9 +148,16 @@ img {
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
+#notifications-list li a:is(:hover, :focus) {
+	background-color: var(--color-notif-hover);
+}
+#notifications-list li a:is(:hover, :focus) header .date {
+	color: var(--color-white);
+}
 
 #bottom-buttons {
 	display: flex;
+	border-top: 1px solid var(--color-dark);
 }
 #bottom-buttons > a {
 	padding: 1rem;

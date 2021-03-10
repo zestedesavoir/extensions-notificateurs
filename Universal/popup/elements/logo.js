@@ -1,6 +1,9 @@
 import { BASE_URL } from '../../config.js'
 import { ZdsElement } from './_element.js'
 
+/**
+ * WebComponent permettant d'afficher le logo ZdS avec un lien vers la page d'accueil
+ */
 export class Logo extends ZdsElement {
 	get styles () {
 		return `

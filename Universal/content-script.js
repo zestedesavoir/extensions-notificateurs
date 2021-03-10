@@ -3,31 +3,32 @@
 const DEBUG = false
 const BASE_URL = DEBUG ? 'https://beta.zestedesavoir.com' : 'https://zestedesavoir.com'
 
+/* On active le script si on est sur une page du site */
+
 if (document.location.href.startsWith(BASE_URL)) {
 	/* Sélecteurs pour détecter l'état de connexion et le nombre de notifications */
 
 	const SELECTOR_LOGBOX = '.logbox'
 	const SELECTOR_COUNT_ALERTS = '.notifs-links>div:not(:nth-child(3)) ul.dropdown-list>li:not(.dropdown-empty-message)'
 
-	/* Script de fond, injecté dans la page */
+	/* Le script qui scanne la page */
 
 	let state = 'LOGGED_OUT'
 
 	const logbox = document.querySelector(SELECTOR_LOGBOX)
 
-	if (logbox) { // Logged
+	if (logbox) { // L'utilisateur est connecté
 		state = 'LOGGED_IN'
 
 		const countTotal = logbox.querySelectorAll(SELECTOR_COUNT_ALERTS).length
 
-		if (countTotal > 0) { // 1 notif or more
+		if (countTotal > 0) { // Il a des notifications non lues
 			state = 'PENDING_NOTIFICATIONS'
 		}
 	}
 
-	console.info('state', state)
+	/* On envoie l'info vers le script de fond (notifier) */
 
-	// Send the state to background script
 	browser.runtime.sendMessage({ state: state })
 	.catch((err) => {
 		console.error(err);
