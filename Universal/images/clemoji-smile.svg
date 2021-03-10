@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Clemoji 3.0: smile.svg (:)) - licence GPLv3 or later - Author Buddy - https://zestedesavoir.com/ -->
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" version="1.1" id="clemoji3_smile" x="0px" y="0px" width="19px" height="27.834px" viewBox="0 0 19 27.834" enable-background="new 0 0 19 27.834">
+  <g id="g10" transform="matrix(1.25,0,0,-1.25,-2.5,62.5)">
+    <g id="g20" transform="translate(36,19)">
+      <path id="path22" fill="#FAAC2C" d="M-18.889,17.304c0-4.148-3.362-7.51-7.511-7.51c-4.148,0-7.511,3.363-7.511,7.51c0,4.148,3.363,7.511,7.511,7.511C-22.252,24.815-18.889,21.453-18.889,17.304" />
+    </g>
+    <g id="g24" transform="scale(1,-1)">
+      <path style="stroke-width:0.8" fill="#9a2400" d="m 13.018805,-33.498719 a 0.4232,0.4232 0 0 1 0.284725,0.730096 5.4688,5.4688 0 0 1 -3.86465,1.50992 c -1.439827,-0.02232 -2.795052,-0.59936 -3.815253,-1.627288 a 0.424,0.424 0 0 1 0.601322,-0.597152 4.6264,4.6264 0 0 0 3.227041,1.378144 4.632,4.632 0 0 0 3.270579,-1.277496 0.4216,0.4216 0 0 1 0.296236,-0.116224 z"/>
+    </g>
+    <g id="g32" transform="scale(1,-1)">
+      <ellipse style="stroke-width:0.8" ry="1.22" rx="1.1272" cy="-38.323399" cx="12.126419" fill="#992500" paint-order="stroke fill markers" id="ellipse12" />
+    </g>
+    <g id="g36" transform="scale(1,-1)">
+      <ellipse style="stroke-width:0.8" cx="7.1216183" cy="-38.386597" rx="1.1272" ry="1.22" fill="#992500" paint-order="stroke fill markers" id="ellipse14" />
+    </g>
+    <g id="gfeuille" transform="translate(113.91075,50.659)">
+      <path id="path41" fill="#479F00" d="M-98.058-0.666c-3.305,0-5.983-2.679-5.982-5.982c0.002-0.069,0.004-0.137,0.007-0.205c0.131-0.011,0.264-0.018,0.396-0.02c3.304-0.001,5.983,2.678,5.983,5.982c0,0,0,0,0,0.001c-0.002,0.068-0.004,0.136-0.008,0.204C-97.792-0.675-97.926-0.668-98.058-0.666L-98.058-0.666z" />
+      <path id="path41-2" fill="#479F00" d="M-109.264-2.106c2.538,0,4.595-2.058,4.595-4.595c-0.001-0.053-0.002-0.105-0.005-0.158c-0.102-0.009-0.204-0.013-0.305-0.015c-2.538-0.001-4.596,2.057-4.596,4.595c0,0.001,0,0.001,0,0.001c0.001,0.052,0.003,0.105,0.006,0.157C-109.468-2.113-109.367-2.107-109.264-2.106L-109.264-2.106z" />
+    </g>
+  </g>
+</svg>
+

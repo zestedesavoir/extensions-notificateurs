@@ -1,12 +1,13 @@
 :root {
-	--color-navy: #19516b;
-	--color-navy-dark: #084561;
-	--color-navy-light: #396a81;
-	--color-orange: #f8ad32;
+	--color-bg: #0b5a7f;
+	--color-logo: #084663;
+	--color-primary: #0d6791;
+	--color-hover: #396a81;
+	--color-dark: #063d56;
+	--color-orange: #f8ab30;
 	--color-blue-light: #95d7f5;
 	--color-black: #222;
 	--color-white: #fff;
-	--color-bg: #f7f7f7;
 }
 
 @font-face {
@@ -19,10 +20,10 @@ body {
 	font-family: Source Sans Pro, Segoe UI, Trebuchet MS, Helvetica, Helvetica Neue, Arial, sans-serif;
 	margin: 0;
 	padding: 0;
-	min-width: 15rem;
-	max-width: 25rem;
-	background-color: var(--color-bg);
-	color: var(--color-black);
+	min-width: 20rem;
+	max-width: 34rem;
+	background-color: var(--color-logo);
+	color: var(--color-white);
 	border-bottom: 3px solid var(--color-orange);
 }
 
@@ -48,23 +49,41 @@ img {
 }
 
 /** 
+ * Annonces
+ */
+
+.alert {
+	padding: .5rem;
+	text-align: center;
+	background-color: var(--color-alternate);
+	color: var(--color-white);
+}
+.alert .title {
+	margin: 1rem;
+	font-style: italic;
+}
+.alert .icon {
+	margin: .5rem;
+}
+.alert .icon img {
+	width: 2rem;
+}
+.alert .message {
+	margin: .5rem;
+}
+
+/** 
  * Page connecté
  */
 
-#notifications-list {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	background-color: var(--color-navy-dark);
-}
-#notifications-list:empty {
+#notifications-empty {
 	display: block;
 	padding: 1rem;
 	text-align: center;
 	font-style: italic;
 	color: rgba(255, 255, 255, .5);
 }
-#notifications-list:empty::before {
+#notifications-empty::before {
 	display: inline-block;
 	width: 1.25rem;
 	height: 1.25rem;
@@ -73,24 +92,73 @@ img {
 	content: ' ';
 	background: center / contain no-repeat url('../images/clemoji-party.svg');
 }
-#notifications-list:empty::after {
+#notifications-empty {
 	content: 'Aucune notification';
 }
+
+#notifications-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+#notifications-list li {
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+#notifications-list li a {
+	display: block;
+	overflow: hidden;
+	background-color: var(--color-dark);
+	color: var(--color-white);
+	text-decoration: none;
+}
+#notifications-list li:nth-child(2n) a {
+	background-color: var(--color-logo);
+}
+#notifications-list li a header {
+	color: var(--color-blue-light);
+	display: flex;
+}
+#notifications-list li a header .avatar {
+	width: 2em;
+	height: 2em;
+}
+#notifications-list li a header .username {
+	padding: .5em;
+	line-height: 1em;
+	height: 2em;
+	flex: 1;
+}
+#notifications-list li a header .date {
+	padding: .5em;
+	height: 2em;
+}
+#notifications-list li a .topic {
+	display: block;
+	padding: .5em;
+}
+#notifications-list li a header .username,
+#notifications-list li a .topic {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
 #bottom-buttons {
 	display: flex;
 }
 #bottom-buttons > a {
-	padding: .25rem;
+	padding: 1rem;
 	white-space: nowrap;
 	text-align: center;
 	text-decoration: none;
-	background-color: var(--color-navy);
+	background-color: var(--color-primary);
 	color: var(--color-white);
-	font-size: .875rem;
 }
 #bottom-buttons > a:hover,
 #bottom-buttons > a:focus {
-	background-color: var(--color-navy-light);
+	background-color: var(--color-dark);
 	color: var(--color-blue-light);
 }
 #all-notifications-button {
@@ -112,34 +180,15 @@ img {
  * Page non connecté
  */
 
-#loggedout {
-	padding: .5rem;
-	text-align: center;
-	background-color: var(--color-navy-dark);
-	color: var(--color-white);
-}
-#title {
-	margin: 1rem;
-	font-style: italic;
-}
-#clemoji-asleep {
-	margin: .5rem;
-}
-#clemoji-asleep img {
-	width: 2rem;
-}
-#message {
-	margin: .5rem;
-}
 #signin-button {
 	display: block;
 	text-align: center;
-	background-color: var(--color-navy);
+	background-color: var(--color-hover);
 	color: var(--color-white);
 	text-decoration: none;
 	padding: 1rem;
 }
 #signin-button:hover,
 #signin-button:focus {
-	background-color: var(--color-navy-light);
+	background-color: var(--color-dark);
 }

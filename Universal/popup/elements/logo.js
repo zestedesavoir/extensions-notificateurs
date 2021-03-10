@@ -6,18 +6,20 @@ export class Logo extends ZdsElement {
 		return `
 zds-logo {
 	display: block;
+	border-bottom: 2px solid var(--color-orange);
 }
 zds-logo a {
 	display: block;
 	text-align: center;
-	background-color: var(--color-navy);
+	line-height: 1;
+	background-color: var(--color-logo);
 }
 zds-logo a:hover,
 zds-logo a:focus {
-	background-color: var(--color-navy-light);
+	background-color: var(--color-primary);
 }
 zds-logo img {
-	height: 3rem;
+	height: 4rem;
 }
 		`
 	}

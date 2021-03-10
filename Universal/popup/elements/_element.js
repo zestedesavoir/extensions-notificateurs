@@ -1,13 +1,13 @@
 export class ZdsElement extends HTMLElement {
 	get style() {
-		return ``;
+		return ``
 	}
 	get template() {
-		return ``;
+		return ``
 	}
 
 	constructor() {
-        super();
+        super()
 	}
 
 	connectedCallback() {
@@ -15,7 +15,7 @@ export class ZdsElement extends HTMLElement {
 	}
 	
 	render() {
-		this.innerHTML = this.template;
+		this.innerHTML = this.template
 
 		const style = document.createElement('style')
         style.textContent = this.styles
