@@ -9,6 +9,7 @@ class Notifier {
 	constructor() {
 		this.userState = 'LOGGED_OUT'
 		this.notifications = []
+		this.pollingTimer = null
 
 		browser.runtime.onMessage.addListener((msg) => {
 			if (msg.state !== undefined) {
@@ -44,6 +45,12 @@ class Notifier {
 		}
 
 		if (!stopApiUpdate && !['LOGGED_OUT', 'ERROR'].includes(state)) {
+			if (!this.pollingTimer) {
+				this.pollingTimer = setTimeout(() => {
+					this.updateState(this.userState)
+					this.pollingTimer = null
+				}, POLLING_RATE * 1000)
+			}
 			return this.getNotificationsFromAPI()
 		}
 	}
@@ -88,11 +95,6 @@ class Notifier {
 			this.updateState('ERROR', true)
 			browser.browserAction.setBadgeText({ text: 'ERR' })
 			browser.browserAction.setBadgeBackgroundColor({ color: BADGE_COLOR_ERROR })
-		})
-		.finally(() => {
-			setTimeout(() => {
-				this.getNotificationsFromAPI()
-			}, POLLING_RATE * 1000)
 		})
 	}
 }
