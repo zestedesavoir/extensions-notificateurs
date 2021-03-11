@@ -45,12 +45,15 @@ class Notifier {
 		}
 
 		if (!stopApiUpdate && !['LOGGED_OUT', 'ERROR'].includes(state)) {
-			if (!this.pollingTimer) {
-				this.pollingTimer = setTimeout(() => {
-					this.updateState(this.userState)
-					this.pollingTimer = null
-				}, POLLING_RATE * 1000)
+			if (this.pollingTimer) {
+				clearTimeout(this.pollingTimer)
 			}
+
+			this.pollingTimer = setTimeout(() => {
+				this.updateState(this.userState)
+				this.pollingTimer = null
+			}, POLLING_RATE * 1000)
+
 			return this.getNotificationsFromAPI()
 		}
 	}
